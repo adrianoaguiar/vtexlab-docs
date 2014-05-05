@@ -1,0 +1,1286 @@
+{
+    "product": "logistics",
+    "version": "latest",
+    "resource": "carrier",
+    "documentation": "api",
+    "methods": [
+        {
+            "title": "Consulta todas as transportadoras",
+            "description": "Obtém todas as transportadoras",
+            "verb": "GET",
+            "route": {
+                "template": "/api/logistics/pvt/configuration/carriers"
+            },
+            "example": {
+                "request": [],
+                "response": 
+                [
+                    [
+                      {
+                        "id": "07C1C262-F2D2-46D3-819B-AB9C80731F0D",
+                        "slaType": "testegravarfrete",
+                        "name": "Brasil",
+                        "scheduledDelivery": false,
+                        "maxRangeDelivery": 0,
+                        "dayOfWeekForDelivery": null,
+                        "dayOfWeekBlockeds": [],
+                        "freightValue": [],
+                        "factorCubicWeight": 1,
+                        "freightTableProcessStatus": 1,
+                        "freightTableValueError": null,
+                        "modals": [],
+                        "onlyItemsWithDefinedModal": false,
+                        "deliveryOnWeekends": false,
+                        "carrierSchedule": [
+                          {
+                            "dayOfWeek": 1,
+                            "timeLimit": "12:30:00"
+                          }
+                        ],
+                        "maxDimension": {
+                          "weight": 0,
+                          "height": 100,
+                          "width": 100,
+                          "length": 100,
+                          "maxSumDimension": 150
+                        },
+                        "exclusiveToDeliveryPoints": false,
+                        "minimunCubicWeight": 60001
+                      },
+                      {
+                        "id": "59",
+                        "slaType": "Entrega Agendada",
+                        "name": "Entrega Agendada",
+                        "scheduledDelivery": true,
+                        "maxRangeDelivery": 3,
+                        "dayOfWeekForDelivery": [
+                          {
+                            "dayOfWeek": 0,
+                            "deliveryRanges": [
+                              {
+                                "startTime": "08:00:00",
+                                "endTime": "13:00:00",
+                                "listPrice": 0
+                              },
+                              {
+                                "startTime": "13:00:00",
+                                "endTime": "17:00:00",
+                                "listPrice": 0
+                              },
+                              {
+                                "startTime": "17:00:00",
+                                "endTime": "22:00:00",
+                                "listPrice": 0
+                              }
+                            ]
+                          },
+                          {
+                            "dayOfWeek": 1,
+                            "deliveryRanges": [
+                              {
+                                "startTime": "08:00:00",
+                                "endTime": "13:00:00",
+                                "listPrice": 0
+                              },
+                              {
+                                "startTime": "13:00:00",
+                                "endTime": "17:00:00",
+                                "listPrice": 0
+                              },
+                              {
+                                "startTime": "17:00:00",
+                                "endTime": "22:00:00",
+                                "listPrice": 0
+                              }
+                            ]
+                          },
+                          {
+                            "dayOfWeek": 2,
+                            "deliveryRanges": [
+                              {
+                                "startTime": "08:00:00",
+                                "endTime": "13:00:00",
+                                "listPrice": 0
+                              },
+                              {
+                                "startTime": "13:00:00",
+                                "endTime": "17:00:00",
+                                "listPrice": 0
+                              },
+                              {
+                                "startTime": "17:00:00",
+                                "endTime": "22:00:00",
+                                "listPrice": 0
+                              }
+                            ]
+                          },
+                          {
+                            "dayOfWeek": 3,
+                            "deliveryRanges": []
+                          },
+                          {
+                            "dayOfWeek": 4,
+                            "deliveryRanges": []
+                          },
+                          {
+                            "dayOfWeek": 5,
+                            "deliveryRanges": []
+                          },
+                          {
+                            "dayOfWeek": 6,
+                            "deliveryRanges": []
+                          }
+                        ],
+                        "dayOfWeekBlockeds": [],
+                        "freightValue": [],
+                        "factorCubicWeight": null,
+                        "freightTableProcessStatus": 1,
+                        "freightTableValueError": null,
+                        "modals": [],
+                        "onlyItemsWithDefinedModal": false,
+                        "deliveryOnWeekends": false,
+                        "carrierSchedule": [],
+                        "maxDimension": {
+                          "weight": 0,
+                          "height": 0,
+                          "width": 0,
+                          "length": 0,
+                          "maxSumDimension": 0
+                        },
+                        "exclusiveToDeliveryPoints": false,
+                        "minimunCubicWeight": 0
+                      },
+                      {
+                        "id": "equador",
+                        "slaType": "Normal",
+                        "name": "Equador",
+                        "scheduledDelivery": false,
+                        "maxRangeDelivery": 0,
+                        "dayOfWeekForDelivery": null,
+                        "dayOfWeekBlockeds": [],
+                        "freightValue": [],
+                        "factorCubicWeight": null,
+                        "freightTableProcessStatus": 1,
+                        "freightTableValueError": null,
+                        "modals": [],
+                        "onlyItemsWithDefinedModal": false,
+                        "deliveryOnWeekends": false,
+                        "carrierSchedule": [],
+                        "maxDimension": {
+                          "weight": 0,
+                          "height": 0,
+                          "width": 0,
+                          "length": 0,
+                          "maxSumDimension": 0
+                        },
+                        "exclusiveToDeliveryPoints": false,
+                        "minimunCubicWeight": 0
+                      },
+                      {
+                        "id": "69",
+                        "slaType": "Econômica",
+                        "name": "Frete Econômico+Leve Ramon",
+                        "scheduledDelivery": false,
+                        "maxRangeDelivery": 0,
+                        "dayOfWeekForDelivery": null,
+                        "dayOfWeekBlockeds": [],
+                        "freightValue": [],
+                        "factorCubicWeight": null,
+                        "freightTableProcessStatus": 1,
+                        "freightTableValueError": null,
+                        "modals": [],
+                        "onlyItemsWithDefinedModal": false,
+                        "deliveryOnWeekends": false,
+                        "carrierSchedule": [],
+                        "maxDimension": {
+                          "weight": 0,
+                          "height": 0,
+                          "width": 0,
+                          "length": 0,
+                          "maxSumDimension": 0
+                        },
+                        "exclusiveToDeliveryPoints": false,
+                        "minimunCubicWeight": 0
+                      },
+                      {
+                        "id": "66",
+                        "slaType": "Normal",
+                        "name": "Frete Normal+Pesado Ramon",
+                        "scheduledDelivery": false,
+                        "maxRangeDelivery": 0,
+                        "dayOfWeekForDelivery": null,
+                        "dayOfWeekBlockeds": [],
+                        "freightValue": [],
+                        "factorCubicWeight": 0,
+                        "freightTableProcessStatus": 1,
+                        "freightTableValueError": null,
+                        "modals": [],
+                        "onlyItemsWithDefinedModal": false,
+                        "deliveryOnWeekends": false,
+                        "carrierSchedule": [],
+                        "maxDimension": {
+                          "weight": 0,
+                          "height": 0,
+                          "width": 0,
+                          "length": 0,
+                          "maxSumDimension": 0
+                        },
+                        "exclusiveToDeliveryPoints": false,
+                        "minimunCubicWeight": 0
+                      },
+                      {
+                        "id": "teste_unitario",
+                        "slaType": "teste_unitario",
+                        "name": "NÃO APAGUE 01",
+                        "scheduledDelivery": false,
+                        "maxRangeDelivery": 0,
+                        "dayOfWeekForDelivery": null,
+                        "dayOfWeekBlockeds": [],
+                        "freightValue": [],
+                        "factorCubicWeight": null,
+                        "freightTableProcessStatus": 1,
+                        "freightTableValueError": null,
+                        "modals": [],
+                        "onlyItemsWithDefinedModal": false,
+                        "deliveryOnWeekends": false,
+                        "carrierSchedule": [],
+                        "maxDimension": {
+                          "weight": 0,
+                          "height": 0,
+                          "width": 0,
+                          "length": 0,
+                          "maxSumDimension": 0
+                        },
+                        "exclusiveToDeliveryPoints": false,
+                        "minimunCubicWeight": 0
+                      },
+                      {
+                        "id": "1397f6c",
+                        "slaType": "Normal",
+                        "name": "Químico",
+                        "scheduledDelivery": false,
+                        "maxRangeDelivery": 0,
+                        "dayOfWeekForDelivery": null,
+                        "dayOfWeekBlockeds": [],
+                        "freightValue": [],
+                        "factorCubicWeight": null,
+                        "freightTableProcessStatus": 1,
+                        "freightTableValueError": null,
+                        "modals": [
+                          "Químico"
+                        ],
+                        "onlyItemsWithDefinedModal": false,
+                        "deliveryOnWeekends": false,
+                        "carrierSchedule": [
+                          {
+                            "dayOfWeek": 1,
+                            "timeLimit": "15:00:00"
+                          }
+                        ],
+                        "maxDimension": {
+                          "weight": 0,
+                          "height": 200,
+                          "width": 200,
+                          "length": 200,
+                          "maxSumDimension": 120
+                        },
+                        "exclusiveToDeliveryPoints": false,
+                        "minimunCubicWeight": 0
+                      },
+                      {
+                        "id": "173a63f",
+                        "slaType": "Entrega Agendada",
+                        "name": "Quimico e refrigerado",
+                        "scheduledDelivery": true,
+                        "maxRangeDelivery": 4,
+                        "dayOfWeekForDelivery": [
+                          {
+                            "dayOfWeek": 0,
+                            "deliveryRanges": [
+                              {
+                                "startTime": "19:30:00",
+                                "endTime": "00:00:00",
+                                "listPrice": 0.05
+                              }
+                            ]
+                          },
+                          {
+                            "dayOfWeek": 1,
+                            "deliveryRanges": []
+                          },
+                          {
+                            "dayOfWeek": 2,
+                            "deliveryRanges": [
+                              {
+                                "startTime": "19:30:00",
+                                "endTime": "00:00:00",
+                                "listPrice": 0.05
+                              }
+                            ]
+                          },
+                          {
+                            "dayOfWeek": 3,
+                            "deliveryRanges": []
+                          },
+                          {
+                            "dayOfWeek": 4,
+                            "deliveryRanges": [
+                              {
+                                "startTime": "19:30:00",
+                                "endTime": "00:00:00",
+                                "listPrice": 0.05
+                              }
+                            ]
+                          },
+                          {
+                            "dayOfWeek": 5,
+                            "deliveryRanges": []
+                          },
+                          {
+                            "dayOfWeek": 6,
+                            "deliveryRanges": [
+                              {
+                                "startTime": "19:30:00",
+                                "endTime": "00:00:00",
+                                "listPrice": 0.05
+                              }
+                            ]
+                          }
+                        ],
+                        "dayOfWeekBlockeds": [],
+                        "freightValue": [],
+                        "factorCubicWeight": null,
+                        "freightTableProcessStatus": 1,
+                        "freightTableValueError": null,
+                        "modals": [
+                          "Químico",
+                          "Refrigerado"
+                        ],
+                        "onlyItemsWithDefinedModal": true,
+                        "deliveryOnWeekends": false,
+                        "carrierSchedule": [],
+                        "maxDimension": {
+                          "weight": 0,
+                          "height": 200,
+                          "width": 200,
+                          "length": 200,
+                          "maxSumDimension": 200
+                        },
+                        "exclusiveToDeliveryPoints": false,
+                        "minimunCubicWeight": 0
+                      },
+                      {
+                        "id": "1f433a4",
+                        "slaType": "Normal",
+                        "name": "teste vtex 19-03",
+                        "scheduledDelivery": false,
+                        "maxRangeDelivery": 0,
+                        "dayOfWeekForDelivery": null,
+                        "dayOfWeekBlockeds": [],
+                        "freightValue": [],
+                        "factorCubicWeight": 0.3,
+                        "freightTableProcessStatus": 1,
+                        "freightTableValueError": null,
+                        "modals": [],
+                        "onlyItemsWithDefinedModal": false,
+                        "deliveryOnWeekends": false,
+                        "carrierSchedule": [],
+                        "maxDimension": {
+                          "weight": 0,
+                          "height": 0,
+                          "width": 0,
+                          "length": 0,
+                          "maxSumDimension": 0
+                        },
+                        "exclusiveToDeliveryPoints": false,
+                        "minimunCubicWeight": 0
+                      },
+                      {
+                        "id": "1000",
+                        "slaType": "Normal",
+                        "name": "Transportadora",
+                        "scheduledDelivery": false,
+                        "maxRangeDelivery": 0,
+                        "dayOfWeekForDelivery": null,
+                        "dayOfWeekBlockeds": [],
+                        "freightValue": [],
+                        "factorCubicWeight": null,
+                        "freightTableProcessStatus": 1,
+                        "freightTableValueError": null,
+                        "modals": [],
+                        "onlyItemsWithDefinedModal": false,
+                        "deliveryOnWeekends": false,
+                        "carrierSchedule": [],
+                        "maxDimension": {
+                          "weight": 0,
+                          "height": 0,
+                          "width": 0,
+                          "length": 0,
+                          "maxSumDimension": 0
+                        },
+                        "exclusiveToDeliveryPoints": false,
+                        "minimunCubicWeight": 0
+                      }
+                    ]                
+                ]
+            }
+        },
+        {
+            "title": "Consulta transportadora",
+            "description": "Obtém uma transportadora com base no seu identificador único",
+            "verb": "GET",
+            "route": {
+                "template": "/api/logistics/pvt/configuration/carriers/{carrierId}",
+                "parameters": {
+                    "carrierId": {
+                        "type": "string",
+                        "description": "Identificador único da transportadora",
+                        "required": true
+                    }
+                }
+            },
+            "example": {
+                "request": [],
+                "response":
+                [
+
+                    [
+                      {
+                        "id": "07C1C262-F2D2-46D3-819B-AB9C80731F0D",
+                        "slaType": "testegravarfrete",
+                        "name": "Brasil",
+                        "scheduledDelivery": false,
+                        "maxRangeDelivery": 0,
+                        "dayOfWeekForDelivery": null,
+                        "dayOfWeekBlockeds": [],
+                        "freightValue": [],
+                        "factorCubicWeight": 1,
+                        "freightTableProcessStatus": 1,
+                        "freightTableValueError": null,
+                        "modals": [],
+                        "onlyItemsWithDefinedModal": false,
+                        "deliveryOnWeekends": false,
+                        "carrierSchedule": [
+                          {
+                            "dayOfWeek": 1,
+                            "timeLimit": "12:30:00"
+                          }
+                        ],
+                        "maxDimension": {
+                          "weight": 0,
+                          "height": 100,
+                          "width": 100,
+                          "length": 100,
+                          "maxSumDimension": 150
+                        },
+                        "exclusiveToDeliveryPoints": false,
+                        "minimunCubicWeight": 60001
+                      },
+                      {
+                        "id": "59",
+                        "slaType": "Entrega Agendada",
+                        "name": "Entrega Agendada",
+                        "scheduledDelivery": true,
+                        "maxRangeDelivery": 3,
+                        "dayOfWeekForDelivery": [
+                          {
+                            "dayOfWeek": 0,
+                            "deliveryRanges": [
+                              {
+                                "startTime": "08:00:00",
+                                "endTime": "13:00:00",
+                                "listPrice": 0
+                              },
+                              {
+                                "startTime": "13:00:00",
+                                "endTime": "17:00:00",
+                                "listPrice": 0
+                              },
+                              {
+                                "startTime": "17:00:00",
+                                "endTime": "22:00:00",
+                                "listPrice": 0
+                              }
+                            ]
+                          },
+                          {
+                            "dayOfWeek": 1,
+                            "deliveryRanges": [
+                              {
+                                "startTime": "08:00:00",
+                                "endTime": "13:00:00",
+                                "listPrice": 0
+                              },
+                              {
+                                "startTime": "13:00:00",
+                                "endTime": "17:00:00",
+                                "listPrice": 0
+                              },
+                              {
+                                "startTime": "17:00:00",
+                                "endTime": "22:00:00",
+                                "listPrice": 0
+                              }
+                            ]
+                          },
+                          {
+                            "dayOfWeek": 2,
+                            "deliveryRanges": [
+                              {
+                                "startTime": "08:00:00",
+                                "endTime": "13:00:00",
+                                "listPrice": 0
+                              },
+                              {
+                                "startTime": "13:00:00",
+                                "endTime": "17:00:00",
+                                "listPrice": 0
+                              },
+                              {
+                                "startTime": "17:00:00",
+                                "endTime": "22:00:00",
+                                "listPrice": 0
+                              }
+                            ]
+                          },
+                          {
+                            "dayOfWeek": 3,
+                            "deliveryRanges": []
+                          },
+                          {
+                            "dayOfWeek": 4,
+                            "deliveryRanges": []
+                          },
+                          {
+                            "dayOfWeek": 5,
+                            "deliveryRanges": []
+                          },
+                          {
+                            "dayOfWeek": 6,
+                            "deliveryRanges": []
+                          }
+                        ],
+                        "dayOfWeekBlockeds": [],
+                        "freightValue": [],
+                        "factorCubicWeight": null,
+                        "freightTableProcessStatus": 1,
+                        "freightTableValueError": null,
+                        "modals": [],
+                        "onlyItemsWithDefinedModal": false,
+                        "deliveryOnWeekends": false,
+                        "carrierSchedule": [],
+                        "maxDimension": {
+                          "weight": 0,
+                          "height": 0,
+                          "width": 0,
+                          "length": 0,
+                          "maxSumDimension": 0
+                        },
+                        "exclusiveToDeliveryPoints": false,
+                        "minimunCubicWeight": 0
+                      },
+                      {
+                        "id": "equador",
+                        "slaType": "Normal",
+                        "name": "Equador",
+                        "scheduledDelivery": false,
+                        "maxRangeDelivery": 0,
+                        "dayOfWeekForDelivery": null,
+                        "dayOfWeekBlockeds": [],
+                        "freightValue": [],
+                        "factorCubicWeight": null,
+                        "freightTableProcessStatus": 1,
+                        "freightTableValueError": null,
+                        "modals": [],
+                        "onlyItemsWithDefinedModal": false,
+                        "deliveryOnWeekends": false,
+                        "carrierSchedule": [],
+                        "maxDimension": {
+                          "weight": 0,
+                          "height": 0,
+                          "width": 0,
+                          "length": 0,
+                          "maxSumDimension": 0
+                        },
+                        "exclusiveToDeliveryPoints": false,
+                        "minimunCubicWeight": 0
+                      },
+                      {
+                        "id": "69",
+                        "slaType": "Econômica",
+                        "name": "Frete Econômico+Leve Ramon",
+                        "scheduledDelivery": false,
+                        "maxRangeDelivery": 0,
+                        "dayOfWeekForDelivery": null,
+                        "dayOfWeekBlockeds": [],
+                        "freightValue": [],
+                        "factorCubicWeight": null,
+                        "freightTableProcessStatus": 1,
+                        "freightTableValueError": null,
+                        "modals": [],
+                        "onlyItemsWithDefinedModal": false,
+                        "deliveryOnWeekends": false,
+                        "carrierSchedule": [],
+                        "maxDimension": {
+                          "weight": 0,
+                          "height": 0,
+                          "width": 0,
+                          "length": 0,
+                          "maxSumDimension": 0
+                        },
+                        "exclusiveToDeliveryPoints": false,
+                        "minimunCubicWeight": 0
+                      },
+                      {
+                        "id": "66",
+                        "slaType": "Normal",
+                        "name": "Frete Normal+Pesado Ramon",
+                        "scheduledDelivery": false,
+                        "maxRangeDelivery": 0,
+                        "dayOfWeekForDelivery": null,
+                        "dayOfWeekBlockeds": [],
+                        "freightValue": [],
+                        "factorCubicWeight": 0,
+                        "freightTableProcessStatus": 1,
+                        "freightTableValueError": null,
+                        "modals": [],
+                        "onlyItemsWithDefinedModal": false,
+                        "deliveryOnWeekends": false,
+                        "carrierSchedule": [],
+                        "maxDimension": {
+                          "weight": 0,
+                          "height": 0,
+                          "width": 0,
+                          "length": 0,
+                          "maxSumDimension": 0
+                        },
+                        "exclusiveToDeliveryPoints": false,
+                        "minimunCubicWeight": 0
+                      },
+                      {
+                        "id": "teste_unitario",
+                        "slaType": "teste_unitario",
+                        "name": "NÃO APAGUE 01",
+                        "scheduledDelivery": false,
+                        "maxRangeDelivery": 0,
+                        "dayOfWeekForDelivery": null,
+                        "dayOfWeekBlockeds": [],
+                        "freightValue": [],
+                        "factorCubicWeight": null,
+                        "freightTableProcessStatus": 1,
+                        "freightTableValueError": null,
+                        "modals": [],
+                        "onlyItemsWithDefinedModal": false,
+                        "deliveryOnWeekends": false,
+                        "carrierSchedule": [],
+                        "maxDimension": {
+                          "weight": 0,
+                          "height": 0,
+                          "width": 0,
+                          "length": 0,
+                          "maxSumDimension": 0
+                        },
+                        "exclusiveToDeliveryPoints": false,
+                        "minimunCubicWeight": 0
+                      },
+                      {
+                        "id": "1397f6c",
+                        "slaType": "Normal",
+                        "name": "Químico",
+                        "scheduledDelivery": false,
+                        "maxRangeDelivery": 0,
+                        "dayOfWeekForDelivery": null,
+                        "dayOfWeekBlockeds": [],
+                        "freightValue": [],
+                        "factorCubicWeight": null,
+                        "freightTableProcessStatus": 1,
+                        "freightTableValueError": null,
+                        "modals": [
+                          "Químico"
+                        ],
+                        "onlyItemsWithDefinedModal": false,
+                        "deliveryOnWeekends": false,
+                        "carrierSchedule": [
+                          {
+                            "dayOfWeek": 1,
+                            "timeLimit": "15:00:00"
+                          }
+                        ],
+                        "maxDimension": {
+                          "weight": 0,
+                          "height": 200,
+                          "width": 200,
+                          "length": 200,
+                          "maxSumDimension": 120
+                        },
+                        "exclusiveToDeliveryPoints": false,
+                        "minimunCubicWeight": 0
+                      },
+                      {
+                        "id": "173a63f",
+                        "slaType": "Entrega Agendada",
+                        "name": "Quimico e refrigerado",
+                        "scheduledDelivery": true,
+                        "maxRangeDelivery": 4,
+                        "dayOfWeekForDelivery": [
+                          {
+                            "dayOfWeek": 0,
+                            "deliveryRanges": [
+                              {
+                                "startTime": "19:30:00",
+                                "endTime": "00:00:00",
+                                "listPrice": 0.05
+                              }
+                            ]
+                          },
+                          {
+                            "dayOfWeek": 1,
+                            "deliveryRanges": []
+                          },
+                          {
+                            "dayOfWeek": 2,
+                            "deliveryRanges": [
+                              {
+                                "startTime": "19:30:00",
+                                "endTime": "00:00:00",
+                                "listPrice": 0.05
+                              }
+                            ]
+                          },
+                          {
+                            "dayOfWeek": 3,
+                            "deliveryRanges": []
+                          },
+                          {
+                            "dayOfWeek": 4,
+                            "deliveryRanges": [
+                              {
+                                "startTime": "19:30:00",
+                                "endTime": "00:00:00",
+                                "listPrice": 0.05
+                              }
+                            ]
+                          },
+                          {
+                            "dayOfWeek": 5,
+                            "deliveryRanges": []
+                          },
+                          {
+                            "dayOfWeek": 6,
+                            "deliveryRanges": [
+                              {
+                                "startTime": "19:30:00",
+                                "endTime": "00:00:00",
+                                "listPrice": 0.05
+                              }
+                            ]
+                          }
+                        ],
+                        "dayOfWeekBlockeds": [],
+                        "freightValue": [],
+                        "factorCubicWeight": null,
+                        "freightTableProcessStatus": 1,
+                        "freightTableValueError": null,
+                        "modals": [
+                          "Químico",
+                          "Refrigerado"
+                        ],
+                        "onlyItemsWithDefinedModal": true,
+                        "deliveryOnWeekends": false,
+                        "carrierSchedule": [],
+                        "maxDimension": {
+                          "weight": 0,
+                          "height": 200,
+                          "width": 200,
+                          "length": 200,
+                          "maxSumDimension": 200
+                        },
+                        "exclusiveToDeliveryPoints": false,
+                        "minimunCubicWeight": 0
+                      },
+                      {
+                        "id": "1f433a4",
+                        "slaType": "Normal",
+                        "name": "teste vtex 19-03",
+                        "scheduledDelivery": false,
+                        "maxRangeDelivery": 0,
+                        "dayOfWeekForDelivery": null,
+                        "dayOfWeekBlockeds": [],
+                        "freightValue": [],
+                        "factorCubicWeight": 0.3,
+                        "freightTableProcessStatus": 1,
+                        "freightTableValueError": null,
+                        "modals": [],
+                        "onlyItemsWithDefinedModal": false,
+                        "deliveryOnWeekends": false,
+                        "carrierSchedule": [],
+                        "maxDimension": {
+                          "weight": 0,
+                          "height": 0,
+                          "width": 0,
+                          "length": 0,
+                          "maxSumDimension": 0
+                        },
+                        "exclusiveToDeliveryPoints": false,
+                        "minimunCubicWeight": 0
+                      },
+                      {
+                        "id": "1000",
+                        "slaType": "Normal",
+                        "name": "Transportadora",
+                        "scheduledDelivery": false,
+                        "maxRangeDelivery": 0,
+                        "dayOfWeekForDelivery": null,
+                        "dayOfWeekBlockeds": [],
+                        "freightValue": [],
+                        "factorCubicWeight": null,
+                        "freightTableProcessStatus": 1,
+                        "freightTableValueError": null,
+                        "modals": [],
+                        "onlyItemsWithDefinedModal": false,
+                        "deliveryOnWeekends": false,
+                        "carrierSchedule": [],
+                        "maxDimension": {
+                          "weight": 0,
+                          "height": 0,
+                          "width": 0,
+                          "length": 0,
+                          "maxSumDimension": 0
+                        },
+                        "exclusiveToDeliveryPoints": false,
+                        "minimunCubicWeight": 0
+                      }
+                    ]                
+                ]
+            }
+        },
+        {
+            "title": "Consulta transportadora",
+            "description": "Cadastra/atualiza uma transportadora",
+            "verb": "POST",
+            "route": {
+                "template": "/api/logistics/pvt/configuration/carriers/{carrierId}"
+                },
+            "example": {
+                "request": [],
+                "response": 
+                [
+                    {
+                      "id": "173a63f",
+                      "slaType": "Entrega Agendada",
+                      "name": "Quimico e refrigerado",
+                      "scheduledDelivery": true,
+                      "maxRangeDelivery": 4,
+                      "dayOfWeekForDelivery": [
+                        {
+                          "dayOfWeek": 0,
+                          "deliveryRanges": [
+                            {
+                              "startTime": "19:30:00",
+                              "endTime": "00:00:00",
+                              "listPrice": 0.05
+                            }
+                          ]
+                        },
+                        {
+                          "dayOfWeek": 1,
+                          "deliveryRanges": []
+                        },
+                        {
+                          "dayOfWeek": 2,
+                          "deliveryRanges": [
+                            {
+                              "startTime": "19:30:00",
+                              "endTime": "00:00:00",
+                              "listPrice": 0.05
+                            }
+                          ]
+                        },
+                        {
+                          "dayOfWeek": 3,
+                          "deliveryRanges": []
+                        },
+                        {
+                          "dayOfWeek": 4,
+                          "deliveryRanges": [
+                            {
+                              "startTime": "19:30:00",
+                              "endTime": "00:00:00",
+                              "listPrice": 0.05
+                            }
+                          ]
+                        },
+                        {
+                          "dayOfWeek": 5,
+                          "deliveryRanges": []
+                        },
+                        {
+                          "dayOfWeek": 6,
+                          "deliveryRanges": [
+                            {
+                              "startTime": "19:30:00",
+                              "endTime": "00:00:00",
+                              "listPrice": 0.05
+                            }
+                          ]
+                        }
+                      ],
+                      "dayOfWeekBlockeds": [],
+                      "freightValue": [],
+                      "factorCubicWeight": null,
+                      "freightTableProcessStatus": 1,
+                      "freightTableValueError": null,
+                      "modals": [
+                        "Químico",
+                        "Refrigerado"
+                      ],
+                      "onlyItemsWithDefinedModal": true,
+                      "deliveryOnWeekends": false,
+                      "carrierSchedule": [],
+                      "maxDimension": {
+                        "weight": 0,
+                        "height": 200,
+                        "width": 200,
+                        "length": 200,
+                        "maxSumDimension": 200
+                      },
+                      "exclusiveToDeliveryPoints": false,
+                      "minimunCubicWeight": 0
+                    }
+                ]
+            }
+        },
+        {
+            "title": "Salva uma transportadora",
+            "description": "Realiza o cálculo de sla, retornando disponibilidade, prazos e preços para entrega",
+            "verb": "POST",
+            "route": {
+                "template": "/api/logistics/pvt/configuration/carriers"
+                },
+            "arguments": {
+                "id": {
+                        "type": "string",
+                        "description": "Identificador único da transportadora",
+                        "required": true
+                },
+                "slaType": {
+                        "type": "string",
+                        "description": "Tipo de entrega",
+                        "required": true
+                    },
+                 "name": {
+                        "type": "string",
+                        "description": "Nome da transportadora",
+                        "required": true
+                    },
+                "scheduledDelivery": {
+                        "type": "bool",
+                        "description": "Realiza entrega agendada",
+                        "required": true
+                    },
+                "maxRangeDelivery": {
+                        "type": "int",
+                        "description": "Prazo máximo em dias para realizar a entrega agendada",
+                        "required": true
+                    },
+                "dayOfWeekForDelivery": {
+                        "type": "array",
+                        "description": "Dias em que é possível realizar a entrega agendada",
+                        "required": false,
+                        "arguments": {
+                             "dayOfWeek": {
+                                    "type": "DayOfWeek",
+                                    "description": "",
+                                    "required": false
+                                },
+                            "deliveryRanges": {
+                                    "type": "array",
+                                    "description": "",
+                                    "required": false,
+                                    "attributes": {                                    
+                                         "startTime": {
+                                                "type": "TimeSpan",
+                                                "description": "",
+                                                "required": false
+                                            },
+                                         "endTime": {
+                                                "type": "TimeSpan",
+                                                "description": "",
+                                                "required": false
+                                            },
+                                         "listPrice": {
+                                                "type": "decimal",
+                                                "description": "",
+                                                "required": false
+                                            }
+                                    }
+                                }
+                        }
+                },
+                "dayOfWeekBlockeds": {
+                    "type": "array",
+                    "description": "Períodos não disponíveis para entrega agendada",
+                    "required": false
+                },
+                "freightValue": {
+                    "type": "array",
+                    "description": "Valores de frete",
+                    "required": false,
+                    "arguments": {
+                        "zipCodeStart": {
+                            "type": "int",
+                            "description": "",
+                            "required": false
+                        },
+                        "weightStart": {
+                            "type": "int",
+                            "description": "",
+                            "required": false
+                        },
+                        "weightEnd": {
+                            "type": "decimal",
+                            "description": "",
+                            "required": false
+                        },
+                        "absoluteMoneyCost": {
+                            "type": "decimal",
+                            "description": "",
+                            "required": false
+                        },
+                        "pricePercent": {
+                            "type": "decimal",
+                            "description": "",
+                            "required": false
+                        },
+                        "pricePercentByWeight": {
+                            "type": "decimal",
+                            "description": "",
+                            "required": false
+                        },
+                        "maxVolume": {
+                            "type": "decimal",
+                            "description": "",
+                            "required": false
+                        },
+                        "timeCost": {
+                            "type": "decimal",
+                            "description": "",
+                            "required": false
+                        },
+                        "country": {
+                            "type": "string",
+                            "description": "",
+                            "required": false
+                        },
+                        "restrictedFreights": {
+                            "type": "array",
+                            "description": "Coleção de fretes com restrição de entrega",
+                            "required": false,
+                            "arguments": {
+                                "zipCodeStart": {
+                                    "type": "int",
+                                    "description": "",
+                                    "required": false
+                                },
+                                "zipCodeEnd": {
+                                    "type": "int",
+                                    "description": "",
+                                    "required": false
+                                },
+                                "overTime": {
+                                    "type": "int",
+                                    "description": "",
+                                    "required": false
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "",
+                                    "required": false
+                                }
+                            }
+                        },
+                        "factorCubicWeight": {
+                            "type": "decimal",
+                            "description": "Fator cúbico de peso",
+                            "required": false
+                        },
+                        "freightTableProcessStatus": {
+                            "type": "object",
+                            "description": "Status de processamento da transportadora",
+                            "required": false
+                        },
+                        "freightTableValueError": {
+                            "type": "string",
+                            "description": "Mensagm de erro ocorrido na última tentativa de processamento da tabela de valores de frete",
+                            "required": false
+                        },
+                        "modals": {
+                            "type": "array",
+                            "description": "Modais da transportadora",
+                            "required": false
+                        },
+                        "onlyItemsWithDefinedModal": {
+                            "type": "bool",
+                            "description": "Indica se a transportadora leva apensa itens com modais definidos",
+                            "required": false                           
+                        },
+                        "deliveryOnWeekends": {
+                            "type": "bool",
+                            "description": "Entrega aos finais de semana e feriados",
+                            "required": false    
+                        },
+                        "carrierSchedule": {
+                            "type": "array",
+                            "description": "Horários da semana em que a transportadora recolhe os itens no estoque",
+                            "required": false,
+                            "arguments": {
+                                "dayOfWeek": {
+                                    "type": "DayOfWeek",
+                                    "description": "",
+                                    "required": false    
+                                },
+                                "timeLimit": {
+                                    "type": "TimeSpan",
+                                    "description": "",
+                                    "required": false    
+                                }
+                            }
+                        },
+                        "maxDimension":{
+                            "weight": {
+                                "type": "decimal",
+                                "description": "Peso",
+                                "required": false    
+                            },
+                            "height": {
+                                "type": "decimal",
+                                "description": "Altura",
+                                "required": false    
+                            },
+                            "width": {
+                                "type": "decimal",
+                                "description": "Largura",
+                                "required": false    
+                            }, 
+                            "maxSumDimension": {
+                                "type": "decimal",
+                                "description": "",
+                                "required": false    
+                            }
+                        },
+                        "exclusiveToDeliveryPoints": {
+                             "type": "bool",
+                             "description": "Indica que esta transportadora é exclusiva para pontos de entrega",
+                             "required": false    
+                        },                        
+                        "minimunCubicWeight": {
+                             "type": "decimal",
+                             "description": "Peso cúbico mínimo para calcular SLA.Se o peso cubado do item não ultrapassar este valor, o cálculo é realizado com o peso real",
+                             "required": false    
+                        }                  
+                    }
+                }
+            },
+            "example":{
+                "request": 
+                [
+                    {
+                      "id": "173a63f",
+                      "slaType": "Entrega Agendada",
+                      "name": "Quimico e refrigerado",
+                      "scheduledDelivery": true,
+                      "maxRangeDelivery": 4,
+                      "dayOfWeekForDelivery": [
+                        {
+                          "dayOfWeek": 0,
+                          "deliveryRanges": [
+                            {
+                              "startTime": "19:30:00",
+                              "endTime": "00:00:00",
+                              "listPrice": 0.05
+                            }
+                          ]
+                        },
+                        {
+                          "dayOfWeek": 1,
+                          "deliveryRanges": []
+                        },
+                        {
+                          "dayOfWeek": 2,
+                          "deliveryRanges": [
+                            {
+                              "startTime": "19:30:00",
+                              "endTime": "00:00:00",
+                              "listPrice": 0.05
+                            }
+                          ]
+                        },
+                        {
+                          "dayOfWeek": 3,
+                          "deliveryRanges": []
+                        },
+                        {
+                          "dayOfWeek": 4,
+                          "deliveryRanges": [
+                            {
+                              "startTime": "19:30:00",
+                              "endTime": "00:00:00",
+                              "listPrice": 0.05
+                            }
+                          ]
+                        },
+                        {
+                          "dayOfWeek": 5,
+                          "deliveryRanges": []
+                        },
+                        {
+                          "dayOfWeek": 6,
+                          "deliveryRanges": [
+                            {
+                              "startTime": "19:30:00",
+                              "endTime": "00:00:00",
+                              "listPrice": 0.05
+                            }
+                          ]
+                        }
+                      ],
+                      "dayOfWeekBlockeds": [],
+                      "freightValue": [],
+                      "factorCubicWeight": null,
+                      "freightTableProcessStatus": 1,
+                      "freightTableValueError": null,
+                      "modals": [
+                        "Químico",
+                        "Refrigerado"
+                      ],
+                      "onlyItemsWithDefinedModal": true,
+                      "deliveryOnWeekends": false,
+                      "carrierSchedule": [],
+                      "maxDimension": {
+                        "weight": 0,
+                        "height": 200,
+                        "width": 200,
+                        "length": 200,
+                        "maxSumDimension": 200
+                      },
+                      "exclusiveToDeliveryPoints": false,
+                      "minimunCubicWeight": 0
+                    }
+                ],
+                "response": [true]
+            }
+        },
+        {
+            "title": "Exclui transportadora",
+            "description": "Remove um período de indisponibilidade de agendamento para os casos de Entrega Agendada",
+            "verb": "POST",
+            "route": {
+                "template": "/api/logistics/pvt/configuration/carriers/{carrierId}/removedayofweekblocked"
+            },
+            "example": {
+                "request": [],
+                "response": [false]
+            }           
+        }
+    ]
+}

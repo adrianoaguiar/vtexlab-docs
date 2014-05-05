@@ -1,0 +1,119 @@
+{
+    "product": "pricing",
+    "version": "latest",
+    "resource": "coupon",
+    "documentation": "api",
+    "methods": [
+        {
+            "title": "Arquivar um cupom",
+            "description": "",
+            "verb": "POST",
+            "route": {
+                "template": "/api/rnb/pvt/archive/coupon/{id}",
+                "parameters": {
+                    "id": {
+                        "type": "string",
+                        "description": "Identificador único do cupom",
+                        "required": true
+                    }
+                }
+            },
+            "example": {
+                "request": [
+                    "d22146eb-76c3-42d0-83c7-cf778c1b365d"
+                ],
+                "response": [
+                    
+                ]
+            }
+        },
+        {
+            "title": "Retornar todos cupons",
+            "description": "",
+            "verb": "GET",
+            "route": {
+                "template": "/api/rnb/pvt/coupon"
+                
+            },
+            "example": {
+                "request": [
+                    
+                ],
+                "response": [
+                    {
+                        "id": "d22146eb-76c3-42d0-83c7-cf778c1b365d",
+                        "utmSource": "FESTA",
+                        "utmCampaign": "RIOSUL",
+                        "couponCode": "NATAL",
+                        "isArchived": true
+                    },
+                    {
+                        "id": "d22146eb-76c3-42d0-83c7-cf778c1b3679",
+                        "utmSource": "FESTA-2",
+                        "utmCampaign": "RIOSUL-2",
+                        "couponCode": "NATAL-2",
+                        "isArchived": true
+                    }
+                ]
+            }
+        },
+        {
+            "title": "Retorna todos cupons arquivados",
+            "description": "",
+            "verb": "GET",
+            "route": {
+                "template": "/api/rnb/pvt/archive/coupon"
+            },
+            "example": {
+                "request": [
+                    
+                ],
+                "response": [
+                    {
+                        "id": "d22146eb-76c3-42d0-83c7-cf778c1b365d",
+                        "utmSource": "FESTA",
+                        "utmCampaign": "RIOSUL",
+                        "couponCode": "NATAL",
+                        "isArchived": true
+                    },
+                    {
+                        "id": "d22146eb-76c3-42d0-83c7-cf778c1b3679",
+                        "utmSource": "FESTA-2",
+                        "utmCampaign": "RIOSUL-2",
+                        "couponCode": "NATAL-2",
+                        "isArchived": true
+                    }
+                ]
+            }
+        },
+        {
+            "title": "Retona um cupom pelo id",
+            "description": "",
+            "verb": "GET",
+            "route": {
+                "template": "/api/rnb/pvt/coupon/{id}",
+                "parameters": {
+                    "id": {
+                        "type": "string",
+                        "description": "Identificador único do cupom",
+                        "required": true
+                    }
+                }
+            },
+            "example": {
+                "request": [
+                    "d22146eb-76c3-42d0-83c7-cf778c1b365d"
+                ],
+                "response": [
+                    {
+                        "id": "d22146eb-76c3-42d0-83c7-cf778c1b365d",
+                        "utmSource": "FESTA",
+                        "utmCampaign": "RIOSUL",
+                        "couponCode": "NATAL",
+                        "isArchived": true
+                    }
+                ]
+            }
+        }
+    ]
+}
