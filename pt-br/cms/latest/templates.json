@@ -1,0 +1,107 @@
+{
+    "product": "cms",
+    "version": "latest",
+    "resource": "templates",
+    "documentation": "api",
+    "methods": [
+        {
+            "title": "Obter lista de nomes de templates",
+            "description": "",
+            "verb": "GET",
+            "route": {
+                "template": "/api/portal/pvt/sites/{siteId}/templates"
+            },
+            "example": {
+                "request": [],
+                "response": 
+                    [
+                      "template-um",
+                      "template-dois"
+                    ]
+            }
+        },
+        {
+            "title": "Obter detalhes de um template",
+            "description": "",
+            "verb": "GET",
+            "route": {
+                "template": "/api/portal/pvt/sites/{siteId}/templates/{name}"
+            },
+            "example": {
+                "request": [],
+                "response": 
+                [
+                    {
+                      "name": "template-um",
+                      "body": "Conteúdo do template"
+                    }
+                ]
+            }         
+        },
+        {
+
+            "title": "Criar um template",
+            "description": "",
+            "verb": "POST",
+            "route": {
+                "template": "/api/portal/pvt/sites/{siteId}/templates"
+            },
+            "example": {
+                "request": 
+                [
+                    {
+                      "name": "novo-template",
+                      "body": "<h1>Novo template</h1>"
+                    }
+                ],
+                "response": 
+                [
+                    {
+                      "name": "novo-template",
+                      "body": "<h1>Novo template</h1>"
+                    }
+                ]
+            }         
+        },
+        {
+            "title": "Excluir um template",
+            "description": "",
+            "verb": "DELETE",
+            "route": {
+                "template": "/api/portal/pvt/sites/{siteId}/templates/{name}"
+            },
+            "example": {
+                "request": 
+                [
+                ],
+                "response": 
+                [
+                ]
+            }   
+        },
+        {
+            "title": "Atualizar um template",
+            "description": "",
+            "verb": "PUT",
+            "route": {
+                "template": "/api/portal/pvt/sites/{siteId}/templates/{name}"
+            },
+            "example": {
+                "request": 
+                [
+                    {
+                      "name": "template-existente",
+                      "body": "<h1>Novo conteúdo</h1>"
+                    }
+                ],
+                "response": 
+                [
+                    {
+                      "name": "template-existente",
+                      "body": "<h1>Novo conteúdo</h1>"
+                    }
+                ]
+            } 
+        }
+    ]
+}

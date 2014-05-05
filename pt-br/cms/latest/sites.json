@@ -1,0 +1,118 @@
+{
+    "product": "cms",
+    "version": "latest",
+    "resource": "sites",
+    "documentation": "api",
+    "methods": [
+        {
+            "title": "Obter lista de sites",
+            "description": "",
+            "verb": "GET",
+            "route": {
+                "template": "/api/portal/pvt/sites"
+            },
+            "example": {
+                "request": [],
+                "response": 
+                    [
+                      {
+                        "id": "some-site",
+                        "title": "Some Site",
+                        "siteName": "store1"
+                      },
+                      {
+                        "id": "another-site",
+                        "title": "Another Site",
+                        "siteName": "store2"
+                      }
+                    ]
+            }
+        },
+        {
+            "title": "Obter um site",
+            "description": "",
+            "verb": "GET",
+            "route": {
+                "template": "/api/portal/pvt/sites/{id}"
+            },
+            "example": {
+                "request": [],
+                "response": 
+                [
+                    {
+                      "id": "some-site",
+                      "title": "Some Site",
+                      "siteName": "store1"
+                    }
+                ]
+            }         
+        },
+        {
+
+            "title": "Criar um site",
+            "description": "",
+            "verb": "POST",
+            "route": {
+                "template": "/api/portal/pvt/sites"
+            },
+            "example": {
+                "request": 
+                [
+                    {
+                      "title": "First Site",
+                      "siteName": "firstsite"
+                    }
+                ],
+                "response": 
+                [
+                    {
+                      "id": "first-site",
+                      "title": "First Site",
+                      "siteName": "firstsite"
+                    }
+                ]
+            }         
+        },
+        {
+            "title": "Atualizar um site",
+            "description": "",
+            "verb": "PUT",
+            "route": {
+                "template": "/api/portal/pvt/sites/{id}"
+            },
+            "example": {
+                "request": 
+                [
+                    {
+                      "title": "Changed Site",
+                      "siteName": "othersite"
+                    }
+                ],
+                "response": 
+                [
+                    {
+                      "id": "first-site",
+                      "title": "Changed Site",
+                      "siteName": "othersite"
+                    }
+                ]
+            }   
+        },
+        {
+            "title": "Excluir um site",
+            "description": "",
+            "verb": "DELETE",
+            "route": {
+                "template": "/api/portal/pvt/sites/{id}"
+            },
+            "example": {
+                "request": 
+                [
+                ],
+                "response": 
+                [
+                ]
+            }
+        }
+    ]
+}

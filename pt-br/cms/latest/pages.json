@@ -1,0 +1,124 @@
+	{
+	    "product": "cms",
+	    "version": "latest",
+	    "resource": "pages",
+	    "documentation": "api",
+	    "methods": [
+	        {
+	            "title": "Obter lista de páginas",
+	            "description": "",
+	            "verb": "GET",
+	            "route": {
+	                "template": "/api/portal/pvt/sites/{siteId}/pages"
+	            },
+	            "example": {
+	                "request": [],
+	                "response": 
+	                    [
+	                          {
+	                            "id": "abc123",
+	                            "path": "/checkout/",
+	                            "requiredProtocol": "https",
+	                            "template": "vtex-checkout"
+	                          },
+	                          {
+	                            "id": "def456",
+	                            "path": "/checkout/orderPlaced/",
+	                            "requiredProtocol": "https",
+	                            "template": "vtex-orderPlaced"
+	                          }
+	                    ]
+	            }
+	        },
+	        {
+	            "title": "Obter detalhes de uma página",
+	            "description": "",
+	            "verb": "GET",
+	            "route": {
+	                "template": "/api/portal/pvt/sites/{siteId}/pages/{id}"
+	            },
+	            "example": {
+	                "request": [],
+	                "response": 
+	                [
+	                    {
+	                      "id": "abc123",
+	                      "path": "/checkout/",
+	                      "requiredProtocol": "https",
+	                      "template": "vtex-checkout"
+	                    }
+	                ]
+	            }         
+	        },
+	        {
+	            "title": "Criar uma página",
+	            "description": "",
+	            "verb": "POST",
+	            "route": {
+	                "template": "/api/portal/pvt/sites/{siteId}/pages"
+	            },
+	            "example": {
+	                "request": 
+	                [
+	                    {
+	                      "path": "/checkout/",
+	                      "requiredProtocol": "https",
+	                      "template": "vtex-checkout"
+	                    }
+	                ],
+	                "response": 
+	                [
+	                    {
+	                      "id": "abc123",
+	                      "path": "/checkout/",
+	                      "requiredProtocol": "https",
+	                      "template": "vtex-checkout"
+	                    }
+	                ]
+	            }         
+	        },
+	        {
+	            "title": "Atualizar uma página",
+	            "description": "",
+	            "verb": "PUT",
+	            "route": {
+	                "template": "/api/portal/pvt/sites/{siteId}/pages/{id}"
+	            },
+	            "example": {
+	                "request": 
+	                [
+						{
+						  "path": "/checkout/orderPlaced/",
+						  "requiredProtocol": "https",
+						  "template": "vtex-orderPlaced"
+						}
+	                ],
+	                "response": 
+	                [
+	                    {
+	                      "id": "def456",
+	                      "path": "/checkout/orderPlaced/",
+	                      "requiredProtocol": "https",
+	                      "template": "vtex-orderPlaced"
+	                    }
+	                ]
+	            }   
+	        },
+	        {
+	            "title": "Excluir uma página",
+	            "description": "",
+	            "verb": "DELETE",
+	            "route": {
+	                "template": "/api/portal/pvt/sites/{siteId}/pages/{id}"
+	            },
+	            "example": {
+	                "request": 
+	                [
+	                ],
+	                "response": 
+	                [
+	                ]
+	            } 
+	        }
+	    ]
+	}
