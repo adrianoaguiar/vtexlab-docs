@@ -1,0 +1,464 @@
+{
+    "product": "logistics",
+    "version": "latest",
+    "resource": "warehouse",
+    "documentation": "api",
+    "methods": [
+        {
+            "title": "Consultar todos os estoques",
+            "description": "Obtém todos os estoques já cadastrados",
+            "verb": "GET",
+            "route": {
+                "template": "/api/logistics/pvt/configuration/warehouses"
+            },
+            "example": {
+                "request": [""],
+                "response": [
+                    {
+                        "id": "4f6083c0-03cc-4bf9-8003-bb313911800c",
+                        "name": "7c3d3f1a-111e-4733-8c2f-902bf3de45d1",
+                        "warehouseDocks": [
+                            {
+                                "dockId": "DockId5f06ef21-bdf7-478b-8689-4120465069a0",
+                                "time": "00:00:00.0000225",
+                                "cost": 140
+                            },
+                            {
+                                "dockId": "DockId8eb25166-7bb5-4a3e-b30f-519cccf2e0d5",
+                                "time": "00:00:00.0000138",
+                                "cost": 141
+                            },
+                            {
+                                "dockId": "DockIdd4adc597-4ce7-4daf-ab98-4273e292e468",
+                                "time": "00:00:00.0000066",
+                                "cost": 142
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2d44ca82-8b14-4017-a12f-770ec72be8f6",
+                        "name": "4eaf455e-c734-4fce-9c74-0d7db94bb1ac",
+                        "warehouseDocks": [
+                            {
+                                "dockId": "DockIdd2748501-0386-4ca3-8e79-ac1a16e08307",
+                                "time": "00:00:00.0000015",
+                                "cost": 143
+                            },
+                            {
+                                "dockId": "DockId92ce937a-7b9c-4729-a242-63f50113b4e2",
+                                "time": "00:00:00.0000188",
+                                "cost": 144
+                            },
+                            {
+                                "dockId": "DockId7b315d76-868b-43a4-bfd5-b836afb1e6cd",
+                                "time": "00:00:00.0000160",
+                                "cost": 145
+                            }
+                        ]
+                    },
+                    {
+                        "id": "a80d90dc-7fb9-4c34-83ac-d5770bbe2c47",
+                        "name": "1d2da882-2937-47ec-adf1-dac19d940d82",
+                        "warehouseDocks": [
+                            {
+                                "dockId": "DockIdaa2588ee-3541-4894-a78f-b3f475c3cd6f",
+                                "time": "00:00:00.0000094",
+                                "cost": 146
+                            },
+                            {
+                                "dockId": "DockId21b066ff-de31-4af4-809c-d409423146d8",
+                                "time": "00:00:00.0000237",
+                                "cost": 147
+                            },
+                            {
+                                "dockId": "DockIdc97c78a5-711b-4ce6-8cae-9e8f5f754c41",
+                                "time": "00:00:00.0000093",
+                                "cost": 148
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "title": "Consultar estoque",
+            "description": "Obtém um estoque com base em seu identificador único",
+            "verb": "GET",
+            "route": {
+                "template": "/api/logistics/pvt/configuration/warehouses/{wareHouseId}",
+                "parameters": {
+                    "wareHouseId": {
+                        "type": "string",
+                        "description": "Identificador do estoque",
+                        "required": true
+                    }
+                }
+            },
+            "attributes": {
+                "id": {
+                    "type": "string",
+                    "description": "Identificador único da transportadora",
+                    "required": true
+                },
+                "slaType": {
+                    "type": "string",
+                    "description": "Tipo de entrega",
+                    "required": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Nome da transportadora",
+                    "required": true
+                },
+                "scheduledDelivery": {
+                    "type": "bool",
+                    "description": "Realiza entrega agendada",
+                    "required": false
+                },
+                "maxRangeDelivery": {
+                    "type": "int",
+                    "description": "Prazo máximo em dias para realizar a entrega agendada",
+                    "required": false
+                },
+                "dayOfWeekForDelivery": {
+                    "type": "array",
+                    "description": "Dias em que é possível realizar a entrega agendada",
+                    "required": false,
+                    "attributes": {
+                        "dayOfWeek": {
+                            "type": "DayOfWeek",
+                            "description": "",
+                            "required": false,
+                            "attributes": {
+                                "deliveryRanges": {
+                                    "type": "array",
+                                    "description": "Prazo máximo em dias para realizar a entrega agendada",
+                                    "required": false,
+                                    "attributes": {
+                                        "startTime": {
+                                            "type": "TimeSpan",
+                                            "description": "",
+                                            "required": false
+                                        },
+                                        "endTime": {
+                                            "type": "TimeSpan",
+                                            "description": "",
+                                            "required": false
+                                        },
+                                        "listPrice": {
+                                            "type": "decimal",
+                                            "description": "",
+                                            "required": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "dayOfWeekBlockeds": {
+                    "type": "array",
+                    "description": "Períodos não disponíveis para entrega agendada",
+                    "required": false
+                },
+                "freightValue": {
+                    "type": "array",
+                    "description": "Valores de frete",
+                    "required": false,
+                    "attributes": {
+                        "zipCodeStart": {
+                            "type": "int",
+                            "description": "",
+                            "required": false
+                        },
+                        "zipCodeEnd": {
+                            "type": "int",
+                            "description": "",
+                            "required": false
+                        },
+                        "weightStart": {
+                            "type": "decimal",
+                            "description": "",
+                            "required": false
+                        },
+                        "weightEnd": {
+                            "type": "decimal",
+                            "description": "",
+                            "required": false
+                        },
+                        "absoluteMoneyCost": {
+                            "type": "decimal",
+                            "description": "",
+                            "required": false
+                        },
+                        "pricePercent": {
+                            "type": "decimal",
+                            "description": "",
+                            "required": false
+                        },
+                        "pricePercentByWeight": {
+                            "type": "decimal",
+                            "description": "",
+                            "required": false
+                        },
+                        "maxVolume": {
+                            "type": "decimal",
+                            "description": "",
+                            "required": false
+                        },
+                        "timeCost": {
+                            "type": "TimeSpan",
+                            "description": "",
+                            "required": false
+                        },
+                        "country": {
+                            "type": "string",
+                            "description": "",
+                            "required": false
+                        },
+                        "operationType": {
+                            "type": "string",
+                            "description": "Utilizado pelo ko para identificar a operação a ser realizada no registro",
+                            "required": false
+                        },
+                        "restrictedFreights": {
+                            "type": "array",
+                            "description": "Coleção de fretes com restrição de entrega",
+                            "required": false,
+                            "attributes": {
+                                "zipCodeStart": {
+                                    "type": "int",
+                                    "description": "",
+                                    "required": false
+                                },
+                                "zipCodeEnd": {
+                                    "type": "int",
+                                    "description": "",
+                                    "required": false
+                                },
+                                "overTime": {
+                                    "type": "int",
+                                    "description": "",
+                                    "required": false
+                                },
+                                "message": {
+                                    "type": "int",
+                                    "description": "",
+                                    "required": false
+                                }
+                            }
+                        }
+                    }
+                },
+                "factorCubicWeight": {
+                    "type": "decimal",
+                    "description": "Fator cúbico de peso",
+                    "required": false
+                },
+                "freightTableProcessStatus": {
+                    "type": "object",
+                    "description": "Status de processamento da transportadora",
+                    "required": false
+                },
+                "freightTableValueError": {
+                    "type": "string",
+                    "description": "Mensagm de erro ocorrido na última tentativa de processamento da tabela de valores de frete",
+                    "required": false
+                },
+                "modals": {
+                    "type": "array",
+                    "description": "Modais da transportadora",
+                    "required": false
+                },
+                "onlyItemsWithDefinedModal": {
+                    "type": "bool",
+                    "description": "Indica se a transportadora leva apensa itens com modais definidos",
+                    "required": false
+                },
+                "deliveryOnWeekends": {
+                    "type": "bool",
+                    "description": "Entrega aos finais de semana e feriados",
+                    "required": false
+                },
+                "carrierSchedule": {
+                    "type": "array",
+                    "description": "Horários da semana em que a transportadora recolhe os itens no estoque",
+                    "required": false,
+                    "attributes": {
+                        "carrierSchedule": {
+                            "type": "array",
+                            "description": "Horários da semana em que a transportadora recolhe os itens no estoque",
+                            "required": false,
+                            "attributes": {
+                                "dayOfWeek": {
+                                    "type": "DayOfWeek",
+                                    "description": "",
+                                    "required": false
+                                },
+                                "timeLimit": {
+                                    "type": "DayOfWeek",
+                                    "description": "",
+                                    "required": false
+                                }
+                            }
+                        }
+                    }
+                },
+                "maxDimension": {
+                    "type": "object",
+                    "description": "Dimensões máximas possíveis para entrega de um item",
+                    "required": false,
+                    "attributes": {
+                        "weight": {
+                            "type": "decimal",
+                            "description": "Peso",
+                            "required": false
+                        },
+                        "height": {
+                            "type": "decimal",
+                            "description": "Altura",
+                            "required": false
+                        },
+                        "width": {
+                            "type": "decimal",
+                            "description": "Largura",
+                            "required": false
+                        },
+                        "length": {
+                            "type": "decimal",
+                            "description": "Comprimento",
+                            "required": false
+                        },
+                        "maxSumDimension": {
+                            "type": "decimal",
+                            "description": "",
+                            "required": false
+                        }
+                    }
+                },
+                "exclusiveToDeliveryPoints": {
+                    "type": "bool",
+                    "description": "Indica que esta transportadora é exclusiva para pontos de entrega",
+                    "required": false
+                },
+                "minimunCubicWeight": {
+                    "type": "decimal",
+                    "description": "Peso cúbico mínimo para calcular SLA",
+                    "required": false
+                }
+            },
+            "example": {
+                "request": [""],
+                "response": [
+                	 {
+	                    "id": "aa6a1fe5-d20e-4c1d-8748-cb74d5153cae",
+	                    "name": "0e34a0c7-bed4-4f91-a239-0fda50e66cd4",
+	                    "warehouseDocks": [
+	                        {
+	                            "dockId": "DockId170764d0-4c17-422a-a462-b202cdde0ee7",
+	                            "time": "00:00:00.0000209",
+	                            "cost": 149
+	                        },
+	                        {
+	                            "dockId": "DockId33f899ed-d3cd-4e25-a8b0-78cb97f8b3c4",
+	                            "time": "00:00:00.0000084",
+	                            "cost": 150
+	                        },
+	                        {
+	                            "dockId": "DockId9910ca63-a2ab-46b8-b21e-d89c09403d66",
+	                            "time": "00:00:00.0000067",
+	                            "cost": 151
+	                        }
+	                    ]
+                	}
+                ]
+            }
+        },
+        {
+            "title": "Salvar um estoque",
+            "description": "Cadastra/atualiza um estoque",
+            "verb": "POST",
+            "route": {
+                "template": "/api/logistics/pvt/configuration/warehouses"
+            },
+            "arguments": {
+                "id": {
+                    "type": "string",
+                    "description": "",
+                    "required": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "",
+                    "required": true
+                },
+                "warehouseDocks": {
+                    "type": "array",
+                    "description": "",
+                    "required": false,
+                    "arguments": {
+                        "dockId": {
+                            "type": "string",
+                            "description": "",
+                            "required": true
+                        },
+                        "time": {
+                            "type": "TimeSpan",
+                            "description": "",
+                            "required": true
+                        },
+                        "cost": {
+                            "type": "decimal",
+                            "description": "",
+                            "required": false
+                        }
+                    }
+                 }
+              },
+              "example": {
+                    "request": [
+                    	{
+	                        "id": "48e5be73-4078-420a-a217-5afe3ea94268",
+	                        "name": "ffc55a88-d89d-40be-b570-0aed9cc6948f",
+	                        "warehouseDocks": [
+	                            {
+	                                "dockId": "DockId55f0157c-c026-4818-8ac4-444ce82d3762",
+	                                "time": "00:00:00.0000029",
+	                                "cost": 152
+	                            },
+	                            {
+	                                "dockId": "DockId05788ac2-9e5e-4912-bdaf-626d3375e664",
+	                                "time": "00:00:00.0000063",
+	                                "cost": 153
+	                            },
+	                            {
+	                                "dockId": "DockId9ad7ec4b-4b52-41be-8c67-5f8769849787",
+	                                "time": "00:00:00.0000228",
+	                                "cost": 154
+	                            }
+	                        ]
+	                    }
+                   	],
+                    "response": [
+                        true
+                    ]
+                }
+        },
+        {
+            "title": "Excluir estoque",
+            "description": "Cadastra/atualiza um estoque",
+            "verb": "POST",
+            "route": {
+                "template": "/api/logistics/pvt/configuration/warehouses/{wareHouseId}/remove"
+            },
+            "example": {
+                "request": [
+                    "d75562fd-6825-4304-bb21-42208c63a96f"
+                ],
+                "response": [
+                    false
+                ]
+            }
+        }
+    ]
+}

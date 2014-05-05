@@ -1,0 +1,429 @@
+{
+    "product": "oms",
+    "version": "latest",
+    "resource": "orders",
+    "documentation": "api",
+    "methods": [
+    {
+        "title": "Listar pedidos",
+        "description": "",
+        "verb": "GET",
+        "route": {
+            "template": "/api/oms/pvt/orders"
+        },
+        "attributes": {
+            "list": {
+                "type": "array", 
+                "description": "Lista de pedidos encontrados de acordo com os filtros informados",
+                "required": false,
+                "attributes": {
+                      "orderId": {
+                        "type": "string", 
+                        "description": "Número do pedido",
+                        "required": false               
+                      },
+                      "creationDate": {
+                        "type": "date", 
+                        "description": "Data de criação do pedido",
+                        "required": false               
+                      },
+                      "items": {
+                        "type": "array", 
+                        "description": "Lista com dados rezumidos dos itens do pedido",
+                        "required": false,
+                        "attributes": {   
+                             "seller": {
+                                "type": "string", 
+                                "description": "Nome do vendedor",
+                                "required": false               
+                              },
+                             "quantity": {
+                                "type": "int", 
+                                "description": "Quantidade",
+                                "required": false               
+                              },
+                             "description": {
+                                "type": "string", 
+                                "description": "Descrição",
+                                "required": false               
+                              }
+                        }      
+                      },
+                      "totalValue": {
+                        "type": "decimal", 
+                         "description": "Valor total do pedido",
+                         "required": false
+                       },
+                      "paymentNames": {
+                        "type": "string", 
+                         "description": "Nomes dos meios de pagamentos do pedido",
+                         "required": false
+                       },
+                      "status": {
+                        "type": "string", 
+                         "description": "Status do pedido",
+                         "required": false
+                       },
+                      "statusDescription": {
+                        "type": "string", 
+                         "description": "Nome representativo do status do pedido",
+                         "required": false
+                       },
+                      "marketPlaceOrderId": {
+                        "type": "string", 
+                         "description": "Número do pedido no marketplace",
+                         "required": false
+                       },
+                      "sequence": {
+                        "type": "string", 
+                         "description": "Outro identificador único do pedido",
+                         "required": false
+                       },
+                      "salesChannel": {
+                        "type": "string", 
+                         "description": "Código do canal de vendas",
+                         "required": false
+                       },
+                      "affiliateId": {
+                        "type": "string", 
+                         "description": "Código da loja afiliada",
+                         "required": false
+                       },
+                      "origin": {
+                        "type": "string", 
+                         "description": "Código do canal de vendas",
+                         "required": false
+                       },
+                      "affiliateId": {
+                        "type": "string", 
+                         "description": "Origem do pedido",
+                         "required": false
+                       },
+                      "workflowInErrorState": {
+                        "type": "bool", 
+                         "description": "Indica se o fluxo do pedido está em erro",
+                         "required": false
+                       },
+                      "workflowInRetry": {
+                        "type": "bool", 
+                         "description": "Indica que o fluxo do pedido em erro está em tentantiva automática de recuperação",
+                         "required": false
+                       },
+                      "lastMessageUnread": {
+                        "type": "string", 
+                         "description": "Primeiras palavras da ultima mensagem (e-mail) sobre o pedido",
+                         "required": false
+                       },
+                      "ShippingEstimatedDate": {
+                        "type": "date", 
+                         "description": "Data estimada para entrega",
+                         "required": false
+                       },
+                      "orderIsComplete": {
+                        "type": "bool", 
+                         "description": "Indica se o pedido foi fechado com sucesso",
+                         "required": false
+                       },
+                      "listType": {
+                        "type": "string", 
+                         "description": "Indica a qual tipo da lista o pedido está relacionado",
+                         "required": false
+                       },
+                      "facets": {
+                        "type": "array", 
+                         "description": "Lista de facets disponíveis",
+                         "required": false,
+                         "attributes": {
+                            "name": {
+                                "type": "string", 
+                                "description": "Nome do facet",
+                                "required": false
+                            },
+                            "type": {
+                                "type": "string", 
+                                "description": "Tipo do facet single, multiple ou date",
+                                "required": false
+                             },
+                            "items": {
+                                "type": "array", 
+                                "description": "Itens do facet",
+                                "required": false,
+                                "attributes": {
+                                    "name": {
+                                        "type": "string", 
+                                        "description": "Nome do item do facet",
+                                        "required": false
+                                    },
+                                    "quantity": {
+                                        "type": "int", 
+                                        "description": "Quantidade do item",
+                                        "required": false
+                                    },
+                                    "url": {
+                                        "type": "string", 
+                                        "description": "Valor a ser colocado no filtro na query string da URL",
+                                        "required": false
+                                    }
+                                }
+                           },
+                            "rangeUrlTemplate": {
+                                "type": "string", 
+                                "description": "Nome do parâmetro a ser usando na query string para filtrar pelo facet",
+                                "required": false
+                           }
+                         }
+                        },                        
+                        "paging": {
+                            "type": "object", 
+                            "description": "Dados sobre a paginação",
+                            "required": false,
+                            "attributes": {
+                                "total": {
+                                    "type": "int", 
+                                    "description": "Número total de itens",
+                                    "required": false
+                               },
+                                "pages": {
+                                    "type": "int", 
+                                    "description": "Número total de páginas",
+                                    "required": false
+                               },
+                                "currentPage": {
+                                    "type": "int", 
+                                    "description": "Número da página atual",
+                                    "required": false
+                               },
+                                "perPage": {
+                                    "type": "int", 
+                                    "description": "Números por página",
+                                    "required": false
+                               }
+                            }
+                       }                    
+                }
+            }
+        },
+        "example": {
+            "request": [],
+            "response":
+                    {
+                      "list": [
+                        {
+                          "orderId": "v611561bdev-01",
+                          "creationDate": "2014-03-28T21:47:58",
+                          "clientName": "alan protasio",
+                          "items": [
+                            {
+                              "seller": "1",
+                              "quantity": 1,
+                              "description": "TSmartphone Samsung Galaxy S III I9300 Branco, Processador Quad-Core 1.4Ghz, Android 4.0, GPS, 3G, Wi-Fi, Câmera 8.0MP, Memória Interna 16GB"
+                            },
+                            {
+                              "seller": "1",
+                              "quantity": 1,
+                              "description": "Brinde"
+                            }
+                          ],
+                          "totalValue": 92580.0,
+                          "paymentNames": "Boleto Bancário",
+                          "status": "payment-pending",
+                          "statusDescription": "Pagamento Pendente",
+                          "sequence": "611561",
+                          "salesChannel": "1",
+                          "affiliateId": "",
+                          "origin": "Marketplace",
+                          "lastMessageUnread": "BaseDevMkp Pedido realizado com sucesso! realizado em: 28/03/2014 Olá, alan. Obrigado por comprar em nossa loja. Os detalhes do pedido encon",
+                          "orderIsComplete": true
+                        },
+                        {
+                          "orderId": "v611555bdev-01",
+                          "creationDate": "2014-03-28T21:38:59",
+                          "clientName": "alan protasio",
+                          "items": [
+                            {
+                              "seller": "1",
+                              "quantity": 1,
+                              "description": "Nokia Lumia 710 Preto, Windows Phone 7, Processador de 1.4 Ghz, Câmera 5.0 MP com Flash LED e Vídeo em HD, Memória Interna de 8GB"
+                            },
+                            {
+                              "seller": "1",
+                              "quantity": 1,
+                              "description": "Brinde"
+                            }
+                          ],
+                          "totalValue": 129850.0,
+                          "paymentNames": "Boleto Bancário",
+                          "status": "payment-pending",
+                          "statusDescription": "Pagamento Pendente",
+                          "sequence": "611555",
+                          "salesChannel": "1",
+                          "affiliateId": "",
+                          "origin": "Marketplace",
+                          "lastMessageUnread": "BaseDevMkp Pedido realizado com sucesso! realizado em: 28/03/2014 Olá, alan. Obrigado por comprar em nossa loja. Os detalhes do pedido encon",
+                          "orderIsComplete": true
+                        },
+                        {
+                          "orderId": "v611551bdev-01",
+                          "creationDate": "2014-03-28T20:42:17",
+                          "clientName": "alan protasio",
+                          "items": [
+                            {
+                              "seller": "1",
+                              "quantity": 1,
+                              "description": "Nokia Lumia 710 Preto, Windows Phone 7, Processador de 1.4 Ghz, Câmera 5.0 MP com Flash LED e Vídeo em HD, Memória Interna de 8GB"
+                            },
+                            {
+                              "seller": "1",
+                              "quantity": 1,
+                              "description": "Brinde"
+                            }
+                          ],
+                          "totalValue": 129850.0,
+                          "paymentNames": "Boleto Bancário",
+                          "status": "payment-pending",
+                          "statusDescription": "Pagamento Pendente",
+                          "sequence": "611551",
+                          "salesChannel": "1",
+                          "affiliateId": "",
+                          "origin": "Marketplace",
+                          "lastMessageUnread": "BaseDevMkp Pedido realizado com sucesso! realizado em: 28/03/2014 Olá, alan. Obrigado por comprar em nossa loja. Os detalhes do pedido encon",
+                          "orderIsComplete": true
+                        }
+                      ],
+                      "facets": [
+                        {
+                          "name": "SalesChannelName",
+                          "type": "multiple",
+                          "items": [
+                            {
+                              "name": "Loja 2",
+                              "quantity": 3,
+                              "url": "Loja 2"
+                            },
+                            {
+                              "name": "Loja Azul",
+                              "quantity": 4188,
+                              "url": "Loja Azul"
+                            }
+                          ],
+                          "rangeUrlTemplate": "f_salesChannel"
+                        },
+                        {
+                          "name": "CallCenterOperatorName",
+                          "type": "multiple",
+                          "items": [
+                            {
+                              "name": "Admin Admin",
+                              "quantity": 2,
+                              "url": "Admin Admin"
+                            },
+                            {
+                              "name": "Alan Diego Dantas Prot",
+                              "quantity": 52,
+                              "url": "Alan Diego Dantas Prot"
+                            },
+                            {
+                              "name": "Aline  Magalhaes",
+                              "quantity": 1,
+                              "url": "Aline  Magalhaes"
+                            }
+                          ],
+                          "rangeUrlTemplate": "f_callCenterOperatorName"
+                        },
+                        {
+                          "name": "ListType",
+                          "type": "multiple",
+                          "items": [
+                            {
+                              "name": "Lista MKP Com Entrega",
+                              "quantity": 1,
+                              "url": "Lista MKP Com Entrega"
+                            }
+                          ],
+                          "rangeUrlTemplate": "f_listType"
+                        },
+                        {
+                          "name": "SellerNames",
+                          "type": "multiple",
+                          "items": [
+                            {
+                              "name": "BaseDevMKP",
+                              "quantity": 165,
+                              "url": "BaseDevMKP"
+                            },
+                            {
+                              "name": "BaseDevMkp",
+                              "quantity": 883,
+                              "url": "BaseDevMkp"
+                            },
+                            {
+                              "name": "basedevmkp",
+                              "quantity": 3143,
+                              "url": "basedevmkp"
+                            }
+                          ],
+                          "rangeUrlTemplate": "f_sellerNames"
+                        },
+                        {
+                          "name": "UtmSource",
+                          "type": "multiple",
+                          "items": [
+                            {
+                              "name": "1",
+                              "quantity": 1,
+                              "url": "1"
+                            },
+                            {
+                              "name": "abc",
+                              "quantity": 6,
+                              "url": "abc"
+                            },
+                            {
+                              "name": "ellen",
+                              "quantity": 1,
+                              "url": "ellen"
+                            },
+                            {
+                              "name": "fretea",
+                              "quantity": 2,
+                              "url": "fretea"
+                            },
+                            {
+                              "name": "parceiro",
+                              "quantity": 4,
+                              "url": "parceiro"
+                            }
+                          ]
+                        }
+                      ],
+                      "paging": {
+                        "total": 4191,
+                        "pages": 1397,
+                        "currentPage": 1,
+                        "perPage": 3
+                      },
+                      "stats": {
+                        "stats": {
+                          "totalItems": {
+                            "Count": 4191,
+                            "Max": 6.0,
+                            "Mean": 1.1419708900023862,
+                            "Min": 1.0,
+                            "StdDev": 0.44252673299466966,
+                            "Sum": 4786.0,
+                            "SumOfSquares": 6286.0
+                          },
+                          "totalValue": {
+                            "Count": 4191,
+                            "Max": 876500.0,
+                            "Mean": 11897.562634216178,
+                            "StdDev": 32221.074030783173,
+                            "Sum": 49862685.0,
+                            "SumOfSquares": 4943292410909.0
+                          }
+                        }
+                      }
+                    }
+        }
+    }]
+}
