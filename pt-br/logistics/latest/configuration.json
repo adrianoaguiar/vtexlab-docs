@@ -7,7 +7,7 @@
     [
     	{
     		"title": "Consulta a configuração geral da loja",
-            "description": "/api/logistics/pvt/configuration",
+            "description": "Consulta as configurações da loja",
             "verb": "GET",
             "route": {
                 "template": "/api/logistics/pvt/configuration"
@@ -30,7 +30,11 @@
                 "template": "/api/logistics/pvt/configuration"
                 },
              "example": {
-             	"request": [],
+             	"request": [
+                    {
+                      "notDivideDelivery": true
+                    }
+                ],
              	"response": [
 					{
 					  "notDivideDelivery": true

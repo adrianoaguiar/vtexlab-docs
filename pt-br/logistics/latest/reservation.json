@@ -274,6 +274,11 @@
                                             "type": "string",
                                             "description": "Ponto de entrega.Utilizado nos casos em que a entrega será realizada em um local pré-cadastrado, como uma loja física",
                                             "required": false
+                                        },
+                                        "point": {
+                                            "type": "array",
+                                            "description": "Coordenadas x,y para busca geolocalizada. x=longitude e y=latitude.",
+                                            "required": false
                                         }
                                     }
                                 }

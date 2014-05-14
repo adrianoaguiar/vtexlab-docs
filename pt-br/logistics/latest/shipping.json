@@ -6,7 +6,7 @@
     "methods":
     [
     	{
-    		"title": "Cálcular frete",
+    		"title": "Calcular frete",
             "description": "Realiza o cálculo de sla, retornando disponibilidade, prazos e preços para entrega",
             "verb": "POST",
             "route": {

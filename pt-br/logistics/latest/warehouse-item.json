@@ -259,8 +259,8 @@
             }
         },
         {
-            "title": "Atualiza quantidade em estoque",
-            "description": "Atualiza a quantidade em estoque de uma coleção de itens",
+            "title": "Consulta balanço de itens de estoque",
+            "description": "Consulta balanço de itens de estoque",
             "verb": "POST",
             "route": {
                 "template": "/api/logistics/pvt/inventory/warehouseitems/balance"

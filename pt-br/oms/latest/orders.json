@@ -205,7 +205,7 @@
         },
         "example": {
             "request": [],
-            "response":
+            "response": [
                     {
                       "list": [
                         {
@@ -424,6 +424,7 @@
                         }
                       }
                     }
+              ]
         }
     }]
 }

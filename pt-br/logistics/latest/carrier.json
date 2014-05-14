@@ -855,7 +855,7 @@
             }
         },
         {
-            "title": "Consulta transportadora",
+            "title": "Salva uma transportadora",
             "description": "Cadastra/atualiza uma transportadora",
             "verb": "POST",
             "route": {
@@ -1029,47 +1029,79 @@
                     "arguments": {
                         "zipCodeStart": {
                             "type": "int",
-                            "description": "",
+                            "description": "CEP inícial atendido pela faixa de frete.É um dos valores que compõem o ID.",
+                            "required": false
+                        },
+                        "zipCodeEnd": {
+                            "type": "int",
+                            "description": "CEP final atendido pela faixa de frete.",
                             "required": false
                         },
                         "weightStart": {
-                            "type": "int",
-                            "description": "",
+                            "type": "decimal",
+                            "description": "Peso inicial atendido pela faixa de frete.",
                             "required": false
                         },
                         "weightEnd": {
                             "type": "decimal",
-                            "description": "",
+                            "description": "Peso final atendido pela faixa de frete.",
                             "required": false
                         },
                         "absoluteMoneyCost": {
                             "type": "decimal",
-                            "description": "",
+                            "description": "Valor do frete",
                             "required": false
                         },
                         "pricePercent": {
                             "type": "decimal",
-                            "description": "",
+                            "description": "Percentual a ser adicionado ao valor do frete",
                             "required": false
                         },
                         "pricePercentByWeight": {
                             "type": "decimal",
-                            "description": "",
+                            "description": "Adicional por peso excedente",
                             "required": false
                         },
                         "maxVolume": {
                             "type": "decimal",
-                            "description": "",
+                            "description": "Volume máximo atendido pela faixa de frete",
                             "required": false
                         },
                         "timeCost": {
-                            "type": "decimal",
-                            "description": "",
+                            "type": "TimeSpan",
+                            "description": "Tempo de entrega",
                             "required": false
                         },
+                        "operationType": {
+                            "type": "object",
+                            "description": "Utilizado para identificar a operação a ser realizada no registro",
+                            "required": false,
+                            "arguments": {
+                                "None": {
+                                    "type": "int",
+                                    "description": "nenhuma ação é realizada no registro",
+                                    "required": false
+                                },
+                                "Insert": {
+                                    "type": "int",
+                                    "description": "para indicar que é um registro novo",
+                                    "required": false
+                                },
+                                "Update": {
+                                    "type": "int",
+                                    "description": "caso o registro foi atualizado",
+                                    "required": false
+                                },
+                               "Delete": {
+                                    "type": "int",
+                                    "description": "para excluir o registro",
+                                    "required": false
+                                }
+                            }
+                          },
                         "country": {
                             "type": "string",
-                            "description": "",
+                            "description": "País atendido pela faixa de frete",
                             "required": false
                         },
                         "restrictedFreights": {
@@ -1096,7 +1128,13 @@
                                     "type": "string",
                                     "description": "",
                                     "required": false
+                                },
+                                "polygon":{
+                                    "type": "array",
+                                    "description": "Poligono (Shape) para restringir uma area de entrega",
+                                    "required": false            
                                 }
+
                             }
                         },
                         "factorCubicWeight": {
