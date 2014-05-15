@@ -1,5 +1,5 @@
 {
-    "product": "oms",
+    "product": "logistics",
     "version": "latest",
     "resource": "warehouse-item",
     "documentation": "api",
