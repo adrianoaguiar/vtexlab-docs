@@ -1,4 +1,4 @@
-vtexlab-docs
+VTEXLab-Docs
 ============
 
 Repositório da documentação publicada no site do [vtexlab](http://lab.vtex.com/docs).
@@ -36,8 +36,7 @@ Para publicar a sua **API** consulte o [Scribe](https://github.com/vtex/scribe).
     ---
 ```
 
-
 ###Teste
 1. `git clone https://github.com/vtex/vtexlab.git` e siga o tutorial de instalação
-2.  Insira sua documentação (formato markdown) no `vtexlab/docs/`
+2.  Insira sua documentação (formato [markdown](http://daringfireball.net/projects/markdown/)) no `vtexlab/docs/`
 3.  `grunt`
