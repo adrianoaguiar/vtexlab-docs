@@ -15,6 +15,11 @@ Este artigo irá introduzí-lo a:
  - **Templates**, nossa recomendação para uma experiência sem frustrações na construção do HTML do seu template;
  - Os **Módulos** do vtex.js, e suas particularidades.
 
+## Apresentação
+
+Veja os [slides da apresentação](http://goo.gl/tYT23t)
+sobre o vtex.js que rolou no VTEX Day 2014.
+
 ## Promises
 {: #Promises .slug-text}
 
