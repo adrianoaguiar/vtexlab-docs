@@ -12,7 +12,7 @@ Para publicar a sua **API** consulte o [Scribe](https://github.com/vtex/scribe).
 1. Certifique-se que a estrutura do diretório obedece o padrão:
 
 	```
-		{application}/{doc-type}/{version}/{resource}/
+		{application}/{doc-type}/{version}/{resource}/index.md
 	```
 
 |nome|descrição|
