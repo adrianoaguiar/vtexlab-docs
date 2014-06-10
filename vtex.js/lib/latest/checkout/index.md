@@ -634,19 +634,14 @@ vtexjs.checkout.getOrderForm().then(function(){
 {% endhighlight %}
 
 
-## addGiftMessage(itemIndex, bundleItemId, giftMessage, expectedOrderFormSections)
-{: #addGiftMessage .slug-text.omit-parens }
+## addItemAttachment(itemIndex, attachmentName, content, expectedOrderFormSections)
+{: #addItemAttachment .slug-text.omit-parens }
 
-Verifique a documentação de addOffering antes de ler este método.
+Esse método adiciona um anexo (attachment) a um item no carrinho. Com isso, você pode adicionar informações extras ao item. 
 
-Esse método se aplica a bundleItems, uma lista presente em cada item. Essa lista refere-se às ofertas referentes aquele item que foram aceitas.
+Você pode associar um anexo ao sku pela interface administrativa. Para verificar quais anexos podem ser inseridos, verifique a propriedade `attachmentOfferings` do item.
 
-Se uma offering permite mensagem de presente, terá sua propriedade `allowGiftMessage` como `true`.
-
-Nesse caso, é possível usar este método para anexar uma mensagem à oferta.
-
-Não necessariamente essa mensagem será "de presente". A semântica depende da oferta.
-Por exemplo, para um serviço manual, pode indicar preferências.
+Por exemplo: ao adicionar uma camiseta do Brasil ao carrinho, você pode adicionar o anexo de 'personalizacao' para que o cliente possa escolher o número a ser impresso na camiseta.
 
 Não se esqueça de usar getOrderForm anteriormente.
 
@@ -659,16 +654,34 @@ Não se esqueça de usar getOrderForm anteriormente.
 
 | Nome                    | Tipo                          |
 | -----------------------:| :-----------------------------|
-| **itemIndex** | **Number** <br> o índice do item ao qual a oferta se aplica |
-| **bundleId**  | **String ou Number**  <br> pode ser encontrado na propriedade `id` do bundleItem |
-| **giftMessage** | **String** <br> |
+| **itemIndex** | **Number** <br> o índice do item a ser incluído o anexo |
+| **attachmentName**  | **String**  <br> pode ser encontrado na propriedade `name` em attachmentOfferings dentro do objeto do item |
+| **content** | **Object** um objeto que respeite o schema descrito na propriedade `schema` em attachmentOfferings <br> |
 {: .doc-api-table }
 
+### Exemplo
 
-## removeGiftMessage(itemIndex, bundleItemId, expectedOrderFormSections)
-{: #removeGiftMessage .slug-text.omit-parens }
+{% highlight javascript %}
+var itemIndex = 0;
+var attachmentName = 'personalizacao';
+var content = {
+    "numero": "10"
+};
 
-Remove a mensagem de presente de um bundleItem de um item.
+vtexjs.checkout.getOrderForm().then(function(){
+    return vtexjs.checkout.addItemAttachment(itemIndex, attachmentName, content);
+}).done(function(orderForm){
+    // Anexo incluído ao item!
+    console.log(orderForm);
+});
+
+{% endhighlight %}
+
+
+## removeItemAttachment(itemIndex, attachmentName, content, expectedOrderFormSections)
+{: #removeItemAttachment .slug-text.omit-parens }
+
+Remove um anexo de item no carrinho.
 
 Não se esqueça de usar getOrderForm anteriormente.
 
@@ -681,10 +694,78 @@ Não se esqueça de usar getOrderForm anteriormente.
 
 | Nome                    | Tipo                          |
 | -----------------------:| :-----------------------------|
-| **itemIndex** | **Number** <br> o índice do item ao qual a oferta se aplica |
-| **bundleId**  | **String ou Number**  <br> pode ser encontrado na propriedade `id` do bundleItem |
+| **itemIndex** | **Number** <br> o índice do item a ser incluído o anexo |
+| **attachmentName**  | **String**  <br> pode ser encontrado na propriedade `name` em attachmentOfferings dentro do objeto do item |
+| **content** | **Object** um objeto que respeite o schema descrito na propriedade `schema` em attachmentOfferings <br> |
+
 {: .doc-api-table }
 
+
+## addBundleItemAttachment(itemIndex, bundleItemId, attachmentName, content, expectedOrderFormSections)
+{: #addBundleItemAttachment .slug-text.omit-parens }
+
+Esse método adiciona um anexo a um serviço (bundleItem) de um item no carrinho.
+
+Você pode associar um anexo ao serviço pela interface administrativa. Para verificar quais anexos que podem ser inseridos, verifique a propriedade `attachmentOfferings` do serviço.
+
+Não se esqueça de usar getOrderForm anteriormente.
+
+### Retorna
+
+`Promise` para o orderForm
+
+
+### Argumentos
+
+| Nome                    | Tipo                          |
+| -----------------------:| :-----------------------------|
+| **itemIndex** | **Number** <br> o índice do item que o serviço se aplica |
+| **bundleId**  | **String ou Number**  <br> pode ser encontrado na propriedade `id` do bundleItem |
+| **attachmentName**  | **String**  <br> pode ser encontrado na propriedade `name` em attachmentOfferings dentro do objeto do serviço |
+| **content** | **Object** um objeto que respeite o schema descrito na propriedade `schema` em attachmentOfferings <br> |
+{: .doc-api-table }
+
+### Exemplo
+
+{% highlight javascript %}
+var itemIndex = 0;
+var bundleItemId = 5;
+var attachmentName = 'message';
+var content = {
+    "text": "Parabéns!"
+};
+
+vtexjs.checkout.getOrderForm().then(function(){
+    return vtexjs.checkout.addBundleItemAttachment(itemIndex, bundleItemId, attachmentName, content);
+}).done(function(orderForm){
+    // Anexo incluído ao item!
+    console.log(orderForm);
+});
+
+{% endhighlight %}
+
+
+## removeBundleItemAttachment(itemIndex, bundleItemId, attachmentName, content, expectedOrderFormSections)
+{: #removeBundleItemAttachment .slug-text.omit-parens }
+
+Remove um anexo de um serviço.
+
+Não se esqueça de usar getOrderForm anteriormente.
+
+### Retorna
+
+`Promise` para o orderForm
+
+
+### Argumentos
+
+| Nome                    | Tipo                          |
+| -----------------------:| :-----------------------------|
+| **itemIndex** | **Number** <br> o índice do item que o serviço se aplica |
+| **bundleId**  | **String ou Number**  <br> pode ser encontrado na propriedade `id` do bundleItem |
+| **attachmentName**  | **String**  <br> pode ser encontrado na propriedade `name` em attachmentOfferings dentro do objeto do serviço |
+| **content** | **Object** um objeto que respeite o schema descrito na propriedade `schema` em attachmentOfferings <br> |
+{: .doc-api-table }
 
 
 ## sendLocale(locale)
