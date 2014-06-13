@@ -102,6 +102,9 @@ Não se esqueça de usar getOrderForm anteriormente.
 
 ### Exemplos
 
+
+#### Alterar clientProfileData
+
 Alterar o primeiro nome do cliente.
 Vamos alterar a propriedade `firstName` de `clientProfileData`.
 
@@ -115,6 +118,20 @@ vtexjs.checkout.getOrderForm().then(function(orderForm){
     console.log(orderForm);
     console.log(orderForm.clientProfileData);
 })
+{% endhighlight %}
+
+#### Alterar openTextField
+
+O openTextField é um campo destinado a observações e comentários.
+Consulte a [documentação do OrderForm](orderform.md) para mais detalhes sobre ele.
+
+{% highlight javascript %}
+vtexjs.checkout.getOrderForm().then(function(orderForm){
+    var obs = 'Sem cebola!'
+    return vtexjs.checkout.sendAttachment('openTextField', {value: obs});
+}).done(function(orderForm){
+  console.log("openTextField preenchido com: ", orderForm.openTextField);
+});
 {% endhighlight %}
 
 
