@@ -28,7 +28,7 @@ da biblioteca.
 <script src="//io.vtex.com.br/io-vtex-loader/1.0.0/io-vtex-loader.min.js"></script>
 <script>
     vtexIO.loadApp({name: 'vtex.js', major: 1, path: 'vtexjs.min.js' });
-</script
+</script>
 {% endhighlight %}
 
 Você pode também incluir módulos individualmente:
@@ -38,7 +38,7 @@ Você pode também incluir módulos individualmente:
 <script>
     vtexIO.loadApp({name: 'vtex.js', major: 1, path: 'checkout.min.js' });
     vtexIO.loadApp({name: 'vtex.js', major: 1, path: 'catalog.min.js' });
-</script
+</script>
 {% endhighlight %}
 
 Pronto! Agora você tem nos objetos `vtexjs.checkout` e `vtexjs.catalog`
