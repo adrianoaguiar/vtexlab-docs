@@ -110,7 +110,7 @@ vtexjs.checkout.getOrderForm().then(function(orderForm){
     var clientProfileData = orderForm.clientProfileData;
     clientProfileData.firstName = 'Guilherme';
     return vtexjs.checkout.sendAttachment('clientProfileData', clientProfileData)
-}).dond(function(orderForm){
+}).done(function(orderForm){
     alert("Nome alterado!");
     console.log(orderForm);
     console.log(orderForm.clientProfileData);
