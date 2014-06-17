@@ -23,7 +23,7 @@ Veja mais abaixo um exemplo do objeto resultante.
 
 | Nome                    | Tipo                          |
 | -----------------------:| :-----------------------------|
-| **productId**           | **String ou Number** <br> haha|
+| **productId**           | **String ou Number** <br> O ID do produto. (Não é o SKU!) |
 {: .doc-api-table }
 
 ### Exemplo
