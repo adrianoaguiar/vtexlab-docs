@@ -12,14 +12,14 @@ Para publicar a sua **API** consulte o [Scribe](https://github.com/vtex/scribe).
 1. Certifique-se que a estrutura do diretório obedece o padrão:
 
 	```
-		{application}/{doc-type}/{version}/{resource}/index.md
+		{application}/{doc-type}[/{version}]/{resource}/index.md
 	```
 
 |nome|descrição|
 |---|---------|
 |{application}| nome da aplicação. Ex. portal,pricing e vtexjs|
 |{doc-type}| tipo da documentação. Ex. api, lib, guide e etc|
-|{version}|versão do documento|
+|{version}| _opcional_. versão da API ou biblioteca|
 |{resource}| recurso documentado|
 
 **Observação: Consulte os arquivos do repositório para verificar exemplos.**
