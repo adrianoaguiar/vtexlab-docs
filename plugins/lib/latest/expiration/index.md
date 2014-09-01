@@ -1,14 +1,14 @@
 ---
 layout: docs
-title: Expiração do Totem
-application: totem
+title: Expiração de Sessão
+application: portal-plugins
 docType: lib
 version: latest
 ---
 
-# Script de expiração para Totem 
+# Script de expiração para sessão 
 
-## totem-expiration.js
+## session-expiration.js
 
 Utilitário de expiração de sessão por tempo.  
 Ao ser iniciado, um contador de 10 minutos é configurado.  
@@ -17,13 +17,12 @@ Após 10 minutos sem interação, o cookie do carrinho é removido e o navegador
 
 ## Versão 0.1.1
 
-Testes unitários: http://io.vtex.com.br/totem/0.1.1/index.html  
-Script para desenvolvimento: http://io.vtex.com.br/totem/0.1.1/script/totem-expiration.js  
-Script para produção: http://io.vtex.com.br/totem/0.1.1/script/totem-expiration.min.js  
+Script para desenvolvimento: http://io.vtex.com.br/portal-plugins/2.8.0-beta/js/expiration/session-expiration.js  
+Script para produção: http://io.vtex.com.br/portal-plugins/2.8.0-beta/js/expiration/session-expiration.min.js
 
 ### Funções públicas
 
-#### vtex.totem.startExpiration(url, millis, events)
+#### vtex.portal.startExpiration(url, millis, events)
 
 Inicia timer.
 
@@ -33,6 +32,6 @@ Parâmetros e defaults:
 - millis = 10 * 60 * 1000 (10 minutes)
 - events = ["mousemove", "keyup", "click", "scroll"]
 
-#### vtex.totem.stopExpiration()
+#### vtex.portal.stopExpiration()
 
 Pára contador em execução.
