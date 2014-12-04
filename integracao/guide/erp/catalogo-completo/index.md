@@ -1,80 +1,290 @@
 ---
 layout: docs
-title: Integração de Lista
+title: Integração Completa de Catalogo
 application: erp
 docType: guide
 ---
 
-# Integração de Lista
+# ERP - Integração Completa de Catálogo e Condições Comerciais
 
-Este documento tem por objetivo auxiliar o integrador na integração de KIT, do ERP para uma loja hospedada na versão smartcheckout da VTEX.
 
-## KIT
-Um KIT no sistema VTEX é uma SKU como outra qualquer, só que nesse caso existem outras SKUS realcionadas a SKU do tipo KIT.
+Este documento tem por objetivo auxiliar o integrador na integração de catálogo, condição comercial(preço e estoque) do ERP para a uma loja hospedada na versão smartcheckout da VTEX. Nesse tipo de integração a maioria da adminstração da loja está ERP.
 
-Uma vez uma SKU marcada como KIT no sistema VTEX, ela sempre será KIT, pois não como reverter um KIT.
+![alt text](erp-catalogo-completo.PNG "Fluxo de catalogo completo") 
 
-Para cadastrar um KIT é necessário seguir os seguintes fluxos:
+##1 - Catalogo Fluxo Completo
+Nesse cenário de fluxo completo, a maioria dos dados de produtos e SKUs são manipulados pelo ERP (marca, imagens, categoria, ativação, etc...). A manipulação de campos de especificação nesse modelo é possivel ser feita por API REST, mais a melhor prática seria pelo admin da VTEX.
 
-![alt text](erp-catalogo-completo-kit.PNG "Fluxo de KIT")
+Para o ERP integrar o catálogo com um da loja na VTEX, deverá usar o webservice da própria loja, que por definição atenderá em [https:webservice-nomedaloja-vtexcommerce.com.br/service.svc?wsdl](https:webservice-nomedaloja-vtexcommerce.com.br/service.svc?wsdl "web service da loja"). As credenciais de acesso ao webservice deverão ser solicitadas junto ao administrador da loja.
 
-### Cadastrar o Produto KIT
-{: #Cadastrar o Produto KIT .slug-text}
+Futuramente além do serviço SOAP (webservice) estaremos também oferecendo integração de catálogo por APIs REST (JSON) bem definidas e de alta performance.
 
-### Parâmetros
+###1.1 - Organização dos Produtos Dentro da Loja
+{: #Cadastrar-Departamento e Categorias .slug-text}
 
-| Nome                    | Tipo                          |
-| -----------------------:| :-----------------------------|
-| **BrandId**           | **Number** <br> ID da marca. |
-| **CategoryId**        | **Number** <br> ID da categoria. |
-| **DepartmentId**      | **Number** <br> ID do departamento. |
-| **Description**       | **String** <br> Descrição. |
-| **DescriptionShort**  | **String** <br> Resumo. |
-| **IsActive**  				| **Bool** <br> Ativo. |
-| **IsVisible**  				| **Bool** <br> Visivel. |
-| **KeyWords**  				| **String** <br> Palavras chaves. |
-| **ListStoreId**  			| **Number** <br> . |
-| **MetaTagDescription** | **String** <br> . |
-| **Name** | **String** <br> Nome do produto. |
-| **RefId** | **String** <br> refId. |
-| **Title** | **String** <br> Titulo do produto. |
-{: .doc-api-table }
+Geralmente, os produtos são organizados dentro da loja em estruturas mercadológicas formadas por:
 
-### Exemplo
+1. **Departamento** - categoria cujo id de categoria pai é **nulo**, 
+2. **Categoria** - categoria cujo id de categoria pai é um **departamento**,
+3. **SubCategoria**. categoria cujo id de categoria pai é um **categoria**
 
-#### Request
+*Exemplo:*  
+*Departamento/Categoria/SubCategoria/Produto*  
+*Ferramentas/Eletricas/Furradeiras/Super Drill*
+
+###Departamento
+
+Segue abaixo exemplos de como inserir os Departamentos e as Categorias por webservice:
+
+_request:_  
 
 {% highlight json %}
-	<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" 						            xmlns:vtex="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts"
-		xmlns:arr="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+
+		<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:vtex="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts">
+	   <soapenv:Header/>
+	   <soapenv:Body>
+	      <tem:CategoryInsertUpdate>
+	         <tem:category>
+	            <vtex:Description>Departamento de Artesanato</vtex:Description>
+	            <vtex:IsActive>true</vtex:IsActive>
+	            <vtex:Keywords>Departamento Keywords</vtex:Keywords>
+	            <vtex:Name>Departamento Artesanato</vtex:Name>
+	            <vtex:Title>Departamento Artesanato</vtex:Title>
+	         </tem:category>
+	      </tem:CategoryInsertUpdate>
+	   </soapenv:Body>
+	</soapenv:Envelope>
+
+{% endhighlight %}
+
+_response:_  
+
+{% highlight json %}	
+
+	<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+	   <s:Body>
+	      <CategoryInsertUpdateResponse xmlns="http://tempuri.org/">
+	         <CategoryInsertUpdateResult xmlns:a="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	            <a:AdWordsRemarketingCode i:nil="true"/>
+	            <a:Description>Departamento de Artesanato</a:Description>
+	            <a:FatherCategoryId i:nil="true"/>
+	            <a:Id>1000018</a:Id>
+	            <a:IsActive>true</a:IsActive>
+	            <a:Keywords>Departamento Keywords</a:Keywords>
+	            <a:LomadeeCampaignCode i:nil="true"/>
+	            <a:Name>Departamento Artesanato</a:Name>
+	            <a:Title>Departamento Artesanato</a:Title>
+	         </CategoryInsertUpdateResult>
+	      </CategoryInsertUpdateResponse>
+	   </s:Body>
+	</s:Envelope>
+
+{% endhighlight %}
+
+###Categoria
+
+_request:_  
+
+{% highlight json %}
+
+	<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:vtex="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts">
+	   <soapenv:Header/>
+	   <soapenv:Body>
+	      <tem:CategoryInsertUpdate>
+	         <tem:category>
+	            <vtex:Description>Artesanato de Barro</vtex:Description>
+	            <vtex:FatherCategoryId>1000018</vtex:FatherCategoryId>
+	            <vtex:IsActive>true</vtex:IsActive>
+	            <vtex:Keywords>Barro</vtex:Keywords>
+	            <vtex:Name>Artesanato de Barro</vtex:Name>
+	            <vtex:Title>Artesanato de Barro</vtex:Title>
+	         </tem:category>
+	      </tem:CategoryInsertUpdate>
+	   </soapenv:Body>
+	</soapenv:Envelope>
+
+{% endhighlight %}
+
+_response_:  
+
+{% highlight json %}
+
+	<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+	   <s:Body>
+	      <CategoryInsertUpdateResponse xmlns="http://tempuri.org/">
+	         <CategoryInsertUpdateResult xmlns:a="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	            <a:AdWordsRemarketingCode i:nil="true"/>
+	            <a:Description>Artesanato de Barro</a:Description>
+	            <a:FatherCategoryId>1000018</a:FatherCategoryId>
+	            <a:Id>1000019</a:Id>
+	            <a:IsActive>true</a:IsActive>
+	            <a:Keywords>Barro</a:Keywords>
+	            <a:LomadeeCampaignCode i:nil="true"/>
+	            <a:Name>Artesanato de Barro</a:Name>
+	            <a:Title>Artesanato de Barro</a:Title>
+	         </CategoryInsertUpdateResult>
+	      </CategoryInsertUpdateResponse>
+	   </s:Body>
+	</s:Envelope>
+
+{% endhighlight %}
+
+###Sub Categoria###
+
+_request:_  
+
+{% highlight json %}
+
+	<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:vtex="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts">
+	   <soapenv:Header/>
+	   <soapenv:Body>
+	      <tem:CategoryInsertUpdate>
+	         <tem:category>
+	            <vtex:Description>Barro Vermelho</vtex:Description>
+	            <vtex:FatherCategoryId>1000019</vtex:FatherCategoryId>
+	            <vtex:IsActive>true</vtex:IsActive>
+	            <vtex:Keywords>Barro Vermelho</vtex:Keywords>
+	            <vtex:Name>Artesanato de Barro Vermelho</vtex:Name>
+	            <vtex:Title>Artesanato de Barro Vermelho</vtex:Title>
+	         </tem:category>
+	      </tem:CategoryInsertUpdate>
+	   </soapenv:Body>
+	</soapenv:Envelope>
+
+{% endhighlight %}
+
+_response:_  
+
+{% highlight json %}
+
+	<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+	   <s:Body>
+	      <CategoryInsertUpdateResponse xmlns="http://tempuri.org/">
+	         <CategoryInsertUpdateResult xmlns:a="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	            <a:AdWordsRemarketingCode i:nil="true"/>
+	            <a:Description>Barro Vermelho</a:Description>
+	            <a:FatherCategoryId>1000019</a:FatherCategoryId>
+	            <a:Id>1000020</a:Id>
+	            <a:IsActive>true</a:IsActive>
+	            <a:Keywords>Barro Vermelho</a:Keywords>
+	            <a:LomadeeCampaignCode i:nil="true"/>
+	            <a:Name>Artesanato de Barro Vermelho</a:Name>
+	            <a:Title>Artesanato de Barro Vermelho</a:Title>
+	         </CategoryInsertUpdateResult>
+	      </CategoryInsertUpdateResponse>
+	   </s:Body>
+	</s:Envelope>
+
+{% endhighlight %}
+
+###Marca
+
+Segue abaixo exemplo de como inserir uma Marca por webservice.  
+
+_request:_  
+
+{% highlight json %}
+
+	<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:vtex="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts">
+	   <soapenv:Header/>
+	   <soapenv:Body>
+	      <tem:BrandInsertUpdate>
+	         <tem:brand>
+	            <vtex:Description>Marca DuBom</vtex:Description>
+	            <vtex:IsActive>true</vtex:IsActive>
+	            <vtex:Keywords>DuBom Keywords</vtex:Keywords>
+	            <vtex:Name>DuBom</vtex:Name>
+	            <vtex:Title>DuBom</vtex:Title>
+	         </tem:brand>
+	      </tem:BrandInsertUpdate>
+	   </soapenv:Body>
+	</soapenv:Envelope>
+
+{% endhighlight %}
+
+_response:_  
+
+{% highlight json %}
+
+	<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+	   <s:Body>
+	      <BrandInsertUpdateResponse xmlns="http://tempuri.org/">
+	         <BrandInsertUpdateResult xmlns:a="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	            <a:AdWordsRemarketingCode i:nil="true"/>
+	            <a:Description>Marca DuBom</a:Description>
+	            <a:Id>2000011</a:Id>
+	            <a:IsActive>true</a:IsActive>
+	            <a:Keywords>DuBom Keywords</a:Keywords>
+	            <a:LomadeeCampaignCode i:nil="true"/>
+	            <a:Name>DuBom</a:Name>
+	            <a:Title>DuBom</a:Title>
+	         </BrandInsertUpdateResult>
+	      </BrandInsertUpdateResponse>
+	   </s:Body>
+	</s:Envelope
+
+{% endhighlight %}
+
+
+###1.2 - Produtos e SKUs
+{: #Cadastrar-Produtos e SKUs .slug-text}
+
+Qual é a diferença entre produto e SKU?
+
+**Produto** é uma definição mais genérica de algo que é ofertado ao cliente. 
+
+*Exemplo: Geladeria, Camiseta, Bola*
+ 
+**SKU** é uma sigla em ingles de "Stock Keeping Unit", em português Unidade de Manutenção de Estoque,
+ou seja, uma SKU define uma variação de um produto.
+
+*Exemplo: Geladeira Branca 110V, Camiseta Amarela Grande*
+
+No modelo de cadastro de Produtos e SKUs da VTEX, uma SKU sempre será filha de um Produto (não existe SKU sem produto), mesmo que esse produto não tenha variçãoes, e nesse caso será 1 SKU para 1 produto.
+
+*Exemplo: Produto Bola Jabulani com a SKU Bola Jabulani*
+
+###Produto
+
+Exemplo de request para inserir Produto pelo webservice.
+
+_request:_  
+
+{% highlight json %}
+
+	<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:vtex="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts" xmlns:arr="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
 	   <soapenv:Header/>
 	   <soapenv:Body>
 	      <tem:ProductInsertUpdate>
 	         <tem:productVO>
-	            <vtex:BrandId>2000011</vtex:BrandId>
-	            <vtex:CategoryId>1000020</vtex:CategoryId>
-	            <vtex:DepartmentId>1000018</vtex:DepartmentId>
-	            <vtex:Description>Pa e rastelo para jardinagem</vtex:Description>
-	            <vtex:DescriptionShort>Pa e rastelo para jardinagem</vtex:DescriptionShort>
-	            <vtex:IsActive>true</vtex:IsActive>
-	            <vtex:IsVisible>true</vtex:IsVisible>
-	            <vtex:KeyWords>pa rastelo</vtex:KeyWords>
-	            <vtex:ListStoreId>
-	               <arr:int>1</arr:int>
+	            <vtex:BrandId>2000011</vtex:BrandId> //id da marca
+	            <vtex:CategoryId>1000020</vtex:CategoryId> //id da categoria
+	            <vtex:DepartmentId>1000018</vtex:DepartmentId> //id do departamento
+	            <vtex:Description>Vaso de barro vermelho, feito a mão com barro do mar vermelho</vtex:Description> //descrição
+	            <vtex:DescriptionShort>Vaso de barro vermelho artesanal</vtex:DescriptionShort> descrição curta
+	            <vtex:IsActive>true</vtex:IsActive> // true
+	            <vtex:IsVisible>true</vtex:IsVisible> // vai ser visível no site
+	            <vtex:KeyWords> Barro, vaso, vermelho</vtex:KeyWords> //palavras chaves
+	            <vtex:LinkId>vaso_barro_vermelho</vtex:LinkId> //link do produto na loja
+	            <vtex:ListStoreId> //pra qual canal de vendas = loja principal = 1
+	               	<arr:int>1</arr:int> 
+		       		<arr:int>2</arr:int>
 	            </vtex:ListStoreId>
-	            <vtex:MetaTagDescription>Pa e rastelo para jardinagem</vtex:MetaTagDescription>
-	            <vtex:Name>Kit pa e rastelo</vtex:Name>
-	            <vtex:RefId>2234567890</vtex:RefId>
-	            <vtex:Title>Kit pa e rastelo</vtex:Title>
+	            <vtex:MetaTagDescription>Vaso de barro vermelho, feito a mão com barro do mar vermelho</vtex:MetaTagDescription>
+	            <vtex:Name>Vaso Artesanal de Barro Vermelho</vtex:Name> //nome
+	             <vtex:RefId>1234567890</vtex:RefId> //id do produto no ERP
+	            <vtex:Title>Vaso Artesanal de Barro Vermelho</vtex:Title>
 	         </tem:productVO>
 	      </tem:ProductInsertUpdate>
 	   </soapenv:Body>
 	</soapenv:Envelope>
+
 {% endhighlight %}
 
-#### Response
+_response:_  
 
 {% highlight json %}
+
 	<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
 	   <s:Body>
 	      <ProductInsertUpdateResponse xmlns="http://tempuri.org/">
@@ -83,90 +293,102 @@ Para cadastrar um KIT é necessário seguir os seguintes fluxos:
 	            <a:BrandId>2000011</a:BrandId>
 	            <a:CategoryId>1000020</a:CategoryId>
 	            <a:DepartmentId>1000018</a:DepartmentId>
-	            <a:Description>Pa e rastelo para jardinagem</a:Description>
-	            <a:DescriptionShort>Pa e rastelo para jardinagem</a:DescriptionShort>
-	            <a:Id>31018370</a:Id>
+	            <a:Description>Vaso de barro vermelho, feito a mão com barro do mar vermelho</a:Description>
+	            <a:DescriptionShort>Vaso de barro vermelho artesanal</a:DescriptionShort>
+	            <a:Id>31018369</a:Id>
 	            <a:IsActive>false</a:IsActive>
 	            <a:IsVisible>true</a:IsVisible>
-	            <a:KeyWords>pa rastelo</a:KeyWords>
-	            <a:LinkId>Kit-pa-e-rastelo</a:LinkId>
+	            <a:KeyWords>Barro, vaso, vermelho</a:KeyWords>
+	            <a:LinkId>vaso_barro_vermelho</a:LinkId>
 	            <a:ListStoreId xmlns:b="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
 	               <b:int>1</b:int>
+	               <b:int>2</b:int>
 	            </a:ListStoreId>
 	            <a:LomadeeCampaignCode i:nil="true"/>
-	            <a:MetaTagDescription>Pa e rastelo para jardinagem</a:MetaTagDescription>
-	            <a:Name>Kit pa e rastelo</a:Name>
-	            <a:RefId>2234567890</a:RefId>
+	            <a:MetaTagDescription>Vaso de barro vermelho, feito a mão com barro do mar vermelho</a:MetaTagDescription>
+	            <a:Name>Vaso Artesanal de Barro Vermelho</a:Name>
+	            <a:RefId>1234567890</a:RefId>
 	            <a:ReleaseDate i:nil="true"/>
 	            <a:ShowWithoutStock>true</a:ShowWithoutStock>
 	            <a:SupplierId i:nil="true"/>
 	            <a:TaxCode i:nil="true"/>
-	            <a:Title>Kit pa e rastelo</a:Title>
+	            <a:Title>Vaso Artesanal de Barro Vermelho</a:Title>
 	         </ProductInsertUpdateResult>
 	      </ProductInsertUpdateResponse>
 	   </s:Body>
 	</s:Envelope>
+
 {% endhighlight %}
 
-### Cadastrar a SKU KIT
-{: #Cadastrar a SKU KIT .slug-text}
+###Fields
 
-### Parâmetros
+Os fields genéricos dos produtos devem ser adicionado a categoria direta do produto e indicados com IsStockKeepingUnit = false, e os fileds específicos de SKU devem ser inseridos na Categoria direta da SKU e indicados com IsStockKeepingUnit = true. Não temos metodos no webservice para inserir Fields (campos), uma API REST deve ser usada para isso. Exemplo de chamda a PI REST para adiconar campos:  
 
-| Nome                    | Tipo                          |
-| -----------------------:| :-----------------------------|
-| **CubicWeight**         | **Number** <br> . |
-| **Height**        			| **Number** <br> Altura. |
-| **IsActive**  					| **Bool** <br> Ativo. |
-| **IsAvaiable**  				| **Bool** <br> Disponível. |
-| **IsKit**  							| **Bool** <br> Define que a SKU será um KIT - **irreversível**. |
-| **Length**  						| **Number** <br> . |
-| **ListPrice** 					| **Number** <br> Define o preço DE do KIT. |
-| **ModalId** 						| **Number** <br> Define o preço DE do KIT. |
-| **Name** 								| **String** <br> Nome do SKU do KIT. |
-| **Price** 							| **Number** <br> Preço. |
-| **ProductId** 					| **Number** <br> ID do produto. |
-| **RealHeight** 					| **Number** <br> Altura. |
-| **RealLength** 					| **Number** <br> Comprimento. |
-| **RealWeightKg** 				| **Number** <br> Peso. |
-| **RealWidth** 					| **Number** <br> Largura. |
-| **RefId** 							| **Number** <br> refId. |
-| **RewardValue** 				| **Number** <br> . |
-| **UnitMultiplier** 			| **Number** <br> . |
-| **WeightKg** 						| **Number** <br> . |
-| **Width** 							| **Number** <br> . |
-{: .doc-api-table }
+endpoint: **http://sandboxintegracao.vtexcommercebeta.com.br/api/catalog_system/pvt/specification/fieldInsertUpdate**  
+verb: **POST**  
+Content-Type: **application/json**  
+Accept: **application/json**
 
-### Exemplo
-
-#### Request
+_Exemplo do POST:_ 
 
 {% highlight json %}
-		<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:vtex="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts">
+
+	{
+	  "Name": "Material",
+	  "CategoryId": 1000018, //se nulo vale pra todas as categorias e departamento
+	  "FieldId": null,
+	  "IsActive": true,
+	  "IsRequired": false,
+	  "FieldTypeId": 7, // 1|2|4|5|6|7|8|9
+	  "FieldTypeName": "CheckBox", // Texto|Texto Grande|Número|Combo|Radio|CheckBox|Texto Indexado|Texto Grande Indexado
+	  "FieldValueId": null,
+	  "Description": null,
+	  "IsStockKeepingUnit": false, //
+	  "IsFilter": true,
+	  "IsOnProductDetails": true,
+	  "Position": 3,
+	  "IsWizard": false,
+	  "IsTopMenuLinkActive": true,
+	  "IsSideMenuLinkActive": true,
+	  "DefaultValue": null,
+	  "FieldGroupId": 3
+	}
+
+{% endhighlight %}
+
+###SKU
+
+Uma vez inseridos todos os produtos, que teoricamente são os pais das SKUs, chegou o momento de enviar as SKUs. Exemplo dos request para inserir uma SKU na VTEX no webservice.
+
+_request:_  
+
+{% highlight json %}
+
+	<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:vtex="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts">
 	   <soapenv:Header/>
 	   <soapenv:Body>
 	      <tem:StockKeepingUnitInsertUpdate>
 	         <tem:stockKeepingUnitVO>
 	            <vtex:CubicWeight>100</vtex:CubicWeight>
-	            <vtex:Height>15</vtex:Height>
+	            <vtex:Height>15</vtex:Height> //altura
 	            <vtex:IsActive>true</vtex:IsActive>
 	            <vtex:IsAvaiable>true</vtex:IsAvaiable>
-	            <vtex:IsKit>true</vtex:IsKit> /
-	            <vtex:Length>15</vtex:Length>
-		        	<vtex:ListPrice>50.0</vtex:ListPrice>
-	            <vtex:ModalId>1</vtex:ModalId>
-	            <vtex:Name>SKU do KIT</vtex:Name>
-		        	<vtex:Price>40.0</vtex:Price> //define o preço POR do KIT
-	            <vtex:ProductId>31018370</vtex:ProductId>
+	            <vtex:IsKit>false</vtex:IsKit> //se essa SKU vai ser um KIT
+	            <vtex:Length>15</vtex:Length> //comprimento
+				<vtex:ListPrice>150.0</vtex:ListPrice> //**ler obs
+	            <vtex:ModalId>1</vtex:ModalId> //prefixo do estoque, [1]_1 (id do estoque = 1_1, passar 1), obsoleto 
+	            <vtex:Name>Vaso Artesanal de Barro Vermelho Escuro </vtex:Name>
+   				<vtex:Price>110.0</vtex:Price> //**ler obs
+	            <vtex:ProductId>31018369</vtex:ProductId> //id do produto pai da SKU
 	            <vtex:RealHeight>17</vtex:RealHeight>
 	            <vtex:RealLength>17</vtex:RealLength>
 	            <vtex:RealWeightKg>10</vtex:RealWeightKg>
 	            <vtex:RealWidth>17</vtex:RealWidth>
-	            <vtex:RefId>30123456</vtex:RefId>
+	            <vtex:RefId>00123456</vtex:RefId>
 	            <vtex:RewardValue>0</vtex:RewardValue>
 	            <vtex:StockKeepingUnitEans>
 	               <vtex:StockKeepingUnitEanDTO>
-	                  <vtex:Ean>3123456789123</vtex:Ean>
+	                  <vtex:Ean>0123456789123</vtex:Ean>
 	               </vtex:StockKeepingUnitEanDTO>
 	            </vtex:StockKeepingUnitEans>
 	            <vtex:UnitMultiplier>1</vtex:UnitMultiplier>
@@ -176,45 +398,46 @@ Para cadastrar um KIT é necessário seguir os seguintes fluxos:
 	      </tem:StockKeepingUnitInsertUpdate>
 	   </soapenv:Body>
 	</soapenv:Envelope>
+
 {% endhighlight %}
 
+_response:_  
 
-#### Response
 {% highlight json %}
+	
 	<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
 	   <s:Body>
 	      <StockKeepingUnitInsertUpdateResponse xmlns="http://tempuri.org/">
 	         <StockKeepingUnitInsertUpdateResult xmlns:a="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
-	            <a:CommercialConditionId>1</a:CommercialConditionId>
-	            <a:CostPrice>1.0000</a:CostPrice>
+	            <a:CommercialConditionId i:nil="true"/>
+	            <a:CostPrice>1</a:CostPrice>
 	            <a:CubicWeight>100</a:CubicWeight>
-	            <a:DateUpdated>2014-11-03T13:58:10.3061928</a:DateUpdated>
+	            <a:DateUpdated>2014-10-29T19:03:17.718427</a:DateUpdated>
 	            <a:EstimatedDateArrival i:nil="true"/>
 	            <a:Height>15</a:Height>
-	            <a:Id>31018373</a:Id>
+	            <a:Id>31018371</a:Id>
 	            <a:InternalNote i:nil="true"/>
 	            <a:IsActive>false</a:IsActive>
 	            <a:IsAvaiable>false</a:IsAvaiable>
-	            <a:IsKit>true</a:IsKit>
+	            <a:IsKit>false</a:IsKit>
 	            <a:Length>15</a:Length>
-	            <a:ListPrice>50.0</a:ListPrice>
+	            <a:ListPrice>150.0</a:ListPrice>
 	            <a:ManufacturerCode i:nil="true"/>
 	            <a:MeasurementUnit>un</a:MeasurementUnit>
 	            <a:ModalId>1</a:ModalId>
-	            <a:ModalType i:nil="true"/>
-	            <a:Name>SKU do KIT</a:Name>
-	            <a:Price>40.0</a:Price>
-	            <a:ProductId>31018370</a:ProductId>
-	            <a:ProductName>Kit pa e rastelo</a:ProductName>
+	            <a:Name>Vaso Artesanal de Barro Vermelho Escuro</a:Name>
+	            <a:Price>110.0</a:Price>
+	            <a:ProductId>31018369</a:ProductId>
+	            <a:ProductName>Vaso Artesanal de Barro Vermelho</a:ProductName>
 	            <a:RealHeight>17</a:RealHeight>
 	            <a:RealLength>17</a:RealLength>
 	            <a:RealWeightKg>10</a:RealWeightKg>
 	            <a:RealWidth>17</a:RealWidth>
-	            <a:RefId>30123456</a:RefId>
+	            <a:RefId>00123456</a:RefId>
 	            <a:RewardValue>0</a:RewardValue>
 	            <a:StockKeepingUnitEans>
 	               <a:StockKeepingUnitEanDTO>
-	                  <a:Ean>3123456789123</a:Ean>
+	                  <a:Ean>0123456789123</a:Ean>
 	               </a:StockKeepingUnitEanDTO>
 	            </a:StockKeepingUnitEans>
 	            <a:UnitMultiplier>1</a:UnitMultiplier>
@@ -224,172 +447,236 @@ Para cadastrar um KIT é necessário seguir os seguintes fluxos:
 	      </StockKeepingUnitInsertUpdateResponse>
 	   </s:Body>
 	</s:Envelope>
+
 {% endhighlight %}
 
-### Cadastrar a Imagem do SKU KIT
-{: #Cadastrar a Imagem do SKU KIT .slug-text}
+**obs= O preço da SKU pode não ser enviado no momento da inserção da SKU. Quando um preço não é enviado no momento da criação de uma SKU, na tabela de SKU por obrigatoriedade é criado um preço fictício de 99999.00, e no sistema de "Pricing" da VTEX não é inserido o preço.
 
-### Parâmetros
+###Imagens das SKUs
+Exemplo de request para inserir Imagens para uma SKU no webservice.
 
-| Nome                    | Tipo                          |
-| -----------------------:| :-----------------------------|
-| **urlImage**         		| **String** <br> Url da imagem.|
-| **imageName**        		| **String** <br> Nome da imagem.|
-| **stockKeepingUnitId**  | **Number** <br> Id da SKU.|
-| **fileId**  						| **Number** <br> fileId.|
-{: .doc-api-table }
-
-### Exemplo
-
-#### Request
+_request:_  
 {% highlight json %}
+
 	<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
 	   <soapenv:Header/>
 	   <soapenv:Body>
-	      <tem:>
-	         <tem:urlImage>http://img.ph2-jpg.posthaus.com.br/Web/posthaus/foto/brinquedos/jogos-e-outros-brinquedos/brinquedo-pa-e-rastelo_56855_600_1.jpg</tem:urlImage>
-	         <tem:imageName>Pa_Rastelo</tem:imageName>
-	         <tem:stockKeepingUnitId>31018373</tem:stockKeepingUnitId>
-	         <tem:fileId>31018373</tem:fileId>//id da sku
+	      <tem:ImageServiceInsertUpdate>
+	         <tem:urlImage>https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ6Lu0obmddsQX3JELe04hUs_hSelsmU8_W1yn5ztgdAk5SJC7D</tem:urlImage>
+	         <tem:imageName>Barro Vermelho Escuro</tem:imageName>
+	         <tem:stockKeepingUnitId>31018371</tem:stockKeepingUnitId>
 	      </tem:ImageServiceInsertUpdate>
 	   </soapenv:Body>
 	</soapenv:Envelope>
+
 {% endhighlight %}
 
-#### Response
+_response:_  
+
 {% highlight json %}
+
 	<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
 	   <s:Body>
 	      <ImageServiceInsertUpdateResponse xmlns="http://tempuri.org/"/>
 	   </s:Body>
 	</s:Envelope>
+
 {% endhighlight %}
 
-### Cadastrar os produtos (pai da SKUS) do KIT
-{: #Cadastrar os produtos do KIT .slug-text}
+_request 2:_  
 
-### Parâmetros
-
-| Nome                    | Tipo                          |
-| -----------------------:| :-----------------------------|
-| **BrandId**           | **Number** <br> ID da marca. |
-| **CategoryId**        | **Number** <br> ID da categoria. |
-| **DepartmentId**      | **Number** <br> ID do departamento. |
-| **Description**       | **String** <br> Descrição. |
-| **DescriptionShort**  | **String** <br> Resumo. |
-| **IsActive**  				| **Bool** <br> Ativo. |
-| **IsVisible**  				| **Bool** <br> Visivel. |
-| **KeyWords**  				| **String** <br> Palavras chaves. |
-| **LinkId**  			| **Number** <br> . |
-| **ListStoreId** | **String** <br> . |
-| **MetaTagDescription** | **String** <br> Nome do produto. |
-| **Name** | **String** <br> . |
-| **RefId** | **String** <br> refId. |
-| **Title** | **String** <br> Titulo do produto. |
-{: .doc-api-table }
-
-### Exemplo
-
-#### Request
 {% highlight json %}
-	<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:vtex="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts"
-	xmlns:arr="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+
+	<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
 	   <soapenv:Header/>
 	   <soapenv:Body>
-	      <tem:ProductInsertUpdate>
-	         <tem:productVO>
-	            <vtex:BrandId>2000011</vtex:BrandId>
-	            <vtex:CategoryId>1000020</vtex:CategoryId>
-	            <vtex:DepartmentId>1000018</vtex:DepartmentId>
-	            <vtex:Description>Pa</vtex:Description>
-	            <vtex:DescriptionShort>Pa de jardim</vtex:DescriptionShort>
-	            <vtex:IsActive>true</vtex:IsActive>
-	            <vtex:IsVisible>false</vtex:IsVisible>
-	            <vtex:KeyWords>Pa de jardim</vtex:KeyWords>
-	            <vtex:LinkId>pa_jardim</vtex:LinkId>
-	            <vtex:ListStoreId>
-	               <arr:int>1</arr:int>
-	            </vtex:ListStoreId>
-	            <vtex:MetaTagDescription>Pa de jardim</vtex:MetaTagDescription>
-	            <vtex:Name>Pa de jardim</vtex:Name>
-	            <vtex:RefId>5234567891</vtex:RefId>
-	            <vtex:Title>Pa de jardim</vtex:Title>
-	         </tem:productVO>
-	      </tem:ProductInsertUpdate>
+	      <tem:ImageServiceInsertUpdate>
+	         <tem:urlImage>http://1.bp.blogspot.com/_ZANjG3oA2BI/TCJfvX-7daI/AAAAAAAADZ0/yO5MwjMtjdI/s400/vaso_5cm.jpg</tem:urlImage>
+	         <tem:imageName>Barro Vermelho Claro</tem:imageName>
+	         <tem:stockKeepingUnitId>31018372</tem:stockKeepingUnitId>
+	          <tem:fileId>31018372</tem:fileId>
+	      </tem:ImageServiceInsertUpdate>
 	   </soapenv:Body>
 	</soapenv:Envelope>
+
 {% endhighlight %}
 
-#### Response
+_response 2:_  
 
-{% highlight json %}
+{% highlight json %}  
+
 	<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
 	   <s:Body>
-	      <ProductInsertUpdateResponse xmlns="http://tempuri.org/">
-	         <ProductInsertUpdateResult xmlns:a="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
-	            <a:AdWordsRemarketingCode i:nil="true"/>
-	            <a:BrandId>2000011</a:BrandId>
-	            <a:CategoryId>1000020</a:CategoryId>
-	            <a:DepartmentId>1000018</a:DepartmentId>
-	            <a:Description>Pa</a:Description>
-	            <a:DescriptionShort>Pa de jardim</a:DescriptionShort>
-	            <a:Id>31018371</a:Id>
-	            <a:IsActive>false</a:IsActive>
-	            <a:IsVisible>false</a:IsVisible>
-	            <a:KeyWords>Pa de jardim</a:KeyWords>
-	            <a:LinkId>pa_jardim</a:LinkId>
-	            <a:ListStoreId xmlns:b="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
-	               <b:int>1</b:int>
-	            </a:ListStoreId>
-	            <a:LomadeeCampaignCode i:nil="true"/>
-	            <a:MetaTagDescription>Pa de jardim</a:MetaTagDescription>
-	            <a:Name>Pa de jardim</a:Name>
-	            <a:RefId>5234567891</a:RefId>
-	            <a:ReleaseDate i:nil="true"/>
-	            <a:ShowWithoutStock>true</a:ShowWithoutStock>
-	            <a:SupplierId i:nil="true"/>
-	            <a:TaxCode i:nil="true"/>
-	            <a:Title>Pa de jardim</a:Title>
-	         </ProductInsertUpdateResult>
-	      </ProductInsertUpdateResponse>
+	      <ImageServiceInsertUpdateResponse xmlns="http://tempuri.org/"/>
 	   </s:Body>
 	</s:Envelope>
+
 {% endhighlight %}
 
-### Cadastrar as SKUs do KIT
-{: #Cadastrar as SKUs do KIT .slug-text}
+###2 - Preço e Estoque
+{: #Enviar Preço e Estoque .slug-text}
+Uma vez cadastradas os produtos e as SKUs na loja da VTEX, é necessário alimentar o estoque e acertar o preço na tabela de preço (se no momento de inserir a SKU não enviou o preço).
 
-### Parâmetros
 
-| Nome                    | Tipo                          |
-| -----------------------:| :-----------------------------|
-| **CubicWeight**         | **Number** <br> . |
-| **Height**        			| **Number** <br> Altura. |
-| **IsActive**  					| **Bool** <br> Ativo. |
-| **IsAvaiable**  				| **Bool** <br> Disponível. |
-| **IsKit**  							| **Bool** <br> Define que a SKU será um KIT - **irreversível**. |
-| **Length**  						| **Number** <br> . |
-| **ListPrice** 					| **Number** <br> Define o preço DE do KIT. |
-| **ModalId** 						| **Number** <br> Define o preço DE do KIT. |
-| **Name** 								| **String** <br> Nome do SKU do KIT. |
-| **Price** 							| **Number** <br> Preço. |
-| **ProductId** 					| **Number** <br> ID do produto. |
-| **RealHeight** 					| **Number** <br> Altura. |
-| **RealLength** 					| **Number** <br> Comprimento. |
-| **RealWeightKg** 				| **Number** <br> Peso. |
-| **RealWidth** 					| **Number** <br> Largura. |
-| **RefId** 							| **Number** <br> refId. |
-| **RewardValue** 				| **Number** <br> . |
-| **UnitMultiplier** 			| **Number** <br> . |
-| **WeightKg** 						| **Number** <br> . |
-| **Width** 							| **Number** <br> . |
-{: .doc-api-table }
+####2.1 - Preço
+Se no momento sa inserção da SKU não foi enviado um preço válido, o sistem colocou um preço de segurança, e neste cenário é necessário corrigir o preço da mesma. Isso pode ser feito direto no admin da loja na VTEX (_urldaloja/admin/Site/SkuTabelaValor.aspx_), ou usando a API REST do sistema de **Pricing**.
 
-### Exemplo
 
-#### Request
+endpoint: **http://sandboxintegracao.vtexcommercebeta.com.br/api/pricing/pvt/price-sheet**  
+verb: **POST**  
+Content-Type: **application/json**  
+Accept: **application/json**
+
+_Exemplo do POST:_  
 
 {% highlight json %}
+
+	[
+	  {
+	    "Id": null, //se naum for uma lateração passar nulo
+	    "itemId": 31018371, //id da sku
+	    "salesChannel": 1,  //canal de vendas, loja principal = 1
+	    "price": 110.0, // preço POR
+	    "listPrice": 150.0, //preço DE
+	    "validFrom": "2012-12-05T17:00:03.103", //de
+	    "validTo": "2016-12-05T17:00:03.103" //até
+	  },
+	  {
+	    "Id": null,
+	    "itemId": 31018372,
+	    "salesChannel": 1,
+	    "price": 125.5,
+	    "listPrice": 160.0,
+	    "validFrom": "2011-03-04T00:00:00",
+	    "validTo": "2015-03-28T00:00:00"
+	  }
+	]
+
+{% endhighlight %}
+
+{% highlight json %}
+_response:_ 204
+{% endhighlight %}
+
+A documentação completa sobre a API de **Pricing** se encontra em:
+http://lab.vtex.com/docs/logistics/api/latest/carrier/index.html
+
+####2.2 - Estoque
+Isso pode ser feito direto no admin da loja na VTEX (_urldaloja/admin/logistics/#/dashboard_), maneira rápida:
+
+1. Criar o estoque,  
+2. Criar a transpotadora,  
+3. Criar a doca,
+4. Colocar estoque nos itens  
+
+Manipulando estoque através da API REST do sistema de **Logistics**:
+
+Criar o estoque, criar a transpotadora e criar a doca no admin da VTEX, e depois usar a API REST do **Logistics** para manipular o estoque, como segue exemplo:
+
+endpoint: **http://sandboxintegracao.vtexcommercebeta.com.br/api/logistics/pvt/inventory/warehouseitems/setbalance**    
+verb: **POST**    
+Content-Type: **application/json**    
+Accept: **application/json**    
+
+
+*Exemplo do POST:*  
+
+{% highlight json %}
+
+	[
+	  {
+	    "wareHouseId": "1_1", //id do estoque
+	    "itemId": "31018371", //id do sku
+	    "quantity": 50 /quantidade
+	  },
+	  {
+	    "wareHouseId": "1_1",
+	    "itemId": "31018372",
+	    "quantity": 80
+	  }
+	]
+
+{% endhighlight %}
+
+
+_response:_ 200
+{% highlight json %}
+true
+{% endhighlight %}
+
+
+A documentação completa sobre a API de **Logistics** se encontra em:
+_http://lab.vtex.com/docs/logistics/api/latest/carrier/index.html_
+
+
+###Ativa SKUs
+{: #Ativar as SKU .slug-text}
+Após as SKUs estarem em ordem, basta ativá-las. Exempos de chds d atiação de SKU
+
+_request:_  
+
+{% highlight json %}
+
+	<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+	   <soapenv:Header/>
+	   <soapenv:Body>
+	      <tem:StockKeepingUnitActive>
+	         <tem:idStockKeepingUnit>31018371</tem:idStockKeepingUnit>
+	      </tem:StockKeepingUnitActive>
+	   </soapenv:Body>
+	</soapenv:Envelope>
+
+{% endhighlight %}
+
+_response:_  
+
+{% highlight json %}
+
+	<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+	   <s:Body>
+	      <StockKeepingUnitActiveResponse xmlns="http://tempuri.org/"/>
+	   </s:Body>
+	</s:Envelope>
+
+{% endhighlight %}
+
+_request 2:_  
+
+{% highlight json %}
+
+	<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+	   <soapenv:Header/>
+	   <soapenv:Body>
+	      <tem:StockKeepingUnitActive>
+	         <tem:idStockKeepingUnit>31018372</tem:idStockKeepingUnit>
+	      </tem:StockKeepingUnitActive>
+	   </soapenv:Body>
+	</soapenv:Envelope>
+
+{% endhighlight %}
+
+_response 2:_  
+
+{% highlight json %}
+
+	<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+	   <s:Body>
+	      <StockKeepingUnitActiveResponse xmlns="http://tempuri.org/"/>
+	   </s:Body>
+	</s:Envelope>
+
+{% endhighlight %}
+
+###Alterações de SKUs
+{: #Alterar a SKU .slug-text}
+
+Após uma SKU ser inserida com sucesso, caso haja alguma necessidade de alguma alteração, deve se invocar o mesmo método de inserçao passando o id de SKU que se deseja alterar. Alterações de preço **NÃO** devem ser feitas pelo metodo de insert/update de SKU. 
+As alterações de preço devem ser feitas diretamente na API REST de **Pricing**
+
+_request:_  
+
+{% highlight json %}
+
 	<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:vtex="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts">
 	   <soapenv:Header/>
 	   <soapenv:Body>
@@ -401,268 +688,91 @@ Para cadastrar um KIT é necessário seguir os seguintes fluxos:
 	            <vtex:IsAvaiable>true</vtex:IsAvaiable>
 	            <vtex:IsKit>false</vtex:IsKit>
 	            <vtex:Length>15</vtex:Length>
+		        <vtex:ListPrice>150.0</vtex:ListPrice> //**
 	            <vtex:ModalId>1</vtex:ModalId>
-	            <vtex:Name>Pa para jardim</vtex:Name>
-	            <vtex:ProductId>31018371</vtex:ProductId>
+	            <vtex:Name>Vaso Artesanal de Barro Vermelho Escuro </vtex:Name>
+		        <vtex:Price>110.0</vtex:Price> //**
+	            <vtex:ProductId>31018369</vtex:ProductId>
 	            <vtex:RealHeight>17</vtex:RealHeight>
 	            <vtex:RealLength>17</vtex:RealLength>
 	            <vtex:RealWeightKg>10</vtex:RealWeightKg>
 	            <vtex:RealWidth>17</vtex:RealWidth>
-	            <vtex:RefId>40123457</vtex:RefId>
+	            <vtex:RefId>00123456</vtex:RefId> //*
 	            <vtex:RewardValue>0</vtex:RewardValue>
 	            <vtex:StockKeepingUnitEans>
 	               <vtex:StockKeepingUnitEanDTO>
-	                  <vtex:Ean>1223456789123</vtex:Ean>
+	                  <vtex:Ean>0123456789123</vtex:Ean>
 	               </vtex:StockKeepingUnitEanDTO>
 	            </vtex:StockKeepingUnitEans>
 	            <vtex:UnitMultiplier>1</vtex:UnitMultiplier>
-	            <vtex:WeightKg>1</vtex:WeightKg>
+	            <vtex:WeightKg>9</vtex:WeightKg>
 	            <vtex:Width>15</vtex:Width>
 	         </tem:stockKeepingUnitVO>
 	      </tem:StockKeepingUnitInsertUpdate>
 	   </soapenv:Body>
 	</soapenv:Envelope>
+
 {% endhighlight %}
 
+*Os campos Id ou RefId definem se será um insert ou um update, caso o id de SKU enviado ou o RefId enviado já existirem, será um update.
 
-#### Response
+**Caso passe preço nulo no update, o preço não será afetado.
+
+_response:_  
 
 {% highlight json %}
+
 	<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
 	   <s:Body>
 	      <StockKeepingUnitInsertUpdateResponse xmlns="http://tempuri.org/">
-	         <StockKeepingUnitInsertUpdateResult
-					xmlns:a="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts"
-					 xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
-	            <a:CommercialConditionId i:nil="true"/>
-	            <a:CostPrice>1</a:CostPrice>
+	         <StockKeepingUnitInsertUpdateResult xmlns:a="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	            <a:CommercialConditionId>1</a:CommercialConditionId>
+	            <a:CostPrice>1.0000</a:CostPrice>
 	            <a:CubicWeight>100</a:CubicWeight>
-	            <a:DateUpdated>2014-11-03T14:16:52.5863835</a:DateUpdated>
+	            <a:DateUpdated>2014-10-31T19:23:48.6456023</a:DateUpdated>
 	            <a:EstimatedDateArrival i:nil="true"/>
 	            <a:Height>15</a:Height>
-	            <a:Id>31018374</a:Id>
+	            <a:Id>31018371</a:Id>
 	            <a:InternalNote i:nil="true"/>
-	            <a:IsActive>false</a:IsActive>
+	            <a:IsActive>true</a:IsActive>
 	            <a:IsAvaiable>false</a:IsAvaiable>
 	            <a:IsKit>false</a:IsKit>
 	            <a:Length>15</a:Length>
-	            <a:ListPrice>99999</a:ListPrice> //qdo naum mnada preço retorn simbólico
+	            <a:ListPrice>150.0</a:ListPrice>
 	            <a:ManufacturerCode i:nil="true"/>
 	            <a:MeasurementUnit>un</a:MeasurementUnit>
 	            <a:ModalId>1</a:ModalId>
-	            <a:ModalType i:nil="true"/>
-	            <a:Name>Pa para jardim</a:Name>
-	            <a:Price>99999</a:Price> //qdo naum mnada preço retorn simbólico
-	            <a:ProductId>31018371</a:ProductId>
-	            <a:ProductName>Pa de jardim</a:ProductName>
+	            <a:ModalType>Vidro</a:ModalType>
+	            <a:Name>Vaso Artesanal de Barro Vermelho Escuro</a:Name>
+	            <a:Price>110.0</a:Price>
+	            <a:ProductId>31018369</a:ProductId>
+	            <a:ProductName>Vaso Artesanal de Barro Vermelho</a:ProductName>
 	            <a:RealHeight>17</a:RealHeight>
 	            <a:RealLength>17</a:RealLength>
 	            <a:RealWeightKg>10</a:RealWeightKg>
 	            <a:RealWidth>17</a:RealWidth>
-	            <a:RefId>40123457</a:RefId>
+	            <a:RefId>00123456</a:RefId>
 	            <a:RewardValue>0</a:RewardValue>
 	            <a:StockKeepingUnitEans>
 	               <a:StockKeepingUnitEanDTO>
-	                  <a:Ean>1223456789123</a:Ean>
+	                  <a:Ean>0123456789123</a:Ean>
 	               </a:StockKeepingUnitEanDTO>
 	            </a:StockKeepingUnitEans>
 	            <a:UnitMultiplier>1</a:UnitMultiplier>
-	            <a:WeightKg>1</a:WeightKg>
+	            <a:WeightKg>9</a:WeightKg>
 	            <a:Width>15</a:Width>
 	         </StockKeepingUnitInsertUpdateResult>
 	      </StockKeepingUnitInsertUpdateResponse>
 	   </s:Body>
 	</s:Envelope>
-{% endhighlight %}
 
-### Cadastrar as Imagens das SKUs do KIT
-{: #Cadastrar as Imagens das SKUs do KIT .slug-text}
-
-### Parâmetros
-
-| Nome                    | Tipo                          |
-| -----------------------:| :-----------------------------|
-| **urlImage**         		| **String** <br> Url da imagem.|
-| **imageName**        		| **String** <br> Nome da imagem.|
-| **stockKeepingUnitId**  | **Number** <br> Id da SKU.|
-| **fileId**  						| **Number** <br> fileId.|
-{: .doc-api-table }
-
-#### Request
-
-{% highlight json %}
-	<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
-	   <soapenv:Header/>
-	   <soapenv:Body>
-	      <tem:ImageServiceInsertUpdate>	   <tem:urlImage>http://flicbrinquedos.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/A/c/Acess_rio_Para_Jardim_-_P_-_Melissa_Doug_7_13.jpg</tem:urlImage>
-	         <tem:imageName>Pa</tem:imageName>
-	         <tem:stockKeepingUnitId>31018374</tem:stockKeepingUnitId>
-	          <tem:fileId>31018374</tem:fileId>
-	      </tem:ImageServiceInsertUpdate>
-	   </soapenv:Body>
-	</soapenv:Envelope>
 {% endhighlight %}
 
 
-#### Response
+####3.5 Pedidos e Tracking ####
+Toda a integração de pedidos, assim como atualizações de Notas Fiscais e Tracking devem ser feitas pela API REST do OMS (Order Managment System) da VTEX. Saiba mais sibre integrar pedidos aqui(___link___).
 
-{% highlight json %}
-	<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
-	   <s:Body>
-	      <ImageServiceInsertUpdateResponse xmlns="http://tempuri.org/"/>
-	   </s:Body>
-	</s:Envelope
-{% endhighlight %}
+Segue o link da API completa do OMS: _http://docs.vtex.com.br/pt-br/oms/api/orders/_ 
 
-
-### Associar SKUs ao KIT
-{: #Associar SKUs ao KIT.slug-text}
-
-### Request
-
-{% highlight json %}
-	<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-	 xmlns:tem="http://tempuri.org/"
-	 xmlns:vtex="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts">
-	   <soapenv:Header/>
-	   <soapenv:Body>
-	      <tem:StockKeepingUnitKitInsertUpdate>
-	         <tem:stockKeepingUnitKit>
-	            <vtex:Amount>1</vtex:Amount> //quantidade de itens no KIT
-	            <vtex:StockKeepingUnitId>31018374</vtex:StockKeepingUnitId>
-	            <vtex:StockKeepingUnitParent>31018373</vtex:StockKeepingUnitParent> //id da SKU KIT
-	            <vtex:UnitPrice>20.00</vtex:UnitPrice> //preço da unidade dentro do KIT
-	         </tem:stockKeepingUnitKit>
-	      </tem:StockKeepingUnitKitInsertUpdate>
-	   </soapenv:Body>
-	</soapenv:Envelope>
-{% endhighlight %}
-
-### Response
-
-{% highlight json %}
-	<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
-	   <s:Body>
-	      <StockKeepingUnitKitInsertUpdateResponse xmlns="http://tempuri.org/">
-	         <StockKeepingUnitKitInsertUpdateResult
-							xmlns:a="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts"
-							xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
-	            <a:Amount>1</a:Amount>
-	            <a:Id>35</a:Id>
-	            <a:StockKeepingUnitId>31018374</a:StockKeepingUnitId>
-	            <a:StockKeepingUnitParent>31018373</a:StockKeepingUnitParent>
-	            <a:UnitPrice>20.00</a:UnitPrice>
-	         </StockKeepingUnitKitInsertUpdateResult>
-	         <stockKeepingUnitKitId>35</stockKeepingUnitKitId>
-	      </StockKeepingUnitKitInsertUpdateResponse>
-	   </s:Body>
-	</s:Envelope>
-{% endhighlight %}
-
-### Ativar SKUs do KIT
-
-### Request
-
-{% highlight json %}
-	<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
-	   <soapenv:Header/>
-	   <soapenv:Body>
-	      <tem:StockKeepingUnitActive>
-	         <tem:idStockKeepingUnit>31018374</tem:idStockKeepingUnit>
-	      </tem:StockKeepingUnitActive>
-	   </soapenv:Body>
-	</soapenv:Envelope>
-{% endhighlight %}
-
-
-### Response
-
-{% highlight json %}
-	<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
-	   <s:Body>
-	      <StockKeepingUnitActiveResponse xmlns="http://tempuri.org/"/>
-	   </s:Body>
-	</s:Envelope
-{% endhighlight %}
-
-
-### Ativar KIT
-
-### Request
-
-{% highlight json %}
-	<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
-	   <soapenv:Header/>
-	   <soapenv:Body>
-	      <tem:StockKeepingUnitActive>
-	         <tem:idStockKeepingUnit>31018373</tem:idStockKeepingUnit>
-	      </tem:StockKeepingUnitActive>
-	   </soapenv:Body>
-	</soapenv:Envelope>
-{% endhighlight %}
-
-### Response
-
-{% highlight json %}
-	<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
-	   <s:Body>
-	      <StockKeepingUnitActiveResponse xmlns="http://tempuri.org/"/>
-	   </s:Body>
-	</s:Envelope>
-{% endhighlight %}
-
-
-### Preço KIT e SKUS do KIT
-{: #Preço KIT e SKUS do KIT .slug-text}
-
-O preço do KIT pode ser formado de 2 maneiras:
-
-1. caso o SKU KIT contenha preço na tabela de preço, o preço considerado na loja será o preço definido
-
-2. caso o SKU KIT não possua preço, o preço do KIT será feito pelo intens que o compõem.
-
-<div class="api-description">
-POST  /api/pricing/pvt/price-sheet
-{: .api-route }
-</div>
-
-{% highlight json %}
-
-		[
-			{
-				"Id": null,
-				"itemId": 31018373, //id do KIT
-				"salesChannel": 1,
-				"price": 60.0,
-				"listPrice": 50.0,
-				"validFrom": "2012-12-05T17:00:03.103",
-				"validTo": "2016-12-05T17:00:03.103"
-			}
-		]
-{% endhighlight %}
-
-### Estoque SKUs KIT
-{: #Estoque SKUs KIT.slug-text}
-
-O kit só estará disponível para a venda quando todos os seus itens estiverem disponíveis.
-
-	POST /api/logistics/pvt/inventory/warehouseitems/setbalance
-
-### Request
-
-{% highlight json %}
-		[
-			{
-				"wareHouseId": "1_1",
-				"itemId": "31018374",
-				"quantity": 100
-			}
-		]
-{% endhighlight %}
-
-### Response
-{% highlight json %}
-{
-	true
-}
-{% endhighlight %}
+autor: _Jonas Bolognim_
+propriedade: _VTEX_
