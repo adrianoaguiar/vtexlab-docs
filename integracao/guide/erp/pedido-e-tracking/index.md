@@ -6,7 +6,7 @@ docType: guide
 ---
 # Integração de Pedido, Nota Fiscal e Tracking
 
-Este documento tem por objetivo auxiliar na integração de pedidos entre o ERP e uma loja hospedada na versão smartcheckout da VTEX. O fluxo consiste em ler os pedidos prontos pro ERP na VTEX, inserir os pedidos no ERP, enviar para a loja na VTEX as informações de nota fiscal e tracking e ou cancelamento de pedido.  
+Este documento tem por objetivo auxiliar na integração de pedidos entre uma loja hospedada na versão smartcheckout da VTEX com o ERP. O fluxo consiste em ler os pedidos prontos pro ERP na VTEX, inserir os pedidos no ERP, enviar para a loja na VTEX as informações de nota fiscal e tracking e ou cancelamento de pedido.  
 
 ## Pedidos
 
@@ -19,7 +19,7 @@ _Exemplo do Fluxo:_
 ### Obter a Lista de Pedidos por Status na API do OMS
 {: #1 .slug-text}
 
-Através da API do OMS pegar a lista de pedidos pagos paginados:
+Através da API do OMS pegar a lista de pedidos prontos para o ERP paginados:
 
 <a title="obter lista de pedidos por status" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/OMS/OMS_Orders" target="_blank">[Developer] - Exemplo de chamada para obter uma lista de pedidos por status</a>
 
@@ -28,6 +28,8 @@ Esse exemplo retorna uma lista com o resumo de cada pedido, onde para cada pedid
 
 ### Obter um Pedido Pelo Identificador na API do OMS
 {: #2 .slug-text}
+
+Através da API do OMS pegar um pedido pelo identificador:
 
 <a title="obter pedido por identificador" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/OMS/OMS_Order_0" target="_blank">[Developer] - Exemplo de chamada para obter um  pedido pelo identificador.</a> 
 
@@ -61,7 +63,7 @@ _Exemplo do Fluxo:_
 ### Envio de Nota Fiscal
 {: #5 .slug-text}
 
-Após receber o pedido, o ERP emite a Nota Fiscal do Pedido e informa a loja VTEX sobre a mesma.
+Após receber o pedido, o ERP emite a nota fiscal do pedido e informa a loja VTEX sobre a mesma.
 
 O envio de notas fiscais pode ser parcial, obrigando assim ao enviador informar além dos valores da nota fiscal, os items que está mandando na nota fiscal parcial.  
 
@@ -70,7 +72,7 @@ O envio de notas fiscais pode ser parcial, obrigando assim ao enviador informar 
 ### Envio de Tracking
 {: #6 .slug-text}
 
-Uma vez informado a Nota Fiscal, vem a parte de ratreamento da Entrega.
+Uma vez informado a Nota Fiscal, vem a parte de ratreamento da entrega.
 O ERP ou a transportadora podem enviar informações de como e onde anda o pedido através da API do OMS VTEX
 
 <a title="enviando tracking para o OMS" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/OMS/OMS_Order" target="_blank">[Developer] - Exemplo de chamada para enviar Tracking de Entrega para o OMS</a> 

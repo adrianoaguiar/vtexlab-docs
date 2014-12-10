@@ -36,3 +36,6 @@ Nesta ferramenta pode se fazer as chamadas para as APIs REST também.
 Nesta ferramente pode se testar, armazenar histórico, salvar coleções de requests do acesso de todas as APIs dos modulos VTEX  (OMS, Logistics, Pricing, GCS, etc).
 
 É de suma importancia que o integrador tenha o conhecimento de ferramentas desse tipo, ou outras parecidas, antes de inciar um processo de integração usando webservice SOAP ou APIs REST VTEX.
+
+## Credenciais Para Acesso (webservice e API REST)
+Toda chamada feita ao web service deve ser em https e um usuario e senha são exigidos para iniciar a conexaõ. As chamdas para as APIs REST também devem ser feitas em https e devem conter em seu header as chaves de autenticação .Tanto o usuário e senha (para acessar o webservice) e chaves de asutenticação do header(para acessar as APIs REST) devem ser solicitados ao administrador da loja, ou ao time de operaçãoes que está implantando a loja.

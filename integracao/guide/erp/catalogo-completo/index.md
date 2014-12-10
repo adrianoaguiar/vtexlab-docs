@@ -1,26 +1,27 @@
 ---
 layout: docs
-title: Integração Completa de Catalogo
+title: Integração Completa de Catálogo, Preço e Estoque
 application: erp
 docType: guide
 ---
 
-# ERP - Integração Completa de Catálogo e Condições Comerciais
+# Integração Completa de Catálogo, Preço e Estoque
 
-
-Este documento tem por objetivo auxiliar o integrador na integração de catálogo, condição comercial(preço e estoque) do ERP para a uma loja hospedada na versão smartcheckout da VTEX. Nesse tipo de integração a maioria da adminstração da loja está ERP.
+Este documento tem por objetivo auxiliar na integração de catálogo, preço e estoque do ERP para a uma loja hospedada na versão smartcheckout da VTEX. Nesse tipo de integração a maioria da adminstração da loja está ERP.
 
 ![alt text](erp-catalogo-completo.PNG "Fluxo de catalogo completo") 
 
-##1 - Catalogo Fluxo Completo
+### Catalogo Fluxo Completo
+{: #1 .slug-text}
+
 Nesse cenário de fluxo completo, a maioria dos dados de produtos e SKUs são manipulados pelo ERP (marca, imagens, categoria, ativação, etc...). A manipulação de campos de especificação nesse modelo é possivel ser feita por API REST, mais a melhor prática seria pelo admin da VTEX.
 
 Para o ERP integrar o catálogo com um da loja na VTEX, deverá usar o webservice da própria loja, que por definição atenderá em [https:webservice-nomedaloja-vtexcommerce.com.br/service.svc?wsdl](https:webservice-nomedaloja-vtexcommerce.com.br/service.svc?wsdl "web service da loja"). As credenciais de acesso ao webservice deverão ser solicitadas junto ao administrador da loja.
 
 Futuramente além do serviço SOAP (webservice) estaremos também oferecendo integração de catálogo por APIs REST (JSON) bem definidas e de alta performance.
 
-###1.1 - Organização dos Produtos Dentro da Loja
-{: #Cadastrar-Departamento e Categorias .slug-text}
+## Organização dos Produtos Dentro da Loja
+{: #2 .slug-text}
 
 Geralmente, os produtos são organizados dentro da loja em estruturas mercadológicas formadas por:
 
@@ -32,7 +33,7 @@ Geralmente, os produtos são organizados dentro da loja em estruturas mercadoló
 *Departamento/Categoria/SubCategoria/Produto*  
 *Ferramentas/Eletricas/Furradeiras/Super Drill*
 
-###Departamento
+##Departamento
 
 Segue abaixo exemplos de como inserir os Departamentos e as Categorias por webservice:
 
@@ -81,7 +82,7 @@ _response:_
 
 {% endhighlight %}
 
-###Categoria
+##Categoria
 
 _request:_  
 
@@ -129,7 +130,7 @@ _response_:
 
 {% endhighlight %}
 
-###Sub Categoria###
+##Sub Categoria###
 
 _request:_  
 
@@ -177,7 +178,7 @@ _response:_
 
 {% endhighlight %}
 
-###Marca
+##Marca
 
 Segue abaixo exemplo de como inserir uma Marca por webservice.  
 
@@ -226,8 +227,8 @@ _response:_
 {% endhighlight %}
 
 
-###1.2 - Produtos e SKUs
-{: #Cadastrar-Produtos e SKUs .slug-text}
+## Produtos e SKUs
+{: #3 .slug-text}
 
 Qual é a diferença entre produto e SKU?
 
@@ -513,100 +514,35 @@ _response 2:_
 
 {% endhighlight %}
 
-###2 - Preço e Estoque
-{: #Enviar Preço e Estoque .slug-text}
+## Preço e Estoque
+{: #7 .slug-text}
+
 Uma vez cadastradas os produtos e as SKUs na loja da VTEX, é necessário alimentar o estoque e acertar o preço na tabela de preço (se no momento de inserir a SKU não enviou o preço).
 
 
-####2.1 - Preço
-Se no momento sa inserção da SKU não foi enviado um preço válido, o sistem colocou um preço de segurança, e neste cenário é necessário corrigir o preço da mesma. Isso pode ser feito direto no admin da loja na VTEX (_urldaloja/admin/Site/SkuTabelaValor.aspx_), ou usando a API REST do sistema de **Pricing**.
+### Preço
+
+Se no momento sa inserção da SKU não foi enviado um preço válido para a SKU é necessário inserir o preço da mesma. Isso pode ser feito direto no admin da loja na VTEX (_urldaloja/admin/Site/SkuTabelaValor.aspx_), ou usando a API REST do sistema de **Pricing**.
 
 
-endpoint: **http://sandboxintegracao.vtexcommercebeta.com.br/api/pricing/pvt/price-sheet**  
-verb: **POST**  
-Content-Type: **application/json**  
-Accept: **application/json**
+Através da API do Pricing, inserir ou atualizar preço na SKUs:
 
-_Exemplo do POST:_  
-
-{% highlight json %}
-
-	[
-	  {
-	    "Id": null, //se naum for uma lateração passar nulo
-	    "itemId": 31018371, //id da sku
-	    "salesChannel": 1,  //canal de vendas, loja principal = 1
-	    "price": 110.0, // preço POR
-	    "listPrice": 150.0, //preço DE
-	    "validFrom": "2012-12-05T17:00:03.103", //de
-	    "validTo": "2016-12-05T17:00:03.103" //até
-	  },
-	  {
-	    "Id": null,
-	    "itemId": 31018372,
-	    "salesChannel": 1,
-	    "price": 125.5,
-	    "listPrice": 160.0,
-	    "validFrom": "2011-03-04T00:00:00",
-	    "validTo": "2015-03-28T00:00:00"
-	  }
-	]
-
-{% endhighlight %}
-
-{% highlight json %}
-_response:_ 204
-{% endhighlight %}
-
-A documentação completa sobre a API de **Pricing** se encontra em:
-http://lab.vtex.com/docs/logistics/api/latest/carrier/index.html
-
-####2.2 - Estoque
-Isso pode ser feito direto no admin da loja na VTEX (_urldaloja/admin/logistics/#/dashboard_), maneira rápida:
-
-1. Criar o estoque,  
-2. Criar a transpotadora,  
-3. Criar a doca,
-4. Colocar estoque nos itens  
-
-Manipulando estoque através da API REST do sistema de **Logistics**:
-
-Criar o estoque, criar a transpotadora e criar a doca no admin da VTEX, e depois usar a API REST do **Logistics** para manipular o estoque, como segue exemplo:
-
-endpoint: **http://sandboxintegracao.vtexcommercebeta.com.br/api/logistics/pvt/inventory/warehouseitems/setbalance**    
-verb: **POST**    
-Content-Type: **application/json**    
-Accept: **application/json**    
+<a title="inserir ou atualizar preço na SKUs" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/PRICING/PRICING_Set" target="_blank">[Developer] - Exemplo de chamada para inserir ou atualizar preço nas SKUs</a>
 
 
-*Exemplo do POST:*  
+A documentação completa sobre a API de **Pricing** se encontra em: [http://lab.vtex.com/docs/pricing/api/latest/pricing/index.html](http://lab.vtex.com/docs/pricing/api/latest/pricing/index.html)
 
-{% highlight json %}
+### Estoque
 
-	[
-	  {
-	    "wareHouseId": "1_1", //id do estoque
-	    "itemId": "31018371", //id do sku
-	    "quantity": 50 /quantidade
-	  },
-	  {
-	    "wareHouseId": "1_1",
-	    "itemId": "31018372",
-	    "quantity": 80
-	  }
-	]
+Através da API do Logistics, inserir ou atualizar os estoques na SKUs:
 
-{% endhighlight %}
+<a title="inserir ou atualizar os estoques na SKUs" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/LOGISTICS/LOGISTICS_SetBalance" target="_blank">[Developer] - Exemplo de chamada para inserir ou atualizar estoque nas SKUs</a>
 
+A documentação completa sobre a API de **Logistics** se encontra em: [http://lab.vtex.com/docs/logistics/api/latest/warehouse/index.html](http://lab.vtex.com/docs/logistics/api/latest/warehouse/index.html)
 
-_response:_ 200
-{% highlight json %}
-true
-{% endhighlight %}
+## Pedidos
+Para a integraão de pedidos consulte o tópico [Integração de Pedido, Nota Fiscal e Tracking](http://lab.vtex.com/docs/integracao/guide/erp/pedido-e-tracking/index.html).
 
-
-A documentação completa sobre a API de **Logistics** se encontra em:
-_http://lab.vtex.com/docs/logistics/api/latest/carrier/index.html_
 
 
 ###Ativa SKUs
@@ -770,9 +706,8 @@ _response:_
 
 
 ####3.5 Pedidos e Tracking ####
-Toda a integração de pedidos, assim como atualizações de Notas Fiscais e Tracking devem ser feitas pela API REST do OMS (Order Managment System) da VTEX. Saiba mais sibre integrar pedidos aqui(___link___).
 
-Segue o link da API completa do OMS: _http://docs.vtex.com.br/pt-br/oms/api/orders/_ 
+Para a integraão de pedidos consulte o tópico [Integração de Pedido, Nota Fiscal e Tracking](http://lab.vtex.com/docs/integracao/guide/erp/pedido-e-tracking/index.html).
 
 autor: _Jonas Bolognim_
 propriedade: _VTEX_

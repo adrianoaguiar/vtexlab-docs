@@ -1,27 +1,27 @@
 ---
 layout: docs
-title: Integração Rápida
+title: Integração Rápida de Catálogo e Preço e Estoque
 application: erp
 docType: guide
 ---
 
-# Integração Rápida de Catálogo e Condições Comerciais
+# Integração Rápida de Catálogo e Preço e Estoque
 
-Este documento tem por objetivo auxiliar o integrador na integração de catálogo, condição comercial(preço e estoque) do ERP para a uma loja hospedada na versão smartcheckout da VTEX, de uma maneira rápida.
+Este documento tem por objetivo auxiliar na integração de catálogo,preço e estoque do ERP para a uma loja hospedada na versão smartcheckout da VTEX, de uma maneira rápida.
 
 Nesse tipo de integração a adminstração da loja está no admin da VTEX, sendo o ERP apenas uma fonte de onde nascem os produstos e SKUs.
 
-## Catalogo Fluxo Básico (Express)
-{: #Catalogo Fluxo Básico .slug-text}
+### Catalogo Fluxo Básico (Express)
+{: #1 .slug-text}
 
 Nesse cenário de fluxo básico, apenas os dados básicos de produtos e SKUs são manipulados pelo ERP, e todo o enriquecimento (marca, fornecedor, imagens, categoria, ativação, etc.) será feito pelo admin da loja na plataforma VTEX.
 
-Para o ERP integrar se ao catálogo da loja na VTEX, deverá usar o webservice da própria loja, que por definição atenderá em [https:webservice-nomedaloja-vtexcommerce.com.br/service.svc?wsdl](https:webservice-nomedaloja-vtexcommerce.com.br/service.svc?wsdl "web service da loja"). As credenciais de acesso ao webservice deverão ser solicitadas junto ao administrador da loja.
+Para o ERP integrar se ao catálogo da loja na VTEX, deverá usar o webservice da própria loja, que por definição atenderá em [https:webservice-nomedaloja-vtexcommerce.com.br/service.svc?wsdl](https:webservice-sandboxintegracao-vtexcommerce.com.br/service.svc?wsdl "web service da loja"). As credenciais de acesso ao webservice deverão ser solicitadas junto ao administrador da loja.
 
 Futuramente além do serviço SOAP (webservice) estaremos também oferecendo integração de catálogo por APIs REST (JSON) bem definidas e de alta performance.
 
 ## Organização dos Produtos Dentro da Loja
-{: #Organização dos Produtos Dentro da Loja.slug-text}
+{: #2 .slug-text}
 
 Geralmente, os produtos são organizados dentro da loja em estruturas mercadológicas formadas por:
 
@@ -29,14 +29,15 @@ Geralmente, os produtos são organizados dentro da loja em estruturas mercadoló
 2. **Categoria** - categoria cujo id de categoria pai é um **departamento**,
 3. **SubCategoria**. categoria cujo id de categoria pai é um **categoria**
 
-### Exemplo
+_Exemplo:_  
+
 * Departamento/Categoria/SubCategoria/Produto
 * Ferramentas/Eletricas/Furradeiras/Super Drill
 
 O cadastro da estrutura mercadologica deve ser feito diretamente no admin da própria loja (_http://sualoja.com.br/admin/Site/Categories.aspx_), e para atender a integração vinda do ERP, é criado um departamento padrão para produtos que vem do ERP, ou seja, todos os produtos caem no admin da loja nesse departamento padrão, e depois no momento do enriquecimento é colocado na categoria desejada.
 
-### Produtos e SKUs
-{: #Produtos e SKUs.slug-text}
+## Produtos e SKUs
+{: #3 .slug-text}
 
 > Qual é a diferença entre produto e SKU?
 
@@ -46,16 +47,15 @@ O cadastro da estrutura mercadologica deve ser feito diretamente no admin da pr�
 
   No modelo de cadastro de Produtos e SKUs da VTEX, um SKU sempre será filha de um Produto (não existe SKU sem produto), mesmo que esse produto não tenha variçãoes, e nesse caso será 1 SKU para 1 produto, por exemplo, produto *Bola Jabulani* com a *SKU Bola Jabulani*.
 
-### Integração de Produtos e SKUs
-{: #Integração de Produtos e SKUs.slug-text}
+## Integração de Produtos e SKUs
+{: #4 .slug-text}
 
 Após definida as variações e a estrutura mecadológica da loja, o próximo passo é enviar os produtos e as SKUs do ERP para a loja VTEX.
 
 ![alt text](ERP-catalogo-expresso.PNG "Fluxo Básico")
 
-
 ## Produto
-{: #Produtoss.slug-text}
+{: #5 .slug-text}
 
 ### Parâmetros
 
@@ -76,9 +76,9 @@ Após definida as variações e a estrutura mecadológica da loja, o próximo pa
 | **Title** | **String** <br> Titulo do produto. |
 {: .doc-api-table }
 
-### Exemplo
+_Exemplo:_  
 
-### Request
+#### Request
 
 {% highlight json %}
 	<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:vtex="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts" xmlns:arr="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
@@ -86,30 +86,31 @@ Após definida as variações e a estrutura mecadológica da loja, o próximo pa
 	   <soapenv:Body>
 	      <tem:ProductInsertUpdate>
 	         <tem:productVO>
-	            <vtex:BrandId>2000011</vtex:BrandId> //id da marca
-	            <vtex:CategoryId>1000020</vtex:CategoryId> //id da categoria
-	            <vtex:DepartmentId>1000018</vtex:DepartmentId> //id do departamento
-	            <vtex:Description>Vaso de barro vermelho, feito a mão com barro do mar vermelho</vtex:Description> //descrição
-	            <vtex:DescriptionShort>Vaso de barro vermelho artesanal</vtex:DescriptionShort> descrição curta
-	            <vtex:IsActive>true</vtex:IsActive> // true
-	            <vtex:IsVisible>true</vtex:IsVisible> // vai ser visível no site
-	            <vtex:KeyWords> Barro, vaso, vermelho</vtex:KeyWords> //palavras chaves
-	            <vtex:LinkId>vaso_barro_vermelho</vtex:LinkId> //link do produto na loja
-	            <vtex:ListStoreId> //pra qual canal de vendas = loja principal = 1
+	            <vtex:BrandId>2000011</vtex:BrandId> <!--number, identificdor da marca-->
+	            <vtex:CategoryId>1000020</vtex:CategoryId> <!--number, identificdor da categoria-->
+	            <vtex:DepartmentId>1000018</vtex:DepartmentId> <!--number, identificdor do departamento-->
+	            <vtex:Description>Vaso de barro vermelho, feito a mão com barro do mar vermelho</vtex:Description> <!--string, descrição-->
+	            <vtex:DescriptionShort>Vaso de barro vermelho artesanal</vtex:DescriptionShort> <!--string, descrição curta-->
+	            <vtex:IsActive>true</vtex:IsActive> <!--bool, true-->
+	            <vtex:IsVisible>true</vtex:IsVisible> <!--bool, vai ser visível no site--> 
+	            <vtex:KeyWords> Barro, vaso, vermelho</vtex:KeyWords> <!--string, palavras chaves relevantes para a busca-->
+	            <vtex:LinkId>vaso_barro_vermelho</vtex:LinkId> <!--string, link do produto na loja, sem espacço e sem caracteres especiais-->
+	            <vtex:ListStoreId> <!--lista de inteiros, pra qual canal de vendas = loja principal = 1-->
 	               	<arr:int>1</arr:int>
 		       		<arr:int>2</arr:int>
 	            </vtex:ListStoreId>
-	            <vtex:MetaTagDescription>Vaso de barro vermelho, feito a mão com barro do mar vermelho</vtex:MetaTagDescription>
-	            <vtex:Name>Vaso Artesanal de Barro Vermelho</vtex:Name> //nome
-	             <vtex:RefId>1234567890</vtex:RefId> //id do produto no ERP
-	            <vtex:Title>Vaso Artesanal de Barro Vermelho</vtex:Title>
+	            <vtex:MetaTagDescription>feito a mão com barro do mar vermelho</vtex:MetaTagDescription><!--meta tag de description (SEO)-->
+	            <vtex:Name>Vaso Artesanal de Barro Vermelho</vtex:Name> <!--string, nome do produto-->
+	             <vtex:RefId>1234567890</vtex:RefId> <!--identificador do produto no ERP-->
+	            <vtex:Title>Vaso Artesanal de Barro Vermelho</vtex:Title> <!--tituo do produto-->
 	         </tem:productVO>
 	      </tem:ProductInsertUpdate>
 	   </soapenv:Body>
 	</soapenv:Envelope>
 {% endhighlight %}
 
-### Response
+#### Response
+
 {% highlight json %}
 	<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
 	   <s:Body>
@@ -131,7 +132,7 @@ Após definida as variações e a estrutura mecadológica da loja, o próximo pa
 	               <b:int>2</b:int>
 	            </a:ListStoreId>
 	            <a:LomadeeCampaignCode i:nil="true"/>
-	            <a:MetaTagDescription>Vaso de barro vermelho, feito a mão com barro do mar vermelho</a:MetaTagDescription>
+	            <a:MetaTagDescription>feito a mão com barro do mar vermelho</a:MetaTagDescription>
 	            <a:Name>Vaso Artesanal de Barro Vermelho</a:Name>
 	            <a:RefId>1234567890</a:RefId>
 	            <a:ReleaseDate i:nil="true"/>
@@ -147,10 +148,9 @@ Após definida as variações e a estrutura mecadológica da loja, o próximo pa
 
 
 ### SKU
-{: #Sku.slug-text}
+{: #6 .slug-text}
 
 Uma vez inseridos todos os produtos, que teoricamente são os pais das SKUs, chegou o momento de enviar as SKUs.
-Exemplo dos request para inserir uma SKU na VTEX no webservice.
 
 ### Parâmetros
 
@@ -178,7 +178,9 @@ Exemplo dos request para inserir uma SKU na VTEX no webservice.
 | **Width** 							| **Number** <br> . |
 {: .doc-api-table }
 
-### Request
+_Exemplo:_  
+
+#### Request
 
 {% highlight json %}
 	<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:vtex="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts">
@@ -186,39 +188,40 @@ Exemplo dos request para inserir uma SKU na VTEX no webservice.
 	   <soapenv:Body>
 	      <tem:StockKeepingUnitInsertUpdate>
 	         <tem:stockKeepingUnitVO>
-	            <vtex:CubicWeight>100</vtex:CubicWeight>
-	            <vtex:Height>15</vtex:Height>
-	            <vtex:IsActive>true</vtex:IsActive>
-	            <vtex:IsAvaiable>true</vtex:IsAvaiable>
-	            <vtex:IsKit>false</vtex:IsKit>
-	            <vtex:Length>15</vtex:Length>
-				<vtex:ListPrice>150.0</vtex:ListPrice> **/ler obs
-	            <vtex:ModalId>1</vtex:ModalId>
-	            <vtex:ModalType>Vidro</vtex:ModalType>
-	            <vtex:Name>Vaso Artesanal de Barro Vermelho Escuro </vtex:Name>
-   				<vtex:Price>110.0</vtex:Price> **/ler obs
-	            <vtex:ProductId>31018369</vtex:ProductId>
-	            <vtex:RealHeight>17</vtex:RealHeight>
-	            <vtex:RealLength>17</vtex:RealLength>
-	            <vtex:RealWeightKg>10</vtex:RealWeightKg>
-	            <vtex:RealWidth>17</vtex:RealWidth>
-	            <vtex:RefId>00123456</vtex:RefId>
-	            <vtex:RewardValue>0</vtex:RewardValue>
-	            <vtex:StockKeepingUnitEans>
+	            <vtex:CubicWeight>100</vtex:CubicWeight> <!--number, cubagem -->
+	            <vtex:Height>15</vtex:Height> <!--number, altura com embalagem-->
+	            <vtex:IsActive>true</vtex:IsActive> <!--bool, true -->
+	            <vtex:IsAvaiable>true</vtex:IsAvaiable> <!--bool, disponível -->
+	            <vtex:IsKit>false</vtex:IsKit> <!--bool, é um KIT -->
+	            <vtex:Length>15</vtex:Length> <!--number, comprimento com embalagem -->
+				<vtex:ListPrice>150.0</vtex:ListPrice> <!--decimal, ** ler obs --> 
+	            <vtex:ModalId>1</vtex:ModalId> <!--prefixo do estoque (id estoque = 1_1, mandar 1) -->
+	            <vtex:ModalType>Vidro</vtex:ModalType> <!--string, tipo de carga, se precisa de transportadora especial -->
+	            <vtex:Name>Vaso Artesanal de Barro Vermelho Escuro </vtex:Name> <!--string, nome da SKU -->
+   				<vtex:Price>110.0</vtex:Price> <!--decimal, **ler obs-->
+	            <vtex:ProductId>31018369</vtex:ProductId> <!--number, identificador do produto pai da SKU -->
+	            <vtex:RealHeight>17</vtex:RealHeight> <!--number, peso real -->
+	            <vtex:RealLength>17</vtex:RealLength> <!--number, altural real -->
+	            <vtex:RealWeightKg>10</vtex:RealWeightKg> <!--number, peso real -->
+	            <vtex:RealWidth>17</vtex:RealWidth> <!--number, comprimento real -->
+	            <vtex:RefId>00123456</vtex:RefId> <!--number, identificador da SKU no ERP -->
+	            <vtex:RewardValue>0</vtex:RewardValue> <!--number, numero de pontos dessa SKU -->
+	            <vtex:StockKeepingUnitEans> <!--lista de string, EANs do produto -->
 	               <vtex:StockKeepingUnitEanDTO>
 	                  <vtex:Ean>0123456789123</vtex:Ean>
 	               </vtex:StockKeepingUnitEanDTO>
 	            </vtex:StockKeepingUnitEans>
-	            <vtex:UnitMultiplier>1</vtex:UnitMultiplier>
-	            <vtex:WeightKg>9</vtex:WeightKg>
-	            <vtex:Width>15</vtex:Width>
-	         </tem:stockKeepingUnitVO>
+	            <vtex:UnitMultiplier>1</vtex:UnitMultiplier> <!--number, unidade de de venda -->
+	            <vtex:WeightKg>9</vtex:WeightKg> <!--number, peso em kilos-->
+	            <vtex:Width>15</vtex:Width> <!--number, largura com embalagem -->
+	         </tem:stockKeepingUnitVO> <!-- -->
 	      </tem:StockKeepingUnitInsertUpdate>
 	   </soapenv:Body>
 	</soapenv:Envelope>
 {% endhighlight %}
 
-### Response
+#### Response
+
 {% highlight json %}
 	<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
 	   <s:Body>
@@ -265,59 +268,28 @@ Exemplo dos request para inserir uma SKU na VTEX no webservice.
 	</s:Envelope>
 {% endhighlight %}
 
-**Obersevação:** O preço da SKU pode não ser enviado no momento da inserção da SKU. Quando um preço não é enviado no momento da criação de uma SKU, na tabela d SKU por obrigatoriedade é criado um preço fictício de 99999.00, e no sistema de "Pricing" da VTEX não é inserido o preço.
+**Obersevação:** O preço da SKU pode NÂO ser enviado no momento da inserção da SKU. Quando um preço não é enviado no momento da criação de uma SKU, na tabela de SKU por obrigatoriedade é criado um preço fictício de 99999.00, e no sistema de "Pricing" da VTEX não é inserido o preço.
 
 ## Preço e Estoque
-{: #Preço e Estoque.slug-text}
+{: #7 .slug-text}
 
 Uma vez cadastradas os produtos e as SKUs na loja da VTEX, é necessário alimentar o estoque e acertar o preço na tabela de preço (se no momento de inserir a SKU não enviou o preço).
 
 
-## Preço
-{: #Preço.slug-text}
+### Preço
 
 Se no momento sa inserção da SKU não foi enviado um preço válido para a SKU é necessário inserir o preço da mesma. Isso pode ser feito direto no admin da loja na VTEX (_urldaloja/admin/Site/SkuTabelaValor.aspx_), ou usando a API REST do sistema de **Pricing**.
 
-O primeiro passo a ser tomado para acessar as APIs da VTEX é solicitar os token de acesso (X-VTEX-API-AppToken e X-VTEX-API-AppKey) ao administrador da loja. Após isso fazer um POST como segue o exemplo:
 
-**POST api/pricing/pvt/price-sheet**
+Através da API do Pricing, inserir ou atualizar preço na SKUs:
 
-### Parâmetros
+<a title="inserir ou atualizar preço na SKUs" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/PRICING/PRICING_Set" target="_blank">[Developer] - Exemplo de chamada para inserir ou atualizar preço nas SKUs</a>
 
-| Nome                    | Tipo                          |
-| -----------------------:| :-----------------------------|
-| **id**         		    | **Number** <br> Caso saiba o id que vai alterar.|
-| **itemId**        		| **Number** <br> Id do sku que deseja manipular.|
-| **salesChannel**      | **String** <br> Canal de vendas onde vai vender.|
-| **price**  						| **Number** <br> fileId.|
-| **listPrice**  				| **Number** <br> Preço de.|
-| **validFrom**  				| **Number** <br> Data validade de|
-| **validTo**  				  | **Number** <br> Data de validade até|
-{: .doc-api-table }
 
-### Exemplo
-
-### Request
-
-{% highlight json %}
-	[
-	  	{
-	    	"Id": null,
-	    	"itemId": 11,
-	    	"salesChannel": 1,
-	    	"price": 241.0,
-	    	"listPrice": 239.0,
-	    	"validFrom": "2013-12-05T17:00:03.103",
-	    	"validTo": "2113-12-05T17:00:03.103"
-	  	}
-	]
-{% endhighlight %}
-
-A documentação completa sobre a API de **Pricing** se encontra em:
-http://lab.vtex.com/docs/logistics/api/latest/carrier/index.html
+A documentação completa sobre a API de **Pricing** se encontra em: [http://lab.vtex.com/docs/pricing/api/latest/pricing/index.html](http://lab.vtex.com/docs/pricing/api/latest/pricing/index.html)
 
 ### Estoque
-{: #Estoque.slug-text}
+
 
 Isso pode ser feito direto no admin da loja na VTEX (_urldaloja/admin/logistics/#/dashboard_), maneira rápida:
 
@@ -326,33 +298,17 @@ Isso pode ser feito direto no admin da loja na VTEX (_urldaloja/admin/logistics/
 3. Criar a doca,
 4. Colocar estoque nos itens  
 
-Criar o estoque, criar a transpotadora e criar a doca no admin da VTEX, e depois usar a API REST do
-**Logistics** para manipular o estoque, como segue exemplo.
+Criar o estoque, criar a transpotadora e criar a doca no admin da VTEX, e depois usar a API REST do **Logistics** para manipular o estoque.
 
 
-**POST /api/logistics/pvt/inventory/warehouseitems/setbalance**
+Através da API do Logistics, inserir ou atualizar os estoques na SKUs:
 
-### Parâmetros
+<a title="inserir ou atualizar os estoques na SKUs" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/LOGISTICS/LOGISTICS_SetBalance" target="_blank">[Developer] - Exemplo de chamada para inserir ou atualizar estoque nas SKUs</a>
 
-| Nome                    | Tipo                          |
-| -----------------------:| :-----------------------------|
-| **wareHouseId**         | **Number** <br> Id do estoque.|
-| **itemId**        	    | **Number** <br> id do sku que vai manipular.|
-| **quantity**            | **String** <br> Quantidade do estoque que deseja atualizar.|
-{: .doc-api-table }
+A documentação completa sobre a API de **Logistics** se encontra em: [http://lab.vtex.com/docs/logistics/api/latest/warehouse/index.html](http://lab.vtex.com/docs/logistics/api/latest/warehouse/index.html)
 
-### Exemplo
+## Pedidos
+Para a integraão de pedidos consulte o tópico [Integração de Pedido, Nota Fiscal e Tracking](http://lab.vtex.com/docs/integracao/guide/erp/pedido-e-tracking/index.html).
 
-### Request
-{% highlight json %}
-	[
-  		{
-    		"wareHouseId": "1_1",
-    		"itemId": "12",
-    		"quantity": 100
-  		}
-	]
-{% endhighlight %}
-
-A documentação completa sobre a API de **Logistics** se encontra em:
-[http://lab.vtex.com/docs/pricing/api/latest/pricing/index.html](http://lab.vtex.com/docs/pricing/api/latest/pricing/index.html)
+autor:_Jonas Bolognim_  
+propriedade: _VTEX_  
