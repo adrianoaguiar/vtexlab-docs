@@ -42,23 +42,23 @@ _request:_
 
 {% highlight xml %}
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:vtex="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <tem:CategoryInsertUpdate>
-         <tem:category>
-			<!--descrição do departamento-->
-            <vtex:Description>Departamento de Artesanato</vtex:Description>
-			<!--departamento está ativo?-->
-            <vtex:IsActive>true</vtex:IsActive>
-			<!--palavras chaves do departamento-->
-            <vtex:Keywords>Departamento Keywords</vtex:Keywords>
-			<!--nome do departamento-->
-            <vtex:Name>Departamento Artesanato</vtex:Name>
-			<!--titulo do departamento-->
-            <vtex:Title>Departamento Artesanato</vtex:Title>
-         </tem:category>
-      </tem:CategoryInsertUpdate>
-   </soapenv:Body>
+<soapenv:Header/>
+	<soapenv:Body>
+		<tem:CategoryInsertUpdate>
+			 <tem:category>
+				<!--descrição do departamento-->
+			    <vtex:Description>Departamento de Artesanato</vtex:Description>
+				<!--departamento está ativo?-->
+			    <vtex:IsActive>true</vtex:IsActive>
+				<!--palavras chaves do departamento-->
+			    <vtex:Keywords>Departamento Keywords</vtex:Keywords>
+				<!--nome do departamento-->
+			    <vtex:Name>Departamento Artesanato</vtex:Name>
+				<!--titulo do departamento-->
+			    <vtex:Title>Departamento Artesanato</vtex:Title>
+			 </tem:category>
+		</tem:CategoryInsertUpdate>
+	</soapenv:Body>
 </soapenv:Envelope>
 {% endhighlight %}
 
@@ -66,22 +66,22 @@ _response:_
 
 {% highlight xml %}	
 <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
-   <s:Body>
-      <CategoryInsertUpdateResponse xmlns="http://tempuri.org/">
-         <CategoryInsertUpdateResult xmlns:a="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
-            <a:AdWordsRemarketingCode i:nil="true"/>
-            <a:Description>Departamento de Artesanato</a:Description>
-            <a:FatherCategoryId i:nil="true"/>
-			<!--identificador do departamento inserido-->
-            <a:Id>1000018</a:Id>
-            <a:IsActive>true</a:IsActive>
-            <a:Keywords>Departamento Keywords</a:Keywords>
-            <a:LomadeeCampaignCode i:nil="true"/>
-            <a:Name>Departamento Artesanato</a:Name>
-            <a:Title>Departamento Artesanato</a:Title>
-         </CategoryInsertUpdateResult>
-      </CategoryInsertUpdateResponse>
-   </s:Body>
+	<s:Body>
+		<CategoryInsertUpdateResponse xmlns="http://tempuri.org/">
+			<CategoryInsertUpdateResult xmlns:a="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+				<a:AdWordsRemarketingCode i:nil="true"/>
+				<a:Description>Departamento de Artesanato</a:Description>
+				<a:FatherCategoryId i:nil="true"/>
+				<!--identificador do departamento inserido-->
+				<a:Id>1000018</a:Id>
+				<a:IsActive>true</a:IsActive>
+				<a:Keywords>Departamento Keywords</a:Keywords>
+				<a:LomadeeCampaignCode i:nil="true"/>
+				<a:Name>Departamento Artesanato</a:Name>
+				<a:Title>Departamento Artesanato</a:Title>
+			</CategoryInsertUpdateResult>
+		</CategoryInsertUpdateResponse>
+	</s:Body>
 </s:Envelope>
 {% endhighlight %}
 
@@ -91,25 +91,25 @@ _request:_
 
 {% highlight xml %}
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:vtex="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <tem:CategoryInsertUpdate>
-         <tem:category>
+<soapenv:Header/>
+	<soapenv:Body>
+		<tem:CategoryInsertUpdate>
+			<tem:category>
 			<!--descrição da categoria-->
-            <vtex:Description>Artesanato de Barro</vtex:Description>
+			<vtex:Description>Artesanato de Barro</vtex:Description>
 			<!--identificador do departamento pai, inserido acima-->
-            <vtex:FatherCategoryId>1000018</vtex:FatherCategoryId>
+			<vtex:FatherCategoryId>1000018</vtex:FatherCategoryId>
 			<!--a categoria está ativa?-->
-            <vtex:IsActive>true</vtex:IsActive>
+			<vtex:IsActive>true</vtex:IsActive>
 			<!--palavras chave da categoria-->
-            <vtex:Keywords>Barro</vtex:Keywords>
+			<vtex:Keywords>Barro</vtex:Keywords>
 			<!--nome da categoria-->
-            <vtex:Name>Artesanato de Barro</vtex:Name>
+			<vtex:Name>Artesanato de Barro</vtex:Name>
 			<!--título da categoria-->
-            <vtex:Title>Artesanato de Barro</vtex:Title>
-         </tem:category>
-      </tem:CategoryInsertUpdate>
-   </soapenv:Body>
+			<vtex:Title>Artesanato de Barro</vtex:Title>
+			</tem:category>
+		</tem:CategoryInsertUpdate>
+	</soapenv:Body>
 </soapenv:Envelope>
 {% endhighlight %}
 
@@ -117,22 +117,22 @@ _response_:
 
 {% highlight xml %}
 <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
-   <s:Body>
-      <CategoryInsertUpdateResponse xmlns="http://tempuri.org/">
-         <CategoryInsertUpdateResult xmlns:a="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
-            <a:AdWordsRemarketingCode i:nil="true"/>
-            <a:Description>Artesanato de Barro</a:Description>
-            <a:FatherCategoryId>1000018</a:FatherCategoryId>
-            <!--identificador da categoria inserida-->
-			<a:Id>1000019</a:Id>
-            <a:IsActive>true</a:IsActive>
-            <a:Keywords>Barro</a:Keywords>
-            <a:LomadeeCampaignCode i:nil="true"/>
-            <a:Name>Artesanato de Barro</a:Name>
-            <a:Title>Artesanato de Barro</a:Title>
-         </CategoryInsertUpdateResult>
-      </CategoryInsertUpdateResponse>
-   </s:Body>
+	<s:Body>
+		<CategoryInsertUpdateResponse xmlns="http://tempuri.org/">
+			<CategoryInsertUpdateResult xmlns:a="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+				<a:AdWordsRemarketingCode i:nil="true"/>
+				<a:Description>Artesanato de Barro</a:Description>
+				<a:FatherCategoryId>1000018</a:FatherCategoryId>
+				<!--identificador da categoria inserida-->
+				<a:Id>1000019</a:Id>
+				<a:IsActive>true</a:IsActive>
+				<a:Keywords>Barro</a:Keywords>
+				<a:LomadeeCampaignCode i:nil="true"/>
+				<a:Name>Artesanato de Barro</a:Name>
+				<a:Title>Artesanato de Barro</a:Title>
+			</CategoryInsertUpdateResult>
+		</CategoryInsertUpdateResponse>
+	</s:Body>
 </s:Envelope>
 {% endhighlight %}
 
@@ -142,25 +142,25 @@ _request:_
 
 {% highlight xml %}
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:vtex="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <tem:CategoryInsertUpdate>
-         <tem:category>
+<soapenv:Header/>
+	<soapenv:Body>
+		<tem:CategoryInsertUpdate>
+			<tem:category>
 			<!--descrição da sub categoria-->
-            <vtex:Description>Barro Vermelho</vtex:Description>
- 			<!--identificador da categoria inserida acima-->
-            <vtex:FatherCategoryId>1000019</vtex:FatherCategoryId>
+			<vtex:Description>Barro Vermelho</vtex:Description>
+			<!--identificador da categoria inserida acima-->
+			<vtex:FatherCategoryId>1000019</vtex:FatherCategoryId>
 			<!--a sub categoria está ativa?-->
-            <vtex:IsActive>true</vtex:IsActive>
+			<vtex:IsActive>true</vtex:IsActive>
 			<!--palavras chave da sub categoria-->
-            <vtex:Keywords>Barro Vermelho</vtex:Keywords>
+			<vtex:Keywords>Barro Vermelho</vtex:Keywords>
 			<!--nome da sub categoria-->
-            <vtex:Name>Artesanato de Barro Vermelho</vtex:Name>
+			<vtex:Name>Artesanato de Barro Vermelho</vtex:Name>
 			<!--titulo da sub categoria-->
-            <vtex:Title>Artesanato de Barro Vermelho</vtex:Title>
-         </tem:category>
-      </tem:CategoryInsertUpdate>
-   </soapenv:Body>
+			<vtex:Title>Artesanato de Barro Vermelho</vtex:Title>
+			</tem:category>
+		</tem:CategoryInsertUpdate>
+	</soapenv:Body>
 </soapenv:Envelope>
 {% endhighlight %}
 
@@ -168,22 +168,22 @@ _response:_
 
 {% highlight xml %}
 <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
-   <s:Body>
-      <CategoryInsertUpdateResponse xmlns="http://tempuri.org/">
-         <CategoryInsertUpdateResult xmlns:a="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
-            <a:AdWordsRemarketingCode i:nil="true"/>
-            <a:Description>Barro Vermelho</a:Description>
-            <a:FatherCategoryId>1000019</a:FatherCategoryId>
-			<!--identificador da sub categoria inserida-->
-            <a:Id>1000020</a:Id>
-            <a:IsActive>true</a:IsActive>
-            <a:Keywords>Barro Vermelho</a:Keywords>
-            <a:LomadeeCampaignCode i:nil="true"/>
-            <a:Name>Artesanato de Barro Vermelho</a:Name>
-            <a:Title>Artesanato de Barro Vermelho</a:Title>
-         </CategoryInsertUpdateResult>
-      </CategoryInsertUpdateResponse>
-   </s:Body>
+	<s:Body>
+		<CategoryInsertUpdateResponse xmlns="http://tempuri.org/">
+			<CategoryInsertUpdateResult xmlns:a="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+				<a:AdWordsRemarketingCode i:nil="true"/>
+				<a:Description>Barro Vermelho</a:Description>
+				<a:FatherCategoryId>1000019</a:FatherCategoryId>
+				<!--identificador da sub categoria inserida-->
+				<a:Id>1000020</a:Id>
+				<a:IsActive>true</a:IsActive>
+				<a:Keywords>Barro Vermelho</a:Keywords>
+				<a:LomadeeCampaignCode i:nil="true"/>
+				<a:Name>Artesanato de Barro Vermelho</a:Name>
+				<a:Title>Artesanato de Barro Vermelho</a:Title>
+			</CategoryInsertUpdateResult>
+		</CategoryInsertUpdateResponse>
+	</s:Body>
 </s:Envelope>
 {% endhighlight %}
 
@@ -265,17 +265,17 @@ Exemplo de request para inserir Imagens para uma SKU no webservice. Lembrando qu
 _request:_  
 {% highlight xml %}
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <tem:ImageServiceInsertUpdate>
+<soapenv:Header/>
+	<soapenv:Body>
+		<tem:ImageServiceInsertUpdate>
 		<!--url da imagem-->
-        <tem:urlImage>https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ6Lu0obmddsQX3JELe04hUs_hSelsmU8_W1yn5ztgdAk5SJC7D</tem:urlImage>
+		<tem:urlImage>https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ6Lu0obmddsQX3JELe04hUs_hSelsmU8_W1yn5ztgdAk5SJC7D</tem:urlImage>
 		<!--nome da imagem-->
-        <tem:imageName>Barro Vermelho Escuro</tem:imageName>
+		<tem:imageName>Barro Vermelho Escuro</tem:imageName>
 		<!--identificador do SKu que irá receber a imagem-->
-         <tem:stockKeepingUnitId>31018371</tem:stockKeepingUnitId>
-      </tem:ImageServiceInsertUpdate>
-   </soapenv:Body>
+		 <tem:stockKeepingUnitId>31018371</tem:stockKeepingUnitId>
+		</tem:ImageServiceInsertUpdate>
+	</soapenv:Body>
 </soapenv:Envelope>
 {% endhighlight %}
 
@@ -283,9 +283,9 @@ _response:_
 
 {% highlight xml %}
 <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
-   <s:Body>
-      <ImageServiceInsertUpdateResponse xmlns="http://tempuri.org/"/>
-   </s:Body>
+	<s:Body>
+	  <ImageServiceInsertUpdateResponse xmlns="http://tempuri.org/"/>
+	</s:Body>
 </s:Envelope>
 {% endhighlight %}
 
@@ -293,15 +293,15 @@ _request 2:_
 
 {% highlight xml %}
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <tem:ImageServiceInsertUpdate>
-         <tem:urlImage>http://1.bp.blogspot.com/_ZANjG3oA2BI/TCJfvX-7daI/AAAAAAAADZ0/yO5MwjMtjdI/s400/vaso_5cm.jpg</tem:urlImage>
-         <tem:imageName>Barro Vermelho Claro</tem:imageName>
-         <tem:stockKeepingUnitId>31018372</tem:stockKeepingUnitId>
-          <tem:fileId>31018372</tem:fileId>
-      </tem:ImageServiceInsertUpdate>
-   </soapenv:Body>
+<soapenv:Header/>
+	<soapenv:Body>
+		<tem:ImageServiceInsertUpdate>
+		<tem:urlImage>http://1.bp.blogspot.com/_ZANjG3oA2BI/TCJfvX-7daI/AAAAAAAADZ0/yO5MwjMtjdI/s400/vaso_5cm.jpg</tem:urlImage>
+		<tem:imageName>Barro Vermelho Claro</tem:imageName>
+		<tem:stockKeepingUnitId>31018372</tem:stockKeepingUnitId>
+		<tem:fileId>31018372</tem:fileId>
+		</tem:ImageServiceInsertUpdate>
+	</soapenv:Body>
 </soapenv:Envelope>
 {% endhighlight %}
 
@@ -351,13 +351,13 @@ _request:_
 
 {% highlight xml %}
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <tem:StockKeepingUnitActive>
+<soapenv:Header/>
+	<soapenv:Body>
+		<tem:StockKeepingUnitActive>
 		<!--identificador da SKU que deseja tentar ativar-->
-         <tem:idStockKeepingUnit>31018371</tem:idStockKeepingUnit>
-      </tem:StockKeepingUnitActive>
-   </soapenv:Body>
+		<tem:idStockKeepingUnit>31018371</tem:idStockKeepingUnit>
+		</tem:StockKeepingUnitActive>
+	</soapenv:Body>
 </soapenv:Envelope>
 {% endhighlight %}
 
@@ -375,12 +375,12 @@ _request 2:_
 
 {% highlight xml %}
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <tem:StockKeepingUnitActive>
-         <tem:idStockKeepingUnit>31018372</tem:idStockKeepingUnit>
-      </tem:StockKeepingUnitActive>
-   </soapenv:Body>
+<soapenv:Header/>
+	<soapenv:Body>
+		<tem:StockKeepingUnitActive>
+		<tem:idStockKeepingUnit>31018372</tem:idStockKeepingUnit>
+		</tem:StockKeepingUnitActive>
+	</soapenv:Body>
 </soapenv:Envelope>
 {% endhighlight %}
 
@@ -406,61 +406,61 @@ _request:_
 
 {% highlight xml %}
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:vtex="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <tem:StockKeepingUnitInsertUpdate>
-         <tem:stockKeepingUnitVO>
-			<!--number, cubagem = peso cubico -->
-            <vtex:CubicWeight>100</vtex:CubicWeight>
-			<!--number, altura com embalagem e metros-->
-            <vtex:Height>1.800</vtex:Height>
-			<!--bool, se não atender requisitos de ativação(imagem, preço, estoque, espec., outros reqs obrig.), não será ativado-->
-            <vtex:IsActive>true</vtex:IsActive>
-			<!--bool, disponibilidade -->
-            <vtex:IsAvaiable>true</vtex:IsAvaiable>
-			<!--bool, é um KIT? -->
-            <vtex:IsKit>false</vtex:IsKit>
-			<!--number, comprimento com embalagem em metros -->
-            <vtex:Length>1.52</vtex:Length>
-			<!--decimal, ** ler obs --> 
-			<vtex:ListPrice>150.0</vtex:ListPrice>
-			<!--prefixo do estoque (id estoque = 1_1, mandar 1) -->
-            <vtex:ModalId>1</vtex:ModalId>
-			<!--string, opicional, tipo de carga, necessita configuração de transportadora especial quando preenchido -->
-            <vtex:ModalType>Vidro</vtex:ModalType>
-			<!--string, nome da SKU -->
-            <vtex:Name>Vaso Artesanal de Barro Laranja Escuro </vtex:Name>
-			<!--decimal,  preço, "POR", opcional **ler obs-->
-			<vtex:Price>110.0</vtex:Price>
-			<!--number, identificador do produto pai da SKU -->
-            <vtex:ProductId>31018369</vtex:ProductId>
-			<!--number, peso real em kilos -->
-            <vtex:RealHeight>1.740</vtex:RealHeight>
-			<!--number, altural real em metros -->
-            <vtex:RealLength>1.60</vtex:RealLength>
-			<!--number, peso real em kilos -->
-            <vtex:RealWeightKg>2.750</vtex:RealWeightKg>
-			<!--number, comprimento real em metros -->
-            <vtex:RealWidth>1.7</vtex:RealWidth>
-			<!--number, identificador da SKU no ERP -->
-            <vtex:RefId>00123456</vtex:RefId>
-			<!--number, opcional, numero de pontos dessa SKU -->
-            <vtex:RewardValue>0</vtex:RewardValue>
-			<!--lista de string, EANs do produto -->
-            <vtex:StockKeepingUnitEans>
-               <vtex:StockKeepingUnitEanDTO>
-                  <vtex:Ean>0123456789123</vtex:Ean>
-               </vtex:StockKeepingUnitEanDTO>
-            </vtex:StockKeepingUnitEans>
-			<!--number, unidade de multipliçao para venda -->
-            <vtex:UnitMultiplier>1</vtex:UnitMultiplier>
-			<!--number, peso em kilos-->
-            <vtex:WeightKg>1.5</vtex:WeightKg>
-			<!--number, largura com embalagem em metros -->
-            <vtex:Width>2.780</vtex:Width>
-         </tem:stockKeepingUnitVO>
-      </tem:StockKeepingUnitInsertUpdate>
-   </soapenv:Body>
+<soapenv:Header/>
+	<soapenv:Body>
+		<tem:StockKeepingUnitInsertUpdate>
+		<tem:stockKeepingUnitVO>
+		<!--number, cubagem = peso cubico -->
+		<vtex:CubicWeight>100</vtex:CubicWeight>
+		<!--number, altura com embalagem e metros-->
+		<vtex:Height>1.800</vtex:Height>
+		<!--bool, se não atender requisitos de ativação(imagem, preço, estoque, espec., outros reqs obrig.), não será ativado-->
+		<vtex:IsActive>true</vtex:IsActive>
+		<!--bool, disponibilidade -->
+		<vtex:IsAvaiable>true</vtex:IsAvaiable>
+		<!--bool, é um KIT? -->
+		<vtex:IsKit>false</vtex:IsKit>
+		<!--number, comprimento com embalagem em metros -->
+		<vtex:Length>1.52</vtex:Length>
+		<!--decimal, ** ler obs --> 
+		<vtex:ListPrice>150.0</vtex:ListPrice>
+		<!--prefixo do estoque (id estoque = 1_1, mandar 1) -->
+		<vtex:ModalId>1</vtex:ModalId>
+		<!--string, opicional, tipo de carga, necessita configuração de transportadora especial quando preenchido -->
+		<vtex:ModalType>Vidro</vtex:ModalType>
+		<!--string, nome da SKU -->
+		<vtex:Name>Vaso Artesanal de Barro Laranja Escuro </vtex:Name>
+		<!--decimal,  preço, "POR", opcional **ler obs-->
+		<vtex:Price>110.0</vtex:Price>
+		<!--number, identificador do produto pai da SKU -->
+		<vtex:ProductId>31018369</vtex:ProductId>
+		<!--number, peso real em kilos -->
+		<vtex:RealHeight>1.740</vtex:RealHeight>
+		<!--number, altural real em metros -->
+		<vtex:RealLength>1.60</vtex:RealLength>
+		<!--number, peso real em kilos -->
+		<vtex:RealWeightKg>2.750</vtex:RealWeightKg>
+		<!--number, comprimento real em metros -->
+		<vtex:RealWidth>1.7</vtex:RealWidth>
+		<!--number, identificador da SKU no ERP -->
+		<vtex:RefId>00123456</vtex:RefId>
+		<!--number, opcional, numero de pontos dessa SKU -->
+		<vtex:RewardValue>0</vtex:RewardValue>
+		<!--lista de string, EANs do produto -->
+		<vtex:StockKeepingUnitEans>
+		<vtex:StockKeepingUnitEanDTO>
+		<vtex:Ean>0123456789123</vtex:Ean>
+		</vtex:StockKeepingUnitEanDTO>
+		</vtex:StockKeepingUnitEans>
+		<!--number, unidade de multipliçao para venda -->
+		<vtex:UnitMultiplier>1</vtex:UnitMultiplier>
+		<!--number, peso em kilos-->
+		<vtex:WeightKg>1.5</vtex:WeightKg>
+		<!--number, largura com embalagem em metros -->
+		<vtex:Width>2.780</vtex:Width>
+		</tem:stockKeepingUnitVO>
+		</tem:StockKeepingUnitInsertUpdate>
+	</soapenv:Body>
 </soapenv:Envelope>
 {% endhighlight %}
 
@@ -472,47 +472,47 @@ _response:_
 
 {% highlight xml %}
 <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
-   <s:Body>
-      <StockKeepingUnitInsertUpdateResponse xmlns="http://tempuri.org/">
-         <StockKeepingUnitInsertUpdateResult xmlns:a="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
-            <a:CommercialConditionId i:nil="true"/>
-            <a:CostPrice>1</a:CostPrice>
-            <a:CubicWeight>100</a:CubicWeight>
-            <a:DateUpdated>2014-10-29T19:03:17.718427</a:DateUpdated>
-            <a:EstimatedDateArrival i:nil="true"/>
-            <a:Height>1.800</a:Height>
-            <a:Id>31018371</a:Id>
-            <a:InternalNote i:nil="true"/>
-            <a:IsActive>false</a:IsActive>
-            <a:IsAvaiable>false</a:IsAvaiable>
-            <a:IsKit>false</a:IsKit>
-            <a:Length>1.52</a:Length>
-            <a:ListPrice>150.0</a:ListPrice>
-            <a:ManufacturerCode i:nil="true"/>
-            <a:MeasurementUnit>un</a:MeasurementUnit>
-            <a:ModalId>1</a:ModalId>
-            <a:ModalType>Vidro</a:ModalType>
-            <a:Name>Vaso Artesanal de Barro Laranja Escuro</a:Name>
-            <a:Price>110.0</a:Price>
-            <a:ProductId>31018369</a:ProductId>
-            <a:ProductName>Vaso Artesanal de Barro Vermelho</a:ProductName>
-            <a:RealHeight>1.740</a:RealHeight>
-            <a:RealLength>1.60</a:RealLength>
-            <a:RealWeightKg>2.750</a:RealWeightKg>
-            <a:RealWidth>17</a:RealWidth>
-            <a:RefId>00123456</a:RefId>
-            <a:RewardValue>0</a:RewardValue>
-            <a:StockKeepingUnitEans>
-               <a:StockKeepingUnitEanDTO>
-                  <a:Ean>0123456789123</a:Ean>
-               </a:StockKeepingUnitEanDTO>
-            </a:StockKeepingUnitEans>
-            <a:UnitMultiplier>1</a:UnitMultiplier>
-            <a:WeightKg>2.780</a:WeightKg>
-            <a:Width>1.550</a:Width>
-         </StockKeepingUnitInsertUpdateResult>
-      </StockKeepingUnitInsertUpdateResponse>
-   </s:Body>
+	<s:Body>
+	<StockKeepingUnitInsertUpdateResponse xmlns="http://tempuri.org/">
+		<StockKeepingUnitInsertUpdateResult xmlns:a="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+		<a:CommercialConditionId i:nil="true"/>
+		<a:CostPrice>1</a:CostPrice>
+		<a:CubicWeight>100</a:CubicWeight>
+		<a:DateUpdated>2014-10-29T19:03:17.718427</a:DateUpdated>
+		<a:EstimatedDateArrival i:nil="true"/>
+		<a:Height>1.800</a:Height>
+		<a:Id>31018371</a:Id>
+		<a:InternalNote i:nil="true"/>
+		<a:IsActive>false</a:IsActive>
+		<a:IsAvaiable>false</a:IsAvaiable>
+		<a:IsKit>false</a:IsKit>
+		<a:Length>1.52</a:Length>
+		<a:ListPrice>150.0</a:ListPrice>
+		<a:ManufacturerCode i:nil="true"/>
+		<a:MeasurementUnit>un</a:MeasurementUnit>
+		<a:ModalId>1</a:ModalId>
+		<a:ModalType>Vidro</a:ModalType>
+		<a:Name>Vaso Artesanal de Barro Laranja Escuro</a:Name>
+		<a:Price>110.0</a:Price>
+		<a:ProductId>31018369</a:ProductId>
+		<a:ProductName>Vaso Artesanal de Barro Vermelho</a:ProductName>
+		<a:RealHeight>1.740</a:RealHeight>
+		<a:RealLength>1.60</a:RealLength>
+		<a:RealWeightKg>2.750</a:RealWeightKg>
+		<a:RealWidth>17</a:RealWidth>
+		<a:RefId>00123456</a:RefId>
+		<a:RewardValue>0</a:RewardValue>
+		<a:StockKeepingUnitEans>
+		<a:StockKeepingUnitEanDTO>
+		<a:Ean>0123456789123</a:Ean>
+		</a:StockKeepingUnitEanDTO>
+		</a:StockKeepingUnitEans>
+		<a:UnitMultiplier>1</a:UnitMultiplier>
+		<a:WeightKg>2.780</a:WeightKg>
+		<a:Width>1.550</a:Width>
+		</StockKeepingUnitInsertUpdateResult>
+	</StockKeepingUnitInsertUpdateResponse>
+	</s:Body>
 </s:Envelope>
 {% endhighlight %}
 
