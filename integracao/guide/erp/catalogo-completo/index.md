@@ -46,10 +46,15 @@ _request:_
    <soapenv:Body>
       <tem:CategoryInsertUpdate>
          <tem:category>
+			<!--descrição do departamento-->
             <vtex:Description>Departamento de Artesanato</vtex:Description>
+			<!--departamento está ativo?-->
             <vtex:IsActive>true</vtex:IsActive>
+			<!--palavras chaves do departamento-->
             <vtex:Keywords>Departamento Keywords</vtex:Keywords>
+			<!--nome do departamento-->
             <vtex:Name>Departamento Artesanato</vtex:Name>
+			<!--titulo do departamento-->
             <vtex:Title>Departamento Artesanato</vtex:Title>
          </tem:category>
       </tem:CategoryInsertUpdate>
@@ -67,6 +72,7 @@ _response:_
             <a:AdWordsRemarketingCode i:nil="true"/>
             <a:Description>Departamento de Artesanato</a:Description>
             <a:FatherCategoryId i:nil="true"/>
+			<!--identificador do departamento inserido-->
             <a:Id>1000018</a:Id>
             <a:IsActive>true</a:IsActive>
             <a:Keywords>Departamento Keywords</a:Keywords>
@@ -89,11 +95,17 @@ _request:_
    <soapenv:Body>
       <tem:CategoryInsertUpdate>
          <tem:category>
+			<!--descrição da categoria-->
             <vtex:Description>Artesanato de Barro</vtex:Description>
+			<!--identificador do departamento pai, inserido acima-->
             <vtex:FatherCategoryId>1000018</vtex:FatherCategoryId>
+			<!--a categoria está ativa?-->
             <vtex:IsActive>true</vtex:IsActive>
+			<!--palavras chave da categoria-->
             <vtex:Keywords>Barro</vtex:Keywords>
+			<!--nome da categoria-->
             <vtex:Name>Artesanato de Barro</vtex:Name>
+			<!--título da categoria-->
             <vtex:Title>Artesanato de Barro</vtex:Title>
          </tem:category>
       </tem:CategoryInsertUpdate>
@@ -111,7 +123,8 @@ _response_:
             <a:AdWordsRemarketingCode i:nil="true"/>
             <a:Description>Artesanato de Barro</a:Description>
             <a:FatherCategoryId>1000018</a:FatherCategoryId>
-            <a:Id>1000019</a:Id>
+            <!--identificador da categoria inserida-->
+			<a:Id>1000019</a:Id>
             <a:IsActive>true</a:IsActive>
             <a:Keywords>Barro</a:Keywords>
             <a:LomadeeCampaignCode i:nil="true"/>
@@ -133,11 +146,17 @@ _request:_
    <soapenv:Body>
       <tem:CategoryInsertUpdate>
          <tem:category>
+			<!--descrição da sub categoria-->
             <vtex:Description>Barro Vermelho</vtex:Description>
+ 			<!--identificador da categoria inserida acima-->
             <vtex:FatherCategoryId>1000019</vtex:FatherCategoryId>
+			<!--a sub categoria está ativa?-->
             <vtex:IsActive>true</vtex:IsActive>
+			<!--palavras chave da sub categoria-->
             <vtex:Keywords>Barro Vermelho</vtex:Keywords>
+			<!--nome da sub categoria-->
             <vtex:Name>Artesanato de Barro Vermelho</vtex:Name>
+			<!--titulo da sub categoria-->
             <vtex:Title>Artesanato de Barro Vermelho</vtex:Title>
          </tem:category>
       </tem:CategoryInsertUpdate>
@@ -155,6 +174,7 @@ _response:_
             <a:AdWordsRemarketingCode i:nil="true"/>
             <a:Description>Barro Vermelho</a:Description>
             <a:FatherCategoryId>1000019</a:FatherCategoryId>
+			<!--identificador da sub categoria inserida-->
             <a:Id>1000020</a:Id>
             <a:IsActive>true</a:IsActive>
             <a:Keywords>Barro Vermelho</a:Keywords>
@@ -180,10 +200,15 @@ _request:_
    <soapenv:Body>
       <tem:BrandInsertUpdate>
          <tem:brand>
+ 			<!--descrição da marca-->
             <vtex:Description>Marca DuBom</vtex:Description>
+ 			<!--a marca está ativa?-->
             <vtex:IsActive>true</vtex:IsActive>
+			<!--palavras chave da marca-->
             <vtex:Keywords>DuBom Keywords</vtex:Keywords>
+			<!--nome da marca-->
             <vtex:Name>DuBom</vtex:Name>
+			<!--titulo da marca-->
             <vtex:Title>DuBom</vtex:Title>
          </tem:brand>
       </tem:BrandInsertUpdate>
@@ -200,6 +225,7 @@ _response:_
          <BrandInsertUpdateResult xmlns:a="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
             <a:AdWordsRemarketingCode i:nil="true"/>
             <a:Description>Marca DuBom</a:Description>
+ 			<!--identificador da marca inserida-->
             <a:Id>2000011</a:Id>
             <a:IsActive>true</a:IsActive>
             <a:Keywords>DuBom Keywords</a:Keywords>
@@ -216,7 +242,7 @@ _response:_
 ## Produtos e SKUs
 {: #6 .slug-text}
 
-[[Developer] - Ver guia de integração de catalogo expresso](http://lab.vtex.com/docs/integracao/guide/erp/catalogo-expresso/index.html#produtos-e-skus)
+[[Developer] - Ver Guia de Integração De Catalogo Expresso](http://lab.vtex.com/docs/integracao/guide/erp/catalogo-expresso/index.html#produtos-e-skus)
 
 ###Fields de Produto ou SKU
 {: #6 .slug-text}
