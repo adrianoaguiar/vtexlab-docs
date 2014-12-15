@@ -6,7 +6,6 @@ docType: guide
 ---
 
 ##Integração de ERPs com lojas VTEX
-
 {: #1 .slug-text}
 
 A integração de ERPs com lojas VTEX é realizada através de webservice (SOAP:XML), e API REST(JSON). O webservice VTEX deve ser usado o mínimo possível para os processos de integração. Hoje com excessão do **Catálogo**, que está com sua API REST em desenvolvimento, todos os outros módulos da VTEX possúem APIs REST bem definidas e de alta performance.
@@ -42,7 +41,7 @@ Extensão do navegador chrome, nesta ferramente pode se testar, armazenar histó
 Toda chamada feita ao web service deve ser em "https" e um usuario e senha são exigidos para iniciar a conexão. As chamadas para as APIs REST também devem ser feitas em "https" e devem conter em seu header as chaves de autenticação .Tanto o usuário e senha (para acessar o webservice) e chaves de asutenticação do header(para acessar as APIs REST) devem ser solicitados ao administrador da loja, ou ao time de operaçãoes que está implantando a loja.
 
 
-##
+---
 
 Autor:_Jonas Bolognim_  
 Propriedade:_VTEX_
