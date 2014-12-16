@@ -71,7 +71,7 @@ Quando o pedido é fechado no ambiente VTEX, um POST é feito no Seller não VTE
  
 ###Exemplos de Request de Descida de Pedido - Endpoint do Seller###
 
-endpoint: **https://sellerendpoint/pvt/orders?sc=[idcanal]**  
+endpoint: **https://sellerendpoint/api/fulfillment/pvt/orders?sc=[idcanal]**  
 verb: **POST**  
 Content-Type: **application/json**  
 Accept: **application/json**  
@@ -242,7 +242,7 @@ Quando o pagamento do pedido é concluído no marketplace VTEX (pagamento válid
  
 *Exemplos de Request de Autorização - Endpoint da Seller*
 
-endpoint: **https://sellerendpoint/pvt/orders/[orderid]/fulfill?sc=[idcanal]**  
+endpoint: **https://sellerendpoint/api/fulfillment/pvt/orders/[orderid]/fulfill?sc=[idcanal]**  
 verb: **POST**  
 Content-Type: **application/json**  
 Accept: **application/json**  

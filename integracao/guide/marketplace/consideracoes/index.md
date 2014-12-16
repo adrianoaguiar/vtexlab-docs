@@ -15,6 +15,8 @@ Modelo de venda entre Marketpalces* e Sellers* VTEX e não VTEX. Abaixo modelos 
 
 Conjunto de instruções e exemplos que permitem um Seller Não VTEX expor e vender os seus produtos (SKUs)* em Marketplaces hospedados na VTEX, através de chamadas e exposição de APIs* seguindo o protocolo VTEX.
 
+[[Guide] Sellers Não VTEX Vendendo em Marketplace VTEX](http://lab.vtex.com/docs/integracao/guide/marketplace/seller-n%C3%A3o-vtex/index.html)
+
 ###Marketplace Não VTEX vendendo para Sellers VTEX
 {: #2 .slug-text}
 

@@ -45,18 +45,18 @@ _request:_
 <soapenv:Header/>
 	<soapenv:Body>
 		<tem:CategoryInsertUpdate>
-			 <tem:category>
+			<tem:category>
 				<!--descrição do departamento-->
-			    <vtex:Description>Departamento de Artesanato</vtex:Description>
+				<vtex:Description>Departamento de Artesanato</vtex:Description>
 				<!--departamento está ativo?-->
-			    <vtex:IsActive>true</vtex:IsActive>
+				<vtex:IsActive>true</vtex:IsActive>
 				<!--palavras chaves do departamento-->
-			    <vtex:Keywords>Departamento Keywords</vtex:Keywords>
+				<vtex:Keywords>Departamento Keywords</vtex:Keywords>
 				<!--nome do departamento-->
-			    <vtex:Name>Departamento Artesanato</vtex:Name>
+				<vtex:Name>Departamento Artesanato</vtex:Name>
 				<!--titulo do departamento-->
-			    <vtex:Title>Departamento Artesanato</vtex:Title>
-			 </tem:category>
+				<vtex:Title>Departamento Artesanato</vtex:Title>
+			</tem:category>
 		</tem:CategoryInsertUpdate>
 	</soapenv:Body>
 </soapenv:Envelope>
@@ -95,18 +95,18 @@ _request:_
 	<soapenv:Body>
 		<tem:CategoryInsertUpdate>
 			<tem:category>
-			<!--descrição da categoria-->
-			<vtex:Description>Artesanato de Barro</vtex:Description>
-			<!--identificador do departamento pai, inserido acima-->
-			<vtex:FatherCategoryId>1000018</vtex:FatherCategoryId>
-			<!--a categoria está ativa?-->
-			<vtex:IsActive>true</vtex:IsActive>
-			<!--palavras chave da categoria-->
-			<vtex:Keywords>Barro</vtex:Keywords>
-			<!--nome da categoria-->
-			<vtex:Name>Artesanato de Barro</vtex:Name>
-			<!--título da categoria-->
-			<vtex:Title>Artesanato de Barro</vtex:Title>
+				<!--descrição da categoria-->
+				<vtex:Description>Artesanato de Barro</vtex:Description>
+				<!--identificador do departamento pai, inserido acima-->
+				<vtex:FatherCategoryId>1000018</vtex:FatherCategoryId>
+				<!--a categoria está ativa?-->
+				<vtex:IsActive>true</vtex:IsActive>
+				<!--palavras chave da categoria-->
+				<vtex:Keywords>Barro</vtex:Keywords>
+				<!--nome da categoria-->
+				<vtex:Name>Artesanato de Barro</vtex:Name>
+				<!--título da categoria-->
+				<vtex:Title>Artesanato de Barro</vtex:Title>
 			</tem:category>
 		</tem:CategoryInsertUpdate>
 	</soapenv:Body>
@@ -146,18 +146,18 @@ _request:_
 	<soapenv:Body>
 		<tem:CategoryInsertUpdate>
 			<tem:category>
-			<!--descrição da sub categoria-->
-			<vtex:Description>Barro Vermelho</vtex:Description>
-			<!--identificador da categoria inserida acima-->
-			<vtex:FatherCategoryId>1000019</vtex:FatherCategoryId>
-			<!--a sub categoria está ativa?-->
-			<vtex:IsActive>true</vtex:IsActive>
-			<!--palavras chave da sub categoria-->
-			<vtex:Keywords>Barro Vermelho</vtex:Keywords>
-			<!--nome da sub categoria-->
-			<vtex:Name>Artesanato de Barro Vermelho</vtex:Name>
-			<!--titulo da sub categoria-->
-			<vtex:Title>Artesanato de Barro Vermelho</vtex:Title>
+				<!--descrição da sub categoria-->
+				<vtex:Description>Barro Vermelho</vtex:Description>
+				<!--identificador da categoria inserida acima-->
+				<vtex:FatherCategoryId>1000019</vtex:FatherCategoryId>
+				<!--a sub categoria está ativa?-->
+				<vtex:IsActive>true</vtex:IsActive>
+				<!--palavras chave da sub categoria-->
+				<vtex:Keywords>Barro Vermelho</vtex:Keywords>
+				<!--nome da sub categoria-->
+				<vtex:Name>Artesanato de Barro Vermelho</vtex:Name>
+				<!--titulo da sub categoria-->
+				<vtex:Title>Artesanato de Barro Vermelho</vtex:Title>
 			</tem:category>
 		</tem:CategoryInsertUpdate>
 	</soapenv:Body>
@@ -196,23 +196,23 @@ _request:_
 
 {% highlight xml %}
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:vtex="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <tem:BrandInsertUpdate>
-         <tem:brand>
- 			<!--descrição da marca-->
-            <vtex:Description>Marca DuBom</vtex:Description>
- 			<!--a marca está ativa?-->
-            <vtex:IsActive>true</vtex:IsActive>
-			<!--palavras chave da marca-->
-            <vtex:Keywords>DuBom Keywords</vtex:Keywords>
-			<!--nome da marca-->
-            <vtex:Name>DuBom</vtex:Name>
-			<!--titulo da marca-->
-            <vtex:Title>DuBom</vtex:Title>
-         </tem:brand>
-      </tem:BrandInsertUpdate>
-   </soapenv:Body>
+<soapenv:Header/>
+	<soapenv:Body>
+		<tem:BrandInsertUpdate>
+			<tem:brand>
+				<!--descrição da marca-->
+				<vtex:Description>Marca DuBom</vtex:Description>
+				<!--a marca está ativa?-->
+				<vtex:IsActive>true</vtex:IsActive>
+				<!--palavras chave da marca-->
+				<vtex:Keywords>DuBom Keywords</vtex:Keywords>
+				<!--nome da marca-->
+				<vtex:Name>DuBom</vtex:Name>
+				<!--titulo da marca-->
+				<vtex:Title>DuBom</vtex:Title>
+			</tem:brand>
+		</tem:BrandInsertUpdate>
+	</soapenv:Body>
 </soapenv:Envelope>
 {% endhighlight %}
 
@@ -223,15 +223,15 @@ _response:_
    <s:Body>
       <BrandInsertUpdateResponse xmlns="http://tempuri.org/">
          <BrandInsertUpdateResult xmlns:a="http://schemas.datacontract.org/2004/07/Vtex.Commerce.WebApps.AdminWcfService.Contracts" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
-            <a:AdWordsRemarketingCode i:nil="true"/>
-            <a:Description>Marca DuBom</a:Description>
- 			<!--identificador da marca inserida-->
-            <a:Id>2000011</a:Id>
-            <a:IsActive>true</a:IsActive>
-            <a:Keywords>DuBom Keywords</a:Keywords>
-            <a:LomadeeCampaignCode i:nil="true"/>
-            <a:Name>DuBom</a:Name>
-            <a:Title>DuBom</a:Title>
+			<a:AdWordsRemarketingCode i:nil="true"/>
+			<a:Description>Marca DuBom</a:Description>
+			<!--identificador da marca inserida-->
+			<a:Id>2000011</a:Id>
+			<a:IsActive>true</a:IsActive>
+			<a:Keywords>DuBom Keywords</a:Keywords>
+			<a:LomadeeCampaignCode i:nil="true"/>
+			<a:Name>DuBom</a:Name>
+			<a:Title>DuBom</a:Title>
          </BrandInsertUpdateResult>
       </BrandInsertUpdateResponse>
    </s:Body>
@@ -268,12 +268,12 @@ _request:_
 <soapenv:Header/>
 	<soapenv:Body>
 		<tem:ImageServiceInsertUpdate>
-		<!--url da imagem-->
-		<tem:urlImage>https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ6Lu0obmddsQX3JELe04hUs_hSelsmU8_W1yn5ztgdAk5SJC7D</tem:urlImage>
-		<!--nome da imagem-->
-		<tem:imageName>Barro Vermelho Escuro</tem:imageName>
-		<!--identificador do SKu que irá receber a imagem-->
-		 <tem:stockKeepingUnitId>31018371</tem:stockKeepingUnitId>
+			<!--url da imagem-->
+			<tem:urlImage>https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ6Lu0obmddsQX3JELe04hUs_hSelsmU8_W1yn5ztgdAk5SJC7D</tem:urlImage>
+			<!--nome da imagem-->
+			<tem:imageName>Barro Vermelho Escuro</tem:imageName>
+			<!--identificador do SKu que irá receber a imagem-->
+			<tem:stockKeepingUnitId>31018371</tem:stockKeepingUnitId>
 		</tem:ImageServiceInsertUpdate>
 	</soapenv:Body>
 </soapenv:Envelope>
@@ -296,10 +296,10 @@ _request 2:_
 <soapenv:Header/>
 	<soapenv:Body>
 		<tem:ImageServiceInsertUpdate>
-		<tem:urlImage>http://1.bp.blogspot.com/_ZANjG3oA2BI/TCJfvX-7daI/AAAAAAAADZ0/yO5MwjMtjdI/s400/vaso_5cm.jpg</tem:urlImage>
-		<tem:imageName>Barro Vermelho Claro</tem:imageName>
-		<tem:stockKeepingUnitId>31018372</tem:stockKeepingUnitId>
-		<tem:fileId>31018372</tem:fileId>
+			<tem:urlImage>http://1.bp.blogspot.com/_ZANjG3oA2BI/TCJfvX-7daI/AAAAAAAADZ0/yO5MwjMtjdI/s400/vaso_5cm.jpg</tem:urlImage>
+			<tem:imageName>Barro Vermelho Claro</tem:imageName>
+			<tem:stockKeepingUnitId>31018372</tem:stockKeepingUnitId>
+			<tem:fileId>31018372</tem:fileId>
 		</tem:ImageServiceInsertUpdate>
 	</soapenv:Body>
 </soapenv:Envelope>
@@ -322,6 +322,7 @@ Uma vez cadastradas os produtos e as SKUs na loja da VTEX, é necessário alimen
 
 
 ###Preço
+{: #9 .slug-text}
 
 Se no momento sa inserção da SKU não foi enviado um preço válido para a SKU é necessário inserir o preço da mesma. Isso pode ser feito direto no admin da loja na VTEX (_urldaloja/admin/Site/SkuTabelaValor.aspx_), ou usando a API REST do sistema de **Pricing**.
 
@@ -334,16 +335,17 @@ Através da API do Pricing, inserir ou atualizar preço na SKUs:
 A documentação completa sobre a API de **Pricing** se encontra em: [http://lab.vtex.com/docs/pricing/api/latest/pricing/index.html](http://lab.vtex.com/docs/pricing/api/latest/pricing/index.html)
 
 ###Estoque
+{: #10 .slug-text}
 
 Através da API do Logistics, inserir ou atualizar os estoques na SKUs:
 
-<a title="inserir ou atualizar os estoques na SKUs" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/LOGISTICS/LOGISTICS_SetBalance" target="_blank">[Developer] - Exemplo de chamada para inserir ou atualizar estoque nas SKUs</a>
+<a title="inserir ou atualizar os estoques na SKUs" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/LOGISTIC/LOGISTIC_SetBalance" target="_blank">[Developer] - Exemplo de chamada para inserir ou atualizar estoque nas SKUs</a>
 
 A documentação completa sobre a API de **Logistics** se encontra em: [http://lab.vtex.com/docs/logistics/api/latest/warehouse/index.html](http://lab.vtex.com/docs/logistics/api/latest/warehouse/index.html)
 
 
 ###Ativa SKUs
-{: #9 .slug-text}
+{: #11 .slug-text}
 
 Após as SKUs estarem inseridas debaixo de seus produtos agrupadores ou não, e com todos os pre requistos de ativação preenchidos (imagem, estoque, preço, especificações, se tiver) basta ativá-las. Exempos de chamadas de ativação de SKU.
 
@@ -354,8 +356,8 @@ _request:_
 <soapenv:Header/>
 	<soapenv:Body>
 		<tem:StockKeepingUnitActive>
-		<!--identificador da SKU que deseja tentar ativar-->
-		<tem:idStockKeepingUnit>31018371</tem:idStockKeepingUnit>
+			<!--identificador da SKU que deseja tentar ativar-->
+			<tem:idStockKeepingUnit>31018371</tem:idStockKeepingUnit>
 		</tem:StockKeepingUnitActive>
 	</soapenv:Body>
 </soapenv:Envelope>
@@ -378,7 +380,7 @@ _request 2:_
 <soapenv:Header/>
 	<soapenv:Body>
 		<tem:StockKeepingUnitActive>
-		<tem:idStockKeepingUnit>31018372</tem:idStockKeepingUnit>
+			<tem:idStockKeepingUnit>31018372</tem:idStockKeepingUnit>
 		</tem:StockKeepingUnitActive>
 	</soapenv:Body>
 </soapenv:Envelope>
@@ -395,7 +397,7 @@ _response 2:_
 {% endhighlight %}
 
 ###Alteração de SKUs
-{: #10 .slug-text}
+{: #13 .slug-text}
 
 Após uma SKU ser inserida com sucesso, caso haja alguma necessidade de alguma alteração, deve se invocar o mesmo método de inserçao passando o id de SKU que se deseja alterar. Alterações de preço **NÃO** devem ser feitas pelo metodo de insert/update de SKU. 
 
@@ -409,56 +411,56 @@ _request:_
 <soapenv:Header/>
 	<soapenv:Body>
 		<tem:StockKeepingUnitInsertUpdate>
-		<tem:stockKeepingUnitVO>
-		<!--number, cubagem = peso cubico -->
-		<vtex:CubicWeight>100</vtex:CubicWeight>
-		<!--number, altura com embalagem e metros-->
-		<vtex:Height>1.800</vtex:Height>
-		<!--bool, se não atender requisitos de ativação(imagem, preço, estoque, espec., outros reqs obrig.), não será ativado-->
-		<vtex:IsActive>true</vtex:IsActive>
-		<!--bool, disponibilidade -->
-		<vtex:IsAvaiable>true</vtex:IsAvaiable>
-		<!--bool, é um KIT? -->
-		<vtex:IsKit>false</vtex:IsKit>
-		<!--number, comprimento com embalagem em metros -->
-		<vtex:Length>1.52</vtex:Length>
-		<!--decimal, ** ler obs --> 
-		<vtex:ListPrice>150.0</vtex:ListPrice>
-		<!--prefixo do estoque (id estoque = 1_1, mandar 1) -->
-		<vtex:ModalId>1</vtex:ModalId>
-		<!--string, opicional, tipo de carga, necessita configuração de transportadora especial quando preenchido -->
-		<vtex:ModalType>Vidro</vtex:ModalType>
-		<!--string, nome da SKU -->
-		<vtex:Name>Vaso Artesanal de Barro Laranja Escuro </vtex:Name>
-		<!--decimal,  preço, "POR", opcional **ler obs-->
-		<vtex:Price>110.0</vtex:Price>
-		<!--number, identificador do produto pai da SKU -->
-		<vtex:ProductId>31018369</vtex:ProductId>
-		<!--number, peso real em kilos -->
-		<vtex:RealHeight>1.740</vtex:RealHeight>
-		<!--number, altural real em metros -->
-		<vtex:RealLength>1.60</vtex:RealLength>
-		<!--number, peso real em kilos -->
-		<vtex:RealWeightKg>2.750</vtex:RealWeightKg>
-		<!--number, comprimento real em metros -->
-		<vtex:RealWidth>1.7</vtex:RealWidth>
-		<!--number, identificador da SKU no ERP -->
-		<vtex:RefId>00123456</vtex:RefId>
-		<!--number, opcional, numero de pontos dessa SKU -->
-		<vtex:RewardValue>0</vtex:RewardValue>
-		<!--lista de string, EANs do produto -->
-		<vtex:StockKeepingUnitEans>
-		<vtex:StockKeepingUnitEanDTO>
-		<vtex:Ean>0123456789123</vtex:Ean>
-		</vtex:StockKeepingUnitEanDTO>
-		</vtex:StockKeepingUnitEans>
-		<!--number, unidade de multipliçao para venda -->
-		<vtex:UnitMultiplier>1</vtex:UnitMultiplier>
-		<!--number, peso em kilos-->
-		<vtex:WeightKg>1.5</vtex:WeightKg>
-		<!--number, largura com embalagem em metros -->
-		<vtex:Width>2.780</vtex:Width>
-		</tem:stockKeepingUnitVO>
+			<tem:stockKeepingUnitVO>
+				<!--number, cubagem = peso cubico -->
+				<vtex:CubicWeight>100</vtex:CubicWeight>
+				<!--number, altura com embalagem e metros-->
+				<vtex:Height>1.800</vtex:Height>
+				<!--bool, se não atender requisitos de ativação(imagem, preço, estoque, espec., outros reqs obrig.), não será ativado-->
+				<vtex:IsActive>true</vtex:IsActive>
+				<!--bool, disponibilidade -->
+				<vtex:IsAvaiable>true</vtex:IsAvaiable>
+				<!--bool, é um KIT? -->
+				<vtex:IsKit>false</vtex:IsKit>
+				<!--number, comprimento com embalagem em metros -->
+				<vtex:Length>1.52</vtex:Length>
+				<!--decimal, ** ler obs --> 
+				<vtex:ListPrice>150.0</vtex:ListPrice>
+				<!--prefixo do estoque (id estoque = 1_1, mandar 1) -->
+				<vtex:ModalId>1</vtex:ModalId>
+				<!--string, opicional, tipo de carga, necessita configuração de transportadora especial quando preenchido -->
+				<vtex:ModalType>Vidro</vtex:ModalType>
+				<!--string, nome da SKU -->
+				<vtex:Name>Vaso Artesanal de Barro Laranja Escuro </vtex:Name>
+				<!--decimal,  preço, "POR", opcional **ler obs-->
+				<vtex:Price>110.0</vtex:Price>
+				<!--number, identificador do produto pai da SKU -->
+				<vtex:ProductId>31018369</vtex:ProductId>
+				<!--number, peso real em kilos -->
+				<vtex:RealHeight>1.740</vtex:RealHeight>
+				<!--number, altural real em metros -->
+				<vtex:RealLength>1.60</vtex:RealLength>
+				<!--number, peso real em kilos -->
+				<vtex:RealWeightKg>2.750</vtex:RealWeightKg>
+				<!--number, comprimento real em metros -->
+				<vtex:RealWidth>1.7</vtex:RealWidth>
+				<!--number, identificador da SKU no ERP -->
+				<vtex:RefId>00123456</vtex:RefId>
+				<!--number, opcional, numero de pontos dessa SKU -->
+				<vtex:RewardValue>0</vtex:RewardValue>
+				<!--lista de string, EANs do produto -->
+				<vtex:StockKeepingUnitEans>
+				<vtex:StockKeepingUnitEanDTO>
+				<vtex:Ean>0123456789123</vtex:Ean>
+				</vtex:StockKeepingUnitEanDTO>
+				</vtex:StockKeepingUnitEans>
+				<!--number, unidade de multipliçao para venda -->
+				<vtex:UnitMultiplier>1</vtex:UnitMultiplier>
+				<!--number, peso em kilos-->
+				<vtex:WeightKg>1.5</vtex:WeightKg>
+				<!--number, largura com embalagem em metros -->
+				<vtex:Width>2.780</vtex:Width>
+			</tem:stockKeepingUnitVO>
 		</tem:StockKeepingUnitInsertUpdate>
 	</soapenv:Body>
 </soapenv:Envelope>
@@ -466,7 +468,7 @@ _request:_
 
 *Os campos Id ou RefId definem se será um insert ou um update, caso o id de SKU enviado ou o RefId enviado já existirem, será um update.
 
-**Caso passe preço nulo no update, o preço não será afetado.
+**Caso enviado um preço nulo no update, o preço não será afetado.
 
 _response:_  
 
@@ -518,11 +520,11 @@ _response:_
 
 
 ####Pedidos e Tracking
-{: #11 .slug-text}
+{: #14 .slug-text}
 
-Para a integração de pedidos consulte o tópico [Integração de Pedido, Nota Fiscal e Tracking](http://lab.vtex.com/docs/integracao/guide/erp/pedido-e-tracking/index.html).
+Para a integração de pedidos consulte o tópico [[Guide] Integração de Pedido, Nota Fiscal e Tracking](http://lab.vtex.com/docs/integracao/guide/erp/pedido-e-tracking/index.html).
 
 ---
 
-autor: _Jonas Bolognim_
+autor: _Jonas Bolognim_  
 propriedade: _VTEX_

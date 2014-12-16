@@ -36,6 +36,9 @@ _Exemplo:_
 
 O cadastro da estrutura mercadologica deve ser feito diretamente no admin da própria loja (_http://sualoja.com.br/admin/Site/Categories.aspx_), e para atender a integração vinda do ERP, é criado um departamento padrão para produtos que vem do ERP, ou seja, todos os produtos caem no admin da loja nesse departamento padrão, e depois no momento do enriquecimento é colocado na categoria desejada.
 
+**Marca**
+A criação das marcas também deve ser feita pelo admin da VTEX. Para descida de produto do ERP, criar uma marca padrão, e depois no momento do enriquecimento, dentro do admin da VTEX, coloca na marca correta.
+
 ##Produtos e SKUs
 {: #3 .slug-text}
 
@@ -56,7 +59,7 @@ _Fluxo:_
 
 ![alt text](ERP-catalogo-expresso.PNG "Fluxo Básico")
 
-##Produto
+###Produto
 {: #5 .slug-text}
 
 Abaixo exemplo de chamada e resposta de uma inserção de produto usando o metodo "ProductInsertUpdate":  
@@ -270,6 +273,7 @@ Uma vez cadastradas os produtos e as SKUs na loja da VTEX, é necessário alimen
 
 
 ###Preço
+{: #8 .slug-text}
 
 Se no momento sa inserção da SKU não foi enviado um preço válido para a SKU é necessário inserir o preço da mesma. Isso pode ser feito direto no admin da loja na VTEX (_urldaloja/admin/Site/SkuTabelaValor.aspx_), ou usando a API REST do sistema de **Pricing**.
 
@@ -282,25 +286,25 @@ Através da API do Pricing, inserir ou atualizar preço na SKUs:
 A documentação completa sobre a API de **Pricing** se encontra em: [http://lab.vtex.com/docs/pricing/api/latest/pricing/index.html](http://lab.vtex.com/docs/pricing/api/latest/pricing/index.html)
 
 ###Estoque
+{: #9 .slug-text}
 
 Isso pode ser feito direto no admin da loja na VTEX (_urldaloja/admin/logistics/#/dashboard_), maneira rápida:
 
-1. Criar o estoque,  
-2. Criar a transpotadora,  
-3. Criar a doca,
-4. Colocar estoque nos itens  
+1. Criar o estoque [[Video]](http://www.youtube.com/watch?v=FijZQoaWiDM),  
+2. Criar a transpotadora [[Video]](http://www.youtube.com/watch?v=IkIM53OXvVo),  
+3. Criar a doca [[Video]](https://www.youtube.com/watch?v=fNJ3JBoEoW0),  
 
 Criar o estoque, criar a transpotadora e criar a doca no admin da VTEX, e depois usar a API REST do **Logistics** para manipular o estoque.
 
 
 Através da API do Logistics, inserir ou atualizar os estoques na SKUs:
 
-<a title="inserir ou atualizar os estoques na SKUs" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/LOGISTICS/LOGISTICS_SetBalance" target="_blank">[Developer] - Exemplo de chamada para inserir ou atualizar estoque nas SKUs</a>
+<a title="inserir ou atualizar os estoques na SKUs" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/LOGISTIC/LOGISTIC_SetBalance" target="_blank">[Developer] - Exemplo de chamada para inserir ou atualizar estoque nas SKUs</a>
 
 A documentação completa sobre a API de **Logistics** se encontra em: [http://lab.vtex.com/docs/logistics/api/latest/warehouse/index.html](http://lab.vtex.com/docs/logistics/api/latest/warehouse/index.html)
 
-##Pedidos
-Para a integraão de pedidos consulte o tópico [Integração de Pedido, Nota Fiscal e Tracking](http://lab.vtex.com/docs/integracao/guide/erp/pedido-e-tracking/index.html).
+###Pedidos
+Para a integraão de pedidos consulte o tópico [[Guide] Integração de Pedido, Nota Fiscal e Tracking](http://lab.vtex.com/docs/integracao/guide/erp/pedido-e-tracking/index.html).
 
 ---
 
