@@ -12,7 +12,7 @@ A integração de ERPs com lojas VTEX é realizada através de webservice (SOAP:
 
 É altemante recomendado que se use as APIs REST nos módulos que não seja o **Catálogo**.
 
-Abaixo segue os modelos descritos:
+Abaixo seguem os modelos propostos:
 
 ###Integração Rápida de Catálogo e Preço e Estoque
 {: #2 .slug-text}

@@ -20,7 +20,7 @@ Para o ERP integrar o catálogo com um da loja na VTEX, deverá usar o webservic
 
 Futuramente além do serviço SOAP (webservice) estaremos também oferecendo integração de catálogo por APIs REST (JSON) bem definidas e de alta performance.
 
-##Organização dos Produtos Dentro da Loja
+###Organização dos Produtos Dentro da Loja
 {: #2 .slug-text}
 
 Geralmente, os produtos são organizados dentro da loja em estruturas mercadológicas formadas por:
@@ -33,7 +33,7 @@ Geralmente, os produtos são organizados dentro da loja em estruturas mercadoló
 *Departamento/Categoria/SubCategoria/Produto*  
 *Ferramentas/Eletricas/Furradeiras/Super Drill*
 
-##Departamento
+###Departamento
 {: #3 .slug-text}
 
 Abaixo exemplos de chamada e resposta de inseção de Departamentos e as Categorias através do metodo "CategoryInsertUpdate":
@@ -85,7 +85,7 @@ _response:_
 </s:Envelope>
 {% endhighlight %}
 
-##Categoria
+###Categoria
 
 _request:_  
 
@@ -136,7 +136,7 @@ _response_:
 </s:Envelope>
 {% endhighlight %}
 
-##Sub Categoria
+###Sub Categoria
 
 _request:_  
 
@@ -187,7 +187,7 @@ _response:_
 </s:Envelope>
 {% endhighlight %}
 
-##Marca
+###Marca
 {: #5 .slug-text}
 
 Abaixo exemplo de chamada e resposta de inseção de Marca através do metodo "BrandInsertUpdate":
@@ -239,23 +239,87 @@ _response:_
 {% endhighlight %}
 
 
-## Produtos e SKUs
+### Produtos e SKUs
 {: #6 .slug-text}
 
 [[Developer] - Ver Guia de Integração De Catalogo Expresso](http://lab.vtex.com/docs/integracao/guide/erp/catalogo-expresso/index.html#produtos-e-skus)
 
-###Fields de Produto ou SKU
+###Fields (Campos de Especificão) de Produto ou SKU
 {: #6 .slug-text}
 
-Os fields genéricos dos produtos devem ser adicionado a categoria direta do produto e indicados com IsStockKeepingUnit = false, e os fields específicos de SKUs devem ser inseridos na Categoria direta da SKU e indicados com IsStockKeepingUnit = true. Não temos metodos no webservice para inserir Fields (campos), uma API REST beta deve ser usada para isso.
+Os campos de especificão genéricos dos produtos devem ser adicionado a categoria direta do produto e indicados com IsStockKeepingUnit = false, e os campos de especificação específicos de SKUs devem ser inseridos na categoria direta da SKU e indicados com IsStockKeepingUnit = true. Não temos metodos no webservice para inserir Fields (campos), uma API REST beta deve ser usada para isso. Ex. Prdouto camisa tem especificação obrigatória **cor** e **tamanho**, então insere o campo na categoria de camisas dizendo que toda produto que estiver em baixo dessa categoria, tem por obrigatoriedade de preencher os valores de **cor** e **tamanho**
 
-<a title="inserir um campo de especificação" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!//CATALOG/CATALOG_Sugestion_0" target="_blank">[Developer beta] - Exemplo de chamada para inserir inserir um campo de especificação de produto ou SKU</a>
+<!--a title="inserir um campo de especificação" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!//CATALOG/CATALOG_Sugestion_0" target="_blank">[Developer beta] - Exemplo de chamada para inserir inserir um campo de especificação de produto ou SKU</a-->
 
-####Valores dos Fields
+Enquanto não temos a API stable, a melhor maneira de inserir o campos é usando o admin na loja VTEX na menu de categorias.
 
-Adicionado o campo, colocar valores nos campos.
+###Valores dos Campos
 
-TODO
+Adicionado os campos de produto ou SKU, é necessário preenche-los com valores. Abaixo exemplo de chamada e resposta de inseção de valores de campo através do metodo "ProductEspecificationInsert":  
+
+_request:_  
+
+{% highlight xml %}
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:arr="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tem:ProductEspecificationInsert>
+         <!--number, identificador do produto que esta rebendo o valor de campo-->
+         <tem:idProduct>31018369</tem:idProduct>
+         <!--string, identificador do campo, o nome do campo-->
+         <tem:fieldName>Material</tem:fieldName>
+         <!--array, lista de valores do campo-->
+         <tem:fieldValues>
+            <!--string, valor do campo-->
+            <arr:string>ceramica</arr:string>
+         </tem:fieldValues>
+      </tem:ProductEspecificationInsert>
+   </soapenv:Body>
+</soapenv:Envelope>  
+{% endhighlight %}
+
+_response:_
+
+{% highlight xml %}
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+   <s:Body>
+      <ProductEspecificationInsertResponse xmlns="http://tempuri.org/"/>
+   </s:Body>
+</s:Envelope>
+{% endhighlight %}
+
+Caso queira inserir um valor de campo que foi definido como campo de SKU somente, usar o metodo "StockKeepingUnitEspecificationInsert":  
+
+_request:_  
+
+{% highlight xml %}
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:arr="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tem:StockKeepingUnitEspecificationInsert>
+         <!--number, identificador do SKU dono do campo-->
+         <tem:idSku></tem:idSku>
+         <!--string, identificador do campo, nome do campo-->
+         <tem:fieldName></tem:fieldName>
+         <!--array, lista de valores dos campos-->
+         <tem:fieldValues>
+            <!--string, valor de campo-->
+            <arr:string></arr:string>
+         </tem:fieldValues>
+      </tem:StockKeepingUnitEspecificationInsert>
+   </soapenv:Body>
+</soapenv:Envelope>
+{% endhighlight %}
+
+_response:_
+
+{% highlight xml %}
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+   <s:Body>
+      <StockKeepingUnitEspecificationInsertResponse xmlns="http://tempuri.org/"/>
+   </s:Body>
+</s:Envelope>
+{% endhighlight %}
 
 ###Imagens das SKUs
 {: #7 .slug-text}
@@ -315,7 +379,7 @@ _response 2:_
 </s:Envelope>
 {% endhighlight %}
 
-##Preço e Estoque
+###Preço e Estoque
 {: #8 .slug-text}
 
 Uma vez cadastradas os produtos e as SKUs na loja da VTEX, é necessário alimentar o estoque e acertar o preço na tabela de preço (se no momento de inserir a SKU não enviou o preço).
@@ -519,7 +583,7 @@ _response:_
 {% endhighlight %}
 
 
-####Pedidos e Tracking
+###Pedidos e Tracking
 {: #14 .slug-text}
 
 Para a integração de pedidos consulte o tópico [[Guide] Integração de Pedido, Nota Fiscal e Tracking](http://lab.vtex.com/docs/integracao/guide/erp/pedido-e-tracking/index.html).
