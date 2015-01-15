@@ -323,7 +323,7 @@ Este tópico tem por objetivo auxiliar o na simulação de carrinho, e consulta 
 
 Quando um produto é inserido no carrinho no canal de vendas Não VTEX, ou faz se alguma edição no carrinho, uma consulta de simulaçao de carrinho deverá ser feita na loja VTEX para checar a validade das condiçoes comerciais (preço, estoque, frete e SLAs de entrega). Quando o cliente vai para o pagamento, uma consulta as formas de pagamento, aos parcelmentos e uma outra simulçao de carrinho deverá ser realizada.
 
-*Fluxo de chamadas no carrinho e no pagamento:*  
+_Fluxo de chamadas no carrinho e no pagamento:_    
 
 ![alt text](fechamento-canal-nao-vtex-com-pgto.png "fechamento do pedido no marketplace")  
 
@@ -643,7 +643,7 @@ Este tópico tem por objetivo auxiliar um canal de vendas não VTEX enviar um pe
 
 Caso se queira uma condição comercial diferenciada para o canal de vendas não VTEX, na loja VTEX deverá ser criado um novo canal de vendas, podendo assim criar promoções diferenciadas (desconto, frete, etc) somente para o canal desejado. Caso não tenha condição comercial diferenciada, deve se usar o canal de vendas da loja principal (sc=1).
 
-*Exemplo do fuxo de chamadas de descida de pedido, pagamento e autorização para despachar:*  
+_Fluxo de chamadas de descida de pedido, pagamento e autorização para despachar:_    
 
 ![alt text](pedido-canal-nao-vtex-com-pgto.PNG "Title") 
 
