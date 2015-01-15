@@ -325,7 +325,7 @@ Quando um produto é inserido no carrinho no canal de vendas Não VTEX, ou faz s
 
 _Fluxo de chamadas no carrinho e no pagamento:_    
 
-![alt text](fechamento-canal-nao-vtex-com-pgto.png "fechamento do pedido no marketplace")  
+![alt text](fechato-canal-nao-vtex-com-pgto.png "fechamento do pedido no marketplace")  
 
 ###Simulaçao de Carrinho
 {: #5 .slug-text} 
