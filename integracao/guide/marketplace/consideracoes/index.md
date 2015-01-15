@@ -22,6 +22,7 @@ Conjunto de instruções e exemplos que permitem um Seller Não VTEX expor e ven
 
 Conjunto de instruções e exemplos que permitem um Marketplace Não VTEX expor e vender os produtos (SKUs) de Sellers hospedados na VTEX, através de chamadas e exposição de APIs seguindo o protocolo VTEX. Neste modelo o Marketplace cria a transação de pagamento no Seller.
 
+[[Guide] Marketplace Não VTEX vendendo para Sellers VTEX Com Pagamento](http://lab.vtex.com/docs/integracao/guide/marketplace/canal-de-vendas-nao-vtex-com-pgto/index.html)
 
 ###Marketplace VTEX vendendo para Sellers VTEX e Vice Versa
 {: #3 .slug-text}
