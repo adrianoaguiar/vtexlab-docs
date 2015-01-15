@@ -645,7 +645,7 @@ Caso se queira uma condição comercial diferenciada para o canal de vendas não
 
 _Fluxo de chamadas de descida de pedido, pagamento e autorização para despachar:_    
 
-![alt text](pedido-canal-nao-vtex-com-pgto.PNG "Title") 
+![alt text](fechato-canal-nao-vtex-com-pgto.png "Title") 
 
 ###Enviar Pedido
 {: #8 .slug-text} 
