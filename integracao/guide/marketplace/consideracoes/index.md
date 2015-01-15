@@ -7,7 +7,7 @@ docType: guide
 
 
 # Marketplace e Sellers VTEX e Não VTEX
-Modelo de venda entre Marketpalces* e Sellers* VTEX e não VTEX. Abaixo modelos existentes:
+Modelo de venda entre Marketplaces* e Sellers* VTEX e não VTEX. Abaixo modelos existentes:
 
 
 ###Sellers Não VTEX Vendendo em Marketplace VTEX
@@ -17,10 +17,10 @@ Conjunto de instruções e exemplos que permitem um Seller Não VTEX expor e ven
 
 [[Guide] Sellers Não VTEX Vendendo em Marketplace VTEX](http://lab.vtex.com/docs/integracao/guide/marketplace/seller-n%C3%A3o-vtex/index.html)
 
-###Marketplace Não VTEX vendendo para Sellers VTEX
+###Marketplace Não VTEX vendendo para Sellers VTEX Com Pagamento
 {: #2 .slug-text}
 
-Conjunto de instruções e exemplos que permitem um Marketplace Não VTEX expor e vender os produtos (SKUs) de Sellers hospedados na VTEX, através de chamadas e exposição de APIs seguindo o protocolo VTEX.
+Conjunto de instruções e exemplos que permitem um Marketplace Não VTEX expor e vender os produtos (SKUs) de Sellers hospedados na VTEX, através de chamadas e exposição de APIs seguindo o protocolo VTEX. Neste modelo o Marketplace cria a transação de pagamento no Seller.
 
 
 ###Marketplace VTEX vendendo para Sellers VTEX e Vice Versa
