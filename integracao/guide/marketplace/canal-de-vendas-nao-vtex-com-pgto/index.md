@@ -914,7 +914,7 @@ _response:_
 }
 {% endhighlight %}  
 
-##4 Implementando Marketplace Services Endpoint Actions
+##Implementando Marketplace Services Endpoint Actions
 {: #12 .slug-text} 
 
 O MarketplaceServicesEndpoint serve para a loja VTEX informar ao canal de vendas a nota fiscal e tracking de pedido. O envio de notas fiscais pode ser parcial, obrigando assim ao informador informar além dos valores da nota fiscal, os items ele está mandando na nota fiscal parcial.
