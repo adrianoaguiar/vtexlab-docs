@@ -180,7 +180,7 @@ _response:_
 
 Acessa uma loja VTEX e busca dados de uma SKU - Endpoint da Loja VTEX
 
-endpoint: **http://portal.vtexcommerce.com.br/api/catalog_system/pvt/sku/stockkeepingunitbyid/[idsku]?an=[nomedalojavtex]**  
+endpoint: **http://[loja].vtexcommercestable.com.br/api/catalog_system/pvt/sku/stockkeepingunitbyid/[idsku]**  
 verb: **GET**   
 Accept: **application/json**  
 Parametro: **an=nomedalojavtex** 
@@ -824,7 +824,7 @@ _retorno de erro:_
 }
 {% endhighlight %}  
 
-###Enviar Pagamento - Iniciar Transação, Enviar Dados de Pagamento, Enviar Dados de Anti Fraude e Autorização de Pagamento
+###Enviar Pagamento - Iniciar Transação, Enviar Dados de Pagamento, Enviar Dados de Anti-Fraude e Autorização de Pagamento
 
 Após enviar o pedido e receber o response com o paymentData.merchantPaymentReferenceId, o processo de transação de pagamento do pedido deverá ser enviado.
 
@@ -852,13 +852,13 @@ verb: **POST**
 Content-Type: **application/json**  
 Accept: **application/json**  
 Parametro: **sc** // sc é o canal de vendas cadastrado na VTEX.  
-Parametro: **affiliateId** // affiliateId é o id do afiliado cadastrado n loja VTEX
+Parametro: **affiliateId** // affiliateId é o id do afiliado cadastrado na loja VTEX
 
 
 ###Enviar Dados de Anti Fraude
 {: #10 .slug-text} 
 
-Envia dados do cliente que serão usados pelo sistema de anti fraude - Endpoint Loja VTEX
+Envia dados do cliente que serão usados pelo sistema de anti-fraude - Endpoint Loja VTEX
 
 endpoint: ****  
 verb: **POST**  

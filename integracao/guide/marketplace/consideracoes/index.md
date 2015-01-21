@@ -6,31 +6,46 @@ docType: guide
 ---
 
 
-# Marketplace e Sellers VTEX e Não VTEX
+## Marketplace e Sellers VTEX e Não VTEX
 Modelo de venda entre Marketplaces* e Sellers* VTEX e não VTEX. Abaixo modelos existentes:
 
 
 ###Sellers Não VTEX Vendendo em Marketplace VTEX
 {: #1 .slug-text}
 
-Conjunto de instruções e exemplos que permitem um Seller Não VTEX expor e vender os seus produtos (SKUs)* em Marketplaces hospedados na VTEX, através de chamadas e exposição de APIs* seguindo o protocolo VTEX.
+Conjunto de instruções e exemplos que permitem um Seller Não VTEX expor e vender os seus produtos (SKUs)* em Marketplaces hospedados na VTEX, através de chamadas e exposição de APIs* seguindo o protocolo VTEX. Neste modelo o Marketplace controla todo o pagamento.
 
 [[Guide] Sellers Não VTEX Vendendo em Marketplace VTEX](http://lab.vtex.com/docs/integracao/guide/marketplace/seller-n%C3%A3o-vtex/index.html)
 
-###Marketplace Não VTEX vendendo para Sellers VTEX Com Pagamento 
+
+###Sellers Não VTEX Vendendo em Marketplace VTEX Recebendo Pagamento
 {: #2 .slug-text}
+
+Conjunto de instruções e exemplos que permitem um Seller Não VTEX expor e vender os seus produtos (SKUs)* em Marketplaces hospedados na VTEX através de chamadas e exposição de APIs* seguindo o protocolo VTEX. Neste modelo o Marketplace envia o pagamento para ser processado no Seller.
+
+[[Guide] Sellers Não VTEX Vendendo em Marketplace VTEX](http://lab.vtex.com/docs/integracao/guide/marketplace/seller-n%C3%A3o-vtex-com-pgto/index.html)
+
+###Marketplace Não VTEX vendendo para Sellers VTEX 
+{: #3 .slug-text}
+
+Conjunto de instruções e exemplos que permitem um Marketplace Não VTEX expor e vender os produtos (SKUs) de Sellers hospedados na VTEX, através de chamadas e exposição de APIs seguindo o protocolo VTEX. Neste modelo o Marketplace controla toda a transação de pagamento.
+
+[[Guide] Marketplace Não VTEX vendendo para Sellers VTEX Com Pagamento](http://lab.vtex.com/docs/integracao/guide/marketplace/canal-de-vendas-nao-vtex/index.html)
+
+###Marketplace Não VTEX vendendo para Sellers VTEX Com Pagamento 
+{: #3 .slug-text}
 
 Conjunto de instruções e exemplos que permitem um Marketplace Não VTEX expor e vender os produtos (SKUs) de Sellers hospedados na VTEX, através de chamadas e exposição de APIs seguindo o protocolo VTEX. Neste modelo o Marketplace cria a transação de pagamento no Seller.
 
 [[Guide] Marketplace Não VTEX vendendo para Sellers VTEX Com Pagamento](http://lab.vtex.com/docs/integracao/guide/marketplace/canal-de-vendas-nao-vtex-com-pgto/index.html)
 
 ###Marketplace VTEX vendendo para Sellers VTEX e Vice Versa
-{: #3 .slug-text}
+{: #4 .slug-text}
 
 Conjunto de instruções que permitem um Seller VTEX expor e vender os seu produtos (SKUs) em um Marketplace VTEX, e vice verso,  através de simples configurações em ambas as pontas.
 
 ###Ferramentas de Apoio ao Integrador
-{: #4 .slug-text}
+{: #5 .slug-text}
 
 
 ####POSTMAN
@@ -47,7 +62,7 @@ Essa ferramenta permite simular todos os metodos solicitados nas documentações
 É de suma importancia que o integrador tenha o conhecimento de ferramentas desse tipo, ou outras parecidas, antes de inciar um processo de integração usando as APIs REST VTEX.
 
 ###Credenciais Para Acesso  as API REST  
-{: #4 .slug-text}
+{: #6 .slug-text}
 
 Toda chamada feita as APIs REST da VTEX devem ser feitas em "https" e devem conter em seu header as chaves de autenticação .As chaves de asutenticação do header(para acessar as APIs REST) devem ser solicitados ao administrador da loja, ou ao time de operaçãoes que está implantando a loja.
 
