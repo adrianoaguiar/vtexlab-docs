@@ -52,7 +52,7 @@ _request:_
 	"An" : "sandboxintegracao", //loja vtex
 	"IdAffiliate":"PRT", // id do afilado cadastrado na loja vtex
 	"StockModified": true, //mudou estoque?
-    "PriceModified": true //mudou preço?
+	"PriceModified": true //mudou preço?
 }
 {% endhighlight %}  
 
