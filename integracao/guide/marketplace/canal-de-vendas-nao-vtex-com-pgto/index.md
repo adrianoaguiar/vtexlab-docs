@@ -6,22 +6,20 @@ docType: guide
 ---
 ##Marketplace Não VTEX vendendo para Sellers VTEX com Pagamento
 
-Este documento tem por objetivo auxiliar na integração e atualização de condição comercial (preço, estoque, frete, SLAs de entrega) de um SKU* entre uma loja hospedada na versão smartcheckout da VTEX e um Marketplace (Afiliado) Não VTEX e também auxiliar na descida de pedido, transação de pagamento e envio de autorização de despacho para o Seller VTEX.
+Este documento tem por objetivo auxiliar na troca de catalogo, atualização de condição comercial (preço, estoque, frete, SLAs de entrega) de um SKU* entre uma loja hospedada na versão smartcheckout da VTEX e um Marketplace (Afiliado) Não VTEX e também auxiliar na descida de pedido, transação de pagamento e envio de autorização de despacho para o Seller VTEX.
 
 - - -
 
 ###Troca de Catalogo de SKU e Atualização de Condição Comercial de SKU
 
-Sugestão de SKU e atualização de preço, estoque, frete, SLAs de entrega:
-
-*Exemplo de Fluxo*  
-
+Fluxo de troca de catalogo de SKU e atualização de preço, estoque, frete, SLAs de entrega:
+ 
 ![alt text](sku-sugestion-canal-nao-vtex.png "Title")
 
 ###Inserção e Atualização de SKU - Fluxo
 {: #1 .slug-text}
 
-* Caso se queira uma condição comercial diferenciada para o canal de vendas, na *loja VTEX deverá ser criado um novo canal de vendas, podendo assim criar sortimento e promoções diferenciadas da loja principal.  
+* Caso se queira uma condição comercial diferenciada para o Marketplace, na *loja VTEX deverá ser criado um novo canal de vendas, podendo assim criar sortimento e promoções diferenciadas da loja principal.  
 
 * Dentro da loja hospedada na VTEX, será criado um *afiliado, que é o interessado em receber o catálogo e as atualizações de condições comerciais.  
 
@@ -103,6 +101,7 @@ _response:_
             "listPrice": 7490,                                     //Os dois dígitos menos significativos são os centavos //obrigatório, int
             "quantity": 1,                                         //obrigatório, int
             "seller": "1",                                         //id do seller cadastrado na loja // obrigatório, string,
+			"merchantName": "sandboxintegracao",				   //se retornado significa que o pagamento deverá ser enviado, deve ser enviado junto com o pedido também
             "priceValidUntil": "2014-03-01T22:58:28.143"           //data, pode ser nulo
             "offerings":[                                           //Array opcional, porém não pode ser nulo: enviar array vazio ou não enviar a propriedade
                 {
@@ -126,6 +125,7 @@ _response:_
             "listPrice": 990,                                      // Os dois dígitos menos significativos são os centavos
             "quantity": 5,
             "seller": "1",	
+			"merchantName": "sandboxintegracao",
             "priceValidUntil": null
         }
     ],
@@ -135,7 +135,7 @@ _response:_
             "stockBalance": 99,                                   //obrigatório  quando o CEP foi passado no request, estoque, int
             "quantity": 1,                                        //obrigatório quando o CEP foi passado no request, qauntidade pasada no request, int
             "shipsTo": [ "BRA", "USA" ],                          //obrigatório, array de string com as siglas dos países de entrega
-            "slas": [                                             //obrigatório quando o CEP foi passado no request. Pode ser um array vazio
+            "slas": [                                             //obrigatório quando o CEP foi passado no request. Pode ser um array vazio na ausencia do CEP
                 {
                     "id": "Expressa",                             //obrigatório, id tipo entrega, string
                     "name": "Entrega Expressa",                   //obrigatório, nome do tipo entrega, string
@@ -164,7 +164,7 @@ _response:_
             "stockBalance": 1237,
             "quantity": 5,
             "shipsTo": [ "BRA" ],
-            "slas": [
+            "slas": [ 
                 {
                     "id": "Normal",
                     "name": "Entrega Normal",
@@ -187,7 +187,7 @@ Acessa uma loja VTEX e busca dados de uma SKU - Endpoint da Loja VTEX
 endpoint: **http://[loja].vtexcommercestable.com.br/api/catalog_system/pvt/sku/stockkeepingunitbyid/[idsku]**  
 verb: **GET**   
 Accept: **application/json**  
-Parametro: **an=nomedalojavtex** 
+Parametro: **idSku** identificador do SKU 
 
 
 _response:_  
@@ -196,19 +196,19 @@ _response:_
 {
     "Id": 1634, //id da sku
     "ProductId": 1634, //id do produto pai da sku
-    "NameComplete": "Primer Lisse Minute Clarins - Base Facial Alisadora 15ml",
+    "NameComplete": "Primer Lisse Minute Clarins - Base Facial Alisadora 15ml", //nome completo
     "ProductName": "Primer Lisse Minute Clarins - Base Facial Alisadora",
     "ProductDescription": "<strong>Primer Lisse Minute</strong> deixa a pele imediatante alisada e suave ao toque. O primer da <strong>Clarins</strong> atenua as imperfeições e reduz a aparência dos poros. A pele fica linda a pronta para receber a make!</br>Com o rosto limpo aplique o primer com os dedos ou com um pincel. Espalhe bem começando pela zona T (testa, nariz e queixo) em direção aos cantos externos do rosto.",
-    "SkuName": "15ml",
-    "IsActive": true,
+    "SkuName": "15ml",// nome da SKU
+    "IsActive": true, // está ativa?
     "IsTransported": true,
     "IsInventoried": true,
     "IsGiftCardRecharge": false,
     "ImageUrl": "http://epocacosmeticos.vteximg.com.br/arquivos/ids/162097-55-55/primer-lisse-minute-15ml-clarins.jpg",
     "DetailUrl": "/primer-lisse-minute-clarins-base-facial-alisadora/p",
     "CSCIdentification": null,
-    "BrandId": "2000050",
-    "Dimension": {
+    "BrandId": "2000050",//identificador da marca
+    "Dimension": {//dimensões
         "cubicweight": 0.2083,
         "height": 10,
         "length": 10,
@@ -217,7 +217,7 @@ _response:_
     },
     "IsKit": false,
     "KitItems": [],
-    "Services": [
+    "Services": [//serviços
         {
             "Id": 1098,
             "Name": "Embalagem presente",
@@ -226,12 +226,12 @@ _response:_
             "IsRequired": false,
             "Options": [
                 {
-                    "Id": 1098,
-                    "Name": "Embalagem presente",
+                    "Id": 1098,// identificador do serviço
+                    "Name": "Embalagem presente",//nome do serviço
                     "Description": "Embalagem presente",
                     "PriceName": "Embalagem presente",
-                    "ListPrice": 1,
-                    "Price": 1
+                    "ListPrice": 1, //preço DE do serviço
+                    "Price": 1 //preço POR do serviço
                 }
             ],
             "Attachments": []
@@ -273,30 +273,30 @@ _response:_
         }
     ],
     "SkuPriceSheet": [],
-    "Images": [
+    "Images": [ //imagens, a primeira é a principal
         {
             "ImageUrl": "http://epocacosmeticos.vteximg.com.br/arquivos/ids/162097/primer-lisse-minute-15ml-clarins.jpg",
             "ImageName": null,
             "FileId": 162097
         }
     ],
-    "SkuSpecifications": [
+    "SkuSpecifications": [ //variações
         {
             "FieldId": 283,
             "FieldName": "Variação",
-            "FieldValueIds": [
+            "FieldValueIds": [ //identificador da variação
                 2688
             ],
-            "FieldValues": [
+            "FieldValues": [ //valor da variação
                 "15ml"
             ]
         }
     ],
     "ProductSpecifications": [],
     "ProductClustersIds": "135,149,150,151,152,153,154,155,156,157,158,159,160,161,219,310,358,366,406,407,408,451,473,480,486,525,535,546,549,552,561,569",
-    "ProductCategoryIds": "/1000004/1000012/1000040/",
+    "ProductCategoryIds": "/1000004/1000012/1000040/", //arvore de identificadores de categorias
     "ProductCategories": {
-        "1000004": "Maquiagem",
+        "1000004": "Maquiagem", //identificador e nome da categoria
         "1000012": "Primer e Finalizador",
         "1000040": "Fixador da Maquiagem"
     },
@@ -322,12 +322,12 @@ _response:_
 
 ###Simulação de Carrinho e Página de Pagamento
 
-Este tópico tem por objetivo auxiliar o na simulação de carrinho, e consulta de formas de pagamento e  parcelamentos entre um canal de vendas não VTEX com uma loja VTEX.
+Este tópico tem por objetivo auxiliar o na simulação de carrinho, e consulta de formas de pagamento e  parcelamentos entre um Marketplace não VTEX com uma loja VTEX.
 
 ###No Carrinho e no Pagamento
 {: #4 .slug-text} 
 
-Quando um produto é inserido no carrinho no canal de vendas Não VTEX, ou faz se alguma edição no carrinho, uma consulta de simulaçao de carrinho deverá ser feita na loja VTEX para checar a validade das condiçoes comerciais (preço, estoque, frete e SLAs de entrega). Quando o cliente vai para o pagamento, uma consulta as formas de pagamento, aos parcelmentos e uma outra simulçao de carrinho deverá ser realizada.
+Quando um produto é inserido no carrinho no Marketplace Não VTEX, ou faz se alguma edição no carrinho, uma consulta de simulaçao de carrinho deverá ser feita na loja VTEX para checar a validade das condiçoes comerciais (preço, estoque, frete e SLAs de entrega). Quando o cliente vai para o pagamento, uma consulta as formas de pagamento, aos parcelmentos e uma outra simulçao de carrinho deverá ser realizada.
 
 _Fluxo de chamadas no carrinho e no pagamento:_    
 
@@ -378,7 +378,7 @@ _response:_
             "listPrice": 7490,                                     // Os dois dígitos menos significativos são os centavos //obrigatório, int
             "quantity": 1,                                         //obrigatório, int
             "seller": "1",                                         // Id do seller cadastrado na loja // obrigatório, string,
-			"merchantName": "epoca",							   // name do gateway de pagamento, será usado ao enviar o pedido
+			"merchantName": "sandboxintegracao",							   // referente ao pagamento, será usado ao enviar o pedido
             "priceValidUntil": "2014-03-01T22:58:28.143"           //data, pode ser nulo
             "offerings":[                                           //Array opcional, porém não pode ser nulo: enviar array vazio ou não enviar a propriedade
                 {
@@ -402,11 +402,11 @@ _response:_
             "listPrice": 990,                                      // Os dois dígitos menos significativos são os centavos
             "quantity": 5,
             "seller": "1",
-			"merchantName": "epoca",							   
+			"merchantName": "sandboxintegracao",							   
             "priceValidUntil": null
         }
     ],
-    "logisticsInfo": [                                            //obrigatório (se vier vazio é considerado que o item não está disponível) -  todos os itens devem ter os mesmos SLAs
+    "logisticsInfo": [                                            //**, obrigatório (se vier vazio é considerado que o item não está disponível) -  todos os itens devem ter os mesmos SLAs
         {
             "itemIndex": 0,                                       //obrigatório, int - representa os dados de sla do item de resposta (response)
             "stockBalance": 99,                                   //obrigatório  quando o CEP foi passado no request, estoque, int
@@ -456,6 +456,8 @@ _response:_
 }
 {% endhighlight %}  
 
+**Caso o CEP e Pais não for enviado, não será retornado informações de SLA de entrega
+
 ###Consulta as Formas de Pagamento Disponíveis no Seller
 {: #6 .slug-text} 
 
@@ -471,8 +473,8 @@ _response:_
 {% highlight json %} 
 [
     {
-        "id": 6,
-        "name": "Boleto Bancário",
+        "id": 6, //identificador da forma de pagamento
+        "name": "Boleto Bancário", //nome da forma de pagamento
         "connectorId": 0,
         "requiresDocument": false,
         "implementation": "Vtex.PaymentGateway.BankIssuedInvoice.BankIssuedInvoicePayment",
@@ -481,7 +483,7 @@ _response:_
         "isCustom": false,
         "isSelfAuthorized": false,
         "allowInstallments": false,
-        "isAvailable": true,
+        "isAvailable": true, // esta disponível?
         "description": null,
         "validator": {
             "regex": null,
@@ -498,8 +500,8 @@ _response:_
         "dueDate": "2015-01-19T14:49:14.4767186Z"
     },
     {
-        "id": 2,
-        "name": "Visa",
+        "id": 2, //identificador da forma de pagamento
+        "name": "Visa", //nome da forma de pagamento
         "connectorId": 0,
         "requiresDocument": true,
         "implementation": "Vtex.PaymentGateway.CreditCard.Visa",
@@ -507,19 +509,19 @@ _response:_
         "groupName": "creditCard",
         "isCustom": false,
         "isSelfAuthorized": false,
-        "allowInstallments": true,
-        "isAvailable": true,
+        "allowInstallments": true, // habilita parcelamento?
+        "isAvailable": true, // esta disponível?
         "description": null,
         "validator": {
-            "regex": "^4",
-            "mask": "9999 9999 9999 9999",
-            "cardCodeMask": "999",
-            "cardCodeRegex": "^[0-9]{3}$",
+            "regex": "^4", // regular expression de validação
+            "mask": "9999 9999 9999 9999", // mascara de validação
+            "cardCodeMask": "999", // mascara do cvv
+            "cardCodeRegex": "^[0-9]{3}$", // regilar expression que valida o cvv
             "weights": [2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2],
-            "useCvv": true,
-            "useExpirationDate": true,
-            "useCardHolderName": true,
-            "useBillingAddress": true,
+            "useCvv": true, //cvv é obrigatório?
+            "useExpirationDate": true, //usa data de expiração?
+            "useCardHolderName": true, //nome do portador obrigatório?
+            "useBillingAddress": true, //usa enderço de cobrança?
             "validCardLengths": null
         },
         "dueDate": "2015-01-17T14:49:14.4767186Z"
@@ -557,7 +559,7 @@ _response:_
 ###Consulta os Parcelamentos no Seller
 {: #7 .slug-text} 
 
-Consulta a loja VTEX para consultar os parcelamentos por forma de pagamento e promoções de SKU - Endpoint loja VTEX
+Consulta a loja VTEX para buscar os parcelamentos por forma de pagamento e promoções de SKU - Endpoint loja VTEX
 
 endpoint: **https://sandboxintegracao.vtexpayments.com.br/api/pvt/installments/options**  
 verb: **POST**  
@@ -568,15 +570,15 @@ _request:_
 
 {% highlight json %} 
 {
-  "PaymentSystemsIds":[2,4],
-  "SubtotalAsInt":81200,
-  "Items":[
+  "PaymentSystemsIds":[2,4], //ids das formas de pagamento
+  "SubtotalAsInt":81200, // valor que se deseja parcelar
+  "Items":[ // array de itens que desja parcelar
     {
-      	"PriceAsInt":81200,
-     	"Quantity":1,
-     	"Id":2000037,
+      	"PriceAsInt":81200, //preço da SKU
+     	"Quantity":1, // quantida da SKU que deseja parcelar
+     	"Id":2000037, // identificador da SKU
      	"SellerId":"1",
-    	"SalesChannel":1
+    	"SalesChannel":4
     }
   ]
 }
@@ -587,16 +589,16 @@ _response:_
 {% highlight json %} 
 [
     {
-        "paymentSystem": 2,
-        "name": "Visa 3 vezes sem juros",
+        "paymentSystem": 2, //identificador da forma de pagamento
+        "name": "Visa 3 vezes sem juros", //nome do parcelamento
         "groupName": "creditCard",
-        "value": 81200,
+        "value": 81200, //valor total do parcelamento
         "installments": [
             {
-                "count": 3,
-                "value": 27066,
-                "interestRate": 0,
-                "hasInterestRate": false
+                "count": 3, //numero de parcelas
+                "value": 27066, //valor da parcela
+                "interestRate": 0, //taxa de juros
+                "hasInterestRate": false //tem juros?
             },
             {
                 "count": 2,
@@ -646,9 +648,9 @@ _response:_
 ###Enviar Pedido, Enviar Pagamento e Autorizar Despacho
 {: #7 .slug-text} 
 
-Este tópico tem por objetivo auxiliar um canal de vendas não VTEX enviar um pedido, enviar uma transação de pagamento, e enviar autorização para despacho (proceder com o fulfillment do pedido).
+Este tópico tem por objetivo auxiliar um Marketplace não VTEX enviar um pedido, enviar uma transação de pagamento, e enviar autorização para despacho (proceder com o fulfillment do pedido).
 
-Caso se queira uma condição comercial diferenciada para o canal de vendas não VTEX, na loja VTEX deverá ser criado um novo canal de vendas, podendo assim criar promoções diferenciadas (desconto, frete, etc) somente para o canal desejado. Caso não tenha condição comercial diferenciada, deve se usar o canal de vendas da loja principal (sc=1).
+Caso se queira uma condição comercial diferenciada para o Marketplace não VTEX, na loja VTEX deverá ser criado um novo canal de vendas, podendo assim criar promoções diferenciadas (desconto, frete, etc) somente para o canal desejado. Caso não tenha condição comercial diferenciada, deve se usar o canal de vendas da loja principal (sc=1).
 
 _Fluxo de chamadas de descida de pedido, pagamento e autorização para despachar:_    
 
@@ -657,7 +659,7 @@ _Fluxo de chamadas de descida de pedido, pagamento e autorização para despacha
 ###Enviar Pedido
 {: #8 .slug-text} 
 
-Quando o pedido é fechado em um canal de vendas não VTEX, um POST deve ser feito na loja VTEX, para que essa possa receber a ordem de pedido - Endpoint Loja VTEX
+Quando o pedido é fechado em um Marketplace não VTEX, um POST deve ser feito na loja VTEX, para que essa possa receber a ordem de pedido - Endpoint Loja VTEX
 
 endpoint: **https://[loja].vtexcommercestable.com.br/api/fulfillment/pvt/orders?sc=[idcanal]&affiliateId=[idafiliado]**  
 verb: **POST**  
@@ -670,9 +672,9 @@ _request:_
 
 {% highlight json %} 
 {
-	"marketplaceOrderId": "959311095",
+	"marketplaceOrderId": "959311095", //identificador do pedido no marketplace
 	"marketplaceServicesEndpoint": "https://urlmarketplace/", //leia o tópico implementando MarketplaceServicesEndpoint Actions
-	"marketplacePaymentValue": 11080,
+	"marketplacePaymentValue": 11080, //valor que o marketplace se compromete a pagar para o Seller
 	"items": [
 	  {
 	    "id": "2002495",
@@ -738,7 +740,7 @@ _request:_
 	  ]
 	},
 	"paymentData":{
-		"merchantName":"epoca" //nome do gateway de pagamento, nome da loja
+		"merchantName":"sandboxintegracao" //campo recebido na simulação de carrinho
 	},
 	"openTextField": null,
 	"marketingData": null,
@@ -813,7 +815,7 @@ _response:_
 	  ]
 	},
 	"paymentData":{
-		"merchantName":"epoca",
+		"merchantName":"sandboxintegracao",
 		"merchantPaymentReferenceId":"123543123" //inteiro, id do pagamento, número que será enviado junto com o pagamento para conciliação.
 	}
 }
@@ -891,7 +893,7 @@ Parametro: **affiliateId** // affiliateId é o id do afiliado cadastrado n loja 
 ###Enviar Autoriação Para Despachar
 {: #11 .slug-text}  
 
-Quando o pagamento do pedido é concluído no canal de vendas não VTEX, um POST deverá ser feito na loja VTEX com o paymentTransactionId, 
+Quando o pagamento do pedido é concluído no Marketplace não VTEX, um POST deverá ser feito na loja VTEX com o paymentTransactionId, 
 para que o pedido possa prosseguir com a separação e entrega - Endpoint da VTEX
 
 endpoint: **https://[loja].vtexcommercestable.com.br/api/fulfillment/pvt/orders/[orderid]/fulfill?sc=[idcanal]&affiliateId=[idafiliado]**  
@@ -931,7 +933,7 @@ O MarketplaceServicesEndpoint serve para a loja VTEX informar ao canal de vendas
 ###Informar Nota Fiscal
 {: #13 .slug-text}  
 
-Quando a Nota Fiscal for emitida pelo Seller VTEX, está será enviada para o Marketplace no marketplaceServicesEndpoint enviado nos dados de pedido - Endpoint do Canal de Vendas
+Quando a Nota Fiscal for emitida pelo Seller VTEX, está será enviada para o Marketplace no marketplaceServicesEndpoint enviado nos dados de pedido - Endpoint do Marketplace
 
 endpoint: **https://marketplaceServicesEndpoint/pub/orders/[marketplaceorderId]/invoice**  
 verb: **POST**  
@@ -972,7 +974,7 @@ _response:_
 ###Informar Tracking de Transportadora
 {: #13 .slug-text} 
 
-Quando o pedido for entegue a uma transportadora, as informaçãoes de tracking serão enviadas para o Marketplace no marketplaceServicesEndpoint enviado nos dados de pedido - Endpoint do Canal de Vendas
+Quando o pedido for entegue a uma transportadora, as informaçãoes de tracking serão enviadas para o Marketplace no marketplaceServicesEndpoint enviado nos dados de pedido - Endpoint do Marketplace
 
 endpoint: **https://marketplaceServicesEndpoint/pub/orders/[marketplaceorderId]/invoice**  
 verb: **POST**  
@@ -1014,7 +1016,7 @@ _response:_
 ###Enviar Solicitação de Cancelamento
 {: #13 .slug-text} 
 
-Uma solicitação de cancelamento pode ser enviada para o para o Marketplace no marketplaceServicesEndpoint - Endpoint do Canal de Vendas
+Uma solicitação de cancelamento pode ser enviada para o para o Marketplace no marketplaceServicesEndpoint - Endpoint do Marketplace
 
 endpoint: **https://marketplaceServicesEndpoint/pvt/orders/[marketplaceorderId]/cancel**  
 verb: **GET**  
