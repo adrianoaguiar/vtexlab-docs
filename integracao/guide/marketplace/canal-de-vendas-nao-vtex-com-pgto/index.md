@@ -4,11 +4,13 @@ title: Marketplace Não VTEX vendendo para Sellers VTEX com Pagamento
 application: marketplace
 docType: guide
 ---
-#Marketplace Não VTEX vendendo para Sellers VTEX com Pagamento
+##Marketplace Não VTEX vendendo para Sellers VTEX com Pagamento
 
 Este documento tem por objetivo auxiliar na integração e atualização de condição comercial (preço, estoque, frete, SLAs de entrega) de um SKU* entre uma loja hospedada na versão smartcheckout da VTEX e um Marketplace (Afiliado) Não VTEX e também auxiliar na descida de pedido, transação de pagamento e envio de autorização de despacho para o Seller VTEX.
 
-##Inserção de Sugestão de SKU e Atualização de Condição Comercial de SKU
+- - -
+
+###Troca de Catalogo de SKU e Atualização de Condição Comercial de SKU
 
 Sugestão de SKU e atualização de preço, estoque, frete, SLAs de entrega:
 
@@ -31,7 +33,7 @@ Sugestão de SKU e atualização de preço, estoque, frete, SLAs de entrega:
 
   * **Caso SIM**: O afiliado consulta a condição comercial na VTEX e se atualiza.
 
-  * **Caso NÂO**: O afiliado busca a SKU na loja, insere no seu catalogo, e depois repete o cenário do "Caso SIM".
+  * **Caso NÃO**: O afiliado busca a SKU na loja, insere no seu catalogo, e depois repete o cenário do "Caso SIM".
 
 ###Notificação de Mudança
 {: #2 .slug-text}  
@@ -49,8 +51,10 @@ _request:_
 {% highlight json %}  
 { 
 	"IdSku" : "1634", //id da sku da VTEX
-	"An" : "loja1", //loja vtex
-	"IdAffiliate":"afiliado1" // id do afilado cadastrado na loja vtex
+	"An" : "sandboxintegracao", //loja vtex
+	"IdAffiliate":"PRT", // id do afilado cadastrado na loja vtex
+	"StockModified": true, //mudou estoque?
+    "PriceModified": true //mudou preço?
 }
 {% endhighlight %}  
 
@@ -314,7 +318,9 @@ _response:_
 }
 {% endhighlight %}  
 
-##Simulação de Carrinho e Página de Pagamento
+- - -
+
+###Simulação de Carrinho e Página de Pagamento
 
 Este tópico tem por objetivo auxiliar o na simulação de carrinho, e consulta de formas de pagamento e  parcelamentos entre um canal de vendas não VTEX com uma loja VTEX.
 
@@ -635,8 +641,9 @@ _response:_
 ]
 {% endhighlight %}  
 
+- - -
 
-##Enviar Pedido, Enviar Pagamento e Autorizar Despacho
+###Enviar Pedido, Enviar Pagamento e Autorizar Despacho
 {: #7 .slug-text} 
 
 Este tópico tem por objetivo auxiliar um canal de vendas não VTEX enviar um pedido, enviar uma transação de pagamento, e enviar autorização para despacho (proceder com o fulfillment do pedido).
@@ -914,7 +921,9 @@ _response:_
 }
 {% endhighlight %}  
 
-##Implementando Marketplace Services Endpoint Actions
+- - -
+
+###Implementando Marketplace Services Endpoint Actions
 {: #12 .slug-text} 
 
 O MarketplaceServicesEndpoint serve para a loja VTEX informar ao canal de vendas a nota fiscal e tracking de pedido. O envio de notas fiscais pode ser parcial, obrigando assim ao informador informar além dos valores da nota fiscal, os items ele está mandando na nota fiscal parcial.
@@ -1012,8 +1021,6 @@ verb: **GET**
 
 **A Nota Fiscal e o Tracking podem ser enviados na mesma chamada, basta prenncher todos os dados do POST.
 
-
-
-
+---
 Autor: *Jonas Bolognim*  
-Propriedade:*VTEX*
+Propriedade:*VTEX &copy;*

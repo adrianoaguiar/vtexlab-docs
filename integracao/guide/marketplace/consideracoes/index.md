@@ -5,10 +5,8 @@ application: marketplace
 docType: guide
 ---
 
-
 ## Marketplace e Sellers VTEX e Não VTEX
-Modelo de venda entre Marketplaces* e Sellers* VTEX e não VTEX. Abaixo modelos existentes:
-
+Modelo de venda entre Marketplaces* e Sellers* VTEX e não VTEX. Vendas entre Marketplace e Seller envolve uma negociação entre as duas pontas (dono do produto e dono da vitrine). A VTEX além de oferecer as integrações com grandes playes nativamente, também oferece uma conjunto de APIs e instruções para que terceiros se integrem. Segue abaixo os modelos existentes:
 
 ###Sellers Não VTEX Vendendo em Marketplace VTEX
 {: #1 .slug-text}
