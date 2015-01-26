@@ -813,7 +813,7 @@ _response:_
 	},
 	"paymentData":{
 		"merchantName":"sandboxintegracao",
-		"merchantPaymentReferenceId":"123543123" //inteiro, id do pagamento, número que será enviado junto com o pagamento para conciliação.
+		"merchantPaymentReferenceId":"500225" //inteiro, id do pagamento, número que será enviado junto com o pagamento para conciliação.
 	}
 }
 {% endhighlight %}  		
@@ -840,13 +840,70 @@ Após enviar o pedido e receber o response com o paymentData.merchantPaymentRefe
 
 Inicia uma transação de pagamento usando o paymentData.merchantPaymentReferenceId recebi no retorno de inserção de pedido - Endpoint Loja VTEX
 
-endpoint: ****  
+endpoint: **https://[loja].vtexpayments.com.br/api/pvt/transactions**  
 verb: **POST**  
 Content-Type: **application/json**  
 Accept: **application/json**  
-Parametro: **sc** // sc é o canal de vendas cadastrado na VTEX.  
-Parametro: **affiliateId** // affiliateId é o id do afiliado cadastrado n loja VTEX
 
+_request:_  
+
+{% highlight json %} 
+{
+  "value":3190, //valor do pagamento
+  "referenceId":"500225", //paymentData.merchantPaymentReferenceId retornado no momento que inseriu o pedido
+  "channel":"sandboxintegracao", //nome do gateway de pagamento
+  "urn":""
+}
+{% endhighlight %} 
+
+_response:_  
+
+{% highlight json %} 
+{
+    "id": "BB55ED929FF749E6BE5A835E4C811B77",
+    "transactionId": "BB55ED929FF749E6BE5A835E4C811B77", // identificador da transação criada
+    "referenceKey": "500225",
+    "interactions": {
+        "href": "/api/pvt/transactions/BB55ED929FF749E6BE5A835E4C811B77/interactions"
+    },
+    "settlements": {
+        "href": "/api/pvt/transactions/BB55ED929FF749E6BE5A835E4C811B77/settlements"
+    },
+    "payments": {
+        "href": "/api/pvt/transactions/BB55ED929FF749E6BE5A835E4C811B77/payments"
+    },
+    "refunds": {
+        "href": "/api/pvt/transactions/BB55ED929FF749E6BE5A835E4C811B77/refunds"
+    },
+    "timeoutStatus": 0,
+    "totalRefunds": 0,
+    "status": "Started",
+    "value": 3190,
+    "receiverUri": "https://sandboxintegracao.vtexpayments.com.br:443/api/pvt/transactions/BB55ED929FF749E6BE5A835E4C811B77/payments/",
+    "startDate": "2015-01-26T18:40:31.4040955Z",
+    "authorizationToken": null,
+    "authorizationDate": null,
+    "commitmentToken": null,
+    "commitmentDate": null,
+    "refundingToken": null,
+    "refundingDate": null,
+    "cancelationToken": null,
+    "cancelationDate": null,
+    "fields": [
+        {
+            "name": "channel",
+            "value": "sandboxintegracao"
+        }
+    ],
+    "ipAddress": null,
+    "userAgent": null,
+    "acceptHeader": null,
+    "antifraudTid": null,
+    "channel": "sandboxintegracao",
+    "urn": null,
+    "softDescriptor": null
+}
+{% endhighlight %} 
 
 ###Enviar Dados de Pagamento
 {: #9 .slug-text} 
@@ -861,6 +918,19 @@ Parametro: **sc** // sc é o canal de vendas cadastrado na VTEX.
 Parametro: **affiliateId** // affiliateId é o id do afiliado cadastrado na loja VTEX
 
 
+_request:_  
+
+{% highlight json %} 
+
+{% endhighlight %} 
+
+
+_response:_  
+
+{% highlight json %} 
+
+{% endhighlight %} 
+
 ###Enviar Dados de Anti Fraude
 {: #10 .slug-text} 
 
@@ -873,6 +943,18 @@ Accept: **application/json**
 Parametro: **sc** // sc é o canal de vendas cadastrado na VTEX.  
 Parametro: **affiliateId** // affiliateId é o id do afiliado cadastrado n loja VTEX
 
+_request:_  
+
+{% highlight json %} 
+
+{% endhighlight %} 
+
+
+_response:_  
+
+{% highlight json %} 
+
+{% endhighlight %} 
 
 ###Autorização de Pagamento  
 {: #11 .slug-text} 
@@ -886,6 +968,18 @@ Accept: **application/json**
 Parametro: **sc** // sc é o canal de vendas cadastrado na VTEX.  
 Parametro: **affiliateId** // affiliateId é o id do afiliado cadastrado n loja VTEX
 
+_request:_  
+
+{% highlight json %} 
+
+{% endhighlight %} 
+
+
+_response:_  
+
+{% highlight json %} 
+
+{% endhighlight %} 
 
 ###Enviar Autoriação Para Despachar
 {: #11 .slug-text}  
