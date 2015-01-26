@@ -8,7 +8,7 @@ docType: guide
  
 Este documento tem por objetivo auxiliar na integração e atualização de condição comercial (preço, estoque, frete, SLAs de entrega) de um SKU* entre um Seller não VTEX  para uma loja hospedada na versão smartcheckout da VTEX e também auxiliar na descida de pedido e envio de autorização de despacho para o Seller não VTEX.
 
-##Inserção de Sugestão de SKU e Atualização de Condição Comercial de SKU
+##Troca de Catalogo de SKU e Atualização de Condição Comercial de SKU
 {: #0 .slug-text}
 
 Sugestão de SKU e atualização de preço, estoque, frete, SLAs de entrega:

@@ -12,9 +12,9 @@ Este documento tem por objetivo auxiliar na integração e atualização de cond
 ###Troca de Catalogo de SKU e Atualização de Condição Comercial de SKU  
 {: #1 .slug-text}
 
-Troca de catalogo entre o Seller não VTEX com um Marketplace hospedado na VTEX.  
+Troca de catalogo (sugestão de SKU) entre o Seller não VTEX com um Marketplace hospedado na VTEX.  
 
-[[Guide] Troca de catalogo entre o Seller não VTEX com um Marketplace hospedado na VTEX](http://lab.vtex.com/docs/integracao/guide/marketplace/seller-n%C3%A3o-vtex/index.html#enviar-de-notificao-de-mudana-de-condies-comerciais-de-sku)  
+[[Guide] Troca de catalogo entre o Seller não VTEX com um Marketplace hospedado na VTEX](http://lab.vtex.com/docs/integracao/guide/marketplace/seller-n%C3%A3o-vtex/index.html#insero-de-sugesto-de-sku-e-atualizao-de-condio-comercial-de-sku)  
 
 ---
 

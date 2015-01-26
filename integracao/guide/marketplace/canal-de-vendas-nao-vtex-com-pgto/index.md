@@ -11,13 +11,13 @@ Este documento tem por objetivo auxiliar na troca de catalogo, atualização de 
 - - -
 
 ###Troca de Catalogo de SKU e Atualização de Condição Comercial de SKU
+{: #1 .slug-text}
 
 Fluxo de troca de catalogo de SKU e atualização de preço, estoque, frete, SLAs de entrega:
  
 ![alt text](sku-sugestion-canal-nao-vtex.png "Title")
 
 ###Inserção e Atualização de SKU - Fluxo
-{: #1 .slug-text}
 
 * Caso se queira uma condição comercial diferenciada para o Marketplace, na *loja VTEX deverá ser criado um novo canal de vendas, podendo assim criar sortimento e promoções diferenciadas da loja principal.  
 
@@ -34,7 +34,7 @@ Fluxo de troca de catalogo de SKU e atualização de preço, estoque, frete, SLA
   * **Caso NÃO**: O afiliado busca a SKU na loja, insere no seu catalogo, e depois repete o cenário do "Caso SIM".
 
 ###Notificação de Mudança
-{: #2 .slug-text}  
+ 
 
 Notifica o Marketplace Não VTEX que houve uma mudança nas condiçoes comerciais (preço, estoque, SLAs de entrega) de uma SKU - Endpoint do Afiliado (Marketplace)
 
@@ -42,7 +42,6 @@ endpoint: **https://endpointdoafiliado/api/notification/**
 verb: **POST**  
 Content-Type: **application/json**  
 Accept: **application/json**
-
 
 _request:_  
 
@@ -95,38 +94,38 @@ _response:_
 {
     "items": [                                                     //pode vir um array vazio, caso item indisponivel
         {
-            "id": "287611",                                        //obrigatório, string
-            "requestIndex": 0,                                     //obrigatório, int - representa a posição desse item no array original (request)
-            "price": 7390,                                         //Os dois dígitos menos significativos são os centavos //obrigatório, int
-            "listPrice": 7490,                                     //Os dois dígitos menos significativos são os centavos //obrigatório, int
-            "quantity": 1,                                         //obrigatório, int
-            "seller": "1",                                         //id do seller cadastrado na loja // obrigatório, string,
-			"merchantName": "sandboxintegracao",				   //se retornado significa que o pagamento deverá ser enviado, deve ser enviado junto com o pedido também
-            "priceValidUntil": "2014-03-01T22:58:28.143"           //data, pode ser nulo
-            "offerings":[                                           //Array opcional, porém não pode ser nulo: enviar array vazio ou não enviar a propriedade
-                {
-                    "type":"Garantia",                               //obrigatório, string
-                    "id":"5",                                       //obrigatório, string
-                    "name":"Garantia de 1 ano",                       //obrigatório, string
-                    "price":10000                                   //Os dois dígitos menos significativos são os centavos //obrigatório, int
-                },
-                {
-                    "type":"Embalagem de Presente",
-                    "id":"6",
-                    "name":"Embalagem de Presente",
-                    "price":250                                       
-                }
-            ]
+			"id": "287611",                                        //obrigatório, string
+			"requestIndex": 0,                                     //obrigatório, int - representa a posição desse item no array original (request)
+			"price": 7390,                                         //Os dois dígitos menos significativos são os centavos //obrigatório, int
+			"listPrice": 7490,                                     //Os dois dígitos menos significativos são os centavos //obrigatório, int
+			"quantity": 1,                                         //obrigatório, int
+			"seller": "1",                                         //id do seller cadastrado na loja // obrigatório, string,
+			"merchantName": "sandboxintegracao",				   //se retornado significa que o pagamento deverá ser enviado, esse campo deverá ser enviado junto com o pedido também
+			"priceValidUntil": "2014-03-01T22:58:28.143"           //data, pode ser nulo
+			"offerings":[                                           //Array opcional, porém não pode ser nulo: enviar array vazio ou não enviar a propriedade
+				{
+				    "type":"Garantia",                               //obrigatório, string
+				    "id":"5",                                       //obrigatório, string
+				    "name":"Garantia de 1 ano",                       //obrigatório, string
+				    "price":10000                                   //Os dois dígitos menos significativos são os centavos //obrigatório, int
+				},
+				{
+				    "type":"Embalagem de Presente",
+				    "id":"6",
+				    "name":"Embalagem de Presente",
+				    "price":250                                       
+				}
+			]
         },
         {
-            "id": "5837",
-            "requestIndex": 1,
-            "price": 890,                                          // Os dois dígitos menos significativos são os centavos
-            "listPrice": 990,                                      // Os dois dígitos menos significativos são os centavos
-            "quantity": 5,
-            "seller": "1",	
+			"id": "5837",
+			"requestIndex": 1,
+			"price": 890,                                          // Os dois dígitos menos significativos são os centavos
+			"listPrice": 990,                                      // Os dois dígitos menos significativos são os centavos
+			"quantity": 5,
+			"seller": "1",	
 			"merchantName": "sandboxintegracao",
-            "priceValidUntil": null
+			"priceValidUntil": null
         }
     ],
     "logisticsInfo": [                                            //obrigatório (se vier vazio é considerado que o item não está disponível) -  todos os itens devem ter os mesmos SLAs
@@ -321,11 +320,11 @@ _response:_
 - - -
 
 ###Simulação de Carrinho e Página de Pagamento
+{: #5 .slug-text} 
 
 Este tópico tem por objetivo auxiliar o na simulação de carrinho, e consulta de formas de pagamento e  parcelamentos entre um Marketplace não VTEX com uma loja VTEX.
 
 ###No Carrinho e no Pagamento
-{: #4 .slug-text} 
 
 Quando um produto é inserido no carrinho no Marketplace Não VTEX, ou faz se alguma edição no carrinho, uma consulta de simulaçao de carrinho deverá ser feita na loja VTEX para checar a validade das condiçoes comerciais (preço, estoque, frete e SLAs de entrega). Quando o cliente vai para o pagamento, uma consulta as formas de pagamento, aos parcelmentos e uma outra simulçao de carrinho deverá ser realizada.
 
@@ -334,7 +333,6 @@ _Fluxo de chamadas no carrinho e no pagamento:_
 ![alt text](fechato-canal-nao-vtex-com-pgto.png "fechamento do pedido no marketplace")  
 
 ###Simulaçao de Carrinho
-{: #5 .slug-text} 
 
 Acessa a loja VTEX simulando um carrinho, para checar as condiçoes comerciais e as SLAs de entrega - Endpoint loja VTEX
 
@@ -463,7 +461,7 @@ _response:_
 
 Acessa a loja VTEX para consultar a formas de pagamento disponíveis - Endpoint loja VTEX
 
-endpoint: **https://sandboxintegracao.vtexpayments.com.br/api/pvt/merchants/payment-systems**  
+endpoint: **https://[loja].vtexpayments.com.br/api/pvt/merchants/payment-systems**  
 verb: **GET**  
 Content-Type: **application/json**  
 Accept: **application/json**  
@@ -561,7 +559,7 @@ _response:_
 
 Consulta a loja VTEX para buscar os parcelamentos por forma de pagamento e promoções de SKU - Endpoint loja VTEX
 
-endpoint: **https://sandboxintegracao.vtexpayments.com.br/api/pvt/installments/options**  
+endpoint: **https://[loja].vtexpayments.com.br/api/pvt/installments/options**  
 verb: **POST**  
 Content-Type: **application/json**  
 Accept: **application/json**  
@@ -657,7 +655,6 @@ _Fluxo de chamadas de descida de pedido, pagamento e autorização para despacha
 ![alt text](pedido-canal-nao-vtex-com-pgto.PNG "Title") 
 
 ###Enviar Pedido
-{: #8 .slug-text} 
 
 Quando o pedido é fechado em um Marketplace não VTEX, um POST deve ser feito na loja VTEX, para que essa possa receber a ordem de pedido - Endpoint Loja VTEX
 
@@ -930,8 +927,7 @@ _response:_
 
 O MarketplaceServicesEndpoint serve para a loja VTEX informar ao canal de vendas a nota fiscal e tracking de pedido. O envio de notas fiscais pode ser parcial, obrigando assim ao informador informar além dos valores da nota fiscal, os items ele está mandando na nota fiscal parcial.
 
-###Informar Nota Fiscal
-{: #13 .slug-text}  
+###Informar Nota Fiscal 
 
 Quando a Nota Fiscal for emitida pelo Seller VTEX, está será enviada para o Marketplace no marketplaceServicesEndpoint enviado nos dados de pedido - Endpoint do Marketplace
 
@@ -972,7 +968,6 @@ _response:_
 {% endhighlight %}  
 
 ###Informar Tracking de Transportadora
-{: #13 .slug-text} 
 
 Quando o pedido for entegue a uma transportadora, as informaçãoes de tracking serão enviadas para o Marketplace no marketplaceServicesEndpoint enviado nos dados de pedido - Endpoint do Marketplace
 
@@ -1014,7 +1009,7 @@ _response:_
 {% endhighlight %}  
 
 ###Enviar Solicitação de Cancelamento
-{: #13 .slug-text} 
+
 
 Uma solicitação de cancelamento pode ser enviada para o para o Marketplace no marketplaceServicesEndpoint - Endpoint do Marketplace
 

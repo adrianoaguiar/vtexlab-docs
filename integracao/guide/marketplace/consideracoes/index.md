@@ -6,7 +6,7 @@ docType: guide
 ---
 
 ## Marketplace e Sellers VTEX e Não VTEX
-Modelo de venda entre Marketplaces* e Sellers* VTEX e não VTEX. Vendas entre Marketplace e Seller envolve uma negociação entre as duas pontas (dono do produto e dono da vitrine). A VTEX além de oferecer as integrações com grandes playes nativamente, também oferece uma conjunto de APIs e instruções para que terceiros se integrem. Segue abaixo os modelos existentes:
+Modelo de venda entre Marketplaces* e Sellers* VTEX e não VTEX. Vendas entre Marketplace e Seller envolvem uma negociação entre as duas pontas (dono do produto e dono da vitrine). A VTEX além de oferecer as integrações com grandes players do mercado nativamente, também oferece uma conjunto de APIs e instruções para que terceiros se integrem. Segue abaixo os modelos existentes:
 
 - - -
 
@@ -24,7 +24,7 @@ Conjunto de instruções e exemplos que permitem um Seller Não VTEX expor e ven
 
 Conjunto de instruções e exemplos que permitem um Seller Não VTEX expor e vender os seus produtos (SKUs)* em Marketplaces hospedados na VTEX através de chamadas e exposição de APIs* seguindo o protocolo VTEX. Neste modelo o Marketplace envia o pagamento para ser processado no Seller.
 
-[[Guide] Sellers Não VTEX Vendendo em Marketplace VTEX](http://lab.vtex.com/docs/integracao/guide/marketplace/seller-n%C3%A3o-vtex-com-pgto/index.html)
+[[Guide] Sellers Não VTEX Vendendo em Marketplace VTEX Recebendo Pagamento](http://lab.vtex.com/docs/integracao/guide/marketplace/seller-n%C3%A3o-vtex-com-pgto/index.html)
 
 - - -
 
@@ -33,7 +33,7 @@ Conjunto de instruções e exemplos que permitem um Seller Não VTEX expor e ven
 
 Conjunto de instruções e exemplos que permitem um Marketplace Não VTEX expor e vender os produtos (SKUs) de Sellers hospedados na VTEX, através de chamadas e exposição de APIs seguindo o protocolo VTEX. Neste modelo o Marketplace controla toda a transação de pagamento.
 
-[[Guide] Marketplace Não VTEX vendendo para Sellers VTEX Com Pagamento](http://lab.vtex.com/docs/integracao/guide/marketplace/canal-de-vendas-nao-vtex/index.html)
+[[Guide] Marketplace Não VTEX vendendo para Sellers VTEX](http://lab.vtex.com/docs/integracao/guide/marketplace/canal-de-vendas-nao-vtex/index.html)
 
 - - -
 
@@ -59,7 +59,7 @@ Conjunto de instruções que permitem um Seller VTEX expor e vender os seu produ
 
 ####POSTMAN
 
-Extensão do navegador chrome, nesta ferramente pode se testar, armazenar histórico, salvar coleções de requests do acesso de todas as APIs dos modulos VTEX (OMS, Logistics, Pricing, GCS, Catalog, PCI Gateway etc), além de permitir exportar e importar requests de outros desenvolvedores. Segue link de importacão de [coleção de requests]() usados neste exemplo.
+Extensão do navegador chrome, nesta ferramente pode se testar, armazenar histórico, salvar coleções de requests do acesso de todas as APIs dos modulos VTEX (OMS, Logistics, Pricing, GCS, Catalog, PCI Gateway etc), além de permitir exportar e importar requests de outros desenvolvedores. 
 
 ####VTEX Bridge
 
@@ -95,4 +95,4 @@ Essa versão de documentação suporta a integração na versão da plataforma V
 ---
 
 Autor: _Jonas Bolognim_  
-Propriedade: _VTEX_
+Propriedade: _VTEX_ &copy;

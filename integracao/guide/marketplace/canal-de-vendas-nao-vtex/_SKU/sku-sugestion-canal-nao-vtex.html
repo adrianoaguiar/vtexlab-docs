@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>sku-sugestion-canal-nao-vtex</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+
+</head>
+<body>
+<h1>Atualização de Condição Comercial e Inserção de SKU</h1>
+<p>Este documento tem por objetivo auxiliar na integração e atualização de condição comercial (preço, estoque, frete, SLAs de entrega) de um *SKU entre uma loja hospedada na versão smartcheckout da VTEX e um *Canal de Vendas não VTEX.</p>
+<p><em>Exemplo de Fluxo</em>  </p>
+<p><img src="sku-sugestion-canal-nao-vtex.png" alt="alt text" title="Title" /></p>
+<h2>1-Inserção e Atualização de SKU - Fluxo</h2>
+<ul>
+<li>
+<p>Caso se queira uma condição comercial diferenciada para o canal de vendas, na *loja VTEX deverá ser criado um novo canal de vendas, podendo assim criar sortimento e promoções diferenciadas da loja principal.  
+</p>
+</li>
+<li>
+<p>Dentro da loja hospedada na VTEX, será criado um *afiliado, que é o interessado em receber o catálogo e as atualizações de condições comerciais.  
+</p>
+</li>
+<li>
+<p>O afiliado, deverá implementar um endpoint onde receberá informações sobre alterações de condição comercial de SKUs.  
+</p>
+</li>
+<li>
+<p>Na loja VTEX, cada vez que uma SKU comercializado pelo afiliado sofrer uma alteração na condição comercial, ou for reindexado, o endpoint de notificação do afiliado será chamado.  
+</p>
+</li>
+<li>
+<p>Quando o afiliado recebe uma notificação que um SKU mudou a condição comercial, o afiliado deve checar se já comercializa aquela SKU daquela loja que comunicou.  
+</p>
+<ul>
+<li>
+<p><strong>Caso SIM</strong>: O afiliado consulta a condição comercial na VTEX e se atualiza.</p>
+</li>
+<li>
+<p><strong>Caso NÂO</strong>: O afiliado busca a SKu na loja, insere no seu catalogo, e depois repete o cenário do &quot;Caso SIM&quot;.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3>1.1 - Exemplos de Request de Notificação de Mudança - Endpoint do Afiliado</h3>
+<p>endpoint: <strong>https://endpointdoafiliado/api/notification/</strong><br />
+verb: <strong>POST</strong><br />
+Content-Type: <strong>application/json</strong><br />
+Accept: <strong>application/json</strong></p>
+<p><em>Exemplo do Request:</em>  </p>
+<pre><code>{ 
+    &quot;IdSku&quot; : &quot;1634&quot;, //id da sku da VTEX
+    &quot;An&quot; : &quot;loja1&quot;, //loja vtex
+    &quot;IdAffiliate&quot;:&quot;afiliado1&quot; // id do afilado cadastrado na loja vtex
+}
+</code></pre>
+
+<h3>1.2 - Exemplos de Request de Busca de Condições Comerciais - Endpoint da Loja VTEX</h3>
+<p>endpoint: <strong>https://endpointlojavtex/pvt/orderForms/simulation?sc=[idcanal]&amp;affiliateId=[idafiliado]</strong><br />
+verb: <strong>POST</strong><br />
+Content-Type: <strong>application/json</strong><br />
+Accept: <strong>application/json</strong><br />
+Parametro: <strong>sc</strong> // sc é o canal de vendas cadastrado no marketplace<br />
+Parametro: <strong>affiliateId</strong> // o id do afiliado cadastrado na loja VTEX </p>
+<p><em>Exemplo do Request:</em>  </p>
+<pre><code>{
+    &quot;postalCode&quot;:&quot;22251-030&quot;,            //obrigatório se country estiver preenchido
+    &quot;country&quot;:&quot;BRA&quot;,                     //obrigatório se postalCode estiver preenchido    
+    &quot;items&quot;: [                           //obrigatório: deve conter pelo menos um objeto item
+        {
+            &quot;id&quot;:&quot;287611&quot;,               //obrigatório, string
+            &quot;quantity&quot;:1,                //obrigatório-quantidade do item a ser simulada, int
+            &quot;seller&quot;:&quot;1&quot;                 //loja pricipal usar sempre 1
+        },
+        {
+            &quot;id&quot;:&quot;5837&quot;,
+            &quot;quantity&quot;:5,
+            &quot;seller&quot;:&quot;1&quot;
+        }
+    ]
+}
+</code></pre>
+
+<p><em>Exemplo do Response:</em></p>
+<pre><code>    {
+    &quot;items&quot;: [                                                     //pode vir um array vazio
+        {
+            &quot;id&quot;: &quot;287611&quot;,                                        //obrigatório, string
+            &quot;requestIndex&quot;: 0,                                     //obrigatório, int - representa a posição desse item no array original (request)
+            &quot;price&quot;: 7390,                                         //Os dois dígitos menos significativos são os centavos //obrigatório, int
+            &quot;listPrice&quot;: 7490,                                     //Os dois dígitos menos significativos são os centavos //obrigatório, int
+            &quot;quantity&quot;: 1,                                         //obrigatório, int
+            &quot;seller&quot;: &quot;1&quot;,                                         //id do seller cadastrado na loja // obrigatório, string,
+            &quot;priceValidUntil&quot;: &quot;2014-03-01T22:58:28.143&quot;           //data, pode ser nulo
+            &quot;offerings&quot;:[                                           //Array opcional, porém não pode ser nulo: enviar array vazio ou não enviar a propriedade
+                {
+                    &quot;type&quot;:&quot;Garantia&quot;,                               //obrigatório, string
+                    &quot;id&quot;:&quot;5&quot;,                                       //obrigatório, string
+                    &quot;name&quot;:&quot;Garantia de 1 ano&quot;,                       //obrigatório, string
+                    &quot;price&quot;:10000                                   //Os dois dígitos menos significativos são os centavos //obrigatório, int
+                },
+                {
+                    &quot;type&quot;:&quot;Embalagem de Presente&quot;,
+                    &quot;id&quot;:&quot;6&quot;,
+                    &quot;name&quot;:&quot;Embalagem de Presente&quot;,
+                    &quot;price&quot;:250                                       
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: &quot;5837&quot;,
+            &quot;requestIndex&quot;: 1,
+            &quot;price&quot;: 890,                                          // Os dois dígitos menos significativos são os centavos
+            &quot;listPrice&quot;: 990,                                      // Os dois dígitos menos significativos são os centavos
+            &quot;quantity&quot;: 5,
+            &quot;seller&quot;: &quot;1&quot;,  
+            &quot;priceValidUntil&quot;: null
+        }
+    ],
+    &quot;logisticsInfo&quot;: [                                            //obrigatório (se vier vazio é considerado que o item não está disponível) -  todos os itens devem ter os mesmos SLAs
+        {
+            &quot;itemIndex&quot;: 0,                                       //obrigatório, int - representa os dados de sla do item de resposta (response)
+            &quot;stockBalance&quot;: 99,                                   //obrigatório  quando o CEP foi passado no request, estoque, int
+            &quot;quantity&quot;: 1,                                        //obrigatório quando o CEP foi passado no request, qauntidade pasada no request, int
+            &quot;shipsTo&quot;: [ &quot;BRA&quot;, &quot;USA&quot; ],                          //obrigatório, array de string com as siglas dos países de entrega
+            &quot;slas&quot;: [                                             //obrigatório quando o CEP foi passado no request. Pode ser um array vazio
+                {
+                    &quot;id&quot;: &quot;Expressa&quot;,                             //obrigatório, id tipo entrega, string
+                    &quot;name&quot;: &quot;Entrega Expressa&quot;,                   //obrigatório, nome do tipo entrega, string
+                    &quot;shippingEstimate&quot;: &quot;2bd&quot;,                    // bd == &quot;business days&quot; //obrigatório, string
+                    &quot;price&quot;: 1000                                 // Os dois dígitos menos significativos são os centavos, obrigatório, int
+                    &quot;availableDeliveryWindows&quot;: [                 //opcional, podendo ser um array vazio
+                    ]
+                },
+                {
+                    &quot;id&quot;: &quot;Agendada&quot;,
+                    &quot;name&quot;: &quot;Entrega Agendada&quot;,
+                    &quot;shippingEstimate&quot;: &quot;5d&quot;,                     // d == &quot;days, bd == &quot;business days&quot;
+                    &quot;price&quot;: 800,
+                    &quot;availableDeliveryWindows&quot;: [
+                         {
+                            &quot;startDateUtc&quot;: &quot;2013-02-04T08:00:00+00:00&quot;,       //date, obrigatório se for enviado delivery window
+                            &quot;endDateUtc&quot;: &quot;2013-02-04T13:00:00+00:00&quot;,         //date, obrigatório se for enviado delivery window
+                            &quot;price&quot;: 0        //int, obrigatório se for enviado delivery window - o valor total da entrega agendada é o valor base mais o valor desse campo
+                        },
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;itemIndex&quot;: 1,
+            &quot;stockBalance&quot;: 1237,
+            &quot;quantity&quot;: 5,
+            &quot;shipsTo&quot;: [ &quot;BRA&quot; ],
+            &quot;slas&quot;: [
+                {
+                    &quot;id&quot;: &quot;Normal&quot;,
+                    &quot;name&quot;: &quot;Entrega Normal&quot;,
+                    &quot;shippingEstimate&quot;: &quot;5bd&quot;,                                  // bd == &quot;business days&quot;
+                    &quot;price&quot;: 200
+                }
+            ]
+        }
+    ],
+    &quot;country&quot;:&quot;BRA&quot;,                                           //string, nulo se não enviado
+    &quot;postalCode&quot;:&quot;22251-030&quot;                                   //string, nulo se não enviado    
+}
+</code></pre>
+
+<h3>1.3 - Exemplos de Request de Busca Dados de SKU - Endpoint da Loja VTEX</h3>
+<p>endpoint: <strong>http://portal.vtexcommerce.com.br/api/catalog_system/pvt/sku/stockkeepingunitbyid/[idsku]?an=[nomedalojavtex]</strong><br />
+verb: <strong>GET</strong> <br />
+Accept: <strong>application/json</strong><br />
+Parametro: <strong>an=nomedalojavtex</strong> </p>
+<p><em>Exemplo do Response:</em></p>
+<pre><code>    {
+        &quot;Id&quot;: 1634, //id da sku
+        &quot;ProductId&quot;: 1634, //id do produto pai da sku
+        &quot;NameComplete&quot;: &quot;Primer Lisse Minute Clarins - Base Facial Alisadora 15ml&quot;,
+        &quot;ProductName&quot;: &quot;Primer Lisse Minute Clarins - Base Facial Alisadora&quot;,
+        &quot;ProductDescription&quot;: &quot;&lt;strong&gt;Primer Lisse Minute&lt;/strong&gt; deixa a pele imediatante alisada e suave ao toque. O primer da &lt;strong&gt;Clarins&lt;/strong&gt; atenua as imperfeições e reduz a aparência dos poros. A pele fica linda a pronta para receber a make!&lt;/br&gt;Com o rosto limpo aplique o primer com os dedos ou com um pincel. Espalhe bem começando pela zona T (testa, nariz e queixo) em direção aos cantos externos do rosto.&quot;,
+        &quot;SkuName&quot;: &quot;15ml&quot;,
+        &quot;IsActive&quot;: true,
+        &quot;IsTransported&quot;: true,
+        &quot;IsInventoried&quot;: true,
+        &quot;IsGiftCardRecharge&quot;: false,
+        &quot;ImageUrl&quot;: &quot;http://epocacosmeticos.vteximg.com.br/arquivos/ids/162097-55-55/primer-lisse-minute-15ml-clarins.jpg&quot;,
+        &quot;DetailUrl&quot;: &quot;/primer-lisse-minute-clarins-base-facial-alisadora/p&quot;,
+        &quot;CSCIdentification&quot;: null,
+        &quot;BrandId&quot;: &quot;2000050&quot;,
+        &quot;Dimension&quot;: {
+            &quot;cubicweight&quot;: 0.2083,
+            &quot;height&quot;: 10,
+            &quot;length&quot;: 10,
+            &quot;weight&quot;: 100,
+            &quot;width&quot;: 10
+        },
+        &quot;IsKit&quot;: false,
+        &quot;KitItems&quot;: [],
+        &quot;Services&quot;: [
+            {
+                &quot;Id&quot;: 1098,
+                &quot;Name&quot;: &quot;Embalagem presente&quot;,
+                &quot;IsFile&quot;: false,
+                &quot;IsGiftCard&quot;: false,
+                &quot;IsRequired&quot;: false,
+                &quot;Options&quot;: [
+                    {
+                        &quot;Id&quot;: 1098,
+                        &quot;Name&quot;: &quot;Embalagem presente&quot;,
+                        &quot;Description&quot;: &quot;Embalagem presente&quot;,
+                        &quot;PriceName&quot;: &quot;Embalagem presente&quot;,
+                        &quot;ListPrice&quot;: 1,
+                        &quot;Price&quot;: 1
+                    }
+                ],
+                &quot;Attachments&quot;: []
+            }
+        ],
+        &quot;Categories&quot;: [],
+        &quot;Attachments&quot;: [],
+        &quot;Collections&quot;: [],
+        &quot;SkuSellers&quot;: [
+            {
+                &quot;SkuCommercialOffer&quot;: {
+                    &quot;DeliverySlaSamples&quot;: [
+                        {
+                            &quot;Region&quot;: {
+                                &quot;Id&quot;: &quot;1&quot;,
+                                &quot;Name&quot;: &quot;RJ&quot;,
+                                &quot;CountryCode&quot;: &quot;BRA&quot;,
+                                &quot;ZipCode&quot;: &quot;22080010&quot;
+                            },
+                            &quot;DeliverySlaPerTypes&quot;: [
+                                {
+                                    &quot;TypeName&quot;: &quot;Normal&quot;,
+                                    &quot;Price&quot;: 9.9,
+                                    &quot;Time&quot;: &quot;00:00:00&quot;
+                                }
+                            ]
+                        }
+                    ],
+                    &quot;Price&quot;: 174,
+                    &quot;ListPrice&quot;: 174,
+                    &quot;AvailableQuantity&quot;: 22
+                },
+                &quot;SellerId&quot;: &quot;1&quot;,
+                &quot;StockKeepingUnitId&quot;: 1634,
+                &quot;SellerStockKeepingUnitId&quot;: &quot;1634&quot;,
+                &quot;IsActive&quot;: true,
+                &quot;FreightCommissionPercentage&quot;: 0,
+                &quot;ProductCommissionPercentage&quot;: 0
+            }
+        ],
+        &quot;SkuPriceSheet&quot;: [],
+        &quot;Images&quot;: [
+            {
+                &quot;ImageUrl&quot;: &quot;http://epocacosmeticos.vteximg.com.br/arquivos/ids/162097/primer-lisse-minute-15ml-clarins.jpg&quot;,
+                &quot;ImageName&quot;: null,
+                &quot;FileId&quot;: 162097
+            }
+        ],
+        &quot;SkuSpecifications&quot;: [
+            {
+                &quot;FieldId&quot;: 283,
+                &quot;FieldName&quot;: &quot;Variação&quot;,
+                &quot;FieldValueIds&quot;: [
+                    2688
+                ],
+                &quot;FieldValues&quot;: [
+                    &quot;15ml&quot;
+                ]
+            }
+        ],
+        &quot;ProductSpecifications&quot;: [],
+        &quot;ProductClustersIds&quot;: &quot;135,149,150,151,152,153,154,155,156,157,158,159,160,161,219,310,358,366,406,407,408,451,473,480,486,525,535,546,549,552,561,569&quot;,
+        &quot;ProductCategoryIds&quot;: &quot;/1000004/1000012/1000040/&quot;,
+        &quot;ProductCategories&quot;: {
+            &quot;1000004&quot;: &quot;Maquiagem&quot;,
+            &quot;1000012&quot;: &quot;Primer e Finalizador&quot;,
+            &quot;1000040&quot;: &quot;Fixador da Maquiagem&quot;
+        },
+        &quot;CommercialConditionId&quot;: 1,
+        &quot;RewardValue&quot;: 0,
+        &quot;AlternateIds&quot;: {
+            &quot;Ean&quot;: &quot;3380814700219&quot;,
+            &quot;RefId&quot;: &quot;005899&quot;
+        },
+        &quot;AlternateIdValues&quot;: [
+            &quot;3380814700219&quot;,
+            &quot;005899&quot;
+        ],
+        &quot;EstimatedDateArrival&quot;: null,
+        &quot;MeasurementUnit&quot;: &quot;un&quot;,
+        &quot;UnitMultiplier&quot;: 1,
+        &quot;InformationSource&quot;: &quot;Indexer&quot;,
+        &quot;ModalType&quot;: null
+    }
+</code></pre>
+
+<h2>2 - Considerações</h2>
+<h4>2.1 Header nas Chamadas a API REST</h4>
+<p>Todas chamadas as API REST devem conter no Headear as seguintes Keys:<br />
+X-VTEX-API-AppToken:<strong>[Value]</strong><br />
+X-VTEX-API-AppKey:<strong>[Value]</strong><br />
+Content-Type: <strong>application/json</strong>    <br />
+Accept: <strong>application/json</strong>   </p>
+<h4>2.2 Ferramentas de apoio ao integrador</h4>
+<p>Ferramentas são de extrema importância para qualquer integrador:</p>
+<p><strong>Postman - REST Client</strong> (<em>chrome://extensions/</em>)
+Nesta ferramente pode se testar, armazenar histórico, salvar coleções de requests do acesso de todas as APIs dos modulos VTEX  (OMS, Logistics, Pricing, GCS, etc).  </p>
+<p><img src="postman.png" alt="alt text" title="Title" /></p>
+<p>É de suma importancia que o integrador tenha o conhecimento de ferramentas desse tipo, ou outras parecidas, antes de inciar um processo de integração usando APIs REST VTEX.</p>
+<h4>2.3 - Glossário</h4>
+<p>Canal de Vendas - Marketplace onde nasce o pedido.<br />
+SKU - Define uma variação de um produto.<br />
+Loja VTEX - loja hospedada na versão smartcheckout da VTEX</p>
+<h4>2.4 Versão:Beta 1.1</h4>
+<p>Essa versão de documentação suporta a integração na versão da plataforma VTEX smartcheckout. Ela foi escrita para auxiliar um integração e a idéia e que através dela, não  restem nenhuma dúvida de como se integrar com a VTEX. Se recebeu essa documentação e ainda restaram dúvidas, por favor, detalhe as suas dúvidas abaixo no comentário, para chegarmos a um documento rico e funcional.</p>
+<p>Autor: <em>Jonas Bolognim</em><br />
+Propriedade:<em>VTEX</em></p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
