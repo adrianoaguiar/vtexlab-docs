@@ -63,7 +63,7 @@ Este documento tem por objetivo auxiliar o Seller não VTEX a receber um pedido,
 
 _Fluxo_ 
 
-![alt text](pedido-seller-nao-vtex.png "Fluxo de pedido") 
+![alt text](order-seller-nao-vtex.png "Fluxo de pedido") 
 
 ####Enviar Pedido
 
