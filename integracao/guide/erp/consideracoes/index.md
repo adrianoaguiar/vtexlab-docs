@@ -17,17 +17,20 @@ Abaixo seguem os modelos propostos:
 ###Integração Rápida de Catálogo e Preço e Estoque
 {: #2 .slug-text}
 
-Uma integração expressa, somente com os fluxos básicos e necessários, saiba mais em: [[Guide] Integração Rápida de Catálogo e Preço e Estoque](http://lab.vtex.com/docs/integracao/guide/erp/catalogo-expresso/index.html)
+Uma integração expressa, somente com os fluxos básicos e necessários, saiba mais em:  
+[[Guide] Integração Rápida de Catálogo e Preço e Estoque](http://lab.vtex.com/docs/integracao/guide/erp/catalogo-expresso/index.html)
 
 ###Integração Completa de Catálogo e Preço e Estoque
 {: #3 .slug-text}
 
-Uma integração completa, a maioria dos fluxos, envolve mais esforço na implementação, saiba mais em: [[Guide] Integração Completa de Catálogo e Preço e Estoque](http://lab.vtex.com/docs/integracao/guide/erp/catalogo-completo/index.html)
+Uma integração completa, a maioria dos fluxos, envolve mais esforço na implementação, saiba mais em:  
+[[Guide] Integração Completa de Catálogo e Preço e Estoque](http://lab.vtex.com/docs/integracao/guide/erp/catalogo-completo/index.html)
 
 ###Integração de Pedido, Nota Fiscal e Tracking
 {: #3 .slug-text}
 
-O ERP busca uma lista de pedidos prontos para o ERP, busca cada pedido na VTEX e insere no ERP, avisa a VTEX que o pedido está no ERP. Depois o ERP envia Nota Fiscal e Tracking para a VTEX, saiba mais em: [[Guide] Integração de Pedido, Nota Fiscal e Tracking](http://lab.vtex.com/docs/integracao/guide/erp/pedido-e-tracking/index.html)
+O ERP busca uma lista de pedidos prontos para o ERP, busca cada pedido na VTEX e insere no ERP, avisa a VTEX que o pedido está no ERP. Depois o ERP envia Nota Fiscal e Tracking para a VTEX, saiba mais em:  
+ [[Guide] Integração de Pedido, Nota Fiscal e Tracking](http://lab.vtex.com/docs/integracao/guide/erp/pedido-e-tracking/index.html)
 
 ### Pooling
 {: #5 .slug-text}

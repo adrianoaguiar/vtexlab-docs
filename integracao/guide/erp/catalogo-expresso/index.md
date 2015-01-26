@@ -90,8 +90,6 @@ _request:_
 			<vtex:IsVisible>true</vtex:IsVisible>
 			<!--string, palavras chaves relevantes para a busca-->
 			<vtex:KeyWords> Barro, vaso, vermelho</vtex:KeyWords>
-			<!--string, link do produto na loja, sem espacço e sem caracteres especiais-->
-			<vtex:LinkId>vaso_barro_vermelho</vtex:LinkId>
 			<!--lista de inteiros, pra qual canal de vendas = loja principal = 1-->
 			<vtex:ListStoreId>
 			   	<arr:int>1</arr:int>
@@ -129,7 +127,6 @@ _response:_
             <a:IsActive>false</a:IsActive>
             <a:IsVisible>true</a:IsVisible>
             <a:KeyWords>Barro, vaso, vermelho</a:KeyWords>
-            <a:LinkId>vaso_barro_vermelho</a:LinkId>
             <a:ListStoreId xmlns:b="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
                <b:int>1</b:int>
                <b:int>2</b:int>
