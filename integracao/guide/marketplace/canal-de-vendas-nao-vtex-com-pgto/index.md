@@ -652,7 +652,7 @@ Caso se queira uma condição comercial diferenciada para o Marketplace não VTE
 
 _Fluxo de chamadas de descida de pedido, pagamento e autorização para despachar:_    
 
-![alt text](order-canal-nao-vtex-com-pgto.png "Title") 
+![alt text](order-canal-n-vtex-com-pgto.PNG "Title") 
 
 ###Enviar Pedido
 
@@ -923,26 +923,26 @@ _request:_
   "paymentsArray": [
     {
       "paymentSystem": 2, //identificador da forma de pagamento
-      "paymentSystemName": "Visa",
-      "groupName": "creditCard",
-      "currencyCode": "BRL",
-      "installments": 1,
-      "value": 3190,
-      "installmentsInterestRate": 0,
-      "installmentsValue": 3190,
-      "referenceValue": 3190,
+      "paymentSystemName": "Visa", //nome da forma de pagamento
+      "groupName": "creditCard", //grupo da forma de pagamento, tipo
+      "currencyCode": "BRL", //código da moeda
+      "installments": 1, //numero de parcelas
+      "value": 3190, //valor do pagamento
+      "installmentsInterestRate": 0, //juros de parcelamento
+      "installmentsValue": 3190, //valor da parcela
+      "referenceValue": 3190, //valor de referencia
       "fields": {
-        "document": "80417345615",
+        "document": "80417345615", //documento do cartão
         "accountId": "",
         "addressId": "",
-        "cardNumber": "4444333322221111",
-        "carHolder": "JONAS ALVES DE OLIVEIRA",
-        "expireDate": "0617",
-        "cvv2": "171"
+        "cardNumber": "4444333322221111", //numero do cartao, quando cartão
+        "carHolder": "JONAS ALVES DE OLIVEIRA", //nome do cartão, quando cartão
+        "expireDate": "0617", //mes, ano da validade do cartão
+        "cvv2": "171" //codigo de validação do cartão
       },
       "transaction": {
-        "id": "BB55ED929FF749E6BE5A835E4C811B77",
-        "merchantName": "sandboxintegracao",
+        "id": "BB55ED929FF749E6BE5A835E4C811B77",//identificador da transação
+        "merchantName": "sandboxintegracao",//mercahnname
         "payments": null
       }
     }
@@ -961,44 +961,40 @@ _response:_
 
 Envia dados adicionais que serão usados pelo sistema de anti-fraude - Endpoint Loja VTEX
 
-endpoint: **https://[loja].vtexpayments.com.br/api/pvt/transactions/BB55ED929FF749E6BE5A835E4C811B77/additional-data**  
+endpoint: **https://[loja].vtexpayments.com.br/api/pvt/transactions/[transactionid]/additional-data**  
 verb: **POST**  
 Content-Type: **application/json**  
 Accept: **application/json**  
-Parametro: **transactionid** // identificador da transação  
+Parametro: **transactionid** // identificador da transação  Ex: BB55ED929FF749E6BE5A835E4C811B77
 
 _request:_  
 
 {% highlight json %} 
-[{
-    "name": "cart",
-    "value": "{\"items\":[
+[
 	{
-					\"id\":\"122323\",
-					\"name\":\"Tenis Adidas Preto I Tenis Adidas Preto I Tenis Adidas Preto I Tenis Adidas Preto I Tenis Adidas Preto I ABCDEFG\",
-					\"value\":1075,
-					\"quantity\":1,
-					\"shippingDiscount\":0,
-					\"discount\":50
-				},
-				{
-					\"id\":\"122324\",
-					\"name\":\"Tenis Nike Azul\",
-					\"value\":500,
-					\"quantity\":1,
-					\"shippingDiscount\":0,
-					\"discount\":50
-				}
-	],\"freight\":800,
-	\"tax\":0
-	}"
-}, {
-    "name": "clientProfileData",
-    "value": "{\"email\":\"ellen.silva@vtex.com.br\",\"firstName\":\"Ellen\",\"lastName\":\"Silva\",\"document\":\"02647420955\",\"phone\":\"+551433118100\",\"corporateName\":null,\"tradeName\":null,\"corporateDocument\":null,\"stateInscription\":null,\"postalCode\":\"22011-050\",\"address\":{\"receiverName\":\"Ellen\",\"postalCode\":\"22011050\",\"city\":\"RIO DE JANEIRO\",\"state\":\"RJ\",\"country\":\"BRA\",\"street\":\"RUA  GENERAL AZEVEDO PIMENTEL\",\"number\":\"12345\",\"neighborhood\":\"COPACABANA\",\"complement\":\"APTO 302\",\"reference\":null},\"gender\":null,\"birthDate\":null,\"corporatePhone\":null,\"isCorporate\":false}"
-}, {
-    "name": "shippingData",
-    "value": "{\"receiverName\":\"ELLEN\",\"postalCode\":\"65035430\",\"city\":\"SAO LUIS\",\"state\":\"MA\",\"country\":\"BRA\",\"street\":\"AV NEWTON BELLO \",\"number\":\"777\",\"neighborhood\":\"MONTE CATELO\",\"complement\":\"APTO 302\",\"reference\":null}"
-}]
+	    "name": "cart",
+	    "value": "{\"items\":[
+		{
+						\"id\":\"122323\",
+						\"name\":\"Tenis Adidas Preto I Tenis Adidas Preto I Tenis Adidas Preto I Tenis Adidas Preto I Tenis Adidas Preto I ABCDEFG\",
+						\"value\":1075,
+						\"quantity\":1,
+						\"shippingDiscount\":0,
+						\"discount\":50
+		}
+		],\"freight\":800,
+		\"tax\":0
+		}"
+	}, 
+	{
+	    "name": "clientProfileData",
+	    "value": "{\"email\":\"ellen.silva@vtex.com.br\",\"firstName\":\"Ellen\",\"lastName\":\"Silva\",\"document\":\"02647420955\",\"phone\":\"+551433118100\",\"corporateName\":null,\"tradeName\":null,\"corporateDocument\":null,\"stateInscription\":null,\"postalCode\":\"22011-050\",\"address\":{\"receiverName\":\"Ellen\",\"postalCode\":\"22011050\",\"city\":\"RIO DE JANEIRO\",\"state\":\"RJ\",\"country\":\"BRA\",\"street\":\"RUA  GENERAL AZEVEDO PIMENTEL\",\"number\":\"12345\",\"neighborhood\":\"COPACABANA\",\"complement\":\"APTO 302\",\"reference\":null},\"gender\":null,\"birthDate\":null,\"corporatePhone\":null,\"isCorporate\":false}"
+	}, 
+	{
+	    "name": "shippingData",
+	    "value": "{\"receiverName\":\"ELLEN\",\"postalCode\":\"65035430\",\"city\":\"SAO LUIS\",\"state\":\"MA\",\"country\":\"BRA\",\"street\":\"AV NEWTON BELLO \",\"number\":\"777\",\"neighborhood\":\"MONTE CATELO\",\"complement\":\"APTO 302\",\"reference\":null}"
+	}
+]
 {% endhighlight %} 
 
 
