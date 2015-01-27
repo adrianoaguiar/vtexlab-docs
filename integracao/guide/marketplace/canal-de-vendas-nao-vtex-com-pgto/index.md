@@ -652,7 +652,7 @@ Caso se queira uma condição comercial diferenciada para o Marketplace não VTE
 
 _Fluxo de chamadas de descida de pedido, pagamento e autorização para despachar:_    
 
-![alt text](pedido-canal-nao-vtex-com-pgto.png "Title") 
+![alt text](order-canal-nao-vtex-com-pgto.png "Title") 
 
 ###Enviar Pedido
 
