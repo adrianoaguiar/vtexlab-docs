@@ -652,7 +652,7 @@ Caso se queira uma condição comercial diferenciada para o Marketplace não VTE
 
 _Fluxo de chamadas de descida de pedido, pagamento e autorização para despachar:_    
 
-![alt text](pedido-canal-nao-vtex-com-pgto.PNG "Title") 
+![alt text](pedido-canal-nao-vtex-com-pgto.png "Title") 
 
 ###Enviar Pedido
 
@@ -910,43 +910,95 @@ _response:_
 
 Envia os dados referentes ao pagamento, debaixo da transação iniciada - Endpoint Loja VTEX
 
-endpoint: ****  
+endpoint: **https://[loja].vtexpayments.com.br/api/pvt/payments**  
 verb: **POST**  
 Content-Type: **application/json**  
 Accept: **application/json**  
-Parametro: **sc** // sc é o canal de vendas cadastrado na VTEX.  
-Parametro: **affiliateId** // affiliateId é o id do afiliado cadastrado na loja VTEX
-
 
 _request:_  
 
 {% highlight json %} 
-
+{
+  "callbackUrl": "",
+  "paymentsArray": [
+    {
+      "paymentSystem": 2, //identificador da forma de pagamento
+      "paymentSystemName": "Visa",
+      "groupName": "creditCard",
+      "currencyCode": "BRL",
+      "installments": 1,
+      "value": 3190,
+      "installmentsInterestRate": 0,
+      "installmentsValue": 3190,
+      "referenceValue": 3190,
+      "fields": {
+        "document": "80417345615",
+        "accountId": "",
+        "addressId": "",
+        "cardNumber": "4444333322221111",
+        "carHolder": "JONAS ALVES DE OLIVEIRA",
+        "expireDate": "0617",
+        "cvv2": "171"
+      },
+      "transaction": {
+        "id": "BB55ED929FF749E6BE5A835E4C811B77",
+        "merchantName": "sandboxintegracao",
+        "payments": null
+      }
+    }
+  ]
+}
 {% endhighlight %} 
-
 
 _response:_  
 
 {% highlight json %} 
-
+200
 {% endhighlight %} 
 
-###Enviar Dados de Anti Fraude
+###Enviar Dados Adicional
 {: #10 .slug-text} 
 
-Envia dados do cliente que serão usados pelo sistema de anti-fraude - Endpoint Loja VTEX
+Envia dados adicionais que serão usados pelo sistema de anti-fraude - Endpoint Loja VTEX
 
-endpoint: ****  
+endpoint: **https://[loja].vtexpayments.com.br/api/pvt/transactions/BB55ED929FF749E6BE5A835E4C811B77/additional-data**  
 verb: **POST**  
 Content-Type: **application/json**  
 Accept: **application/json**  
-Parametro: **sc** // sc é o canal de vendas cadastrado na VTEX.  
-Parametro: **affiliateId** // affiliateId é o id do afiliado cadastrado n loja VTEX
+Parametro: **transactionid** // identificador da transação  
 
 _request:_  
 
 {% highlight json %} 
-
+[{
+    "name": "cart",
+    "value": "{\"items\":[
+	{
+					\"id\":\"122323\",
+					\"name\":\"Tenis Adidas Preto I Tenis Adidas Preto I Tenis Adidas Preto I Tenis Adidas Preto I Tenis Adidas Preto I ABCDEFG\",
+					\"value\":1075,
+					\"quantity\":1,
+					\"shippingDiscount\":0,
+					\"discount\":50
+				},
+				{
+					\"id\":\"122324\",
+					\"name\":\"Tenis Nike Azul\",
+					\"value\":500,
+					\"quantity\":1,
+					\"shippingDiscount\":0,
+					\"discount\":50
+				}
+	],\"freight\":800,
+	\"tax\":0
+	}"
+}, {
+    "name": "clientProfileData",
+    "value": "{\"email\":\"ellen.silva@vtex.com.br\",\"firstName\":\"Ellen\",\"lastName\":\"Silva\",\"document\":\"02647420955\",\"phone\":\"+551433118100\",\"corporateName\":null,\"tradeName\":null,\"corporateDocument\":null,\"stateInscription\":null,\"postalCode\":\"22011-050\",\"address\":{\"receiverName\":\"Ellen\",\"postalCode\":\"22011050\",\"city\":\"RIO DE JANEIRO\",\"state\":\"RJ\",\"country\":\"BRA\",\"street\":\"RUA  GENERAL AZEVEDO PIMENTEL\",\"number\":\"12345\",\"neighborhood\":\"COPACABANA\",\"complement\":\"APTO 302\",\"reference\":null},\"gender\":null,\"birthDate\":null,\"corporatePhone\":null,\"isCorporate\":false}"
+}, {
+    "name": "shippingData",
+    "value": "{\"receiverName\":\"ELLEN\",\"postalCode\":\"65035430\",\"city\":\"SAO LUIS\",\"state\":\"MA\",\"country\":\"BRA\",\"street\":\"AV NEWTON BELLO \",\"number\":\"777\",\"neighborhood\":\"MONTE CATELO\",\"complement\":\"APTO 302\",\"reference\":null}"
+}]
 {% endhighlight %} 
 
 
@@ -961,17 +1013,27 @@ _response:_
 
 Envia uma autorização confirmando a autorização do pagamento enviado - Endpoint Loja VTEX
 
-endpoint: ****  
+endpoint: **https://[loja].vtexpayments.com.br/api/pvt/transactions/BB55ED929FF749E6BE5A835E4C811B77/authorization-request**  
 verb: **POST**  
 Content-Type: **application/json**  
 Accept: **application/json**  
-Parametro: **sc** // sc é o canal de vendas cadastrado na VTEX.  
-Parametro: **affiliateId** // affiliateId é o id do afiliado cadastrado n loja VTEX
+Parametro: **transactionid** // identificador da transação  
 
 _request:_  
 
 {% highlight json %} 
-
+{
+    "transactionId": "BB55ED929FF749E6BE5A835E4C811B77",
+    "softDescriptor": "sandboxintegracao",
+    "prepareForRecurrency": false,
+    "split": [
+        {
+            "merchant": "sandboxintegracao",
+            "value": 3190,
+            "remoteTransactionId": "BB55ED929FF749E6BE5A835E4C811B77"
+        }
+    ]
+}
 {% endhighlight %} 
 
 
@@ -981,7 +1043,7 @@ _response:_
 
 {% endhighlight %} 
 
-###Enviar Autoriação Para Despachar
+###Enviar Autorização Para Despachar
 {: #11 .slug-text}  
 
 Quando o pagamento do pedido é concluído no Marketplace não VTEX, um POST deverá ser feito na loja VTEX com o paymentTransactionId, 
@@ -991,8 +1053,8 @@ endpoint: **https://[loja].vtexcommercestable.com.br/api/fulfillment/pvt/orders/
 verb: **POST**  
 Content-Type: **application/json**  
 Accept: **application/json**  
-Parametro: **sc** // sc é o canal de vendas cadastrado na VTEX.
-Parametro: **affiliateId** // affiliateId é o id do afiliado cadastrado na loja VTEX
+Parametro: **sc** // sc é o canal de vendas cadastrado na VTEX.  
+Parametro: **affiliateId** // affiliateId é o id do afiliado cadastrado na loja VTEX  
 
 _request:_  
 
