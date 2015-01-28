@@ -13,7 +13,7 @@ Este documento tem por objetivo auxiliar na troca de catalogo, atualização de 
 ###Troca de Catalogo de SKU e Atualização de Condição Comercial de SKU
 {: #0 .slug-text}
 
-[[Guide] Troca de Catalogo de SKU e Atualização de Condição Comercial de SKU Marketplace Não VTEX e Sellers VTEX](http://lab.vtex.com/docs/integracao/guide/marketplace/seller-n%C3%A3o-vtex-com-pgto/index.html#troca-de-catalogo-de-sku-e-atualizao-de-condio-comercial-de-sku) 
+<a href="http://lab.vtex.com/docs/integracao/guide/marketplace/canal-de-vendas-nao-vtex-com-pgto/index.html#troca-de-catalogo-de-sku-e-atualizao-de-condio-comercial-de-sku" target="_blank">[[Guide] Troca de Catalogo de SKU e Atualização de Condição Comercial de SKU Marketplace Não VTEX e Sellers VTEX]</a>   
 
 - - -
 
