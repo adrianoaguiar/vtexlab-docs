@@ -22,7 +22,7 @@ Este documento tem por objetivo auxiliar na troca de catalogo, atualização de 
 
 Este tópico tem por objetivo auxiliar o na simulação de carrinho entre um canal de vendas não VTEX com uma loja  VTEX. Simular um pedido no carrinho e na página de pagamento.
 
-![alt text](fechato-canal-nao-vtex.png "Title") 
+![alt text](fechato-canal-n-vtex.png "Title") 
 
 ###No Carrinho e no Pagamento
 Quando um produto é inserido no carrinho no canal de vendas não VTEX, ou faz se alguma edição no carrinho, uma consulta de simulaçao de carrinho é feita na loja VTEX para checar a validade das condiçoes comerciais(preço, estoque, frete e SLAs de entrega). Quando o cliente vai para o pagamento também pode validar o carrinho - Endpoint loja VTEX
