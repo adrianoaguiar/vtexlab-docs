@@ -287,25 +287,25 @@ endpoint: **https://sellerendpoint/pvt/orders?sc=[idcanal]&affiliateId[idafiliad
 verb: **POST**  
 Content-Type: **application/json**  
 Accept: **application/json**  
-Parametro: **sc=5** // sc serve para destacar o canal por onde o pedido entrou
-Parametro: **affiliateId=shopfacil** // afiliado que esta colocando o pedido
+Parametro: **sc** // sc serve para destacar o canal por onde o pedido entrou  
+Parametro: **affiliateId** // afiliado que esta colocando o pedido
 
 _request:_  
 
 {% highlight json %}  
 [
   {
-    "marketplaceOrderId": "959311095",
+    "marketplaceOrderId": "959311095", //identificador do pedido no market place
     "marketplaceServicesEndpoint": "https://urlmarketplace/", //leia o tópico Invocando MarketplaceServicesEndpoint Actions
-    "marketplacePaymentValue": 11080,
+    "marketplacePaymentValue": 11080, //valor que o marketplace se compromete a pagar para o Seller
     "items": [
       {
-        "id": "2002495",
-        "quantity": 1,
+        "id": "2002495", //identificadro da SKU no Seller
+        "quantity": 1, //quantidade comprada
         "seller": "1",
         "commission": 0,
         "freightCommission": 0,
-        "price": 9990,
+        "price": 9990, //preço da SKU
         "bundleItems": [], //serviços. Ex: embalagem pra presente.
         "itemAttachment": { 
           "name": null,
@@ -313,52 +313,52 @@ _request:_
         },
         "attachments": [], //customização do item, Ex:camisa com o numero 10
         "priceTags": [],
-        "measurementUnit": null, unidade de medida
-        "unitMultiplier": 0, unidade multipladora,Ex: venda por quilo
+        "measurementUnit": null, //unidade de medida
+        "unitMultiplier": 0, //unidade multipladora,Ex: venda por quilo
         "isGift": false
       }
     ],
     "clientProfileData": {
       "id": "clientProfileData",
-      "email": "32172239852@gmail.com.br",
-      "firstName": "Jonas",
-      "lastName": "Alves de Oliveira",
+      "email": "32172239852@gmail.com.br", //e-mail do cliente
+      "firstName": "Jonas", //primeiro nome do ciente
+      "lastName": "Alves de Oliveira", //sobrenome do cliente
       "documentType": null,
-      "document": "3244239851",
-      "phone": "399271258",
-      "corporateName": null,
-      "tradeName": null,
-      "corporateDocument": null,
-      "stateInscription": null,
-      "corporatePhone": null,
-      "isCorporate": false,
-      "userProfileId": null
+      "document": "3244239851", //documento
+      "phone": "399271258", //fone
+      "corporateName": null, //se pessoa juridica, razao social
+      "tradeName": null, //se pessoa juridica, nome fantasia
+      "corporateDocument": null, //se pessoa juridica, documento
+      "stateInscription": null, //se pessoa juridica, iscrição estadual
+      "corporatePhone": null, //se pessoa juridica, fone
+      "isCorporate": false, //é pessoa juridica?
+      "userProfileId": null 
     },
     "shippingData": {
       "id": "shippingData",
       "address": {
-        "addressType": "Residencial",
-        "receiverName": "Jonas Alves de Oliveira",
-        "addressId": "Casa",
-        "postalCode": "13476103",
-        "city": "Americana",
-        "state": "SP",
-        "country": "BRA",
-        "street": "JOÃO DAMÁZIO GOMES",
-        "number": "311",
-        "neighborhood": "SÃO JOSÉ",
-        "complement": null,
-        "reference": "Bairro Praia Azul / Posto de Saúde 17",
+        "addressType": "Residencial", //tipo do endereço
+        "receiverName": "Jonas Alves de Oliveira", //nome do destinatário
+        "addressId": "Casa", //identificador do endereço
+        "postalCode": "13476103", //código postal
+        "city": "Americana", //cidade
+        "state": "SP", //unidade federativa
+        "country": "BRA", //país
+        "street": "JOÃO DAMÁZIO GOMES", //logradouro
+        "number": "311", //número do endereço
+        "neighborhood": "SÃO JOSÉ", //bairro
+        "complement": null, //complemnto
+        "reference": "Bairro Praia Azul / Posto de Saúde 17", //refrencia
         "geoCoordinates": []
       },
       "logisticsInfo": [
         {
-          "itemIndex": 0,
-          "selectedSla": "Normal",
-          "lockTTL": "8d",
-          "shippingEstimate": "7d",
-          "price": 1090,
-          "deliveryWindow": null
+          "itemIndex": 0, //index do array de itens
+          "selectedSla": "Normal", //tipo de entrega
+          "lockTTL": "8d", //dias de reserva
+          "shippingEstimate": "7d", //dias estimados para a entrega
+          "price": 1090, //preço da entrega
+          "deliveryWindow": null //janela de entrega
         }
       ]
     },
@@ -377,7 +377,7 @@ _response:_
 [
   {
     "marketplaceOrderId": "959311095",
-    "orderId": "123543123",
+    "orderId": "123543123", //** - identificador do pedido inserido no seller
     "followUpEmail": "75c70c09dbb3498c9b3bbdee59bf0687@ct.vtex.com.br",
     "items": [
       {
@@ -446,6 +446,7 @@ _response:_
 ]  
 {% endhighlight %} 
 
+
 _retorno de erro:_  
 
 {% highlight json %} 
@@ -462,7 +463,7 @@ _retorno de erro:_
 ###Enviar Pagamento
 {: #5 .slug-text}  
 
-Quando o pagamento do pedido é concluído no ambiente VTEX, um POST é feito no Seller não VTEX, para que este possa receber os dados referente ao pagamento do respectivo pedido - Endpoint do Seller
+Quando o pagamento do pedido é informado no ambiente VTEX, um POST é feito no Seller não VTEX, para que este possa receber os dados referente ao pagamento do respectivo pedido - Endpoint do Seller
 
 endpoint: **https://sellerendpoint/pvt/payment?an=shopfacilfastshop**  
 verb: **POST**  
@@ -476,18 +477,18 @@ _request:_
 {% highlight json %} 
 {
 	"referenceId": "123543123", //merchantPaymentReferenceId retornado no request do place order
-	"transactionId": "D3AA1FC8372E430E8236649DB5EBD08E",
+	"transactionId": "D3AA1FC8372E430E8236649DB5EBD08E", //identificador da transação
 	"paymentData": {
-		"id": "F5C1A4E20D3B4E07B7E871F5B5BC9F91",
-		"paymentSystem": 2,os ids dos tipos de pagamento, 
-		"cardNumber": "4444333322221111",
-		"cardHolder": "JONAS ALVES DE OLIVEIRA",
-		"expiryMonth": 11,
-		"expiryYear": 16,
-		"value": 11080,
-		"installments": 3,
-		"cvv2": "123",
-		"billingAddress": {
+		"id": "F5C1A4E20D3B4E07B7E871F5B5BC9F91", //identificador do pagamento
+		"paymentSystem": 2, //identificador da forma depagamento
+		"cardNumber": "4444333322221111", //numero do cartão
+		"cardHolder": "JONAS ALVES DE OLIVEIRA", //nome do cartão
+		"expiryMonth": 11, //mes de expiração
+		"expiryYear": 16, //ano de expiração
+		"value": 11080, //valor do pagamento
+		"installments": 3, //numero de parcelas
+		"cvv2": "123", //codigo verificador
+		"billingAddress": { //endereço de cobrança
 			"addressType": "residential",
 			"street": "Rua Cinco De Julho",
 			"number": "176",
@@ -499,7 +500,7 @@ _request:_
 			"neighborhood": ""
 		}
 	},
-	"clientData": {
+	"clientData": { //dados do cliente
 		"firstName": "JONAS",
 		"lastName": "ALVES DE OLIVEIRA",
 		"document": "08081268731",
@@ -508,7 +509,7 @@ _request:_
 		"corporateDocument": "",
 		"isCorporate": "false"
 	},
-	"shippingValue": 3691, 
+	"shippingValue": 3691, //valor da entrega
 	"callbackUrl": ""https://nomedaloja.vtexpayments.com.br/api/pvt/callback/vtxstd/transactions/D3AA1FC8372E430E8236649DB5EBD08E/payments/F5C1A4E20D3B4E07B7E871F5B5BC9F91/return" //**url para falar de volta com o gateway de pagamento do marketplace
 }
 {% endhighlight %}
@@ -537,7 +538,8 @@ endpoint: **https://sellerendpoint/pvt/orders/[orderid]/fulfill?sc=[idcanal]**
 verb: **POST**  
 Content-Type: **application/json**  
 Accept: **application/json**  
-Parametro: **sc=5** // sc é o canal de vendas cadastrado no marketplace, serve para destacar o canal por onde o pedido entrou.  
+Parametro: **orderid** // identificador do pedido gerado no seller
+Parametro: **sc** // sc é o canal de vendas cadastrado no marketplace, serve para destacar o canal por onde o pedido entrou.  
 
 _request:_  
   
