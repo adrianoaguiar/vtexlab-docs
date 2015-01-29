@@ -22,7 +22,7 @@ Este documento tem por objetivo auxiliar na troca de catalogo, atualização de 
 
 Este tópico tem por objetivo auxiliar o na simulação de carrinho entre um canal de vendas não VTEX com uma loja  VTEX. Simular um pedido no carrinho e na página de pagamento.
 
-![alt text](fechato-canal-n-vtex.png "Title") 
+![alt text](fechato-canal-nvtex.png "Title") 
 
 ###No Carrinho e no Pagamento
 Quando um produto é inserido no carrinho no canal de vendas não VTEX, ou faz se alguma edição no carrinho, uma consulta de simulaçao de carrinho é feita na loja VTEX para checar a validade das condiçoes comerciais(preço, estoque, frete e SLAs de entrega). Quando o cliente vai para o pagamento também pode validar o carrinho - Endpoint loja VTEX
@@ -154,7 +154,7 @@ Caso se queira uma condição comercial diferenciada para o canal de vendas não
 
 *Exemplo do fuxo de chamadas de descida de pedido, e autorização para despachar:*  
 
-![alt text](pedido-canal-n-vtex.png "Title") 
+![alt text](order-canal-nvtex.png "Title") 
 
 ###Enviar Pedido
 Quando o pedido é fechado em um canal de vendas não VTEX, um POST deve ser feito na loja VTEX, para que essa possa receber a ordem de pedido - Endpoint Loja Vtex
