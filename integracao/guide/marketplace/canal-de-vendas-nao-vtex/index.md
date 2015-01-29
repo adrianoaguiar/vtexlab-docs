@@ -154,7 +154,7 @@ Caso se queira uma condição comercial diferenciada para o canal de vendas não
 
 *Exemplo do fuxo de chamadas de descida de pedido, e autorização para despachar:*  
 
-![alt text](order-canal-nvtex.png "Title") 
+![alt text](order-canal-naum-vtex.png "Title") 
 
 ###Enviar Pedido
 Quando o pedido é fechado em um canal de vendas não VTEX, um POST deve ser feito na loja VTEX, para que essa possa receber a ordem de pedido - Endpoint Loja Vtex
