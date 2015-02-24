@@ -14,7 +14,7 @@ Naturalmente, o Checkout agrega os mais diversos dados necessários para o fecha
 
 O OrderForm é a estrutura responsável por esse aglomerado de dados.
 Ele é composto de diversas seções, cada uma com informações úteis que podem ser acessadas, manipuladas e (possivelmente) alteradas.
-Se tiver qualquer dúvida quanto a suas seções, consulte a [documentação do OrderForm](orderform.md).
+Se tiver qualquer dúvida quanto a suas seções, consulte a [documentação do OrderForm](order-form.html).
 
 ## Eventos
 {: #Eventos .slug-text.omit-parens }
