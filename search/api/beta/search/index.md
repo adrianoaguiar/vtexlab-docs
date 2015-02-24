@@ -64,7 +64,7 @@ Modelo da url: http://{storeurl}/api/catalog_system/pub/products/search/?{search
 - fq=specificationFilter_{a}:{b}    -    Filtro que esta sendo usado para a busca, {a} = id da especificacao {b} = valor selecioando Ex.: fq=specificationFilter_12:Masculino
 - fq=P:[{a} TO {b}]                      -    Filtro por preço onde o {a} é o preço "de" e o {b} é o preço "até" Ex.:   fq=P:[0 TO 20]   vai buscar produto de 0 a 20 reais.
 
-Exemplo da url: http://www.nomedaloja.com/api/catalog_system/pub/products/search/?fq=C:/1000041/1000049/&PS=16&PageNumber=1&fq=specificationFilter_12:Masculino&fq=P:[0 TO 20]
+Exemplo da url: http://www.nomedaloja.com/api/catalog_system/pub/products/search/?fq=C:/1000041/1000049/&fq=specificationFilter_12:Masculino&fq=P:[0 TO 20]
 
 ## Paginação
 {: #paginacao .slug-text}
