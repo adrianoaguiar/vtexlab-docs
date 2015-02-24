@@ -80,7 +80,7 @@ Isso possibilita atualizar essa seção, enviando novas informações, alterando
 
 **Atenção**: é necessário mandar o attachment por completo. Veja os exemplos.
 
-Veja a [documentação do OrderForm](orderform.md) para descobrir quais são as seções.
+Veja a [documentação do OrderForm](order-form.html) para descobrir quais são as seções.
 
 Não se esqueça de usar getOrderForm anteriormente.
 
@@ -123,7 +123,7 @@ vtexjs.checkout.getOrderForm().then(function(orderForm){
 #### Alterar openTextField
 
 O openTextField é um campo destinado a observações e comentários.
-Consulte a [documentação do OrderForm](orderform.md) para mais detalhes sobre ele.
+Consulte a [documentação do OrderForm](order-form.html) para mais detalhes sobre ele.
 
 {% highlight javascript %}
 vtexjs.checkout.getOrderForm().then(function(orderForm){
@@ -142,7 +142,7 @@ Atualiza items no orderForm.
 
 Um item é identificado pela sua propriedade `index`. No orderForm, essa propriedade pode ser obtida observando o índice do item no Array de items.
 
-Veja a [documentação do OrderForm](orderform.md) para conhecer mais sobre o que compõe o objeto de item.
+Veja a [documentação do OrderForm](order-form.html) para conhecer mais sobre o que compõe o objeto de item.
 
 Propriedades que não forem enviadas serão mantidas inalteradas, assim como items que estão no orderForm mas nao foram enviados.
 
@@ -379,7 +379,7 @@ vtexjs.checkout.getAddressInformation(address).done(function(result){
 Faz o login parcial do usuário usando o email.
 
 As informações provavelmente vão vir mascaradas e não será possível editá-las, caso o usuário já exista. Para isso, é necessário autenticar-se com VTEX ID.
-Certifique-se disso com a propriedade canEditData do orderForm. Veja a [documentação do OrderForm](orderform.md).
+Certifique-se disso com a propriedade canEditData do orderForm. Veja a [documentação do OrderForm](order-form.html).
 
 Não se esqueça de usar getOrderForm anteriormente.
 
