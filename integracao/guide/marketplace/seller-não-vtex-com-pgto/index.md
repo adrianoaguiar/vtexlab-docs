@@ -510,7 +510,7 @@ _request:_
 		"isCorporate": "false"
 	},
 	"shippingValue": 3691, //valor da entrega
-	"callbackUrl": ""https://nomedaloja.vtexpayments.com.br/api/pvt/callback/vtxstd/transactions/D3AA1FC8372E430E8236649DB5EBD08E/payments/F5C1A4E20D3B4E07B7E871F5B5BC9F91/return", //**url para falar de volta com o gateway de pagamento
+	"callbackUrl": "https://nomedaloja.vtexpayments.com.br/api/pvt/callback/vtxstd/transactions/D3AA1FC8372E430E8236649DB5EBD08E/payments/F5C1A4E20D3B4E07B7E871F5B5BC9F91/return", //**url para falar de volta com o gateway de pagamento
 	"shoppingCart": { // carrinho
 	    "items": [
 	      {

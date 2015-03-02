@@ -32,7 +32,7 @@ Toda vez que houver uma inserção ou alteração na condição comercial (preç
 ###Enviar Sugestão de SKU
 {: #3 .slug-text}
 
-Quando o serviço de notificação retornar um status 404, significa que o SKU NÂO existe no marketplace VTEX, então o Seller envia um POST com os dados da SKU que deseja sugerir para vender no marketplace VTEX.
+Quando o serviço de notificação retornar um status 404, significa que o SKU NÂO existe no marketplace VTEX, então o Seller envia um POST com os dados da SKU que deseja sugerir para vender no marketplace VTEX. O Seller faz as sugestões de suas SKUs e o administrador do Marketplace realiza o mapeamento de marcas e categorias através do admin da loja, e aceita ou não a sugestão de SKU enviada pelo Seller.
 
 
 <a title="envia sugestão de sku" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/CATALOG/CATALOG_Sugestion" target="_blank">[Developer] - Exemplo de Request de Inserção de Sugestão de SKU - Endpoint da VTEX</a>
