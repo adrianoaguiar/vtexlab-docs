@@ -920,33 +920,33 @@ _request:_
 {% highlight json %} 
 {
   "callbackUrl": "",
-  "paymentsArray": [
+  "paymentsArray": "[
     {
-      "paymentSystem": 2, //identificador da forma de pagamento
-      "paymentSystemName": "Visa", //nome da forma de pagamento
-      "groupName": "creditCard", //grupo da forma de pagamento, tipo
-      "currencyCode": "BRL", //código da moeda
-      "installments": 1, //numero de parcelas
-      "value": 3190, //valor do pagamento
-      "installmentsInterestRate": 0, //juros de parcelamento
-      "installmentsValue": 3190, //valor da parcela
-      "referenceValue": 3190, //valor de referencia
-      "fields": {
-        "document": "80417345615", //documento do cartão
-        "accountId": "",
-        "addressId": "",
-        "cardNumber": "4444333322221111", //numero do cartao, quando cartão
-        "carHolder": "JONAS ALVES DE OLIVEIRA", //nome do cartão, quando cartão
-        "expireDate": "0617", //mes, ano da validade do cartão
-        "cvv2": "171" //codigo de validação do cartão
+      \"paymentSystem\": 2, //identificador da forma de pagamento
+      \"paymentSystemName\": \"Visa\", //nome da forma de pagamento
+      \"groupName\": \"creditCard\", //grupo da forma de pagamento, tipo
+      \"currencyCode\": \"BRL\", //código da moeda
+      \"installments\": 1, //numero de parcelas
+      \"value\": 3190, //caso sem juros: valor total do pedido; caso parcelado com juros: multiplar o valor das parcelas com juros pelo numero de parcelas
+      \"installmentsInterestRate\": 0, //juros de parcelamento
+      \"installmentsValue\": 3190, //valor da parcela
+      \"referenceValue\": 3190, //valor total do pedidos sem juros
+      \"fields\": {
+        \"document\": \"80417345615\", //documento do cartão
+        \"accountId\": \"\",
+        \"addressId\": \"\",
+        \"cardNumber\": \"4444333322221111\", //numero do cartao, quando cartão
+        \"carHolder\": \"JONAS ALVES DE OLIVEIRA\", //nome do cartão, quando cartão
+        \"expireDate\": \"0617\", //mes, ano da validade do cartão
+        \"cvv2\": \"171\" //codigo de validação do cartão
       },
-      "transaction": {
-        "id": "BB55ED929FF749E6BE5A835E4C811B77",//identificador da transação
-        "merchantName": "sandboxintegracao",//mercahnname
-        "payments": null
+      \"transaction\": {
+        \"id\": \"BB55ED929FF749E6BE5A835E4C811B77\",//identificador da transação
+        \"merchantName\": \"sandboxintegracao\",//mercahnname
+        \"payments\": null
       }
     }
-  ]
+  ]"
 }
 {% endhighlight %} 
 
@@ -1039,38 +1039,6 @@ _response:_
 
 {% endhighlight %} 
 
-###Enviar Autorização Para Despachar
-{: #11 .slug-text}  
-
-Quando o pagamento do pedido é concluído no Marketplace não VTEX, um POST deverá ser feito na loja VTEX com o paymentTransactionId, 
-para que o pedido possa prosseguir com a separação e entrega - Endpoint da VTEX
-
-endpoint: **https://[loja].vtexcommercestable.com.br/api/fulfillment/pvt/orders/[orderid]/fulfill?sc=[idcanal]&affiliateId=[idafiliado]**  
-verb: **POST**  
-Content-Type: **application/json**  
-Accept: **application/json**  
-Parametro: **sc** // sc é o canal de vendas cadastrado na VTEX.  
-Parametro: **affiliateId** // affiliateId é o id do afiliado cadastrado na loja VTEX  
-
-_request:_  
-
-{% highlight json %} 
-{
-	"marketplaceOrderId": "959311095", //id do pedido originado no canal de vendas
-	"paymentTransactionId": "", //id da transação de pagamento criado.
-}
-{% endhighlight %}  
-
-_response:_
-
-{% highlight json %} 
-{
-	"date": "2014-10-06 18:52:00",
-	"marketplaceOrderId": "959311095",
-	"orderId": "123543123",
-	"receipt": "e39d05f9-0c54-4469-a626-8bb5cff169f8",
-}
-{% endhighlight %}  
 
 - - -
 
