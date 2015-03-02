@@ -510,7 +510,50 @@ _request:_
 		"isCorporate": "false"
 	},
 	"shippingValue": 3691, //valor da entrega
-	"callbackUrl": ""https://nomedaloja.vtexpayments.com.br/api/pvt/callback/vtxstd/transactions/D3AA1FC8372E430E8236649DB5EBD08E/payments/F5C1A4E20D3B4E07B7E871F5B5BC9F91/return" //**url para falar de volta com o gateway de pagamento do marketplace
+	"callbackUrl": ""https://nomedaloja.vtexpayments.com.br/api/pvt/callback/vtxstd/transactions/D3AA1FC8372E430E8236649DB5EBD08E/payments/F5C1A4E20D3B4E07B7E871F5B5BC9F91/return", //**url para falar de volta com o gateway de pagamento
+	"shoppingCart": { // carrinho
+	    "items": [
+	      {
+	        "id": "2044360", //identificador do SKU no Seller
+	        "name": "Calça com Rasgos Skinny Preto 36", //nome do SKU
+	        "value": 6990, //preço do SKU
+	        "quantity": 1, //quantidade do item
+	        "priceTags": [
+	          {
+	            "name": "discount@shipping-1e522efe-9638-4f93-81d7-b280cdbef920#8bacb546-ac99-4107-a54a-c17cf53034c6",
+	            "value": "-4,1"
+	          }
+	        ],
+	        "components": null,
+	        "shippingDiscount": 0,
+	        "discount": 0,
+	        "refId": "7911105",
+	        "productId": "2017257"
+	      },
+	      {
+	        "id": "2031300",
+	        "name": "Calça Jeans Claro 38",
+	        "value": 7990,
+	        "quantity": 1,
+	        "priceTags": [
+	          {
+	            "name": "discount@shipping-1e522efe-9638-4f93-81d7-b280cdbef920#8bacb546-ac99-4107-a54a-c17cf53034c6",
+	            "value": "-4,1"
+	          }
+	        ],
+	        "components": null,
+	        "shippingDiscount": 0,
+	        "discount": 0,
+	        "refId": "7824867",
+	        "productId": "2009639"
+	      }
+	    ],
+	    "freight": 0, //frete
+	    "orderUrl": "http://www.cea.com.br/admin/checkout/#/orders?q=v676163cea",
+	    "tax": 0,
+	    "shippingdate": null,
+	    "shippingestimated": "6bd" //dias estimados para entrega
+	  }
 }
 {% endhighlight %}
 
