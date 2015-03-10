@@ -78,7 +78,8 @@ _response:_
 </s:Envelope>
 {% endhighlight %}
 
-###Criar o Endereço do Cliente
+###Criar o Endereço do Cliente  
+{: #2 .slug-text}
 
 Após inserir o cliente, é necessário inserir o endereço do cliente dono da lista.
 
@@ -138,7 +139,7 @@ _response_:
 {% endhighlight %}
 
 ###Criar a Lista
-{: #5 .slug-text}
+{: #3 .slug-text}
 
 Após inserir o cliente e o endereço do dono da lista, este é o momento de criar a lista.
 
@@ -260,7 +261,7 @@ _response_:
 {% endhighlight %}
 
 ###Inserir SKUS na Lista
-{: #5 .slug-text}
+{: #4 .slug-text}
 
 Após criar a lista, agora é o momento de inserir a SKUs que formarão a lista.
 
