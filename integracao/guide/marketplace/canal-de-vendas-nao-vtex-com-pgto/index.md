@@ -204,9 +204,10 @@ _response:_
     "IsInventoried": true,
     "IsGiftCardRecharge": false,
     "ImageUrl": "http://epocacosmeticos.vteximg.com.br/arquivos/ids/162097-55-55/primer-lisse-minute-15ml-clarins.jpg",
-    "DetailUrl": "/primer-lisse-minute-clarins-base-facial-alisadora/p",
+    "DetailUrl": "/primer-lisse-minute-clarins-base-facial-alisadora/p", //link do produto na loja
     "CSCIdentification": null,
     "BrandId": "2000050",//identificador da marca
+	"BrandName": "Clarins", //nome da marca
     "Dimension": {//dimensões
         "cubicweight": 0.2083,
         "height": 10,
