@@ -4,7 +4,7 @@ title: Módulo Checkout
 application: vtex.js
 docType: lib
 version: latest
----u
+---
 
 # Módulo Checkout
 
