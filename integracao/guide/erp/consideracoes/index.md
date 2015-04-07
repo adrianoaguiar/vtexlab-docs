@@ -60,7 +60,9 @@ Extensão do navegador chrome, nesta ferramente pode se testar, armazenar histó
 ###Credenciais Para Acesso (webservice e API REST)
 {: #7 .slug-text}
 
-Toda chamada feita ao web service deve ser em "https" e um usuario e senha são exigidos para iniciar a conexão. As chamadas para as APIs REST também devem ser feitas em "https" e devem conter em seu header as chaves de autenticação .Tanto o usuário e senha (para acessar o webservice) e chaves de asutenticação do header(para acessar as APIs REST) devem ser solicitados ao administrador da loja, ou ao time de operaçãoes que está implantando a loja.
+Toda chamada feita ao web service deve ser em "https" e um usuario e senha são exigidos para iniciar a conexão. As chamadas para as APIs REST também devem ser feitas em "https" e devem conter em seu header as chaves de autenticação .Tanto o usuário e senha (para acessar o webservice) e chaves de autenticação do header(para acessar as APIs REST) devem ser solicitados ao suporte VTEX, ou ao time de operaçãoes que está implantando a loja. Para fins de rastreabilidade, cada ERP deve possuir a sua chave de acesso exclusiva.
+
+O webservice VTEX trabalha com esquema de escalonamento na demanda, podendo assim escalar novas máquinas de acordo com a demanda de acesso. Por esse motivo, clients instalados em sistemas operacionais que fazem caches longos de DNS não são suportados (Windows XP, Windows Server 2003, versões antigas de Apache.
 
 
 ---
