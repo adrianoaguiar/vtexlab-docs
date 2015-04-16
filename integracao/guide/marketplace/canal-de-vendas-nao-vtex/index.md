@@ -93,11 +93,11 @@ _response:_
             "priceValidUntil": null
         }
     ],
-    "logisticsInfo": [                                            //obrigatório (se vier vazio é considerado que o item não está disponível) -  todos os itens devem ter os mesmos SLAs
+    "logisticsInfo": [                                            //obrigatório (se vier vazio é considerado que o item não está disponível) 
         {
-            "itemIndex": 0,                                       //obrigatório, int - representa os dados de sla do item de resposta (response)
-            "stockBalance": 99,                                   //obrigatório  quando o CEP foi passado no request, estoque, int
-            "quantity": 1,                                        //obrigatório quando o CEP foi passado no request, qauntidade pasada no request, int
+            "itemIndex": 0,                                       //obrigatório, int - index do array de item acima
+            "stockBalance": 99,                                   //obrigatório, estoque, int
+            "quantity": 1,                                        //obrigatório quando o CEP foi passado no request, quantidade pasada no request, int
             "shipsTo": [ "BRA", "USA" ],                          //obrigatório, array de string com as siglas dos países de entrega
             "slas": [                                             //obrigatório quando o CEP foi passado no request. Pode ser um array vazio
                 {
@@ -113,10 +113,10 @@ _response:_
                     "name": "Entrega Agendada",
                     "shippingEstimate": "5d",                     // d == "days, bd == "business days"
                     "price": 800,
-                    "availableDeliveryWindows": [
+                    "availableDeliveryWindows": [ //janelas de entrega pra entrega agendada
                          {
-                            "startDateUtc": "2013-02-04T08:00:00+00:00",       //date, obrigatório se for enviado delivery window
-                            "endDateUtc": "2013-02-04T13:00:00+00:00",         //date, obrigatório se for enviado delivery window
+                            "startDateUtc": "2013-02-04T08:00:00+00:00",       //date, obrigatório se for enviado janela de entrega
+                            "endDateUtc": "2013-02-04T13:00:00+00:00",         //date, obrigatório se for enviado janela de entrega
                             "price": 0        //int, obrigatório se for enviado delivery window - o valor total da entrega agendada é o valor base mais o valor desse campo
                         },
                     ]
