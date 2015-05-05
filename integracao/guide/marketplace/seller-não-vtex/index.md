@@ -34,6 +34,83 @@ Toda vez que houver uma inserção ou alteração na condição comercial (preç
 
 Quando o serviço de notificação retornar um status 404, significa que o SKU NÂO existe no marketplace VTEX, então o Seller envia um POST com os dados da SKU que deseja sugerir para vender no marketplace VTEX. O Seller faz as sugestões de suas SKUs e o administrador do Marketplace realiza o mapeamento de marcas e categorias através do admin da loja, e aceita ou não a sugestão de SKU enviada pelo Seller.
 
+_Exemplo do POST de dados:_
+
+{% highlight json %}	
+{
+	{
+	  "BrandId": null,
+	  "BrandName": "RAY BAN",
+	  "CategoryFullPath": "Oculos/Oculos de Sol/Masculino",
+	  "CategoryId": null,
+	  "EAN": [
+	    "0123456789123"
+	  ],
+	  "Height": 0.5,
+	  "Id": null,
+	  "Images": [
+	    {
+	      "ImageUrl": "http://www.cristalliotica.com.br/image/magictoolbox_cache/8c95d73fec130487c102a73bf1ab42ce/1/1/113/thumb450x450/2790576687/zoom-RAY%20BAN%204187%20Chris%206077_4V.jpg",
+	      "ImageName": "Principal",
+	      "FileId": null
+	    },
+	    {
+	      "ImageUrl": "http://www.cristalliotica.com.br/image/magictoolbox_cache/8c95d73fec130487c102a73bf1ab42ce/1/1/113/thumb450x450/2436023899/zoom-RAY%20BAN%204187%20Chris%206077_4V%201.jpg",
+	      "ImageName": "Lateral",
+	      "FileId": null
+	    }
+	  ],
+	  "IsAssociation": false,
+	  "IsKit": false,
+	  "IsProductSuggestion": false,
+	  "Length": 10,
+	  "ListPrice": 39900,
+	  "ModalId": null,
+	  "Price": 39900,
+	  "ProductDescription": "Oculos de sol feito de material de primira qualidae, com lentes anti reflexo e astes confortáveis",
+	  "ProductId": null,
+	  "ProductName": "Oculos de Sol RAY BAN",
+	  "ProductSpecifications": [
+	    {
+	      "FieldId": 0,
+	      "FieldName": "Origem",
+	      "FieldValueIds": null,
+	      "FieldValues": [
+	        "Importado"
+	      ]
+	    },
+	    {
+	      "FieldId": 0,
+	      "FieldName": "Capa Inclusa",
+	      "FieldValueIds": null,
+	      "FieldValues": [
+	        "Sim"
+	      ]
+	    }
+	  ],
+	  "ProductSupplementaryFields": null,
+	  "RefId": null,
+	  "SellerId": "Cristalli",
+	  "SellerModifiedDate": null,
+	  "SellerStockKeepingUnitId": "cristalli00011",
+	  "SkuId": null,
+	  "SkuName": "Oculos de Sol RAY BAN Lente Polarizada",
+	  "SkuSpecifications": [
+	    {
+	      "FieldId": 0,
+	      "FieldName": "Lente Polarizada",
+	      "FieldValueIds": null,
+	      "FieldValues": [
+	        "Sim"
+	      ]
+	    }
+	  ],
+	  "SkuSupplementaryFields": null,
+	  "SynonymousPropertyNames": null,
+	  "WeightKg": 0.2,
+	  "Width": 0.5
+	}
+}
 
 <a title="envia sugestão de sku" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/CATALOG/CATALOG_Sugestion" target="_blank">[Developer] - Exemplo de Request de Inserção de Sugestão de SKU - Endpoint da VTEX</a>
 
@@ -46,6 +123,12 @@ Toda vez que houver uma alteração na condição comercial de um SKU (preço, e
 
 <a title="busca de condições comerciais no seller" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/FULFILLMENT/FULFILLMENT_Simulation" target="_blank">[Developer] - Exemplo de Request de Busca de Condições Comerciais - Endpoint do Seller</a> 
 
+_Exemplo do POST de dados:_
+
+{% highlight json %}	
+{
+
+}
 
 ###Simular Compra, Checar Disponibilidade do Carrinho no Seller
 {: #5 .slug-text}
@@ -359,6 +442,8 @@ Uma solicitação de cancelamento pode ser enviada, caso o pedido se encontre em
 
 endpoint: **https://marketplaceServicesEndpoint/pvt/orders/[orderid]/cancel**  
 verb: **GET**
+
+Na ferramenta POSTMAN usando esse link [https://www.getpostman.com/collections/c6e48bdbc255752f9f42] é possível importar uma coleção de requests. Nela tem um exemplo de cada request citado nesse documento.
 
 ---
 
