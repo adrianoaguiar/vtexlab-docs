@@ -111,6 +111,7 @@ _Exemplo do POST de dados:_
 	  "Width": 0.5
 	}
 }
+{% endhighlight %} 
 
 <a title="envia sugestão de sku" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/CATALOG/CATALOG_Sugestion" target="_blank">[Developer] - Exemplo de Request de Inserção de Sugestão de SKU - Endpoint da VTEX</a>
 
@@ -127,8 +128,23 @@ _Exemplo do POST de dados:_
 
 {% highlight json %}	
 {
-
+  "postalCode": "22251-030",
+  "country": "BRA",
+  "items": [
+    {
+      "id": "2000037",
+      "quantity": 1,
+      "seller": "1"
+    },
+    {
+      "id": "34562",
+      "quantity": 2,
+      "seller": "1"
+    }
+  ]
 }
+{% endhighlight %} 
+
 
 ###Simular Compra, Checar Disponibilidade do Carrinho no Seller
 {: #5 .slug-text}
