@@ -38,78 +38,76 @@ _Exemplo do POST de dados:_
 
 {% highlight json %}	
 {
-	{
-	  "BrandId": null,
-	  "BrandName": "RAY BAN",
-	  "CategoryFullPath": "Oculos/Oculos de Sol/Masculino",
-	  "CategoryId": null,
-	  "EAN": [
-	    "0123456789123"
-	  ],
-	  "Height": 0.5,
-	  "Id": null,
-	  "Images": [
-	    {
-	      "ImageUrl": "http://www.cristalliotica.com.br/image/magictoolbox_cache/8c95d73fec130487c102a73bf1ab42ce/1/1/113/thumb450x450/2790576687/zoom-RAY%20BAN%204187%20Chris%206077_4V.jpg",
-	      "ImageName": "Principal",
-	      "FileId": null
-	    },
-	    {
-	      "ImageUrl": "http://www.cristalliotica.com.br/image/magictoolbox_cache/8c95d73fec130487c102a73bf1ab42ce/1/1/113/thumb450x450/2436023899/zoom-RAY%20BAN%204187%20Chris%206077_4V%201.jpg",
-	      "ImageName": "Lateral",
-	      "FileId": null
-	    }
-	  ],
-	  "IsAssociation": false,
-	  "IsKit": false,
-	  "IsProductSuggestion": false,
-	  "Length": 10,
-	  "ListPrice": 39900,
-	  "ModalId": null,
-	  "Price": 39900,
-	  "ProductDescription": "Oculos de sol feito de material de primira qualidae, com lentes anti reflexo e astes confortáveis",
-	  "ProductId": null,
-	  "ProductName": "Oculos de Sol RAY BAN",
-	  "ProductSpecifications": [
-	    {
-	      "FieldId": 0,
-	      "FieldName": "Origem",
-	      "FieldValueIds": null,
-	      "FieldValues": [
-	        "Importado"
-	      ]
-	    },
-	    {
-	      "FieldId": 0,
-	      "FieldName": "Capa Inclusa",
-	      "FieldValueIds": null,
-	      "FieldValues": [
-	        "Sim"
-	      ]
-	    }
-	  ],
-	  "ProductSupplementaryFields": null,
-	  "RefId": null,
-	  "SellerId": "Cristalli",
-	  "SellerModifiedDate": null,
-	  "SellerStockKeepingUnitId": "cristalli00011",
-	  "SkuId": null,
-	  "SkuName": "Oculos de Sol RAY BAN Lente Polarizada",
-	  "SkuSpecifications": [
-	    {
-	      "FieldId": 0,
-	      "FieldName": "Lente Polarizada",
-	      "FieldValueIds": null,
-	      "FieldValues": [
-	        "Sim"
-	      ]
-	    }
-	  ],
-	  "SkuSupplementaryFields": null,
-	  "SynonymousPropertyNames": null,
-	  "WeightKg": 0.2,
-	  "Width": 0.5
-	}
+  "BrandId": null,
+  "BrandName": "RAY BAN",
+  "CategoryFullPath": "Oculos/Oculos de Sol/Masculino",
+  "CategoryId": null,
+  "EAN": [
+    "0123456789123"
+  ],
+  "Height": 0.5,
+  "Id": null,
+  "Images": [
+    {
+      "ImageUrl": "http://www.cristalliotica.com.br/image/magictoolbox_cache/8c95d73fec130487c102a73bf1ab42ce/1/1/113/thumb450x450/2790576687/zoom-RAY%20BAN%204187%20Chris%206077_4V.jpg",
+      "ImageName": "Principal",
+      "FileId": null
+    },
+    {
+      "ImageUrl": "http://www.cristalliotica.com.br/image/magictoolbox_cache/8c95d73fec130487c102a73bf1ab42ce/1/1/113/thumb450x450/2436023899/zoom-RAY%20BAN%204187%20Chris%206077_4V%201.jpg",
+      "ImageName": "Lateral",
+      "FileId": null
+    }
+  ],
+  "IsAssociation": false,
+  "IsKit": false,
+  "IsProductSuggestion": false,
+  "Length": 10,
+  "ListPrice": 39900,
+  "ModalId": null,
+  "Price": 39900,
+  "ProductDescription": "Oculos de sol feito de material de primira qualidae, com lentes anti reflexo e astes confortáveis",
+  "ProductId": null,
+  "ProductName": "Oculos de Sol RAY BAN",
+  "ProductSpecifications": [
+    {
+      "FieldId": 0,
+      "FieldName": "Origem",
+      "FieldValueIds": null,
+      "FieldValues": [
+        "Importado"
+      ]
+    },
+    {
+      "FieldId": 0,
+      "FieldName": "Capa Inclusa",
+      "FieldValueIds": null,
+      "FieldValues": [
+        "Sim"
+      ]
+    }
+  ],
+  "ProductSupplementaryFields": null,
+  "RefId": null,
+  "SellerId": "Cristalli",
+  "SellerModifiedDate": null,
+  "SellerStockKeepingUnitId": "cristalli00011",
+  "SkuId": null,
+  "SkuName": "Oculos de Sol RAY BAN Lente Polarizada",
+  "SkuSpecifications": [
+    {
+      "FieldId": 0,
+      "FieldName": "Lente Polarizada",
+      "FieldValueIds": null,
+      "FieldValues": [
+        "Sim"
+      ]
+    }
+  ],
+  "SkuSupplementaryFields": null,
+  "SynonymousPropertyNames": null,
+  "WeightKg": 0.2,
+  "Width": 0.5
 }
 {% endhighlight %} 
 
