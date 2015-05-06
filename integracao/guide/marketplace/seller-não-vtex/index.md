@@ -94,7 +94,7 @@ _Exemplo do POST de dados:_
   "RefId": null,
   "SellerId": "Cristalli",
   "SellerModifiedDate": null,
-  "SellerStockKeepingUnitId": "cristalli00011",
+  "SellerStockKeepingUnitId": "cristalli00011", // tem que trocar esse id para os testes
   "SkuId": null,
   "SkuName": "Oculos de Sol RAY BAN Lente Polarizada",
   "SkuSpecifications": [
@@ -180,7 +180,7 @@ _request:_
 
 {% highlight json %}	
 {
-"marketplaceOrderId": "959311095",
+"marketplaceOrderId": "959311095", //tem que trocar esse id para testes
 "marketplaceServicesEndpoint": "https://urlmarketplace/", //leia o tópico Invocando MarketplaceServicesEndpoint Actions
 "marketplacePaymentValue": 11080,
 "items": [
@@ -345,7 +345,7 @@ endpoint: **https://sellerendpoint/api/fulfillment/pvt/orders/[orderid]/fulfill?
 verb: **POST**  
 Content-Type: **application/json**  
 Accept: **application/json**  
-Parametro: **sc=5** // sc é o canal de vendas cadastrado no marketplace, serve para destacar o canal por onde o pedido entrou.  
+Parametro: **sc=5** // sc serve para destacar o canal por onde o pedido entrou.
 
 _request:_    
 
