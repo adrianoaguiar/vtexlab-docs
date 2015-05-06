@@ -4,35 +4,38 @@ title: Seller Não VTEX Vendendo em Marketplace VTEX
 application: marketplace
 docType: guide
 ---
-##Seller Não VTEX Vendendo em Marketplace VTEX
+##_Seller_* Não VTEX Vendendo em _Marketplace_* Hospedado na VTEX
  
-Este documento tem por objetivo auxiliar na integração e atualização de condição comercial (preço, estoque, frete, SLAs de entrega) de um SKU* entre um Seller não VTEX  para uma loja hospedada na versão smartcheckout da VTEX e também auxiliar na descida de pedido e envio de autorização de despacho para o Seller não VTEX.
+Este documento tem por objetivo auxiliar na integração e atualização de preço e estoque de um _SKU*_ entre um Seller não VTEX  para uma loja hospedada na VTEX e também auxiliar na descida de pedido e envio de autorização de despacho para o Seller não VTEX.
 
-##Troca de Catalogo de SKU e Atualização de Condição Comercial de SKU
+_Seller_* = Dono do produto, responsável por fazer a entrega.  
+_Marketplace_* = Dono da vitrine, responsável por expor e vender o SKU.  
+_SKU_* = Item a ser trocado e vendido entre Seller e Marketplace.  
+
+##Troca de Catalogo e Atualização de Preço e Estoque de SKU
 {: #0 .slug-text}
 
-Sugestão de SKU e atualização de preço, estoque, frete, SLAs de entrega:
+Sugestão de SKU, atualização de preço e estoque.
+Toda vez que houver uma inserção ou alteração no preço ou no estoque de um SKU no Seller, o Seller deve enviar uma notificação de mudança de SKU para a loja hospedada na VTEX, caso a loja retorne em seu serviço o response status 404, significa que a SKU **não existe na VTEX**, então o Seller deve enviar a sugestão de SKU para a loja.
 
-_Fluxo de Sugestão de SKU:_
+_Exemplo do fluxo:_
 
-![alt text](sku-sugestion-seller-nao-vtex.png "Fluxo de descida de pedido")
-
-
-###Enviar de Notificação de Mudança de Condições Comerciais de SKU
-{: #1 .slug-text}
-
-Toda vez que houver uma inserção ou alteração na condição comercial (preço, estoque, frete e SLAs de entrega) de um SKU no Seller, se o Seller vende essa SKU no marketplace VTEX, o Seller deve enviar uma notificação de mudança de SKU para a VTEX, caso a VTEX retorne em seu serviço o response status 404, significa que a SKU **não existe na VTEX**, então o Seller deve enviar a sugestão de inserção de SKU para a loja da VTEX.
+![alt text](sku-sugestion-seller-nao-vtex.png "Fluxo de troca de catalogo")
 
 ###Enviar Notificação de Mudança de SKU
-{: #2 .slug-text}
+{: #2 .slug-text}  
 
-<a title="notificar mudança de sku no marketplace" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/CATALOG/CATALOG_Notification" target="_blank">[Developer] - Exemplo de Request de Notificação de Mudança - Endpoint da VTEX</a>
+Toda vez que houver uma inserção de SKU ou alteração no preço ou estoque de um SKU no Seller, o Seller deve enviar uma notificação de mudança de SKU para a loja hospeada na VTEX.
+
+<a title="notificar mudança de sku no marketplace" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/CATALOG/CATALOG_Notification" target="_blank">[Developer] - Exemplo de Request de Notificação de Mudança - Endpoint da loja hospedada na VTEX</a>
 
 
 ###Enviar Sugestão de SKU
 {: #3 .slug-text}
 
-Quando o serviço de notificação retornar um status 404, significa que o SKU NÂO existe no marketplace VTEX, então o Seller envia um POST com os dados da SKU que deseja sugerir para vender no marketplace VTEX. O Seller faz as sugestões de suas SKUs e o administrador do Marketplace realiza o mapeamento de marcas e categorias através do admin da loja, e aceita ou não a sugestão de SKU enviada pelo Seller.
+Quando o serviço de notificação descrito acima retornar um status 404, significa que o **SKU NÂO existe** no marketplace hospedado na VTEX, então o Seller envia um POST com os dados da SKU que deseja sugerir para vender no marketplace. O Seller faz as sugestões de suas SKUs e o administrador do Marketplace realiza o mapeamento de marcas e categorias através do admin da loja, e aceita ou não a sugestão de SKU enviada pelo Seller.
+
+<a title="envia sugestão de sku" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/CATALOG/CATALOG_Sugestion" target="_blank">[Developer] - Exemplo de Request de Inserção de Sugestão de SKU - Endpoint da loja hospedada VTEX</a>
 
 _Exemplo do POST de dados:_
 
@@ -111,13 +114,11 @@ _Exemplo do POST de dados:_
 }
 {% endhighlight %} 
 
-<a title="envia sugestão de sku" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/CATALOG/CATALOG_Sugestion" target="_blank">[Developer] - Exemplo de Request de Inserção de Sugestão de SKU - Endpoint da VTEX</a>
 
-
-###Atualização de Condição Comercial de SKU
+###Atualização de Preço e ou Estoque de SKU
 {: #4 .slug-text}
 
-Toda vez que houver uma alteração na condição comercial de um SKU (preço, estoque, frete e SLAs de entrega), o Seller NÂO VTEX deve enviar uma notificação de mudança de SKU para a VTEX, caso a VTEX retorne em seu serviço o response status 200 ou 202, significa que a SKU **existe** na VTEX, então a VTEX vai no Seller consultar as novas condições comerciais oferecidas pelo Seller.
+Toda vez que houver uma alteração no preço ou estoque, o Seller deve enviar uma notificação de mudança de SKU para a loja hospedadana VTEX, caso a loja retorne em seu serviço o response status 200 ou 202, significa que a SKU **existe** na loja, então a loja vai no Seller consultar o novo preço ou estoque.
 
 
 <a title="busca de condições comerciais no seller" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/FULFILLMENT/FULFILLMENT_Simulation" target="_blank">[Developer] - Exemplo de Request de Busca de Condições Comerciais - Endpoint do Seller</a> 
@@ -143,22 +144,23 @@ _Exemplo do POST de dados:_
 }
 {% endhighlight %} 
 
+---
 
-###Simular Compra, Checar Disponibilidade do Carrinho no Seller
+###Simular Compra no Seller
 {: #5 .slug-text}
 
-Quando um produto é inserido no carrinho no marketplace VTEX, ou faz se alguma edição no carrinho, uma consulta de simulaçao de carrinho é feita no Seller para checar a validade das condiçoes comerciais (preço, estoque, frete e SLAs de entrega). Quando se navega para a página de pagamento um outra checagem é realizada no Seller (_repare que é o mesmo endpoint usado na troca de condições comercias do catalogo_).  
+Quando um SKU é inserido ou editado no carrinho do marketplace hospedado na VTEX, uma consulta de simulaçao de carrinho é feita no Seller para checar a validade de preço e estoque, e caso o CEP seja conhecido, retorna se também o frete e as SLAs de entrega para cada tipo de entrega. Quando se navega para a página de pagamento um outra checagem é realizada no Seller (_repare que é o mesmo endpoint usado na troca de preço e estoque).  
 
 
-<a title="checar disponibilidade do carrinho no seller" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/FULFILLMENT/FULFILLMENT_Simulation" target="_blank">[Developer] - Simular Compra, Checar Disponibilidade do Carrinho no Seller - Endpoint do Seller</a> 
+<a title="checar disponibilidade do carrinho no seller" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/FULFILLMENT/FULFILLMENT_Simulation" target="_blank">[Developer] - Simular Compra no Seller - Endpoint do Seller</a> 
 
 
-### Enviar Pedido e Autorizar Despacho
+###Enviar Pedido e Autorizar Despacho
 {: #6 .slug-text}
 
-Este documento tem por objetivo auxiliar o Seller não VTEX a receber um pedido, e receber a autorização para despachar o pedido
+Este tópico tem por objetivo auxiliar o Seller a receber um pedido do Marketplace, e receber a autorização para despachar o pedido.
 
-_Fluxo_ 
+_Exemplo do fluxo:_
 
 ![alt text](order-seller-nao-vtex.png "Fluxo de pedido") 
 
@@ -166,7 +168,7 @@ _Fluxo_
 
 Quando o pedido é fechado no ambiente VTEX, um POST é feito no Seller não VTEX, para que este possa receber a ordem de pedido.  
  
-###Exemplos de Request de Descida de Pedido - Endpoint do Seller###
+###Exemplos de Request de Descida de Pedido - Endpoint do Seller
 
 endpoint: **https://sellerendpoint/api/fulfillment/pvt/orders?sc=[idcanal]**  
 verb: **POST**  
@@ -335,7 +337,7 @@ _Exemplo do Retorno de Erro:_
 
 ####Enviar Autorização Para Despachar
 
-Quando o pagamento do pedido é concluído no marketplace VTEX (pagamento válido), envia se ao Seller não VTEX uma autorização para dar andamento no processo de fulfillmente do pedido.  
+Quando o pagamento do pedido é concluído no marketplace VTEX (pagamento válido), envia se ao Seller uma autorização para dar andamento no processo de fulfillmente do pedido.  
  
 *Exemplos de Request de Autorização - Endpoint da Seller*
 
@@ -367,11 +369,11 @@ _response:_
 ###Invocando Marketplace Services Endpoint Actions
 {: #7 .slug-text}
 
-O MarketplaceServicesEndpoint serve para receber informações do seller referentes a nota fiscal e tracking de pedido. É permitido o envio de notas fiscais parciais, obrigando assim ao informador informar além dos valores da nota fiscal,os items ele está mandando na nota fiscal parcial. O pedido na VTEX só andará pra o status FATURADO quando o valor total de todas as notas fiscais de um pedido forem enviadas.
+O MarketplaceServicesEndpoint serve para receber informações do Seller referentes a nota fiscal e tracking de pedido. É permitido o envio de notas fiscais parciais, obrigando assim ao informador informar além dos valores da nota fiscal, os items que está mandando na nota fiscal parcial. O pedido na VTEX só andará pra o status FATURADO quando o valor total de todas as notas fiscais de um pedido forem enviadas.
 
-####Exemplos de Request Para Informar Nota Fiscal - Endpoint VTEX###
+####Exemplos de Request Para Informar Nota Fiscal - Endpoint da loja hospedada na VTEX
 
-endpoint: **https://marketplaceServicesEndpoint/pub/orders/[orderId]/invoice**  
+endpoint: **https://marketplaceServicesEndpoint/pvt/orders/[orderId]/invoice**  
 verb: **POST**  
 Content-Type: **application/json**  
 Accept: **application/json**  
@@ -380,11 +382,12 @@ _request:_
 
 {% highlight json %}
 {
-    "type": "Output", //hard code
+    "type": "Output", //Output|Input, venda ou devolução
     "invoiceNumber": "NFe-00001", //numero da nota fiscal
-    "courier": "", //quando é nota fiscal, dados de tracking vem vazio
-    "trackingNumber": "", //quando é nota fiscal, dados de tracking vem vazio
-    "trackingUrl": "",//quando é nota fiscal, dados de tracking vem vazio
+    "invoiceKey": "123456789012345678901234", //opcional, chave de acesso da nota fiscal
+    "courier": "", //opcional quando somente nota fiscal
+    "trackingNumber": "", //opcional quando somente nota fiscal
+    "trackingUrl": "",//opcional quando somente nota fiscal
     "items": [ //itens da nota
       {
         "id": "345117",
@@ -393,7 +396,7 @@ _request:_
       }
     ],
     "issuanceDate": "2013-11-21T00:00:00", //data da nota
-    "invoiceValue": 9508 //valor da nota
+    "invoiceValue": 9508 //valor da nota, iten mais frete
 }
 {% endhighlight %} 
 
@@ -407,9 +410,9 @@ _response:_
 }
 {% endhighlight %} 
 
-####Exemplos de Request Para Informar Tracking - Endpoint VTEX###
+####Exemplos de Request Para Informar Tracking - Endpoint da loja hospedada na VTEX
 
-endpoint: **https://marketplaceServicesEndpoint/pub/orders/[orderId]/invoice**  
+endpoint: **https://marketplaceServicesEndpoint/pvt/orders/[orderId]/invoice**  
 verb: **POST**  
 Content-Type: **application/json**  
 Accept: **application/json**  
@@ -452,12 +455,12 @@ _response:_
 
 Uma solicitação de cancelamento pode ser enviada, caso o pedido se encontre em um estado que se possa cancelar, o pedido será cancelado. 
  
-*Exemplos de Request de Cancelamento - Endpoint VTEX*
+####Exemplos de Request de Cancelamento - Endpoint da loja hospedada na VTEX
 
 endpoint: **https://marketplaceServicesEndpoint/pvt/orders/[orderid]/cancel**  
 verb: **GET**
 
-Na ferramenta POSTMAN usando esse link [https://www.getpostman.com/collections/c6e48bdbc255752f9f42] é possível importar uma coleção de requests. Nela tem um exemplo de cada request citado nesse documento.
+Na ferramenta POSTMAN usando esse link [https://www.getpostman.com/collections/5706731d0e7189a3792e] é possível importar uma coleção de requests. Nela tem um exemplo de cada request citado nesse documento.
 
 ---
 
