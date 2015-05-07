@@ -12,6 +12,8 @@ _Seller_* = Dono do produto, responsável por fazer a entrega.
 _Marketplace_* = Dono da vitrine, responsável por expor e vender o SKU.  
 _SKU_* = Item a ser trocado e vendido entre Seller e Marketplace.  
 
+{% include ../catalog.md %}
+
 ##Troca de Catalogo e Atualização de Preço e Estoque de SKU
 {: #0 .slug-text}
 
@@ -460,7 +462,7 @@ Uma solicitação de cancelamento pode ser enviada, caso o pedido se encontre em
 endpoint: **https://marketplaceServicesEndpoint/pvt/orders/[orderid]/cancel**  
 verb: **GET**
 
-Na ferramenta POSTMAN usando esse link [https://www.getpostman.com/collections/5706731d0e7189a3792e] é possível importar uma coleção de requests. Nela tem um exemplo de cada request citado nesse documento.
+Na ferramenta POSTMAN usando esse link [https://www.getpostman.com/collections/ba95d70124bba8e05fe0] é possível importar uma coleção de requests. Nela tem um exemplo de cada request citado nesse documento.
 
 ---
 
