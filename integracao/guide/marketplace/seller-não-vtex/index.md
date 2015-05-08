@@ -12,20 +12,19 @@ _Seller_* = Dono do produto, responsável por fazer a entrega.
 _Marketplace_* = Dono da vitrine, responsável por expor e vender o SKU.  
 _SKU_* = Item a ser trocado e vendido entre Seller e Marketplace.  
 
-##Troca de Catalogo e Atualização de Preço e Estoque de SKU
+###Troca de Catalogo e Atualização de Preço e Estoque de SKU
 {: #0 .slug-text}
 
-Sugestão de SKU, atualização de preço e estoque.
-Toda vez que houver uma inserção ou alteração no preço ou no estoque de um SKU no Seller, o Seller deve enviar uma notificação de mudança de SKU para a loja hospedada na VTEX, caso a loja retorne em seu serviço o response status 404, significa que a SKU **não existe na VTEX**, então o Seller deve enviar a sugestão de SKU para a loja.
+Sugestão de SKU, atualização de preço e estoque. Toda vez que houver uma alteração no preço ou no estoque de um SKU no Seller, o Seller deve enviar uma notificação de mudança de SKU para a loja hospedada na VTEX, caso a loja retorne em seu serviço o response status 404, significa que a SKU **não existe na VTEX**, então o Seller deve enviar a sugestão de SKU para a loja.
 
 _Exemplo do fluxo:_
 
 ![alt text](sku-sugestion-seller-nao-vtex.png "Fluxo de troca de catalogo")
 
-###Enviar Notificação de Mudança de SKU
+###Enviar Notificação de Mudança de Preço e Estoque de SKU
 {: #2 .slug-text}  
 
-Toda vez que houver uma inserção de SKU ou alteração no preço ou estoque de um SKU no Seller, o Seller deve enviar uma notificação de mudança de SKU para a loja hospeada na VTEX.
+Toda vez que houver uma alteração no preço ou estoque de um SKU no Seller, o Seller deve enviar uma notificação de mudança de SKU para a loja hospeada na VTEX.
 
 <a title="notificar mudança de sku no marketplace" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/CATALOG/CATALOG_Notification" target="_blank">[Developer] - Exemplo de Request de Notificação de Mudança - Endpoint da loja hospedada na VTEX</a>
 
@@ -168,7 +167,7 @@ _Exemplo do fluxo:_
 
 Quando o pedido é fechado no ambiente VTEX, um POST é feito no Seller não VTEX, para que este possa receber a ordem de pedido.  
  
-###Exemplos de Request de Descida de Pedido - Endpoint do Seller
+####Exemplos de Request de Descida de Pedido - Endpoint do Seller
 
 endpoint: **https://sellerendpoint/api/fulfillment/pvt/orders?sc=[idcanal]**  
 verb: **POST**  
@@ -424,8 +423,8 @@ _request:_
     "type": "Output",
     "invoiceNumber": "NFe-00001",
     "courier": "Correios", //transportadora
-    "trackingNumber": "SR000987654321", /tracking number
-    "trackingUrl": "http://traking.correios.com.br/sedex/SR000987654321", url de tracking
+    "trackingNumber": "SR000987654321", //tracking number
+    "trackingUrl": "http://traking.correios.com.br/sedex/SR000987654321", //url de tracking
     "items": [
       {
         "id": "345117",
