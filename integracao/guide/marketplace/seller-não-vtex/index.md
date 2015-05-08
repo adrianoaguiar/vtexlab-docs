@@ -12,8 +12,6 @@ _Seller_* = Dono do produto, responsável por fazer a entrega.
 _Marketplace_* = Dono da vitrine, responsável por expor e vender o SKU.  
 _SKU_* = Item a ser trocado e vendido entre Seller e Marketplace.  
 
-{% include ../catalog.md %}
-
 ##Troca de Catalogo e Atualização de Preço e Estoque de SKU
 {: #0 .slug-text}
 
