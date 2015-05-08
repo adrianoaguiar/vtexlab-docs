@@ -15,7 +15,7 @@ _SKU_* = Item a ser trocado e vendido entre Seller e Marketplace.
 ###Troca de Catalogo e Atualização de Preço e Estoque de SKU
 {: #0 .slug-text}
 
-Sugestão de SKU, atualização de preço e estoque. Toda vez que houver uma alteração no preço ou no estoque de um SKU no Seller, o Seller deve enviar uma notificação de mudança de SKU para a loja hospedada na VTEX, caso a loja retorne em seu serviço o response status 404, significa que a SKU **não existe na VTEX**, então o Seller deve enviar a sugestão de SKU para a loja.
+Sugestão de SKU, atualização de preço e estoque. Toda vez que houver uma alteração no preço ou no estoque de um SKU no Seller, o Seller deve enviar uma notificação de mudança de SKU para a loja hospedada na VTEX, caso a loja retorne em seu serviço o **response status 404**, significa que a **SKU não existe na loja**, então o Seller deve enviar a sugestão de SKU para a loja, caso a loja retorne em seu serviço o **response status 200 ou 202**, significa que a **SKU existe** na loja, então a loja vai no Seller consultar o novo preço ou estoque.
 
 _Exemplo do fluxo:_
 
@@ -32,7 +32,7 @@ Toda vez que houver uma alteração no preço ou estoque de um SKU no Seller, o 
 ###Enviar Sugestão de SKU
 {: #3 .slug-text}
 
-Quando o serviço de notificação descrito acima retornar um status 404, significa que o **SKU NÂO existe** no marketplace hospedado na VTEX, então o Seller envia um POST com os dados da SKU que deseja sugerir para vender no marketplace. O Seller faz as sugestões de suas SKUs e o administrador do Marketplace realiza o mapeamento de marcas e categorias através do admin da loja, e aceita ou não a sugestão de SKU enviada pelo Seller.
+Quando o serviço de notificação descrito acima retornar um **response status 404**, significa que o SKU **NÂO existe** no marketplace hospedado na VTEX, então o Seller envia um POST com os dados da SKU que deseja sugerir para vender no marketplace. O Seller faz as sugestões de suas SKUs e o administrador do Marketplace realiza o mapeamento de marcas e categorias através do admin da loja, e aceita ou não a sugestão de SKU enviada pelo Seller.
 
 <a title="envia sugestão de sku" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/CATALOG/CATALOG_Sugestion" target="_blank">[Developer] - Exemplo de Request de Inserção de Sugestão de SKU - Endpoint da loja hospedada VTEX</a>
 
@@ -117,7 +117,7 @@ _Exemplo do POST de dados:_
 ###Atualização de Preço e ou Estoque de SKU
 {: #4 .slug-text}
 
-Toda vez que houver uma alteração no preço ou estoque, o Seller deve enviar uma notificação de mudança de SKU para a loja hospedadana VTEX, caso a loja retorne em seu serviço o response status 200 ou 202, significa que a SKU **existe** na loja, então a loja vai no Seller consultar o novo preço ou estoque.
+Toda vez que houver uma alteração no preço ou estoque, o Seller deve enviar uma notificação de mudança de SKU para a loja hospedadana VTEX, caso a loja retorne em seu serviço o **response status 200 ou 202**, significa que a SKU **existe** na loja, então a loja vai no Seller consultar o novo preço ou estoque.
 
 
 <a title="busca de condições comerciais no seller" href="http://bridge.vtexlab.com.br/vtex.bridge.web_deploy/swagger/ui/index.html#!/FULFILLMENT/FULFILLMENT_Simulation" target="_blank">[Developer] - Exemplo de Request de Busca de Condições Comerciais - Endpoint do Seller</a> 
