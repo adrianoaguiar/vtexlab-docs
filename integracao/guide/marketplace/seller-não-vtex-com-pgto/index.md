@@ -157,15 +157,11 @@ _response:_
 ###Consulta de Opções de Parcelamento.  
 {: #2 .slug-text}  
 
-Quando cliente for para a página de pagamento, uma chamada será feita no Seller para buscar as formas de parcelamento das formas de pagamento. O Seller não VTEX deverá conhcer préviamente os ids das formas de pagamento do marketplace VTEX - Endpoint do Seller  
+Quando cliente for para a página de pagamento, uma chamada será feita no Seller para buscar as formas de parcelamento das formas de pagamento. O Seller não VTEX deverá conhcer préviamente os ids das formas de pagamento do marketplace VTEX (1-American Express, 2-Visa, 3-Diners, 8-Hipercard, 4-Mastercard) - Endpoint do Seller  
  
 Identificadores dos cartões mais comuns no gateway das lojas VTEX:
 
-1	American Express  
-3	Diners  
-8	Hipercard  
-4	Mastercard
-2	Visa  
+
 
 endpoint: **https://sellerendpoint/installments/options?an=[nomedaloja]**  
 verb: **POST**  
